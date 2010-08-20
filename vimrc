@@ -46,18 +46,9 @@ noremap gc :lcd %:h<CR>:pwd<CR>
 " better range
 noremap ' `
 
-" git shortcuts
-"" show diff in new window
-if has("gui_running")
-  noremap gd :!git diff <BAR> gvim -<CR><CR>
-else
-  noremap gd :!git diff <BAR> vim -<CR><CR>
-endif
-noremap gs :!git status<CR>
-noremap ga :!git add %<CR>
-"" edit commit message in new window
-"if has("gui_running")
-"  noremap gm :!gvim __vim_gitcommitmessage && git commit -F __vim_gitcommitmessage && rm __vim_gitcommitmessage<CR>
-"else
-"  noremap gm :!vim __vim_gitcommitmessage && git commit -F __vim_gitcommitmessage && rm __vim_gitcommitmessage<CR>
-"endif
+" fugitive shortcuts
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>gc :Gcommit<cr>
+nmap <leader>ga :Gwrite<cr>
+nmap <leader>gl :Glog<cr>
+nmap <leader>gd :Gdiff<cr>
