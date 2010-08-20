@@ -57,10 +57,10 @@ noremap ggl :Glog<cr>
 noremap ggd :Gdiff<cr>
 
 " LustyExplorer
-noremap glr \lr
-noremap glf \lf
-noremap glb \lb
-noremap glj \lj
+nmap glr \lr
+nmap glf \lf
+nmap glb \lb
+nmap glj \lj
 
 " use ctrl-h/j/k/l to switch between splits
 map <c-j> <c-w>j
