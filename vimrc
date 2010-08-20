@@ -44,14 +44,26 @@ set wildmode=list:longest
 inoremap <C-j> <ESC>
 
 " cd current window to parent directory of file
-noremap <leader>c :lcd %:h<CR>:pwd<CR>
+noremap gc :lcd %:h<CR>:pwd<CR>
 
 " better range
 noremap ' `
 
 " fugitive shortcuts
-nmap <leader>gs :Gstatus<cr>
-nmap <leader>gc :Gcommit<cr>
-nmap <leader>ga :Gwrite<cr>
-nmap <leader>gl :Glog<cr>
-nmap <leader>gd :Gdiff<cr>
+noremap ggs :Gstatus<cr>
+noremap ggc :Gcommit<cr>
+noremap gga :Gwrite<cr>
+noremap ggl :Glog<cr>
+noremap ggd :Gdiff<cr>
+
+" LustyExplorer
+noremap glr \lr
+noremap glf \lf
+noremap glb \lb
+noremap glj \lj
+
+" use ctrl-h/j/k/l to switch between splits
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
