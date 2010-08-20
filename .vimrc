@@ -1,43 +1,63 @@
-map! <S-Insert> <MiddleMouse>
+" sane backspace
 set backspace=indent,eol,start
-set fileencodings=ucs-bom,utf-8,default,latin1
-set helplang=en
-set history=50
 set nomodeline
+
+" mouse settings
 set mouse=a
-set printoptions=paper:letter
+set nomousehide
+set mousemodel=popup
+" middle-click paste
+map! <S-Insert> <MiddleMouse>
+
+" display
 set ruler
-set runtimepath=~/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim72,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,~/.vim/after
-set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-set termencoding=utf-8
-" vim: set ft=vim :
-filetype plugin indent on
-colors ir_black
-set guifont=Deja\ Vu\ Sans\ Mono\ 7
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
-set expandtab
 set number
-set directory=/home/force/.vimvar
-set backupdir=/home/force/.vimvar
-
-set tabstop=2 softtabstop=2 shiftwidth=2 expandtab autoindent cindent
-set encoding=utf-8 fileencoding=utf-8
-set nobackup nowritebackup noswapfile autoread
-set hlsearch incsearch ignorecase smartcase
-
+set guifont=Deja\ Vu\ Sans\ Mono\ 7
 if has("gui_running")
-  colorscheme molokai 
+  colorscheme molokai
 else
   colorscheme ir_black
 endif
 
+" print
+set printoptions=paper:letter
+
+" formatting
+filetype plugin indent on
+set shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent cindent
+
+" saving and encoding
+set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
+set nobackup nowritebackup noswapfile autoread
+
+" searching
+set hlsearch incsearch ignorecase smartcase
+
+" bash-like autocomplete
 set wildmenu
 set wildmode=list:longest
 
-inoremap <C-j> <Esc>
+" better Esc
+inoremap <C-j> <ESC>
 
-noremap gc :lcd %:h<Cr>
+" cd current window to parent directory of file
+noremap gc :lcd %:h<CR>:pwd<CR>
 
+" better range
 noremap ' `
+
+" git shortcuts
+"" show diff in new window
+if has("gui_running")
+  noremap gd :!git diff <BAR> gvim -<CR><CR>
+else
+  noremap gd :!git diff <BAR> vim -<CR><CR>
+endif
+noremap gs :!git status<CR>
+noremap ga :!git add %<CR>
+"" edit commit message in new window
+"if has("gui_running")
+"  noremap gm :!gvim __vim_gitcommitmessage && git commit -F __vim_gitcommitmessage && rm __vim_gitcommitmessage<CR>
+"else
+"  noremap gm :!vim __vim_gitcommitmessage && git commit -F __vim_gitcommitmessage && rm __vim_gitcommitmessage<CR>
+"endif
