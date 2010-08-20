@@ -1,6 +1,9 @@
+" Vim
+set hidden
+set nomodeline
+
 " sane backspace
 set backspace=indent,eol,start
-set nomodeline
 
 " mouse settings
 set mouse=a
@@ -41,7 +44,7 @@ set wildmode=list:longest
 inoremap <C-j> <ESC>
 
 " cd current window to parent directory of file
-noremap gc :lcd %:h<CR>:pwd<CR>
+noremap <leader>c :lcd %:h<CR>:pwd<CR>
 
 " better range
 noremap ' `
