@@ -17,7 +17,7 @@ set ruler
 set number
 set guifont=Deja\ Vu\ Sans\ Mono\ 7
 if has("gui_running")
-  colorscheme molokai
+  colorscheme mylokai
 else
   colorscheme ir_black
 endif
