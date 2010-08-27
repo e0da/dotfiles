@@ -50,11 +50,11 @@ noremap gc :lcd %:h<CR>:pwd<CR>
 noremap ' `
 
 " fugitive shortcuts
-noremap ggs :Gstatus<cr>
-noremap ggc :Gcommit<cr>
-noremap gga :Gwrite<cr>
-noremap ggl :Glog<cr>
-noremap ggd :Gdiff<cr>
+noremap <bslash>gs :Gstatus<cr>
+noremap <bslash>gc :Gcommit<cr>
+noremap <bslash>ga :Gwrite<cr>
+noremap <bslash>gl :Glog<cr>
+noremap <bslash>gd :Gdiff<cr>
 
 " LustyExplorer
 nmap glr \lr
