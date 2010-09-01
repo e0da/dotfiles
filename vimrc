@@ -13,6 +13,7 @@ set mousemodel=popup
 map! <S-Insert> <MiddleMouse>
 
 " display
+set nofoldenable
 set ruler
 set number
 set guifont=Deja\ Vu\ Sans\ Mono\ 7
