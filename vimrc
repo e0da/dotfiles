@@ -20,7 +20,7 @@ set guifont=Deja\ Vu\ Sans\ Mono\ 7
 if has("gui_running")
   colorscheme mylokai
 else
-  colorscheme ir_black
+  colorscheme desert
 endif
 
 " print
