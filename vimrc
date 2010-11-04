@@ -13,6 +13,7 @@ set mousemodel=popup
 map! <S-Insert> <MiddleMouse>
 
 " display
+syntax on
 set nofoldenable
 set ruler
 set number
