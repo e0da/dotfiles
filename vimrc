@@ -18,11 +18,7 @@ set nofoldenable
 set ruler
 set number
 set guifont=Deja\ Vu\ Sans\ Mono\ 7
-if has("gui_running")
-  colorscheme mylokai
-else
-  colorscheme desert
-endif
+colorscheme mylokai
 
 " print
 set printoptions=paper:letter
