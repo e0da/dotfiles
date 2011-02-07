@@ -29,7 +29,9 @@ myWorkspaces =
 
 myTerminal = "urxvt"
 
-myModMask = mod1Mask -- set mod to super (default is left-alt)
+myFocusedBorderColor = "orange"
+
+myModMask = mod1Mask
 
 myKeys x =
     [ ((modMask x .|. shiftMask, xK_s), spawn "gnome-screensaver-command -l")
@@ -46,8 +48,8 @@ myKeyMap x = M.union (keys defaultConfig x) (M.fromList (myKeys x))
 
 myLayoutHook = avoidStruts
                $ smartBorders
-               $ onWorkspace "draw" gimpLayout
-               $ onWorkspace "chat" pidginLayout
+               $ onWorkspace "? [8]" gimpLayout
+               $ onWorkspace "chat [3]" pidginLayout
                $ (Tall 1 (3/100) (1/2) ||| Full)
     where
       gimpLayout   = withIM (0.11) (Role "gimp-toolbox")
@@ -60,10 +62,10 @@ myManageHook =
     composeAll
     [ isFullscreen --> doFullFloat -- make full-screen windows work
       -- launch certain programs only on certain workspaces
-    , className =? "Pidgin"    --> doF (W.shift "chat")
-    , className =? "Skype"     --> doF (W.shift "chat")
-    , className =? "Rhythmbox" --> doF (W.shift "song")
-    , className =? "Gimp"      --> doF (W.shift "draw")
+    , className =? "Pidgin"    --> doF (W.shift "chat [3]")
+    , className =? "Skype"     --> doF (W.shift "chat [3]")
+    , className =? "Rhythmbox" --> doF (W.shift "music [6]")
+    , className =? "Gimp"      --> doF (W.shift "? [8]")
     ] <+> manageHook defaultConfig
 
 -- logging for xmobar to use
@@ -90,11 +92,11 @@ main = do
              , layoutHook = myLayoutHook
 	     --, borderWidth = myBorderWidth
 	     --, normalBorderColor = myNormalBorderColor
-	     --, focusedBorderColor = myFocusedBorderColor
+             , focusedBorderColor = myFocusedBorderColor
              , terminal   = myTerminal
              , modMask    = myModMask
              , keys       = myKeyMap
-	     , workspaces = myWorkspaces
+             , workspaces = myWorkspaces
              , logHook    = myLogHook xmproc
-             --, focusFollowsMouse = False
+             , focusFollowsMouse = False
 	     }
