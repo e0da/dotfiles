@@ -90,13 +90,13 @@ main = do
   xmonad $ defaultConfig
              { manageHook = myManageHook
              , layoutHook = myLayoutHook
-	     --, borderWidth = myBorderWidth
-	     --, normalBorderColor = myNormalBorderColor
+           --, borderWidth = myBorderWidth
+           --, normalBorderColor = myNormalBorderColor
              , focusedBorderColor = myFocusedBorderColor
              , terminal   = myTerminal
              , modMask    = myModMask
              , keys       = myKeyMap
              , workspaces = myWorkspaces
              , logHook    = myLogHook xmproc
-             , focusFollowsMouse = False
+           --, focusFollowsMouse = False
 	     }
