@@ -56,7 +56,7 @@ myLayoutHook = avoidStruts
                      $ reflectHoriz
                      $ withIM (0.15) (Role "gimp-dock") Full
       pidginLayout = reflectHoriz
-                     $ withIM (0.15) (Role "buddy_list") Grid
+                     $ withIM (0.15) (Role "buddy_list") Grid ||| Full
 
 myManageHook =
     composeAll
