@@ -20,12 +20,12 @@ myWorkspaces =
     [ "web [1]"
     , "mail [2]"
     , "chat [3]"
-    , "code [4]"
+    , "term [4]"
     , "virt [5]"
     , "music [6]"
-    , "read [7]"
-    , "? [8]"
-    , "cas [9]" ]
+    , "play [7]"
+    , "gimp [8]"
+    , "code [9]" ]
 
 myTerminal = "urxvt"
 
@@ -48,7 +48,7 @@ myKeyMap x = M.union (keys defaultConfig x) (M.fromList (myKeys x))
 
 myLayoutHook = avoidStruts
                $ smartBorders
-               $ onWorkspace "? [8]" gimpLayout
+               $ onWorkspace "gimp [8]" gimpLayout
                $ onWorkspace "chat [3]" pidginLayout
                $ (Tall 1 (3/100) (1/2) ||| Full)
     where
@@ -65,7 +65,7 @@ myManageHook =
     , className =? "Pidgin"    --> doF (W.shift "chat [3]")
     , className =? "Skype"     --> doF (W.shift "chat [3]")
     , className =? "Rhythmbox" --> doF (W.shift "music [6]")
-    , className =? "Gimp"      --> doF (W.shift "? [8]")
+    , className =? "Gimp"      --> doF (W.shift "gimp [8]")
     ] <+> manageHook defaultConfig
 
 -- logging for xmobar to use
@@ -74,7 +74,7 @@ myLogHook h = dynamicLogWithPP $ myPP { ppOutput = hPutStrLn h }
 -- xmobar styling
 myPP =
     xmobarPP
-    { ppCurrent         = xmobarColor "#00B000" ""
+    { ppCurrent         = xmobarColor "orange" ""
     , ppVisible         = xmobarColor "#B0B000" ""
     , ppHidden          = xmobarColor "#B0B0B0" ""
     , ppHiddenNoWindows = xmobarColor "#606060" ""
@@ -82,7 +82,7 @@ myPP =
     , ppSep             = "   "
     , ppWsSep           = "  "
       -- This centers the window title, but fails when there's no window
-    , ppTitle           = wrap "}" "{" . xmobarColor "#00A000" ""
+    , ppTitle           = wrap "}" "{" . xmobarColor "orange" ""
     }
 
 main = do
