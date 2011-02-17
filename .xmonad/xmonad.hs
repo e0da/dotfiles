@@ -37,9 +37,9 @@ myKeys x =
     [ ((modMask x .|. shiftMask, xK_s), spawn "gnome-screensaver-command -l")
     , ((modMask x, xK_equal), spawn "amixer set 'Master' 5%+")
     , ((modMask x, xK_minus), spawn "amixer set 'Master' 5%-")
-    , ((modMask x, xK_z), spawn "rhythmbox-client --no-present --previous")
-    , ((modMask x, xK_x), spawn "rhythmbox-client --no-present --play-pause")
-    , ((modMask x, xK_c), spawn "rhythmbox-client --no-present --next")
+    , ((modMask x, xK_z), spawn "banshee --no-present --previous")
+    , ((modMask x, xK_x), spawn "banshee --no-present --play-pause")
+    , ((modMask x, xK_c), spawn "banshee --no-present --next")
     , ((modMask x, xK_f), spawn "google-chrome")
     , ((modMask x, xK_g), spawn "gvim")
     , ((modMask x, xK_d), spawn "nautilus --no-desktop ~")
@@ -64,7 +64,8 @@ myManageHook =
       -- launch certain programs only on certain workspaces
     , className =? "Pidgin"    --> doF (W.shift "chat [3]")
     , className =? "Skype"     --> doF (W.shift "chat [3]")
-    , className =? "Rhythmbox" --> doF (W.shift "music [6]")
+    , className =? "Banshee"   --> doF (W.shift "music [6]")
+    , className =? "Pithos"    --> doF (W.shift "music [6]")
     , className =? "Gimp"      --> doF (W.shift "gimp [8]")
     ] <+> manageHook defaultConfig
 
