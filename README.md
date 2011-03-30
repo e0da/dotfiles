@@ -4,14 +4,14 @@ periodically do a `git pull` in the directory to update everything. Here is one
 way to make the symlinks:
 
     cd
-    git clone git://github.com/sidewaysmilk/sidewaysmilk-conf.git
-    find sidewaysmilk-conf -name ".*" -maxdepth 1 | while read f; do ln -s $f; done
+    git clone git://github.com/sidewaysmilk/dotfiles
+    find dotfiles -name ".*" -maxdepth 1 | while read f; do ln -s $f; done
 
 The various scripts, etc. found here are copyright their respective owners and
 documentation can be found for each of them by viewing the file or googling the
-product name. If I am improperly using naything here, please let me know and I
+product name. If I am improperly using anything here, please let me know and I
 will correct the problem.
 
 Justin Force
-February 07, 2011
+March 30, 2011
 
