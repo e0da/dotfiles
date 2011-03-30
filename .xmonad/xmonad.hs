@@ -43,6 +43,8 @@ myKeys x =
     , ((modMask x, xK_f), spawn "google-chrome")
     , ((modMask x, xK_g), spawn "gvim")
     , ((modMask x, xK_d), spawn "nautilus --no-desktop ~")
+    , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
+    , ((0, xK_Print), spawn "scrot")
     ]
 myKeyMap x = M.union (keys defaultConfig x) (M.fromList (myKeys x))
 
