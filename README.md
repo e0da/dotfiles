@@ -5,7 +5,7 @@ way to make the symlinks:
 
     cd
     git clone git://github.com/sidewaysmilk/dotfiles
-    find dotfiles -maxdepth 1 -name ".*"| grep -v '.git$' |while read f; do rm `basename $f`; ln -s $f; done
+    find dotfiles -maxdepth 1 -name ".*"| grep -v '.git$' | grep -v .gitignore | while read f; do rm `basename $f`; ln -s $f; done
 
 The various scripts, etc. found here are copyright their respective owners and
 documentation can be found for each of them by viewing the file or googling the
