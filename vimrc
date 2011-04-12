@@ -67,3 +67,4 @@ vmap <Nul> <Nop>
 cmap <Nul> <Nop>
 nmap <Nul> <Nop>
 
+set guioptions=
