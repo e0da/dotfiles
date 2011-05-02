@@ -115,3 +115,4 @@ set -o vi
 bind '"\C-v": "\ev"'
 
 alias gdh="git diff HEAD|gvim -"
+     [[ -s "/home/force/.rvm/scripts/rvm" ]] && source "/home/force/.rvm/scripts/rvm"  # This loads RVM into a shell session.
