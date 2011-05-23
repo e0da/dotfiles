@@ -67,4 +67,9 @@ vmap <Nul> <Nop>
 cmap <Nul> <Nop>
 nmap <Nul> <Nop>
 
+" GUI options.
 set guioptions=
+
+" Tab behavior
+set switchbuf=usetab,newtab
+
