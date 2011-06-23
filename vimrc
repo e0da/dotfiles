@@ -26,6 +26,8 @@ set printoptions=paper:letter
 " formatting
 filetype plugin indent on
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent cindent
+autocmd FileType c setlocal shiftwidth=8 tabstop=8 softtabstop=8
+
 
 " saving and encoding
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
