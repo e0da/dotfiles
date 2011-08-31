@@ -27,3 +27,6 @@ SAVEHIST=1000
 setopt appendhistory autocd beep extendedglob nomatch notify
 bindkey -e
 # End of lines configured by zsh-newuser-install
+
+# aliases
+alias ls='ls --color=auto'
