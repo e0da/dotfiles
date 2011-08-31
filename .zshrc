@@ -26,6 +26,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory autocd beep extendedglob nomatch notify
 bindkey -e
+EDITOR=vim
 # End of lines configured by zsh-newuser-install
 
 # aliases
