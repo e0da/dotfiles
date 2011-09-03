@@ -31,3 +31,13 @@ EDITOR=vim
 
 # aliases
 alias ls='ls --color=auto'
+
+source /etc/zsh_command_not_found
+
+fg_cyan=$'%{\e[1;36m%}'
+fg_plain=$'%{\e[0m%]'
+fg_white=$'%{\e[1;37m%}'
+fg_green=$'%{\e[1;32m%}'
+PROMPT="$fg_cyan%n$fg_white@$fg_cyan%m$fg_white:$fg_green%~$fg_white%#$fg_plain"
+RPROMPT="$fg_white%{[%}$fg_cyan #%h %* %D$fg_white ]$fg_plain"
+
