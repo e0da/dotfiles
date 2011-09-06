@@ -34,11 +34,8 @@ alias ls='ls --color=auto'
 
 source /etc/zsh_command_not_found
 
-fg_cyan=$'%{\e[1;36m%}'
-fg_plain=$'%{\e[0m%]'
-fg_white=$'%{\e[1;37m%}'
-fg_green=$'%{\e[1;32m%}'
-fg_blue=$'%{\e[1;34m%}'
-PROMPT="$fg_cyan%n$fg_white@$fg_cyan%m$fg_white:$fg_blue%~$fg_white%#$fg_plain"
-RPROMPT="$fg_white%{[%}$fg_cyan #%h %* %D$fg_white ]$fg_plain"
+PROMPT="%B%F{cyan}%n%F{white}@%F{cyan}%m%F{white}:%F{blue}%~%F{white}%#%b%f "
+RPROMPT="%B%F{white}#%F{cyan}%h %F{white}%* %F{cyan}%D%b%f"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
