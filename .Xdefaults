@@ -1,8 +1,8 @@
 ! The following is taken from
 !http://wiki.afterstep.org/index.php?title=Rxvt-Unicode_Configuration_Tutorial	
 *saveLines:    12000
-*font:         xft:DejaVu  Sans  Mono:autohint=true:antialias=true:pixelsize=8
-*boldFont:     xft:DejaVu  Sans  Mono:autohint=true:antialias=true:pixelsize=8
+*font:         xft:DejaVu Sans Mono:autohint=true:antialias=true:pixelsize=8
+*boldFont:     xft:DejaVu Sans Mono Bold:autohint=true:antialias=true:pixelsize=8
 *scrollBar:    false
 *scrollstyle:  rxvt
 *foreground:   #bebebe
