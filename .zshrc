@@ -31,6 +31,7 @@ EDITOR=vim
 
 # aliases
 alias ls='ls --color=auto'
+alias go=gnome-open
 
 source /etc/zsh_command_not_found
 
@@ -39,6 +40,3 @@ RPROMPT="%B%F{white}#%F{cyan}%h %F{white}%* %F{cyan}%D%b%f"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
-function go {
-  gnome-open ?*
-}
