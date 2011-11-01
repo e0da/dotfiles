@@ -3,3 +3,6 @@
 .xmonad/xmonad-i386-linux
 .xmonad/xmonad.o
 
+.emacs.d/auto-save-list/*
+*~
+#*#

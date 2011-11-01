@@ -39,6 +39,6 @@ RPROMPT="%B%F{white}#%F{cyan}%h %F{white}%* %F{cyan}%D%b%f"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
-function go {
-  gnome-open ?*
-}
+alias go=gnome-open
+alias gdh="git diff HEAD|gvim -"
+
