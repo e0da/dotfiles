@@ -662,3 +662,4 @@ hi link ngxDirective Identifier
 hi link ngxDirectiveThirdParty Special
 
 let b:current_syntax = "nginx"
+
