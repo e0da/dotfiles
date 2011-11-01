@@ -15,3 +15,8 @@
 (color-theme-initialize)
 (load-file "~/.emacs.d/site-lisp/themes/color-theme-railscasts.el")
 (color-theme-railscasts)
+
+                                        ; settings from Custom
+(custom-set-variables
+ '(inhibit-startup-screen t))
+
