@@ -17,7 +17,7 @@ syntax on
 "set nofoldenable
 set ruler
 set number
-set guifont=DejaVu\ Sans\ Mono\ 9.5
+set guifont=Ubuntu\ Mono\ 11
 colorscheme mylokai
 
 " print

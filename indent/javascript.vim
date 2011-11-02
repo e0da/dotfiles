@@ -68,7 +68,7 @@ function! s:GetNonCommentLine(lnum)
 
 	while lnum > 0
 		if s:IsComment(lnum)
-			let lnum = prevnonblank(lnum - 1)
+			let lnum = prevnonblank(lnum)
 		else
 			return lnum
 		endif
