@@ -1,0 +1,23 @@
+[user]
+    name = Justin Force
+    email = justin.force@gmail.com
+
+[color]
+    ui = auto
+
+[alias]
+    br = branch
+    ci = commit
+    co = checkout
+    df = diff
+    pl = pull
+    ps = push
+    st = status
+    lg = log --stat
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    last = cat-file commit HEAD
+    merge = merge --no-ff
+
+[core]
+        editor = 

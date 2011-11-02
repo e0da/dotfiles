@@ -23,8 +23,8 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory autocd beep extendedglob nomatch notify
 bindkey -e
-EDITOR=emacs
-GIT_EDITOR=emacs
+EDITOR=vim
+GIT_EDITOR=vim
 
 # aliases
 alias ls='ls --color=auto'
