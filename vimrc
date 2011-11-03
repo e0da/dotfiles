@@ -25,7 +25,7 @@ set printoptions=paper:letter
 
 " formatting
 filetype plugin indent on
-set shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent cindent
+set shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent cindent
 "set foldnestmax=2
 nnoremap <space> za
 vnoremap <space> zf
@@ -39,6 +39,9 @@ autocmd filetype asm setlocal shiftwidth=4 tabstop=4 softtabstop=4
 "" formating - Python
 autocmd filetype python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd filetype python setlocal foldmethod=indent
+
+"" formatting - Ruby
+autocmd filetype ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 "" formatting - JavaScript
 "function! JavaScriptFold() 
