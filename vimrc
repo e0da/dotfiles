@@ -18,6 +18,7 @@ set nofoldenable
 set ruler
 set number
 set guifont=Ubuntu\ Mono\ 11
+set scrolloff=10
 colorscheme mylokai
 
 " print
