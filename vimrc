@@ -1,3 +1,6 @@
+" Pathogen http://www.vim.org/scripts/script.php?script_id=2332
+call pathogen#infect()
+
 " Vim
 set hidden
 set nomodeline
