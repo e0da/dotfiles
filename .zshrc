@@ -23,6 +23,8 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory autocd beep extendedglob nomatch notify
 bindkey -e
+bindkey ';5C' forward-word
+bindkey ';5D' backward-word
 EDITOR=vim
 GIT_EDITOR=vim
 
@@ -39,3 +41,5 @@ RPROMPT="%B%F{white}#%F{cyan}%h %F{white}%* %F{cyan}%D%b%f"
 
 alias go=gnome-open
 alias gdh="git diff HEAD|gvim -"
+
+export PATH=/home/force/opt/bin:$PATH
