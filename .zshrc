@@ -18,11 +18,14 @@ zstyle :compinstall filename '/home/force/.zshrc'
 autoload -Uz compinit
 compinit
 
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
+
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory autocd beep extendedglob nomatch notify autopushd
-bindkey -e
 bindkey ';5C' forward-word
 bindkey ';5D' backward-word
 EDITOR=vim
