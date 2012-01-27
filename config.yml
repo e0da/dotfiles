@@ -1,0 +1,37 @@
+roles: 
+
+  # format is
+  # 
+  # 
+  #   label:
+  #     depends:
+  #     - label_of_dependency1
+  #     - label_of_dependency2
+  #     files:
+  #     - file1
+  #     - file2
+  #
+  #   N.B. setup.rb DOES NOT handle circular dependencies! If you set up a
+  #   circular dependency, it will just run and run. Or something. I'm not even
+  #   going to test that.
+  
+  default:
+    files:
+    - bash_aliases
+    - bash_profile
+    - bashrc
+    - gitconfig
+    - tmux.conf
+    - vim
+    - zshrc
+
+  harold:
+    depends:
+    - default
+
+    files:
+    - synergy.conf
+
+  rxvt:
+    files:
+    - Xdefaults

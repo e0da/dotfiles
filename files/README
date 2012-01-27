@@ -1,0 +1,4 @@
+Files in this directory should be named whatever they would be named in your ~,
+but without the .. So .bashrc should be called bashrc in this directory. It
+should be vim, not .vim or dotvim.
+
