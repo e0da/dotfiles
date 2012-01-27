@@ -1,8 +1,3 @@
-TODO: set up plugins as submodules
-
-http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/
-
-
 This is just my Vim configuration. I didn't write any of this code, except the
 .vimrc. The code is copyright its various creators and copyright holders. See
 individual files for details.
