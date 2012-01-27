@@ -89,3 +89,5 @@ set guioptions=
 " Tab behavior
 set switchbuf=usetab,newtab
 
+" NERDTree
+let NERDTreeWinPos='right'
