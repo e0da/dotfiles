@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# update all bundled plugins
+#
 cd bundle
 for f in *; do
   cd $f
@@ -8,3 +10,6 @@ for f in *; do
 done
 cd ..
 
+# update Vim documentation
+#
+vim +Helptags +q
