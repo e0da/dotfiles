@@ -34,6 +34,7 @@ GIT_EDITOR=vim
 # aliases
 alias ls='ls --color=auto'
 alias go=gnome-open
+alias vi="gvim 2>/dev/null"
 
 source /etc/zsh_command_not_found
 
