@@ -44,6 +44,7 @@ RPROMPT="%B%F{white}#%F{cyan}%h %F{white}%* %F{cyan}%D%b%f"
 
 alias go=gnome-open
 alias gdh="git diff HEAD|gvim -"
+alias rspec="rspec -c --format doc"
 
 export PATH=/home/force/opt/bin:$PATH
 CPUS=`grep processor /proc/cpuinfo|tail -n1|awk '{print $3}'`
