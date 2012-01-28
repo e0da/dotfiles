@@ -46,3 +46,6 @@ alias go=gnome-open
 alias gdh="git diff HEAD|gvim -"
 
 export PATH=/home/force/opt/bin:$PATH
+CPUS=`grep processor /proc/cpuinfo|tail -n1|awk '{print $3}'`
+MAKEJOBS=`echo "$CPUS + 2"|bc`
+export MAKEOPTS=-j$MAKEJOBS
