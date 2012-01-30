@@ -34,6 +34,7 @@ GIT_EDITOR=vim
 # aliases
 alias ls='ls --color=auto'
 alias go=gnome-open
+alias vi="gvim 2>/dev/null"
 
 source /etc/zsh_command_not_found
 
@@ -44,5 +45,9 @@ RPROMPT="%B%F{white}#%F{cyan}%h %F{white}%* %F{cyan}%D%b%f"
 
 alias go=gnome-open
 alias gdh="git diff HEAD|gvim -"
+alias rspec="rspec -c --format doc"
 
 export PATH=/home/force/opt/bin:$PATH
+CPUS=`grep processor /proc/cpuinfo|tail -n1|awk '{print $3}'`
+MAKEJOBS=`echo "$CPUS + 2"|bc`
+export MAKEOPTS=-j$MAKEJOBS
