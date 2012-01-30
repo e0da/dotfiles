@@ -2,6 +2,7 @@
 
 require 'yaml'
 require 'optparse'
+require 'fileutils'
 
 USAGE=<<-EOL
   Usage: #{__FILE__} [role]
@@ -20,7 +21,7 @@ def link_file file
 rescue Errno::EEXIST => e
   if @force
     puts "Overwriting symlink #{target}..." if @verbose
-    File.unlink target
+    FileUtils.rm_rf target
     link_file file
   else
     STDERR.puts "#{target} already exists. Skipping... (use -f to force overwrite)"

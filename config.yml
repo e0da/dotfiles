@@ -21,6 +21,7 @@ roles:
     - bash_profile
     - bashrc
     - gitconfig
+    - lftp
     - tmux.conf
     - vim
     - zshrc
