@@ -62,4 +62,3 @@ if !role
 end
 
 process_role role
-
