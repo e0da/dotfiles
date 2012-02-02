@@ -1,3 +1,5 @@
+# intial auto config
+#
 zstyle ':completion:*' auto-description '%d'
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' expand prefix suffix
@@ -18,35 +20,61 @@ zstyle :compinstall filename '/home/force/.zshrc'
 autoload -Uz compinit
 compinit
 
+# editor
+#
+export EDITOR=vim
+export GIT_EDITOR=vim
+
+# C-x C-e command editing
+#
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
 
+# history
+#
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory autocd beep extendedglob nomatch notify autopushd
+
+# Fix C-[left] C-[right] behavior
+#
 bindkey ';5C' forward-word
 bindkey ';5D' backward-word
-EDITOR=vim
-GIT_EDITOR=vim
+
 
 # aliases
+#
 alias ls='ls --color=auto'
 alias go=gnome-open
 alias vi="gvim 2>/dev/null"
-
-source /etc/zsh_command_not_found
-
-PROMPT="%B%F{cyan}%n%F{white}@%F{cyan}%m%F{white}:%F{blue}%~%F{white}%#%b%f "
-RPROMPT="%B%F{white}#%F{cyan}%h %F{white}%* %F{cyan}%D%b%f"
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-
 alias go=gnome-open
 alias gdh="git diff HEAD|gvim -"
 
-export PATH=/home/force/opt/bin:$PATH
+# command not found
+#
+source /etc/zsh_command_not_found
+
+# prompts
+#
+PROMPT="%B%F{cyan}%n%F{white}@%F{cyan}%m%F{white}:%F{blue}%~%F{white}%#%b%f "
+RPROMPT="%B%F{white}#%F{cyan}%h %F{white}%* %F{cyan}%D%b%f"
+
+# automatically configure make -j option to -j{number of CPUs +1}
+#
 CPUS=`grep processor /proc/cpuinfo|tail -n1|awk '{print $3}'`
 MAKEJOBS=`echo "$CPUS + 2"|bc`
 export MAKEOPTS=-j$MAKEJOBS
+
+# add local bin path to PATH
+#
+export PATH=/home/force/opt/bin:$PATH
+
+# rvm
+#
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+
+# keep gvim from polluting terminal
+#
+gvim() { (/usr/bin/gvim -f $* &> /dev/null &) }
