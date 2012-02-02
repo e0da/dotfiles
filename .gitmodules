@@ -19,9 +19,6 @@
 [submodule "bundle/nginx.vim"]
 	path = bundle/nginx.vim
 	url = git://github.com/vim-scripts/nginx.vim.git
-[submodule "bundle/project.tar.gz"]
-	path = bundle/project.tar.gz
-	url = git://github.com/vim-scripts/project.tar.gz.git
 [submodule "bundle/vim-abolish"]
 	path = bundle/vim-abolish
 	url = git://github.com/tpope/vim-abolish.git
