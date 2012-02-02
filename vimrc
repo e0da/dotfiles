@@ -1,4 +1,7 @@
-" Pathogen http://www.vim.org/scripts/script.php?script_id=2332
+" Pathogen!
+" http://github.com/tpope/vim-pathogen
+"
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
 " Vim
