@@ -52,6 +52,9 @@
 [submodule "bundle/vim-pastie"]
 	path = bundle/vim-pastie
 	url = git://github.com/tpope/vim-pastie.git
+[submodule "bundle/vim-pathogen"]
+	path = bundle/vim-pathogen
+	url = git://github.com/tpope/vim-pathogen
 [submodule "bundle/vim-ragtag"]
 	path = bundle/vim-ragtag
 	url = git://github.com/tpope/vim-ragtag.git
@@ -70,9 +73,3 @@
 [submodule "bundle/vim-vividchalk"]
 	path = bundle/vim-vividchalk
 	url = git://github.com/tpope/vim-vividchalk.git
-[submodule "bundle/vim-pathogen"]
-	path = bundle/vim-pathogen
-	url = git://github.com/tpope/vim-pathogen
-[submodule "bundle/project.tar.gz"]
-	path = bundle/project.tar.gz
-	url = git://github.com/vim-scripts/project.tar.gz.git
