@@ -5,7 +5,6 @@ git://github.com/vim-scripts/iptables.git
 git://github.com/sidewaysmilk/molokai
 git://github.com/scrooloose/nerdtree.git
 git://github.com/vim-scripts/nginx.vim.git
-git://github.com/vim-scripts/project.tar.gz.git
 git://github.com/tpope/vim-abolish.git
 git://github.com/kchmck/vim-coffee-script.git
 git://github.com/tpope/vim-commentary.git
@@ -23,3 +22,4 @@ git://github.com/tpope/vim-repeat.git
 git://github.com/tpope/vim-speeddating.git
 git://github.com/tpope/vim-unimpaired.git
 git://github.com/tpope/vim-vividchalk.git
+git://github.com/tpope/vim-pathogen.git
