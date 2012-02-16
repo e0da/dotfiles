@@ -55,7 +55,7 @@ set hlsearch incsearch ignorecase smartcase
 
 " bash-like autocomplete
 set wildmenu
-set wildmode=list:longest
+set wildmode=longest:full
 
 " better Esc
 inoremap <C-j> <ESC>
