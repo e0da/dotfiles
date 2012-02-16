@@ -94,3 +94,4 @@ set switchbuf=usetab,newtab
 
 " NERDTree
 let NERDTreeWinPos='right'
+map <c-\> :NERDTreeToggle<cr>
