@@ -9,11 +9,7 @@ USAGE=<<-EOL
   Roles are defined in config.yml. If no role is given, "default" will be used.
 EOL
 
-def usage
-  puts USAGE
-end
-
-def link_file file
+def link_file(file)
   source = File.expand_path "files/#{file}"
   target = File.expand_path "~/.#{file}"
   puts "Symlinking #{source} to #{target}..." if @verbose
@@ -28,7 +24,7 @@ rescue Errno::EEXIST => e
   end
 end
 
-def process_role role
+def process_role(role)
 
   # handle dependencies (if any)
   #
@@ -41,23 +37,26 @@ def process_role role
   end
 end
 
-# parse options
+
+
 #
+# Parse the command line options, read the configuration file, then process any
+# roles supplied ("default" if none is defined). Print errors and quit if
+# there's a problem.
+#
+
 OptionParser.new do |o|
   o.banner = USAGE
   o.on('-v', '--verbose') { |v| @verbose = v }
   o.on('-f', '--force')   { |f| @force = f }
 end.parse!
 
-# read config and set role
-#
 @conf = YAML.load_file 'config.yml'
 role = @conf['roles'][ARGV[0] || 'default']
 
-# exit if role isn't found
-#
 if !role
-  usage
+  puts "Role '#{role}' is not defined"
+  puts USAGE
   exit false
 end
 
