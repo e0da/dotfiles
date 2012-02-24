@@ -34,6 +34,7 @@ roles:
     - default
 
     files:
+    - maven_env
     - synergy.conf
 
   rxvt:

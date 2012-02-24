@@ -78,3 +78,7 @@ export PATH=/home/force/opt/bin:$PATH
 # keep gvim from polluting terminal
 #
 gvim() { (/usr/bin/gvim -f $* &> /dev/null &) }
+
+if [ -x ~/.maven_env ]; then
+  source ~/.maven_env
+fi
