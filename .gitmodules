@@ -73,3 +73,6 @@
 [submodule "bundle/vim-vividchalk"]
 	path = bundle/vim-vividchalk
 	url = git://github.com/tpope/vim-vividchalk.git
+[submodule "bundle/vim-slim"]
+	path = bundle/vim-slim
+	url = git://github.com/bbommarito/vim-slim.git
