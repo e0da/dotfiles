@@ -51,6 +51,7 @@ alias go=gnome-open
 alias vi="gvim 2>/dev/null"
 alias go=gnome-open
 alias gdh="git diff HEAD|gvim -"
+alias cake=cake.coffeescript
 
 # command not found
 #
