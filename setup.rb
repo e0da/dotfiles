@@ -55,7 +55,7 @@ end.parse!
 role = @conf['roles'][ARGV[0] || 'default']
 
 if !role
-  puts "Role '#{role}' is not defined"
+  puts "Role '#{ARGV[0]}' is not defined"
   puts USAGE
   exit false
 end
