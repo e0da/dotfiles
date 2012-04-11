@@ -1,78 +1,78 @@
 [submodule "bundle/apachelogs.vim"]
 	path = bundle/apachelogs.vim
-	url = git://github.com/vim-scripts/apachelogs.vim.git
+	url = https://github.com/vim-scripts/apachelogs.vim.git
 [submodule "bundle/apachestyle"]
 	path = bundle/apachestyle
-	url = git://github.com/vim-scripts/apachestyle.git
+	url = https://github.com/vim-scripts/apachestyle.git
 [submodule "bundle/html5.vim"]
 	path = bundle/html5.vim
-	url = git://github.com/othree/html5.vim.git
+	url = https://github.com/othree/html5.vim.git
 [submodule "bundle/iptables"]
 	path = bundle/iptables
-	url = git://github.com/vim-scripts/iptables.git
+	url = https://github.com/vim-scripts/iptables.git
 [submodule "bundle/molokai"]
 	path = bundle/molokai
-	url = git://github.com/tomasr/molokai
+	url = https://github.com/tomasr/molokai
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
-	url = git://github.com/scrooloose/nerdtree.git
+	url = https://github.com/scrooloose/nerdtree.git
 [submodule "bundle/nginx.vim"]
 	path = bundle/nginx.vim
-	url = git://github.com/vim-scripts/nginx.vim.git
+	url = https://github.com/vim-scripts/nginx.vim.git
 [submodule "bundle/vim-abolish"]
 	path = bundle/vim-abolish
-	url = git://github.com/tpope/vim-abolish.git
+	url = https://github.com/tpope/vim-abolish.git
 [submodule "bundle/vim-coffee-script"]
 	path = bundle/vim-coffee-script
-	url = git://github.com/kchmck/vim-coffee-script.git
+	url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "bundle/vim-commentary"]
 	path = bundle/vim-commentary
-	url = git://github.com/tpope/vim-commentary.git
+	url = https://github.com/tpope/vim-commentary.git
 [submodule "bundle/vim-eunuch"]
 	path = bundle/vim-eunuch
-	url = git://github.com/tpope/vim-eunuch.git
+	url = https://github.com/tpope/vim-eunuch.git
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
-	url = git://github.com/tpope/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
 [submodule "bundle/vim-git"]
 	path = bundle/vim-git
-	url = git://github.com/tpope/vim-git.git
+	url = https://github.com/tpope/vim-git.git
 [submodule "bundle/vim-haml"]
 	path = bundle/vim-haml
-	url = git://github.com/tpope/vim-haml.git
+	url = https://github.com/tpope/vim-haml.git
 [submodule "bundle/vim-javascript"]
 	path = bundle/vim-javascript
-	url = git://github.com/pangloss/vim-javascript.git
+	url = https://github.com/pangloss/vim-javascript.git
 [submodule "bundle/vim-markdown"]
 	path = bundle/vim-markdown
-	url = git://github.com/tpope/vim-markdown.git
+	url = https://github.com/tpope/vim-markdown.git
 [submodule "bundle/vim-nerdtree-tabs"]
 	path = bundle/vim-nerdtree-tabs
-	url = git://github.com/jistr/vim-nerdtree-tabs.git
+	url = https://github.com/jistr/vim-nerdtree-tabs.git
 [submodule "bundle/vim-pastie"]
 	path = bundle/vim-pastie
-	url = git://github.com/tpope/vim-pastie.git
+	url = https://github.com/tpope/vim-pastie.git
 [submodule "bundle/vim-pathogen"]
 	path = bundle/vim-pathogen
-	url = git://github.com/tpope/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen
 [submodule "bundle/vim-ragtag"]
 	path = bundle/vim-ragtag
-	url = git://github.com/tpope/vim-ragtag.git
+	url = https://github.com/tpope/vim-ragtag.git
 [submodule "bundle/vim-rails"]
 	path = bundle/vim-rails
-	url = git://github.com/tpope/vim-rails.git
+	url = https://github.com/tpope/vim-rails.git
 [submodule "bundle/vim-repeat"]
 	path = bundle/vim-repeat
-	url = git://github.com/tpope/vim-repeat.git
+	url = https://github.com/tpope/vim-repeat.git
 [submodule "bundle/vim-speeddating"]
 	path = bundle/vim-speeddating
-	url = git://github.com/tpope/vim-speeddating.git
+	url = https://github.com/tpope/vim-speeddating.git
 [submodule "bundle/vim-unimpaired"]
 	path = bundle/vim-unimpaired
-	url = git://github.com/tpope/vim-unimpaired.git
+	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "bundle/vim-vividchalk"]
 	path = bundle/vim-vividchalk
-	url = git://github.com/tpope/vim-vividchalk.git
+	url = https://github.com/tpope/vim-vividchalk.git
 [submodule "bundle/vim-slim"]
 	path = bundle/vim-slim
-	url = git://github.com/bbommarito/vim-slim.git
+	url = https://github.com/bbommarito/vim-slim.git
