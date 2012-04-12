@@ -79,3 +79,6 @@
 [submodule "bundle/dhcpd.vim"]
   path = bundle/dhcpd.vim
   url = https://github.com/vim-scripts/dhcpd.vim.git
+[submodule "bundle/vim-endwise"]
+	path = bundle/vim-endwise
+	url = git://github.com/tpope/vim-endwise.git
