@@ -34,8 +34,6 @@ set printoptions=paper:letter
 " formatting
 filetype plugin indent on
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent cindent
-nnoremap <space> za
-vnoremap <space> zf
 
 "" formatting - C
 autocmd filetype c setlocal shiftwidth=4 tabstop=4 softtabstop=4
