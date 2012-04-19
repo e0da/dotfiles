@@ -59,7 +59,7 @@ source /etc/zsh_command_not_found
 # prompts
 #
 PROMPT="%B%F{cyan}%m%F{white}:%F{blue}%~%F{white}%#%b%f "
-RPROMPT="%B%F{white}#%F{cyan}%h %F{white}%* %F{cyan}%D%b%f"
+#RPROMPT="%B%F{white}#%F{cyan}%h %F{white}%* %F{cyan}%D%b%f"
 
 # automatically configure make -j option to -j{number of CPUs +1}
 #
