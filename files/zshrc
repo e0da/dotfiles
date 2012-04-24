@@ -49,7 +49,6 @@ bindkey ';5D' backward-word
 alias ls='ls --color=auto'
 alias go=gnome-open
 alias gdh="git diff HEAD|gvim -"
-alias cake=cake.coffeescript
 alias grep='grep --color=auto'
 
 # command not found
