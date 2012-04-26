@@ -74,10 +74,6 @@ export PATH=/home/force/opt/bin:$PATH
 #
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
-# keep gvim from polluting terminal
-#
-gvim() { (/usr/bin/gvim -f $* &> /dev/null &) }
-
 if [ -x ~/.maven_env ]; then
   source ~/.maven_env
 fi
