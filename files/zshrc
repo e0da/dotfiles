@@ -62,9 +62,11 @@ PROMPT="%B%F{cyan}%m%F{white}:%F{blue}%~%F{white}%#%b%f "
 
 # automatically configure make -j option to -j{number of CPUs +1}
 #
-CPUS=`grep processor /proc/cpuinfo|tail -n1|awk '{print $3}'`
-MAKEJOBS=`echo "$CPUS + 2"|bc`
-export MAKEOPTS=-j$MAKEJOBS
+if [ "`uname`" == 'DARWIN' ]; then
+  CPUS=`grep processor /proc/cpuinfo|tail -n1|awk '{print $3}'`
+  MAKEJOBS=`echo "$CPUS + 2"|bc`
+  export MAKEOPTS=-j$MAKEJOBS
+fi
 
 # add local bin path to PATH
 #
