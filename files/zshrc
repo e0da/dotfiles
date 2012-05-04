@@ -1,3 +1,5 @@
+DARWIN=`uname`
+
 # intial auto config
 #
 zstyle ':completion:*' auto-description '%d'
@@ -46,8 +48,12 @@ bindkey ';5D' backward-word
 
 # aliases
 #
-alias ls='ls --color=auto'
-alias go=gnome-open
+if [ $DARWIN ]; then
+  alias ls='ls -G'
+else
+  alias ls='ls --color=auto'
+  alias go=gnome-open
+fi
 alias gdh="git diff HEAD|gvim -"
 alias grep='grep --color=auto'
 
@@ -62,7 +68,7 @@ PROMPT="%B%F{cyan}%m%F{white}:%F{blue}%~%F{white}%#%b%f "
 
 # automatically configure make -j option to -j{number of CPUs +1}
 #
-if [ "`uname`" == 'DARWIN' ]; then
+if [ $DARWIN ]; then
   CPUS=`grep processor /proc/cpuinfo|tail -n1|awk '{print $3}'`
   MAKEJOBS=`echo "$CPUS + 2"|bc`
   export MAKEOPTS=-j$MAKEJOBS
