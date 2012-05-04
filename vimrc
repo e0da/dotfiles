@@ -19,13 +19,14 @@ set mousemodel=popup
 map! <S-Insert> <MiddleMouse>
 
 " display
+"" enable 256 colors in terminal
+set t_Co=256
 syntax on
 set nofoldenable
 set ruler
 set number
 set guifont=Ubuntu\ Mono\ 11
 set scrolloff=10
-let g:molokai_original=1
 colorscheme molokai
 
 " print
