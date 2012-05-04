@@ -27,6 +27,7 @@ set ruler
 set number
 set guifont=Ubuntu\ Mono\ 11
 set scrolloff=10
+let g:molokai_original=1
 colorscheme molokai
 
 " print
