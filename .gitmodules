@@ -82,3 +82,6 @@
 [submodule "bundle/vim-endwise"]
 	path = bundle/vim-endwise
 	url = git://github.com/tpope/vim-endwise.git
+[submodule "bundle/vim-vala"]
+	path = bundle/vim-vala
+	url = https://github.com/rainux/vim-vala.git
