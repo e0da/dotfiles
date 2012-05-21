@@ -1,9 +1,5 @@
 require 'socket'
 
-force = false
-
-task :default => :install
-
 Mappings = {
   global: {
     'bash_aliases'     =>  '~/.bash_aliases',
@@ -41,7 +37,7 @@ def link_all_files(force=false)
   end unless host_mapping.nil?
 end
 
-desc 'Same as :install, but overwrites any existing files.'
+desc 'Same as install, but overwrites any existing files.'
 task :force do
   link_all_files true
 end 
@@ -55,4 +51,8 @@ desc 'Pull the latest changes from Git and update all submodules'
 task :update do
   `git submodule update --init --recursive`
   `git pull --recurse-submodules`
+end
+
+task :default do
+  puts `rake --tasks`
 end
