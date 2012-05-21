@@ -21,12 +21,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 EOF
 
+OriginalDir = Rake.application.original_dir
+
 namespace :license do
 
   desc 'Print the URL to the MIT license and output the LICENSE text to ./LICENSE'
   task :mit do
     puts "http://www.opensource.org/licenses/MIT"
-    File.open 'LICENSE', 'w' do |f|
+    File.open "#{OriginalDir}/LICENSE", 'w' do |f|
       f.write MITLicense
     end
   end
