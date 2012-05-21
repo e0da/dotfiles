@@ -10,22 +10,16 @@ so that you can symlink everything with a single command.
 Usually, you just want to
 
     cd dotfiles
-    ./setup.rb -vf
+    rake install
 
-Optionally, add a role name (such as harold, home, etc.) to install
-role-specific configuration. Run `./setup.rb -h` for all the options.
+By default, existing files aren't overwritten. You can force installation with
 
-    ./setup.rb harold
-
-## Layout ##
-
-* The config files are in the `files` directory.
-* The installation tasks are in `config.yml`.
+    rake force
 
 ## Updating ##
 
     cd dotfiles
-    ./update.sh
+    rake update
 
 ## Copyright ##
 
