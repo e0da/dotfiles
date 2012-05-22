@@ -1,6 +1,6 @@
 MITLicense = <<EOF
 The MIT License (MIT)
-Copyright (c) 2012 Justin Force
+Copyright (c) %d %s
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -23,13 +23,21 @@ EOF
 
 OriginalDir = Rake.application.original_dir
 
+def year
+  Time.now.year
+end
+
+def name
+  (`git config --get user.name` or '').chomp
+end
+
 namespace :license do
 
   desc 'Print the URL to the MIT license and output the LICENSE text to ./LICENSE'
   task :mit do
     puts "http://www.opensource.org/licenses/MIT"
     File.open "#{OriginalDir}/LICENSE", 'w' do |f|
-      f.write MITLicense
+      f.write MITLicense % [year, name]
     end
   end
 end
