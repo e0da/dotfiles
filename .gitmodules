@@ -10,6 +10,9 @@
 [submodule "bundle/iptables"]
 	path = bundle/iptables
 	url = https://github.com/vim-scripts/iptables.git
+[submodule "bundle/mediawiki.vim"]
+	path = bundle/mediawiki.vim
+	url = https://github.com/chikamichi/mediawiki.vim.git
 [submodule "bundle/molokai"]
 	path = bundle/molokai
 	url = https://github.com/tomasr/molokai
