@@ -1,5 +1,7 @@
 require 'socket'
 
+@force = false
+
 Mappings = {
   :global => {
     'bash_aliases'     =>  '~/.bash_aliases',
@@ -18,26 +20,27 @@ Mappings = {
   }
 }
 
-def link_file(src, tgt, force)
+def link_file(src, tgt)
   src = "#{pwd}/files/#{src}"
   tgt = File.expand_path tgt
-  rm_rf tgt if force
+  rm_rf tgt if @force
   ln_s src, tgt
 end
 
-def link_all_files(force=false)
+def link_all_files
   Mappings[:global].each do |src,tgt|
-    link_file src, tgt, force
+    link_file src, tgt
   end
   host_mapping = Mappings[Socket.gethostname.to_sym]
   host_mapping.each do |src,tgt|
-    link_file src, tgt, force
+    link_file src, tgt
   end unless host_mapping.nil?
 end
 
 desc 'Same as install, but overwrites any existing files.'
 task :force do
-  link_all_files true
+  @force = true
+  Rake::Task[:install].invoke
 end 
 
 desc 'Symlink config files to appopriate locations.'
