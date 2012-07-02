@@ -45,6 +45,9 @@ setopt appendhistory autocd beep extendedglob nomatch notify autopushd
 bindkey ';5C' forward-word
 bindkey ';5D' backward-word
 
+# Fix C-r behavior
+#
+bindkey '^R' history-incremental-search-backward
 
 # aliases
 #
