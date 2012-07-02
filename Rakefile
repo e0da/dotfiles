@@ -1,7 +1,7 @@
 require 'socket'
 
 Mappings = {
-  global: {
+  :global => {
     'bash_aliases'     =>  '~/.bash_aliases',
     'bash_profile'     =>  '~/.bash_profile',
     'bashrc'           =>  '~/.bashrc',
@@ -13,11 +13,8 @@ Mappings = {
     'tmux.conf'        =>  '~/.tmux.conf',
     'vim'              =>  '~/.vim',
     'vim/vimrc'        =>  '~/.vimrc',
-    'zshrc'            =>  '~/.zshrc'
+    'zshrc'            =>  '~/.zshrc',
     'zsh'              =>  '~/.zsh'
-  },
-  harold: {
-    'harold_synergy.conf' => '~/.synergy.conf'
   }
 }
 
