@@ -59,6 +59,9 @@ else
 fi
 alias gdh="git diff HEAD|gvim -"
 alias grep='grep --color=auto'
+alias gl=git_log_subway
+alias gs='git status'
+alias gd='git diff'
 
 # command not found
 #
