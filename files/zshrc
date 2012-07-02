@@ -68,8 +68,10 @@ fi
 
 # prompts
 #
-PROMPT="%B%F{cyan}%m%F{white}:%F{blue}%~%F{white}%#%b%f "
+source ~/.zsh/git-prompt/zshrc.sh
+PROMPT='%B%F{cyan}%m%F{white}:%F{blue}%~%F{white}%#%b%f '
 #RPROMPT="%B%F{white}#%F{cyan}%h %F{white}%* %F{cyan}%D%b%f"
+RPROMPT='$(git_super_status)'
 
 # automatically configure make -j option to -j{number of CPUs +1}
 #

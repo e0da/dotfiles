@@ -14,6 +14,7 @@ Mappings = {
     'vim'              =>  '~/.vim',
     'vim/vimrc'        =>  '~/.vimrc',
     'zshrc'            =>  '~/.zshrc'
+    'zsh'              =>  '~/.zsh'
   },
   harold: {
     'harold_synergy.conf' => '~/.synergy.conf'
