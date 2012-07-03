@@ -60,8 +60,19 @@ fi
 alias gdh="git diff HEAD|gvim -"
 alias grep='grep --color=auto'
 alias gl=git_log_subway
-alias gs='git status'
-alias gd='git diff'
+alias gs='git st'
+alias gd='git df'
+alias gvim=gvim_or_vim
+alias vim=gvim
+alias vi=vim
+
+gvim_or_vim() {
+  if [ $DISPLAY ]; then
+    "gvim" 2>/dev/null # to quiet the Ubuntu Menu Proxy errors
+  else
+    "vim"
+  fi
+}
 
 # command not found
 #
