@@ -83,6 +83,7 @@ fi
 # prompts
 #
 source ~/.zsh/git-prompt/zshrc.sh
+export ZSH_THEME_GIT_PROMPT_NOCACHE=1
 PROMPT='%B%F{cyan}%m%F{white}:%F{blue}%~%F{white}%#%b%f '
 #RPROMPT="%B%F{white}#%F{cyan}%h %F{white}%* %F{cyan}%D%b%f"
 RPROMPT='$(git_super_status)'
