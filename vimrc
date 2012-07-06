@@ -6,7 +6,7 @@ call pathogen#infect()
 
 " Vim
 set hidden
-set nomodeline
+set modeline
 
 " sane backspace
 set backspace=indent,eol,start
