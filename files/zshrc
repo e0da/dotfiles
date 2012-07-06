@@ -68,9 +68,9 @@ alias vi=vim
 
 gvim_or_vim() {
   if [ $DISPLAY ]; then
-    "gvim" 2>/dev/null # to quiet the Ubuntu Menu Proxy errors
+    "gvim" $* 2>/dev/null # to quiet the Ubuntu Menu Proxy errors
   else
-    "vim"
+    "vim" $*
   fi
 }
 
