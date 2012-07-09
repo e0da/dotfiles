@@ -107,3 +107,5 @@ bind '"\C-v": "\ev"'
 
 alias gdh="git diff HEAD|gvim -"
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
