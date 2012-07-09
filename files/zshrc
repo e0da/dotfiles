@@ -65,6 +65,7 @@ alias gd='git df'
 alias gvim=gvim_or_vim
 alias vim=gvim
 alias vi=vim
+alias rmorig="find . -name '*.orig' -exec rm \"{}\" \\;"
 
 gvim_or_vim() {
   if [ $DISPLAY ]; then
