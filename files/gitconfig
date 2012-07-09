@@ -1,24 +1,24 @@
 [user]
-    name = Justin Force
-    email = justin.force@gmail.com
+  name = Justin Force
+  email = justin.force@gmail.com
 
 [color]
-    ui = auto
+  ui = auto
 
 [alias]
-    br = branch
-    ci = commit
-    co = checkout
-    df = diff
-    pl = pull
-    ps = push
-    st = status -s
-    lg = log --stat
-    lol = log --graph --decorate --pretty=oneline --abbrev-commit
-    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-    last = cat-file commit HEAD
-    fuckit = reset --hard HEAD
+  br = branch
+  ci = commit
+  co = checkout
+  df = diff
+  pl = pull
+  ps = push
+  st = status -s
+  lg = log --stat
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  last = cat-file commit HEAD
+  fuckit = reset --hard HEAD
 [push]
-	default = upstream
+  default = upstream
 [rerere]
-	enabled = true
+  enabled = true
