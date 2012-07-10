@@ -54,9 +54,8 @@ set nobackup nowritebackup noswapfile autoread
 " searching
 set hlsearch incsearch ignorecase smartcase
 
-" bash-like autocomplete
+" completion
 set wildmenu
-set wildmode=longest:full
 
 " better Esc
 inoremap <C-j> <ESC>
