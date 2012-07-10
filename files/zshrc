@@ -67,7 +67,29 @@ alias vim=gvim
 alias vi=vim
 alias rmorig="find . -name '*.orig' -exec rm \"{}\" \\;"
 
-gvim_or_vim() {
+## ric
+alias pview="python /home/force/work/ric/remote_capture/pickle_to_cap.py"
+
+function pycharm() {
+  cd ~/opt/pycharm
+  bin/pycharm.sh
+}
+
+function workon_ric() {
+  workon ric2.6
+}
+
+function ric() {
+  cd ~/work/ric
+  workon_ric
+}
+
+function pickles() {
+  ric
+  cd src/nutricate/tests/rparse/pickles
+}
+
+function gvim_or_vim() {
   if [ $DISPLAY ]; then
     "gvim" $* 2>/dev/null # to quiet the Ubuntu Menu Proxy errors
   else
