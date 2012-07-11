@@ -89,12 +89,22 @@ function pickles() {
   cd src/nutricate/tests/rparse/pickles
 }
 
+# helpful functions
+
 function gvim_or_vim() {
   if [ $DISPLAY ]; then
     "gvim" $* 2>/dev/null # to quiet the Ubuntu Menu Proxy errors
   else
     "vim" $*
   fi
+}
+
+# enable pasting of command lines beginning with $. When do you ever mean to
+# start a command with '$'?
+#
+# source: http://stackoverflow.com/questions/68372/what-is-your-single-most-favorite-command-line-trick-using-bash
+function $ {
+  $@
 }
 
 # command not found
