@@ -22,6 +22,9 @@ zstyle :compinstall filename '/home/force/.zshrc'
 autoload -Uz compinit
 compinit
 
+# disable zsh which. I HATE IT.
+disable which
+
 # editor
 #
 export EDITOR=vim
