@@ -27,8 +27,8 @@ disable which
 
 # editor
 #
-export EDITOR=vim
-export GIT_EDITOR=vim
+export EDITOR=vi
+export GIT_EDITOR=vi
 
 # C-x C-e command editing
 #
@@ -65,9 +65,6 @@ alias grep='grep --color=auto'
 alias gl=git_log_subway
 alias gs='git st'
 alias gd='git df'
-alias gvim=gvim_or_vim
-alias vim=gvim
-alias vi=vim
 alias rmorig="find . -name '*.orig' -exec rm \"{}\" \\;"
 
 ## ric
@@ -90,16 +87,6 @@ function ric() {
 function pickles() {
   ric
   cd src/nutricate/tests/rparse/pickles
-}
-
-# helpful functions
-
-function gvim_or_vim() {
-  if [ $DISPLAY ]; then
-    "gvim" $* 2>/dev/null # to quiet the Ubuntu Menu Proxy errors
-  else
-    "vim" $*
-  fi
 }
 
 # enable pasting of command lines beginning with $. When do you ever mean to
