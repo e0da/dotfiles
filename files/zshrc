@@ -1,4 +1,4 @@
-DARWIN=`uname | grep Darwin`
+export DARWIN=`uname | grep Darwin`
 
 # intial auto config
 #
@@ -56,10 +56,12 @@ bindkey '^R' history-incremental-search-backward
 #
 if [ $DARWIN ]; then
   alias ls='ls -G'
+  alias go=open
 else
   alias ls='ls --color=auto'
   alias go=gnome-open
 fi
+
 alias gdh="git diff HEAD|gvim -"
 alias grep='grep --color=auto'
 alias gl=git_log_subway
