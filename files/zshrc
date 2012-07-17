@@ -140,9 +140,8 @@ export PATH=/home/force/opt/bin:$PATH
 # rvm
 #
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 if [ -x ~/.maven_env ]; then
   source ~/.maven_env
 fi
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
