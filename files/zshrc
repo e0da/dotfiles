@@ -125,7 +125,7 @@ fi
 
 # add local bin path to PATH
 #
-export PATH=/home/force/opt/bin:$PATH
+export PATH=/home/force/opt/bin:/home/force/Dropbox/bin:$PATH
 
 # rvm
 #
