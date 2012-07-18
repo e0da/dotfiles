@@ -26,6 +26,8 @@ def link_file(src, tgt)
   tgt = File.expand_path tgt
   rm_rf tgt if @force
   ln_s src, tgt
+rescue
+  STDERR.puts "Couldn't link #{src} to #{tgt}. Use `rake force` to overwrite."
 end
 
 def link_all_files
