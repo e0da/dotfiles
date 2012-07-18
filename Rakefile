@@ -9,7 +9,6 @@ Mappings = {
     'bashrc'           =>  '~/.bashrc',
     'gemrc'            =>  '~/.gemrc',
     'gitconfig'        =>  '~/.gitconfig',
-    'lftp'             =>  '~/.lftp',
     'rake'             =>  '~/.rake',
     'rspec'            =>  '~/.rspec',
     'tmux.conf'        =>  '~/.tmux.conf',
