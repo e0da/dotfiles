@@ -24,7 +24,7 @@ def link_file(src, tgt)
   src = "#{pwd}/files/#{src}"
   tgt = File.expand_path tgt
   rm_rf tgt if @force
-  ln_s src, tgt
+  ln_s src, tgt unless File.exists? tgt
 rescue
   STDERR.puts "Couldn't link #{src} to #{tgt}. Use `rake force` to overwrite."
 end
