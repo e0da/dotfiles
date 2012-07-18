@@ -15,6 +15,7 @@ Mappings = {
     'tmux.conf'        =>  '~/.tmux.conf',
     'vim'              =>  '~/.vim',
     'vim/vimrc'        =>  '~/.vimrc',
+    'Xdefaults'        =>  '~/.Xdefaults',
     'zshrc'            =>  '~/.zshrc',
     'zsh'              =>  '~/.zsh'
   }
