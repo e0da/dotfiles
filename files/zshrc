@@ -113,16 +113,6 @@ export PROMPT='%B%F{cyan}%m%F{white}:%F{blue}%~%F{white}%#%b%f '
 #
 source ~/.zsh/git-prompt/zshrc.sh
 export ZSH_THEME_GIT_PROMPT_NOCACHE=1
-export ZSH_THEME_GIT_PROMPT_PREFIX=""
-export ZSH_THEME_GIT_PROMPT_SUFFIX=""
-export ZSH_THEME_GIT_PROMPT_SEPARATOR=":"
-export ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
-export ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[red]%}*"
-export ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}x"
-export ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}+"
-export ZSH_THEME_GIT_PROMPT_REMOTE=""
-export ZSH_THEME_GIT_PROMPT_UNTRACKED="…"
-export ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
 export RPROMPT='$(git_super_status)'
 
 # automatically configure make -j option to -j{number of CPUs +1}
