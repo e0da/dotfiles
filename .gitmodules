@@ -3,4 +3,4 @@
 	url = https://github.com/justinforce/dotvim
 [submodule "files/zsh/git-prompt"]
 	path = files/zsh/git-prompt
-	url = https://github.com/olivierverdier/zsh-git-prompt.git
+	url = https://github.com/justinforce/zsh-git-prompt
