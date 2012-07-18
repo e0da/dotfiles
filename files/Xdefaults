@@ -8,6 +8,8 @@ rxvt*font:       xft:Ubuntu Mono:size=11
 rxvt*boldFont:   xft:Ubuntu Mono:size=11
 ! fix character spacing. Thanks https://bugs.launchpad.net/ubuntu/+source/rxvt-unicode/+bug/309792/comments/5
 rxvt*letterSpace: -1
+rxvt*scrollTtyOutput: false
+rxvt*scrollTtyKeypress: true
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!            rxvt colors
