@@ -135,3 +135,8 @@ export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 if [ -x ~/.maven_env ]; then
   source ~/.maven_env
 fi
+
+# wtf? Why does rxvt-unicode set TERM=rxvt-unicode-256color? It breaks all
+# kinds of shit, and it works fine with TERM=xterm-color. Dumb.
+#
+export TERM=xterm-color
