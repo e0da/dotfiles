@@ -107,7 +107,7 @@ fi
 
 # prompts
 #
-export PROMPT='%B%F{cyan}%m%F{white}:%F{blue}%~%F{white}%#%b%f '
+export PROMPT='%B%F{green}%m%F{white}:%F{blue}%~%F{white}%#%b%f '
 
 ## zsh-git-prompt
 #
