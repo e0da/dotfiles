@@ -7,7 +7,6 @@ Mappings = {
     'bash_aliases'     =>  '~/.bash_aliases',
     'bash_profile'     =>  '~/.bash_profile',
     'bashrc'           =>  '~/.bashrc',
-    'gemrc'            =>  '~/.gemrc',
     'gitconfig'        =>  '~/.gitconfig',
     'rake'             =>  '~/.rake',
     'rspec'            =>  '~/.rspec',
