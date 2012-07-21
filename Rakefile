@@ -51,7 +51,9 @@ end
 
 desc 'Pull the latest changes from Git and update all submodules'
 task :update do
-  `git submodule update --init --recursive`
+  `git submodule foreach --recursive git submodule init`
+  `git submodule foreach --recursive git submodule sync`
+  `git submodule update --recursive`
   `git pull --recurse-submodules`
 end
 
