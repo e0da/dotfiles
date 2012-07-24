@@ -35,3 +35,13 @@ rxvt*color12:    #c48dff
 rxvt*color13:    #fa2573
 rxvt*color14:    #67d9f0
 rxvt*color15:    #f8f8f2
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! Fix Ctrl-[arrow] behavior
+!!   https://bbs.archlinux.org/viewtopic.php?pid=1057389#p1057389
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+rxvt.keysym.Control-Up:     \033[1;5A
+rxvt.keysym.Control-Down:   \033[1;5B
+rxvt.keysym.Control-Left:   \033[1;5D
+rxvt.keysym.Control-Right:  \033[1;5C
