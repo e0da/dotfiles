@@ -99,3 +99,5 @@ map <c-\> :NERDTreeToggle<cr>
 " tmux-like bindings
 map <c-b>" :split buffer<cr>
 map <c-b>% :vertical split buffer<cr>
+
+map <leader>w :FixWhitespace<cr>

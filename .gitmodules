@@ -89,3 +89,9 @@
 [submodule "bundle/vim-vala"]
 	path = bundle/vim-vala
 	url = https://github.com/rainux/vim-vala.git
+[submodule "bundle/command-t"]
+	path = bundle/command-t
+	url = git://git.wincent.com/command-t.git
+[submodule "bundle/trailing-whitespace"]
+	path = bundle/trailing-whitespace
+	url = https://github.com/bronson/vim-trailing-whitespace
