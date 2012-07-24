@@ -1,3 +1,7 @@
+if [ -f /etc/zprofile ]; then
+  source /etc/zprofile
+fi
+
 export DARWIN=`uname | grep Darwin`
 
 # intial auto config
