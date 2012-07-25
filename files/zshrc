@@ -38,7 +38,9 @@ export GIT_EDITOR=vi
 #
 autoload -U edit-command-line
 zle -N edit-command-line
-bindkey '\C-x\C-e' edit-command-line
+bindkey -v
+bindkey '^E' edit-command-line
+bindkey '^R' history-incremental-pattern-search-backward
 
 # history
 #
@@ -51,10 +53,6 @@ setopt appendhistory autocd beep extendedglob nomatch notify autopushd
 #
 bindkey ';5C' forward-word
 bindkey ';5D' backward-word
-
-# Fix C-r behavior
-#
-bindkey '^R' history-incremental-search-backward
 
 # aliases
 #
