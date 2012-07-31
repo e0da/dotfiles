@@ -15,8 +15,8 @@
 	url = https://github.com/chikamichi/mediawiki.vim.git
 [submodule "bundle/molokai"]
 	path = bundle/molokai
-	url = https://github.com/justinforce/molokai
-	; url = https://github.com/tomasr/molokai
+  ; url = https://github.com/justinforce/molokai
+	url = https://github.com/tomasr/molokai
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
