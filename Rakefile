@@ -8,6 +8,7 @@ Mappings = {
     'bash_profile'     =>  '~/.bash_profile',
     'bashrc'           =>  '~/.bashrc',
     'gitconfig'        =>  '~/.gitconfig',
+    'gitignore_global' =>  '~/.gitignore_global',
     'rake'             =>  '~/.rake',
     'rspec'            =>  '~/.rspec',
     'tmux.conf'        =>  '~/.tmux.conf',

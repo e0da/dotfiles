@@ -22,3 +22,5 @@
 #  default = upstream
 [rerere]
   enabled = true
+[core]
+	excludesfile = /home/force/.gitignore_global
