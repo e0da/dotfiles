@@ -39,7 +39,7 @@ export GIT_EDITOR=vi
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -e
-bindkey '^E' edit-command-line
+bindkey '^X^E' edit-command-line
 bindkey '^R' history-incremental-pattern-search-backward
 
 # history
