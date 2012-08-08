@@ -43,7 +43,7 @@ desc 'Same as install, but overwrites any existing files.'
 task :force do
   @force = true
   Rake::Task[:install].invoke
-end 
+end
 
 desc 'Symlink config files to appopriate locations.'
 task :install do
