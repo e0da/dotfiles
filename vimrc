@@ -87,7 +87,10 @@ cmap <Nul> <Nop>
 nmap <Nul> <Nop>
 
 " GUI options.
-set guioptions=
+"" Disable Toolbar (icons) and scrollbars.
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
 
 " Tab behavior
 set switchbuf=usetab,newtab
