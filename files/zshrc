@@ -106,6 +106,12 @@ function $ {
   $@
 }
 
+# Dirty hack for gvim not integrating with unity when launched from command line
+#   https://bugs.launchpad.net/ubuntu/+source/vim/+bug/776499
+function gvim() {
+  /usr/bin/gvim -f $* &
+}
+
 # command not found
 #
 if [ -f /etc/zsh_command_not_found ]; then
