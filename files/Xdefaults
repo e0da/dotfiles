@@ -10,6 +10,7 @@ rxvt*boldFont:   xft:Ubuntu Mono:size=11
 rxvt*letterSpace: -1
 rxvt*scrollTtyOutput: false
 rxvt*scrollTtyKeypress: true
+rxvt*iconFile: /usr/share/icons/Humanity/apps/48/terminal.svg
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!            rxvt colors
