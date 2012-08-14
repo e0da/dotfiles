@@ -30,6 +30,8 @@ set scrolloff=10
 set cursorline
 let g:molokai_original=1
 colorscheme molokai
+set colorcolumn=81
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " print
 set printoptions=paper:letter
