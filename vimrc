@@ -103,4 +103,16 @@ map <c-\> :NERDTreeToggle<cr>
 map <c-b>" :split buffer<cr>
 map <c-b>% :vertical split buffer<cr>
 
+" fix white space
 map <leader>w :FixWhitespace<cr>
+
+" rerun previous :command
+map <leader>] @:
+
+" functions
+"" ric
+function! ParserTest(parser)
+  cd /home/force/work/ric/src/nutricate/tests
+  call feedkeys("ggdG:read !./runner.py rparse/" . a:parser . " 2>&1\<CR>\<CR>gg")
+endfunction
+command! -nargs=1 PT :call ParserTest("test_<args>.py")
