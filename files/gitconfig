@@ -14,6 +14,7 @@
   ps = push
   st = status -s
   lg = log --stat
+  m  = merge --no-ff
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   last = cat-file commit HEAD
