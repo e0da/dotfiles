@@ -25,3 +25,5 @@
   enabled = true
 [core]
 	excludesfile = /home/force/.gitignore_global
+[web]
+	browser = google-chrome
