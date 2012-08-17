@@ -82,9 +82,9 @@ function pycharm() {
 }
 
 function workon_ric() {
-  echo $PS1 | grep ric2.6 > /dev/null
+  echo $PS1 | grep ric2.5 > /dev/null
   if [ $? -eq 1 ]; then
-    workon ric2.6
+    workon ric2.5
   fi
 }
 
