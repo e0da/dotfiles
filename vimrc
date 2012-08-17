@@ -38,7 +38,7 @@ set printoptions=paper:letter
 
 " formatting
 filetype plugin indent on
-set shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent cindent
+set shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
 
 "" formatting - C
 autocmd filetype c setlocal shiftwidth=4 tabstop=4 softtabstop=4
@@ -54,13 +54,17 @@ set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
 set nobackup nowritebackup noswapfile autoread
 
 " searching
-set hlsearch incsearch ignorecase smartcase
+set hlsearch incsearch smartcase
 
 " completion
 set wildmenu
 
 " better Esc
 inoremap <C-j> <ESC>
+
+" better regex
+nnoremap / /\v
+cnoremap s/ s/\v
 
 " cd current window to parent directory of file
 noremap gc :lcd %:h<CR>:pwd<CR>
