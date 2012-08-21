@@ -95,3 +95,6 @@
 [submodule "bundle/trailing-whitespace"]
 	path = bundle/trailing-whitespace
 	url = https://github.com/bronson/vim-trailing-whitespace
+[submodule "bundle/gist"]
+	path = bundle/gist
+	url = https://github.com/mattn/gist-vim
