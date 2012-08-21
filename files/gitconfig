@@ -27,3 +27,5 @@
 	excludesfile = /home/force/.gitignore_global
 [web]
 	browser = google-chrome
+[github]
+	user = justin.force@gmail.com
