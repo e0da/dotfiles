@@ -69,7 +69,10 @@ nnoremap / /\v
 cnoremap s/ s/\v
 
 " cd current window to parent directory of file
-noremap gc :lcd %:h<CR>:pwd<CR>
+noremap <leader>cd :lcd %:h<CR>:pwd<CR>
+
+" generate ctags
+noremap <leader>ct :!ctags -R .<CR><CR>
 
 " better range
 noremap ' `
