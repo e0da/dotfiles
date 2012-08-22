@@ -110,6 +110,9 @@ set switchbuf=usetab,newtab
 let NERDTreeWinPos='right'
 map <c-\> :NERDTreeToggle<cr>
 
+" always show status bar
+set laststatus=2
+
 " tmux-like bindings
 map <c-b>" :split buffer<cr>
 map <c-b>% :vertical split buffer<cr>
