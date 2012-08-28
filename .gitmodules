@@ -1,103 +1,96 @@
-[submodule "bundle/apachelogs.vim"]
-	path = bundle/apachelogs.vim
-	url = https://github.com/vim-scripts/apachelogs.vim.git
+[submodule "bundle/abolish"]
+	path = bundle/abolish
+	url = https://github.com/tpope/vim-abolish
+[submodule "bundle/apachelogs"]
+	path = bundle/apachelogs
+	url = https://github.com/vim-scripts/apachelogs.vim
 [submodule "bundle/apachestyle"]
 	path = bundle/apachestyle
-	url = https://github.com/vim-scripts/apachestyle.git
-[submodule "bundle/html5.vim"]
-	path = bundle/html5.vim
-	url = https://github.com/othree/html5.vim.git
-[submodule "bundle/iptables"]
-	path = bundle/iptables
-	url = https://github.com/vim-scripts/iptables.git
-[submodule "bundle/mediawiki.vim"]
-	path = bundle/mediawiki.vim
-	url = https://github.com/chikamichi/mediawiki.vim.git
-[submodule "bundle/molokai"]
-	path = bundle/molokai
-  ; url = https://github.com/justinforce/molokai
-	url = https://github.com/tomasr/molokai
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-[submodule "bundle/nginx.vim"]
-	path = bundle/nginx.vim
-	url = https://github.com/vim-scripts/nginx.vim.git
-[submodule "bundle/vim-abolish"]
-	path = bundle/vim-abolish
-	url = https://github.com/tpope/vim-abolish.git
-[submodule "bundle/vim-coffee-script"]
-	path = bundle/vim-coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule "bundle/vim-eunuch"]
-	path = bundle/vim-eunuch
-	url = https://github.com/tpope/vim-eunuch.git
-[submodule "bundle/vim-fugitive"]
-	path = bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive
-[submodule "bundle/vim-git"]
-	path = bundle/vim-git
-	url = https://github.com/tpope/vim-git.git
-[submodule "bundle/vim-haml"]
-	path = bundle/vim-haml
-	url = https://github.com/tpope/vim-haml.git
-[submodule "bundle/vim-javascript"]
-	path = bundle/vim-javascript
-	url = https://github.com/pangloss/vim-javascript.git
-[submodule "bundle/vim-markdown"]
-	path = bundle/vim-markdown
-	url = https://github.com/tpope/vim-markdown.git
-[submodule "bundle/vim-nerdtree-tabs"]
-	path = bundle/vim-nerdtree-tabs
-	url = https://github.com/jistr/vim-nerdtree-tabs.git
-[submodule "bundle/vim-pastie"]
-	path = bundle/vim-pastie
-	url = https://github.com/tpope/vim-pastie.git
-[submodule "bundle/vim-pathogen"]
-	path = bundle/vim-pathogen
-	url = https://github.com/tpope/vim-pathogen
-[submodule "bundle/vim-ragtag"]
-	path = bundle/vim-ragtag
-	url = https://github.com/tpope/vim-ragtag.git
-[submodule "bundle/vim-rails"]
-	path = bundle/vim-rails
-	url = https://github.com/tpope/vim-rails.git
-[submodule "bundle/vim-repeat"]
-	path = bundle/vim-repeat
-	url = https://github.com/tpope/vim-repeat.git
-[submodule "bundle/vim-speeddating"]
-	path = bundle/vim-speeddating
-	url = https://github.com/tpope/vim-speeddating.git
-[submodule "bundle/vim-unimpaired"]
-	path = bundle/vim-unimpaired
-	url = https://github.com/tpope/vim-unimpaired.git
-[submodule "bundle/vim-vividchalk"]
-	path = bundle/vim-vividchalk
-	url = https://github.com/tpope/vim-vividchalk.git
-[submodule "bundle/vim-slim"]
-	path = bundle/vim-slim
-	url = https://github.com/bbommarito/vim-slim.git
-[submodule "bundle/dhcpd.vim"]
-  path = bundle/dhcpd.vim
-  url = https://github.com/vim-scripts/dhcpd.vim.git
-[submodule "bundle/vim-endwise"]
-	path = bundle/vim-endwise
-	url = git://github.com/tpope/vim-endwise.git
-[submodule "bundle/vim-vala"]
-	path = bundle/vim-vala
-	url = https://github.com/rainux/vim-vala.git
+	url = https://github.com/vim-scripts/apachestyle
+[submodule "bundle/coffee-script"]
+	path = bundle/coffee-script
+	url = https://github.com/kchmck/vim-coffee-script
 [submodule "bundle/command-t"]
 	path = bundle/command-t
-	url = git://git.wincent.com/command-t.git
-[submodule "bundle/trailing-whitespace"]
-	path = bundle/trailing-whitespace
-	url = https://github.com/bronson/vim-trailing-whitespace
-[submodule "bundle/gist"]
-	path = bundle/gist
-	url = https://github.com/mattn/gist-vim
-[submodule "bundle/webapi"]
-	path = bundle/webapi
-	url = https://github.com/mattn/webapi-vim
+	url = git://git.wincent.com/command-t
+[submodule "bundle/dhcpd"]
+  path = bundle/dhcpd
+  url = https://github.com/vim-scripts/dhcpd.vim
 [submodule "bundle/easymotion"]
 	path = bundle/easymotion
 	url = https://github.com/Lokaltog/vim-easymotion
+[submodule "bundle/endwise"]
+	path = bundle/endwise
+	url = git://github.com/tpope/vim-endwise
+[submodule "bundle/eunuch"]
+	path = bundle/eunuch
+	url = https://github.com/tpope/vim-eunuch
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "bundle/gist"]
+	path = bundle/gist
+	url = https://github.com/mattn/gist-vim
+[submodule "bundle/git"]
+	path = bundle/git
+	url = https://github.com/tpope/vim-git
+[submodule "bundle/haml"]
+	path = bundle/haml
+	url = https://github.com/tpope/vim-haml
+[submodule "bundle/html5"]
+	path = bundle/html5
+	url = https://github.com/othree/html5.vim
+[submodule "bundle/iptables"]
+	path = bundle/iptables
+	url = https://github.com/vim-scripts/iptables
+[submodule "bundle/javascript"]
+	path = bundle/javascript
+	url = https://github.com/pangloss/vim-javascript
+[submodule "bundle/markdown"]
+	path = bundle/markdown
+	url = https://github.com/tpope/vim-markdown
+[submodule "bundle/mediawiki"]
+	path = bundle/mediawiki
+	url = https://github.com/chikamichi/mediawiki.vim
+[submodule "bundle/molokai"]
+	path = bundle/molokai
+	url = https://github.com/tomasr/molokai
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+[submodule "bundle/nginx"]
+	path = bundle/nginx
+	url = https://github.com/vim-scripts/nginx.vim
+[submodule "bundle/pastie"]
+	path = bundle/pastie
+	url = https://github.com/tpope/vim-pastie
+[submodule "bundle/pathogen"]
+	path = bundle/pathogen
+	url = https://github.com/tpope/vim-pathogen
+[submodule "bundle/ragtag"]
+	path = bundle/ragtag
+	url = https://github.com/tpope/vim-ragtag
+[submodule "bundle/rails"]
+	path = bundle/rails
+	url = https://github.com/tpope/vim-rails
+[submodule "bundle/repeat"]
+	path = bundle/repeat
+	url = https://github.com/tpope/vim-repeat
+[submodule "bundle/slim"]
+	path = bundle/slim
+	url = https://github.com/bbommarito/vim-slim
+[submodule "bundle/speeddating"]
+	path = bundle/speeddating
+	url = https://github.com/tpope/vim-speeddating
+[submodule "bundle/trailing-whitespace"]
+	path = bundle/trailing-whitespace
+	url = https://github.com/bronson/vim-trailing-whitespace
+[submodule "bundle/unimpaired"]
+	path = bundle/unimpaired
+	url = https://github.com/tpope/vim-unimpaired
+[submodule "bundle/vividchalk"]
+	path = bundle/vividchalk
+	url = https://github.com/tpope/vim-vividchalk
+[submodule "bundle/webapi"]
+	path = bundle/webapi
+	url = https://github.com/mattn/webapi-vim
