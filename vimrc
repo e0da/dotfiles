@@ -32,8 +32,14 @@ set scrolloff=10
 set cursorline
 let g:molokai_original=1
 colorscheme molokai
-set colorcolumn=81
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
+
+" highlight right column boundary (only available in 7.3+)
+if exists('+colorcolumn')
+  set colorcolumn=+1
+else
+  autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
 
 " print
 set printoptions=paper:letter
