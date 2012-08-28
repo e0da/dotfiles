@@ -64,10 +64,6 @@ set wildmenu
 " better Esc
 inoremap <C-j> <ESC>
 
-" better regex
-nnoremap / /\v
-cnoremap s/ s/\v
-
 " cd current window to parent directory of file
 noremap <leader>cd :lcd %:h<CR>:pwd<CR>
 
