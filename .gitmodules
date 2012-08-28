@@ -1,0 +1,96 @@
+[submodule "bundle/abolish"]
+	path = bundle/abolish
+	url = https://github.com/tpope/vim-abolish
+[submodule "bundle/apachelogs"]
+	path = bundle/apachelogs
+	url = https://github.com/vim-scripts/apachelogs.vim
+[submodule "bundle/apachestyle"]
+	path = bundle/apachestyle
+	url = https://github.com/vim-scripts/apachestyle
+[submodule "bundle/coffee-script"]
+	path = bundle/coffee-script
+	url = https://github.com/kchmck/vim-coffee-script
+[submodule "bundle/command-t"]
+	path = bundle/command-t
+	url = https://github.com/wincent/Command-T.git
+[submodule "bundle/dhcpd"]
+	path = bundle/dhcpd
+	url = https://github.com/vim-scripts/dhcpd.vim
+[submodule "bundle/easymotion"]
+	path = bundle/easymotion
+	url = https://github.com/Lokaltog/vim-easymotion
+[submodule "bundle/endwise"]
+	path = bundle/endwise
+	url = https://github.com/tpope/vim-endwise
+[submodule "bundle/eunuch"]
+	path = bundle/eunuch
+	url = https://github.com/tpope/vim-eunuch
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "bundle/gist"]
+	path = bundle/gist
+	url = https://github.com/mattn/gist-vim
+[submodule "bundle/git"]
+	path = bundle/git
+	url = https://github.com/tpope/vim-git
+[submodule "bundle/haml"]
+	path = bundle/haml
+	url = https://github.com/tpope/vim-haml
+[submodule "bundle/html5"]
+	path = bundle/html5
+	url = https://github.com/othree/html5.vim
+[submodule "bundle/iptables"]
+	path = bundle/iptables
+	url = https://github.com/vim-scripts/iptables
+[submodule "bundle/javascript"]
+	path = bundle/javascript
+	url = https://github.com/pangloss/vim-javascript
+[submodule "bundle/markdown"]
+	path = bundle/markdown
+	url = https://github.com/tpope/vim-markdown
+[submodule "bundle/mediawiki"]
+	path = bundle/mediawiki
+	url = https://github.com/chikamichi/mediawiki.vim
+[submodule "bundle/molokai"]
+	path = bundle/molokai
+	url = https://github.com/tomasr/molokai
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+[submodule "bundle/nginx"]
+	path = bundle/nginx
+	url = https://github.com/vim-scripts/nginx.vim
+[submodule "bundle/pastie"]
+	path = bundle/pastie
+	url = https://github.com/tpope/vim-pastie
+[submodule "bundle/pathogen"]
+	path = bundle/pathogen
+	url = https://github.com/tpope/vim-pathogen
+[submodule "bundle/ragtag"]
+	path = bundle/ragtag
+	url = https://github.com/tpope/vim-ragtag
+[submodule "bundle/rails"]
+	path = bundle/rails
+	url = https://github.com/tpope/vim-rails
+[submodule "bundle/repeat"]
+	path = bundle/repeat
+	url = https://github.com/tpope/vim-repeat
+[submodule "bundle/slim"]
+	path = bundle/slim
+	url = https://github.com/bbommarito/vim-slim
+[submodule "bundle/speeddating"]
+	path = bundle/speeddating
+	url = https://github.com/tpope/vim-speeddating
+[submodule "bundle/trailing-whitespace"]
+	path = bundle/trailing-whitespace
+	url = https://github.com/bronson/vim-trailing-whitespace
+[submodule "bundle/unimpaired"]
+	path = bundle/unimpaired
+	url = https://github.com/tpope/vim-unimpaired
+[submodule "bundle/vividchalk"]
+	path = bundle/vividchalk
+	url = https://github.com/tpope/vim-vividchalk
+[submodule "bundle/webapi"]
+	path = bundle/webapi
+	url = https://github.com/mattn/webapi-vim
