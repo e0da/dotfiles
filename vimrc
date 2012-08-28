@@ -118,7 +118,10 @@ map <c-b>" :split buffer<cr>
 map <c-b>% :vertical split buffer<cr>
 
 " fix white space
-map <leader>w :FixWhitespace<cr>
+map <leader>W :FixWhitespace<cr>
+
+" EasyMotion shortcut
+let g:EasyMotion_leader_key = '<Leader>'
 
 " rerun previous :command
 map <leader>] @:
