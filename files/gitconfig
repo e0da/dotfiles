@@ -24,7 +24,7 @@
 [rerere]
   enabled = true
 [core]
-	excludesfile = /home/force/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [web]
 	browser = google-chrome
 [github]
