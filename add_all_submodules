@@ -28,6 +28,7 @@ git submodule add https://github.com/tpope/vim-rails bundle/rails
 git submodule add https://github.com/tpope/vim-repeat bundle/repeat
 git submodule add https://github.com/bbommarito/vim-slim bundle/slim
 git submodule add https://github.com/tpope/vim-speeddating bundle/speeddating
+git submodule add https://github.com/vim-scripts/tComment.git bundle/tcomment
 git submodule add https://github.com/bronson/vim-trailing-whitespace bundle/trailing-whitespace
 git submodule add https://github.com/tpope/vim-unimpaired bundle/unimpaired
 git submodule add https://github.com/tpope/vim-vividchalk bundle/vividchalk

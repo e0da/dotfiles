@@ -94,3 +94,6 @@
 [submodule "bundle/webapi"]
 	path = bundle/webapi
 	url = https://github.com/mattn/webapi-vim
+[submodule "bundle/tcomment"]
+	path = bundle/tcomment
+	url = https://github.com/vim-scripts/tComment.git
