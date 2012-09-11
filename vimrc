@@ -32,7 +32,15 @@ set scrolloff=10
 set cursorline
 let g:molokai_original=1
 colorscheme molokai
+
+" override some highlight settings
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
+highlight DiffText     gui=none
+highlight Macro        gui=none
+highlight SpecialKey   gui=none
+highlight Special      gui=none
+highlight StorageClass gui=none
+highlight Tag          gui=none
 
 " highlight right column boundary (only available in 7.3+)
 if exists('+colorcolumn')
