@@ -94,11 +94,11 @@ noremap <bslash>ga :Gwrite<cr>
 noremap <bslash>gl :Glog<cr>
 noremap <bslash>gd :Gdiff<cr>
 
-" use ctrl-h/j/k/l to switch between splits
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+" move by screen lines
+nnoremap j gj
+nnoremap k gk
+nnoremap <c-j> 5gj
+nnoremap <c-k> 5gk
 
 " Disable default Ctrl-Space behavior
 map  <Nul> <Nop>
