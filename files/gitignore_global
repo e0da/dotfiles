@@ -2,3 +2,5 @@ tags
 *.zip
 *.pyc
 .rvmrc
+ignore
+ignore.cp
