@@ -74,6 +74,7 @@ set hlsearch incsearch smartcase
 
 " completion
 set wildmenu
+set wildignore+=pkg,tmp
 
 " better Esc
 inoremap <C-j> <ESC>
