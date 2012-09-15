@@ -5,36 +5,39 @@ runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 Helptags
 
-" Vim
-set hidden
-set modeline
-set exrc      " enable per-directory .vimrc files
-set secure    " disable unsafe commands in local .vimrc files
+set hidden                                                " don't unload buffer when switching away
+set modeline                                              " allow per-file settings via modeline
+set exrc                                                  " enable per-directory .vimrc files
+set secure                                                " disable unsafe commands in local .vimrc files
+set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8  " saving and encoding
+set nobackup nowritebackup noswapfile autoread            " no backup or swap
+set hlsearch incsearch smartcase wildmenu                 " search and completion options
+set backspace=indent,eol,start                            " sane backspace
+set clipboard=unnamedplus                                 " use the system clipboard for yank/put/delete
+set mouse=a                                               " enable mouse for all modes settings
+set nomousehide                                           " don't hide the mouse cursor while typing
+set mousemodel=popup                                      " right-click pops up context menu
+set ruler                                                 " show cursor position in status bar
+set number                                                " show line numbers on left
+set nofoldenable                                          " I fucking hate code folding
+set scrolloff=10                                          " scroll the window so we can always see 10 lines around the cursor
+set cursorline                                            " highlight the current line
+set printoptions=paper:letter                             " use letter as the print output format
+set guioptions-=T                                         " turn off GUI toolbar (icons)
+set guioptions-=r                                         " turn off GUI scrollbar
+set laststatus=2                                          " always show status bar
 
-" sane backspace
-set backspace=indent,eol,start
-
-" mouse settings
-set mouse=a
-set nomousehide
-set mousemodel=popup
 " middle-click paste
 map! <S-Insert> <MiddleMouse>
 
-" display
-"" enable 256 colors in terminal
-set t_Co=256
+" font and highlighting
 syntax on
-set nofoldenable
-set ruler
-set number
+set t_Co=256 " 256 colors in terminal
 set guifont=Ubuntu\ Mono\ 11
-set scrolloff=10
-set cursorline
 let g:molokai_original=1
 colorscheme molokai
 
-" override some highlight settings
+" override some highlight settings (turn off stupid italics in Molokai)
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 highlight DiffText     gui=none
 highlight Macro        gui=none
@@ -50,50 +53,32 @@ else
   autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
-" print
-set printoptions=paper:letter
-
 " formatting
 filetype plugin indent on
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
+autocmd filetype c,asm,python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
-"" formatting - C
-autocmd filetype c setlocal shiftwidth=4 tabstop=4 softtabstop=4
-
-"" formatting - ASM
-autocmd filetype asm setlocal shiftwidth=4 tabstop=4 softtabstop=4
-
-"" formating - Python
-autocmd filetype python setlocal shiftwidth=4 tabstop=4 softtabstop=4
-
-" saving and encoding
-set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
-set nobackup nowritebackup noswapfile autoread
-
-" searching
-set hlsearch incsearch smartcase
-
-" completion
-set wildmenu
-
-" better Esc
-inoremap <C-j> <ESC>
-
-" cd current window to parent directory of file
-noremap <leader>cd :lcd %:h<CR>:pwd<CR>
-
-" generate ctags
-noremap <leader>ct :!ctags -R .<CR><CR>
-
-" better range
+" bindings to:
+" - cd current window to parent directory of file
+" - generate ctags
+" - flush command-t index
+" - better range
+" - fix white space
+" - rerun previous :command
+noremap <leader>cd :lcd %:h<cr>:pwd<cr>
+noremap <leader>ct :!ctags -R .<cr><cr>
+noremap <leader>cf :CommandTFlush<cr>
 noremap ' `
+map <leader>W :FixWhitespace<cr>
+map <leader>] @:
 
 " fugitive shortcuts
-noremap <bslash>gs :Gstatus<cr>
-noremap <bslash>gc :Gcommit<cr>
-noremap <bslash>ga :Gwrite<cr>
-noremap <bslash>gl :Glog<cr>
-noremap <bslash>gd :Gdiff<cr>
+noremap <leader>gs :Gstatus<cr>
+noremap <leader>gc :Gcommit<cr>
+noremap <leader>ga :Gwrite<cr>
+noremap <leader>gl :Glog<cr>
+noremap <leader>gd :Gdiff<cr>
+noremap <leader>gb :Gblame<cr>
 
 " move by screen lines
 nnoremap j gj
@@ -101,43 +86,13 @@ nnoremap k gk
 nnoremap <c-j> 5gj
 nnoremap <c-k> 5gk
 
-" Disable default Ctrl-Space behavior
-map  <Nul> <Nop>
-imap <Nul> <Nop>
-vmap <Nul> <Nop>
-cmap <Nul> <Nop>
-nmap <Nul> <Nop>
-
-" GUI options.
-"" Disable Toolbar (icons) and scrollbars.
-set guioptions-=T
-set guioptions-=r
-set guioptions-=L
-
-" Tab behavior
-set switchbuf=usetab,newtab
-
 " NERDTree
 let NERDTreeWinPos='right'
 map <c-\> :NERDTreeToggle<cr>
 
-" always show status bar
-set laststatus=2
-
-" tmux-like bindings
-map <c-b>" :split buffer<cr>
-map <c-b>% :vertical split buffer<cr>
-
-" fix white space
-map <leader>W :FixWhitespace<cr>
-
-" rerun previous :command
-map <leader>] @:
-
-" functions
-"" ric
+" Run ric parser test on given parser
 function! ParserTest(parser)
   cd /home/force/work/ric/src/nutricate/tests
-  call feedkeys("ggdG:read !./runner.py rparse/" . a:parser . " 2>&1\<CR>\<CR>gg")
+  call feedkeys("ggdG:read !./runner.py rparse/" . a:parser . " 2>&1\<cr>\<cr>gg")
 endfunction
-command! -nargs=1 PT :call ParserTest("test_<args>.py")
+command! -nargs=1 PT :call ParserTest("test_<args>.py") " invoke with `:PT parser_name`. Best to load python 2.5 virtualenv first
