@@ -11,7 +11,8 @@ set exrc                                                  " enable per-directory
 set secure                                                " disable unsafe commands in local .vimrc files
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8  " saving and encoding
 set nobackup nowritebackup noswapfile autoread            " no backup or swap
-set hlsearch incsearch smartcase wildmenu                 " search and completion options
+set hlsearch incsearch ignorecase smartcase               " search
+set wildmenu                                              " completion
 set backspace=indent,eol,start                            " sane backspace
 set clipboard=unnamedplus                                 " use the system clipboard for yank/put/delete
 set mouse=a                                               " enable mouse for all modes settings
@@ -24,7 +25,8 @@ set scrolloff=10                                          " scroll the window so
 set cursorline                                            " highlight the current line
 set printoptions=paper:letter                             " use letter as the print output format
 set guioptions-=T                                         " turn off GUI toolbar (icons)
-set guioptions-=r                                         " turn off GUI scrollbar
+set guioptions-=r                                         " turn off GUI right scrollbar
+set guioptions-=L                                         " turn off GUI left scrollbar
 set laststatus=2                                          " always show status bar
 
 " middle-click paste
