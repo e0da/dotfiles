@@ -83,10 +83,10 @@ noremap <leader>gd :Gdiff<cr>
 noremap <leader>gb :Gblame<cr>
 
 " move by screen lines
-nnoremap j gj
-nnoremap k gk
-nnoremap <c-j> 5gj
-nnoremap <c-k> 5gk
+noremap j gj
+noremap k gk
+noremap <c-j> 5gj
+noremap <c-k> 5gk
 
 " NERDTree
 let NERDTreeWinPos='right'
