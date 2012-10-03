@@ -71,7 +71,6 @@ alias gs='git s'
 alias gd='git d'
 alias gdc='git d --cached'
 alias gdh="git d HEAD"
-alias gc='git clean -df'
 
 ## ric
 alias pview="python /home/force/work/ric/remote_capture/pickle_to_cap.py"
