@@ -97,3 +97,6 @@
 [submodule "bundle/tcomment"]
 	path = bundle/tcomment
 	url = https://github.com/vim-scripts/tComment.git
+[submodule "bundle/solarized"]
+	path = bundle/solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
