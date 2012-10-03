@@ -12,6 +12,7 @@
   ci = commit
   co = checkout
   d  = diff
+  dc = diff --cached
   pl = pull
   pr = pull --rebase
   ps = push
@@ -24,6 +25,7 @@
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   last = cat-file commit HEAD
   fuckit = reset --hard HEAD
+  alias = "!zsh -lc \"source ~/.zshrc; git_aliases\""
 
 [rerere]
   enabled = true
