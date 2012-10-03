@@ -49,8 +49,9 @@ task :compile_command_t do
   compile_command_t
 end
 
-desc 'Update all plugins to latest master/HEAD version'
+desc 'Update repo and all plugins to latest master/HEAD version'
 task :update do
+  `git pull`
   pwd = FileUtils.pwd
   submodule_dirs.each do |dir|
     FileUtils.cd dir
