@@ -6,19 +6,22 @@
   ui = auto
 
 [alias]
-  br = branch
-  ci = commit
+  b  = branch
+  c  = commit
   co = checkout
-  df = diff
+  d  = diff
   pl = pull
-  ps = push
-  st = status -s
-  lg = log --stat
+  p  = push
+  s  = status --short
+  l  = log --stat
+  f  = fetch --all --prune
+  mm = merge origin/master
   m  = merge --no-ff
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   last = cat-file commit HEAD
   fuckit = reset --hard HEAD
+
 #[push]
 #  default = upstream
 [rerere]
