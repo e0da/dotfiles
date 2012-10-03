@@ -66,13 +66,6 @@ fi
 
 alias grep='grep --color=auto'
 alias g="git"
-alias gf='git f'
-alias gl='git l'
-alias gs='git s'
-alias gd='git d'
-alias gp='git p'
-alias gdc='git d --cached'
-alias gdh="git d HEAD"
 
 ## ric
 alias pview="python /home/force/work/ric/remote_capture/pickle_to_cap.py"

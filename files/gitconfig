@@ -9,12 +9,12 @@
   a  = add
   aa = add --all
   b  = branch
-  c  = commit
+  ci = commit
   co = checkout
   d  = diff
   pl = pull
   pr = pull --rebase
-  p  = push
+  ps = push
   s  = status --short
   l  = log --stat
   f  = fetch --all --prune
