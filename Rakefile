@@ -86,7 +86,7 @@ def set_up_submodule(url)
 end
 
 #
-# lowercase version of the repo name without extraneos vim or git labels
+# lowercase version of the repo name without extraneous vim or git labels
 #
 def dirname(url)
   File.basename(url).downcase.gsub(/^vim-/, '').gsub(/(-|\.)(git|vim)$/, '')
