@@ -66,9 +66,11 @@ fi
 
 alias grep='grep --color=auto'
 alias g="git"
+alias gf='git f'
 alias gl='git l'
 alias gs='git s'
 alias gd='git d'
+alias gp='git p'
 alias gdc='git d --cached'
 alias gdh="git d HEAD"
 
