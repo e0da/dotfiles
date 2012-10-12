@@ -67,12 +67,16 @@ autocmd filetype c,asm,python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 " - better range
 " - fix white space
 " - rerun previous :command
+" - underline a line with equals (h1 in Markdown documents)
+" - underline a line with hyphens (h2 in Markdown documents)
 noremap <leader>cd :lcd %:h<cr>:pwd<cr>
 noremap <leader>ct :!ctags -R .<cr><cr>
 noremap <leader>cf :CommandTFlush<cr>
 noremap ' `
 map <leader>W :FixWhitespace<cr>
 map <leader>] @:
+map <leader>= yypVr=
+map <leader>- yypVr-
 
 " fugitive shortcuts
 noremap <leader>gs :Gstatus<cr>
