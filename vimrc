@@ -98,7 +98,7 @@ map <c-\> :NERDTreeToggle<cr>
 
 " Run ric parser test on given parser
 function! ParserTest(parser)
-  cd /home/force/work/ric/src/nutricate/tests
+  cd /home/force/code/work/ric/src/nutricate/tests
   call feedkeys("ggdG:read !./runner.py rparse/" . a:parser . " 2>&1\<cr>\<cr>gg")
 endfunction
 command! -nargs=1 PT :call ParserTest("test_<args>.py") " invoke with `:PT parser_name`. Best to load python 2.5 virtualenv first
