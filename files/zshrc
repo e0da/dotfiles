@@ -21,7 +21,7 @@ zstyle ':completion:*' menu select=0
 zstyle ':completion:*' original true
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' verbose true
-zstyle :compinstall filename '/home/force/.zshrc'
+zstyle :compinstall filename '~/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -56,7 +56,7 @@ bindkey ';5D' backward-word
 
 # aliases
 #
-if [ $DARWIN ]; then
+if [ ${DARWIN} ]; then
   alias ls='ls -G'
   alias go=open
 else
@@ -68,24 +68,20 @@ alias grep='grep --color=auto'
 alias g="git"
 
 ## ric
-alias pview="python /home/force/work/ric/remote_capture/pickle_to_cap.py"
-export PYTHONPATH=/home/force/work/ric/src:$PYTHONPATH
-export PATH=/home/force/work/ric/src:/home/force/work/ric/tools:$PATH
-
-function pycharm() {
-  cd ~/opt/pycharm
-  bin/pycharm.sh
-}
+RIC=~/code/work/ric
+alias pview="python ${RIC}/remote_capture/pickle_to_cap.py"
+export PYTHONPATH=${RIC}/src:${PYTHONPATH}
+export PATH=${RIC}/src:${RIC}/tools:${PATH}
 
 function workon_ric() {
-  echo $PS1 | grep ric2.5 > /dev/null
+  echo ${PS1} | grep ric2.5 > /dev/null
   if [ $? -eq 1 ]; then
     workon ric2.5
   fi
 }
 
 function ric() {
-  cd ~/work/ric
+  cd ${RIC}
   workon_ric
 }
 
@@ -132,19 +128,19 @@ export RPROMPT='$(git_super_status)'
 
 # automatically configure make -j option to -j{number of CPUs +1}
 #
-if [ ! $DARWIN ]; then
-  let MAKEJOBS=`grep processor /proc/cpuinfo|wc -l`+1
-  export MAKEOPTS=-j$MAKEJOBS
+if [ ! ${DARWIN} ]; then
+  let MAKEJOBS=$(grep processor /proc/cpuinfo|wc -l)+1
+  export MAKEOPTS=-j${MAKEJOBS}
 fi
 
 # add local bin path to PATH
 #
-export PATH=/home/force/opt/bin:/home/force/Dropbox/bin:$PATH
+export PATH=${HOME}/opt/bin:${HOME}/Dropbox/bin:${PATH}
 
 # rvm
 #
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "${HOME}/.rvm/scripts/rvm" ]] && . "${HOME}/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+export PATH=${PATH}:${HOME}/.rvm/bin # Add RVM to PATH for scripting
 
 if [ -x ~/.maven_env ]; then
   source ~/.maven_env
