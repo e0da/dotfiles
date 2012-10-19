@@ -46,7 +46,8 @@ end
 
 desc 'Compile Command-T'
 task :compile_command_t do
-  compile_command_t
+  #compile_command_t
+  puts 'Remember to recompile command-t if it updated'
 end
 
 desc 'Update repo and all plugins to latest master/HEAD version'
@@ -73,6 +74,9 @@ def submodule_dirs
   end
 end
 
+#
+# FIXME This doesn't work. :)
+#
 def compile_command_t
   FileUtils.cd 'bundle/command-t'
   `zsh -lc "rvm use 1.8.7; rake make"`
