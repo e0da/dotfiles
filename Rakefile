@@ -30,6 +30,7 @@ SUBMODULE_URLS = %w[
   https://github.com/vim-scripts/dhcpd.vim
   https://github.com/vim-scripts/iptables
   https://github.com/vim-scripts/nginx.vim
+  https://github.com/vim-scripts/syslog-syntax-file
   https://github.com/vim-scripts/tComment.git
   https://github.com/wincent/Command-T.git
 ]
