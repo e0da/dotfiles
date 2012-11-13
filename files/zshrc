@@ -110,6 +110,12 @@ function git_aliases() {
   git config --get-regexp alias | sed 's/^alias\.//g' | awk '{printf "%7s %s %s %s %s %s %s %s %s %s\n", $1, $2, $3, $4, $5, $6, $7, $8, $9, $10}'
 }
 
+# kill specified line from .ssh/known_hosts
+#
+function khk() {
+  sed -i ${1}d ~/.ssh/known_hosts
+}
+
 # command not found
 #
 if [ -f /etc/zsh_command_not_found ]; then
