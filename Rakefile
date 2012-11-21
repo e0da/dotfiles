@@ -45,9 +45,27 @@ task :force do
   Rake::Task[:install].invoke
 end
 
-desc 'Symlink config files to appopriate locations.'
+desc 'Run all installation tasks'
 task :install do
-  link_all_files
+  Rake::Task['install:all'].invoke
+end
+
+namespace :install do
+
+  task :all do
+    Rake::Task['install:links'].invoke
+    Rake::Task['install:gnome_terminal'].invoke
+  end
+
+  desc 'Symlink config files to appopriate locations.'
+  task :links do
+    link_all_files
+  end
+
+  desc 'Install Gnome Terminal configuration'
+  task :gnome_terminal do
+    `gconftool-2 --load files/gnome-terminal-conf.xml`
+  end
 end
 
 desc 'Pull the latest changes from Git and update all submodules'
@@ -56,6 +74,11 @@ task :update do
   `git submodule foreach --recursive git submodule sync`
   `git submodule foreach --recursive git submodule update --init`
   `git submodule update --init --recursive`
+end
+
+desc 'Save Gnome Terminal configuration to files/gnome-terminal-conf.xml'
+task :save_gnome_terminal do
+  `gconftool-2 --dump '/apps/gnome-terminal' > files/gnome-terminal-conf.xml`
 end
 
 task :default do
