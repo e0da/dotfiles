@@ -116,6 +116,13 @@ function khk() {
   sed -i ${1}d ~/.ssh/known_hosts
 }
 
+# wrap knife ssh with my constant arguments since their config file doesn't
+# support it FOR SOME RAISIN
+#
+function kssh() {
+  knife ssh -x justinforce -a name $*
+}
+
 # command not found
 #
 if [ -f /etc/zsh_command_not_found ]; then
