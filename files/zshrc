@@ -65,7 +65,8 @@ else
 fi
 
 alias grep='grep --color=auto'
-alias g="git"
+alias g='git'
+alias h='heroku'
 
 ## ric
 RIC=~/code/work/ric
