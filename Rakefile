@@ -10,6 +10,7 @@ SUBMODULE_URLS = %w[
   https://github.com/othree/html5.vim
   https://github.com/pangloss/vim-javascript
   https://github.com/scrooloose/nerdtree
+  https://github.com/thinca/vim-fontzoom
   https://github.com/tomasr/molokai
   https://github.com/tpope/vim-abolish
   https://github.com/tpope/vim-endwise
@@ -38,7 +39,7 @@ SUBMODULE_URLS = %w[
 
 task :default => [:submodules]
 
-desc 'Add all submodules listed in Rakefile'
+desc '[default] Add all submodules listed in Rakefile'
 task :submodules do
   SUBMODULE_URLS.each do |url|
     set_up_submodule url
@@ -46,7 +47,7 @@ task :submodules do
   Rake::Task[:compile_command_t].invoke
 end
 
-desc 'Compile Command-T'
+desc '[disabled] Compile Command-T'
 task :compile_command_t do
   #compile_command_t
   puts 'Remember to recompile command-t if it updated'
