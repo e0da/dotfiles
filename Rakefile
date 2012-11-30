@@ -1,5 +1,6 @@
 SUBMODULE_URLS = %w[
   https://github.com/Lokaltog/vim-easymotion
+  https://github.com/altercation/vim-colors-solarized
   https://github.com/bbommarito/vim-slim
   https://github.com/bronson/vim-trailing-whitespace
   https://github.com/chikamichi/mediawiki.vim
