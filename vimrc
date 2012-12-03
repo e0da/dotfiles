@@ -22,6 +22,7 @@ set ruler                                                 " show cursor position
 set number                                                " show line numbers on left
 set nofoldenable                                          " I fucking hate code folding
 set scrolloff=10                                          " scroll the window so we can always see 10 lines around the cursor
+set textwidth=80                                          " show a vertical line at the 79th character
 set cursorline                                            " highlight the current line
 set printoptions=paper:letter                             " use letter as the print output format
 set guioptions-=T                                         " turn off GUI toolbar (icons)
@@ -32,8 +33,9 @@ set laststatus=2                                          " always show status b
 " middle-click paste
 map! <S-Insert> <MiddleMouse>
 
-" font and highlighting
+" appearance
 syntax on
+set background=dark
 set t_Co=256 " 256 colors in terminal
 set guifont=Ubuntu\ Mono\ 11
 let g:molokai_original=1
