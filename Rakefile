@@ -1,8 +1,4 @@
-# desc '[disabled] Compile Command-T'
-# task :compile_command_t dt
-#   #compile_command_t
-#   puts 'Remember to recompile command-t if it updated'
-# end
+require 'stringio'
 
 task :default => [:pull]
 
@@ -22,7 +18,11 @@ end
 desc 'Compile Command-T'
 task :command_t do
   FileUtils.cd 'bundle/command-t'
-  env_exec "rvm use #{vim_ruby_version} --install; rake make"
+  output = env_exec("rvm use #{vim_ruby_version} --install 2>&1; rake make 2>&1")
+  if $?.exitstatus != 0
+    say :light_red, "There were errors"
+    say output
+  end
 end
 
 desc 'Demo colors'
@@ -70,5 +70,24 @@ end
 # Executes the +command+ in the context of a login shell.
 #
 def env_exec(command)
-  `zsh --login -c "#{command}"`
+  `zsh 2>&1 --login -c "#{command}"`
+end
+
+##
+# Captures stream output from $stdout or $stderr
+#
+# == Examples
+#
+#   out = capture { puts "This doesn't print" }   # out == "This doesn't print\n"
+#   capture(:stderr) { $stderr.puts "invisible" } # prints nothing
+#
+def capture(stream=:stdout)
+  begin
+    stream = stream.to_s
+    eval "$#{stream} = StringIO.new"
+    yield
+    eval("$#{stream}").string
+  ensure
+    eval "$#{stream} = #{stream.upcase}"
+  end
 end
