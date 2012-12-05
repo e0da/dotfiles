@@ -10,13 +10,19 @@ desc '[default] Update repo and all plugins to latest origin/master/HEAD'
 task :pull do
   `git fetch --prune`
   `git pull --rebase --recurse-submodules origin master`
-  compile_command_t
+  Rake::Task[:command_t].invoke
 end
 
 desc 'Update repo and all plugins to latest master/HEAD version'
 task :update do
   `git submodule foreach 'git checkout master; git pull --force origin master'`
-  compile_command_t
+  Rake::Task[:command_t].invoke
+end
+
+desc 'Compile Command-T'
+task :command_t do
+  FileUtils.cd 'bundle/command-t'
+  env_exec "rvm use #{vim_ruby_version} --install; rake make"
 end
 
 desc 'Demo colors'
@@ -47,14 +53,6 @@ end
 
 def vim_ruby_version
   `#{VIM_RUBY_VERSION_COMMAND}`
-end
-
-#
-# FIXME This doesn't work. :)
-#
-def compile_command_t
-  FileUtils.cd 'bundle/command-t'
-  env_exec 'rvm use #{vim_ruby_version} --install; rake make'
 end
 
 def env_exec(command)
