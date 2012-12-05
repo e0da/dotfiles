@@ -9,8 +9,8 @@ task :pull do
   Rake::Task[:command_t].invoke
 end
 
-desc 'Update repo and all plugins to latest master/HEAD version'
-task :update do
+desc 'Update each plugin to latest origin/master/HEAD version'
+task :update_plugins do
   `git submodule foreach 'git checkout master; git pull --force origin master'`
   Rake::Task[:command_t].invoke
 end
@@ -25,12 +25,12 @@ task :command_t do
   end
 end
 
-desc 'Demo colors'
-task :colors do
-  COLORS.each do |key, value|
-    say key, "HELLO! In glorious #{key.to_s.upcase}!"
-  end
-end
+# desc 'Demo colors'
+# task :colors do
+#   COLORS.each do |key, value|
+#     say key, "HELLO! In glorious #{key.to_s.upcase}!"
+#   end
+# end
 
 private
 
