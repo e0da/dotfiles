@@ -1,5 +1,5 @@
 # desc '[disabled] Compile Command-T'
-# task :compile_command_t do
+# task :compile_command_t dt
 #   #compile_command_t
 #   puts 'Remember to recompile command-t if it updated'
 # end
@@ -34,6 +34,9 @@ end
 
 private
 
+##
+# *nix shell colors
+#
 COLORS = {
   :black         =>  '0;30',	  :dark_gray     =>  '1;30',
   :blue          =>  '0;34',	  :light_blue    =>  '1;34',
@@ -45,16 +48,27 @@ COLORS = {
   :light_gray    =>  '0;37',	  :white         =>  '1;37',
 }
 
-VIM_RUBY_VERSION_COMMAND = %[vim --version | grep -o "ruby\S\+" | sed s/ruby-//]
-
+##
+# Prints the +message+ in the given +color+ (default is no color)
+#
+# == Example
+#
+#   say :blue, "This text is blue"
+#
 def say(color=nil, message)
   puts "\e[#{COLORS[color]}m#{message}\e[m"
 end
 
+##
+# Returns the Ruby version against which Vim was compiled.
+#
 def vim_ruby_version
-  `#{VIM_RUBY_VERSION_COMMAND}`
+  `vim --version | grep -o "ruby\S\+" | sed s/ruby-//`
 end
 
+##
+# Executes the +command+ in the context of a login shell.
+#
 def env_exec(command)
-  `zsh -lc "#{command}"`
+  `zsh --login -c "#{command}"`
 end
