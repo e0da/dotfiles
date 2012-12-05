@@ -1,80 +1,52 @@
-SUBMODULE_URLS = %w[
-  https://github.com/Lokaltog/vim-easymotion
-  https://github.com/altercation/vim-colors-solarized
-  https://github.com/bbommarito/vim-slim
-  https://github.com/bronson/vim-trailing-whitespace
-  https://github.com/chikamichi/mediawiki.vim
-  https://github.com/kchmck/vim-coffee-script
-  https://github.com/mattn/gist-vim
-  https://github.com/mattn/webapi-vim
-  https://github.com/othree/html5.vim
-  https://github.com/pangloss/vim-javascript
-  https://github.com/scrooloose/nerdtree
-  https://github.com/thinca/vim-fontzoom
-  https://github.com/tomasr/molokai
-  https://github.com/tpope/vim-abolish
-  https://github.com/tpope/vim-endwise
-  https://github.com/tpope/vim-eunuch
-  https://github.com/tpope/vim-fugitive
-  https://github.com/tpope/vim-git
-  https://github.com/tpope/vim-haml
-  https://github.com/tpope/vim-markdown
-  https://github.com/tpope/vim-pastie
-  https://github.com/tpope/vim-pathogen
-  https://github.com/tpope/vim-ragtag
-  https://github.com/tpope/vim-rails
-  https://github.com/tpope/vim-repeat
-  https://github.com/tpope/vim-speeddating
-  https://github.com/tpope/vim-unimpaired
-  https://github.com/tpope/vim-vividchalk
-  https://github.com/vim-scripts/apachelogs.vim
-  https://github.com/vim-scripts/apachestyle
-  https://github.com/vim-scripts/dhcpd.vim
-  https://github.com/vim-scripts/iptables
-  https://github.com/vim-scripts/nginx.vim
-  https://github.com/vim-scripts/syslog-syntax-file
-  https://github.com/vim-scripts/tComment
-  https://github.com/wincent/Command-T
-]
+# desc '[disabled] Compile Command-T'
+# task :compile_command_t do
+#   #compile_command_t
+#   puts 'Remember to recompile command-t if it updated'
+# end
 
-task :default => [:submodules]
+task :default => [:pull]
 
-desc '[default] Add all submodules listed in Rakefile'
-task :submodules do
-  SUBMODULE_URLS.each do |url|
-    set_up_submodule url
-  end
-  Rake::Task[:compile_command_t].invoke
-end
-
-desc '[disabled] Compile Command-T'
-task :compile_command_t do
-  #compile_command_t
-  puts 'Remember to recompile command-t if it updated'
+desc '[default] Update repo and all plugins to latest origin/master/HEAD'
+task :pull do
+  `git fetch --prune`
+  `git pull --rebase --recurse-submodules origin master`
+  compile_command_t
 end
 
 desc 'Update repo and all plugins to latest master/HEAD version'
 task :update do
-  `git pull`
-  pwd = FileUtils.pwd
-  submodule_dirs.each do |dir|
-    FileUtils.cd dir
-    `git checkout master` unless on_branch?
-    `git pull`
-    FileUtils.cd pwd
+  `git submodule foreach 'git checkout master; git pull --force origin master'`
+  compile_command_t
+end
+
+desc 'Demo colors'
+task :colors do
+  COLORS.each do |key, value|
+    say key, "HELLO! In glorious #{key.to_s.upcase}!"
   end
 end
 
 private
 
-def on_branch?
-  !`git branch | grep '*'`.match /\(no branch\)/
+COLORS = {
+  :black         =>  '0;30',	  :dark_gray     =>  '1;30',
+  :blue          =>  '0;34',	  :light_blue    =>  '1;34',
+  :green         =>  '0;32',	  :light_green   =>  '1;32',
+  :cyan          =>  '0;36',	  :light_cyan    =>  '1;36',
+  :red           =>  '0;31',	  :light_red     =>  '1;31',
+  :purple        =>  '0;35',	  :light_purple  =>  '1;35',
+  :brown         =>  '0;33',	  :yellow        =>  '1;33',
+  :light_gray    =>  '0;37',	  :white         =>  '1;37',
+}
+
+VIM_RUBY_VERSION_COMMAND = %[vim --version | grep -o "ruby\S\+" | sed s/ruby-//]
+
+def say(color=nil, message)
+  puts "\e[#{COLORS[color]}m#{message}\e[m"
 end
 
-def submodule_dirs
-  SUBMODULE_URLS.map do |url|
-    "bundle/#{dirname(url)}"
-  end
+def vim_ruby_version
+  `#{VIM_RUBY_VERSION_COMMAND}`
 end
 
 #
@@ -82,19 +54,9 @@ end
 #
 def compile_command_t
   FileUtils.cd 'bundle/command-t'
-  `zsh -lc "rvm use 1.8.7; rake make"`
+  env_exec 'rvm use #{vim_ruby_version} --install; rake make'
 end
 
-def set_up_submodule(url)
-  dirname = dirname(url)
-  target  = "bundle/#{dirname}"
-  FileUtils.mkdir_p target
-  `git submodule add #{url} #{target}`
-end
-
-#
-# lowercase version of the repo name without extraneous vim or git labels
-#
-def dirname(url)
-  File.basename(url).downcase.gsub(/^vim-/, '').gsub(/(-|\.)(git|vim)$/, '')
+def env_exec(command)
+  `zsh -lc "#{command}"`
 end

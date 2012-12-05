@@ -50,10 +50,15 @@ highlight Special      gui=none
 highlight StorageClass gui=none
 highlight Tag          gui=none
 
-" highlight right column boundary (only available in 7.3+)
+" highlight the 80th column
+"
+" In Vim >= 7.3, also highlight columns 120+
 if exists('+colorcolumn')
-  set colorcolumn=+1
+  " (I picked 120-320 because you have to provide an upper bound and 320 just
+  "  covers a 1080p GVim window in Ubuntu Mono 11 font.)
+  let &colorcolumn="80,".join(range(120,320),",")
 else
+  " fallback for Vim < v7.3
   autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
