@@ -49,7 +49,7 @@ COLORS = {
 }
 
 ##
-# Prints the +message+ in the given +color+ (default is no color)
+# Prints the +message+ in the given +color+ from +COLORS+ (default is no color)
 #
 # == Example
 #
