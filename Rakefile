@@ -6,6 +6,7 @@ desc '[default] Update repo and all plugins to latest origin/master/HEAD'
 task :pull do
   `git fetch --prune`
   `git pull --rebase --recurse-submodules origin master`
+  `git submodule update --init`
   Rake::Task[:command_t].invoke
 end
 
