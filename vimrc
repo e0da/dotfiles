@@ -24,6 +24,7 @@ set nofoldenable                                          " I fucking hate code 
 set scrolloff=10                                          " scroll the window so we can always see 10 lines around the cursor
 set textwidth=80                                          " show a vertical line at the 79th character
 set cursorline                                            " highlight the current line
+set cursorcolumn                                          " highlight the current line
 set printoptions=paper:letter                             " use letter as the print output format
 set guioptions-=T                                         " turn off GUI toolbar (icons)
 set guioptions-=r                                         " turn off GUI right scrollbar
@@ -43,6 +44,8 @@ colorscheme molokai
 
 " override some highlight settings (turn off stupid italics in Molokai)
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
+highlight CursorLine ctermbg=235 guibg=#2c2d27
+highlight CursorColumn ctermbg=235 guibg=#2c2d27
 highlight DiffText     gui=none
 highlight Macro        gui=none
 highlight SpecialKey   gui=none
