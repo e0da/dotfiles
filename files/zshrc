@@ -148,6 +148,21 @@ function rvmrc() {
   rvm current
 }
 
+##
+# Opens an ssh tunnel to repo01 and opens a browser to RabbitMQ management
+# interface.
+#
+# Arguments:
+#   $1: local port to listen on (defaults to 55672)
+#
+function rmq() {
+  : ${1=55672}
+  local_port=$1
+  ssh repo01 -fNL${local_port}:flint-mq01:55672
+  url=http://localhost:$local_port
+  open $url || gnome-open $url
+}
+
 # command not found
 #
 if [ -f /etc/zsh_command_not_found ]; then
