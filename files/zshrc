@@ -125,6 +125,29 @@ function kssh() {
   knife ssh -x justinforce -a name $*
 }
 
+##
+# Creates a .rvmrc.
+#
+# Arguments:
+#   $1 ruby version
+#     - Defaults to 1.9.3.
+#     - You may specify "default" to explicitly use the default.
+#   $2 gemset name
+#     - Defaults to $(basename `pwd`)
+#     - You must also specify a ruby version to specify a gemset. You can
+#       specify "default" for your ruby version to use the default.
+#
+function rvmrc() {
+  default_ruby='1.9.3'
+  default_gemset=$(basename `pwd`)
+  : ${1:=$default_ruby}
+  : ${2:=$default_gemset}
+  [[ "$1" == 'default' ]] && 1=$default_ruby
+  rvm --install --create --rvmrc ${argv[1]}@${argv[2]}
+  cd .
+  rvm current
+}
+
 # command not found
 #
 if [ -f /etc/zsh_command_not_found ]; then
