@@ -78,7 +78,7 @@
 	url = https://github.com/tpope/vim-repeat
 [submodule "bundle/slim"]
 	path = bundle/slim
-	url = https://github.com/bbommarito/vim-slim
+	url = https://github.com/slim-template/vim-slim.git
 [submodule "bundle/speeddating"]
 	path = bundle/speeddating
 	url = https://github.com/tpope/vim-speeddating
