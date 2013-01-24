@@ -13,12 +13,12 @@
   co = checkout
   d  = diff
   dc = diff --cached
-  pl = pull
-  pr = pull --rebase
+  pl = pull --rebase
+  pr = pull-request
   ps = push
   s  = status --short
   l  = log --stat
-  f  = fetch --all --prune
+  f  = fetch origin --prune
   mm = merge origin/master
   ff = merge origin/master --ff-only
   m  = merge --no-ff
