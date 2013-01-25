@@ -68,10 +68,6 @@ else
   alias go=gnome-open
 fi
 
-# alias hub as git
-#
-eval "$(hub alias -s)"
-
 alias grep='grep --color=auto'
 alias g='git'
 alias h='heroku'
@@ -206,6 +202,14 @@ fi
 #
 [[ -s "${HOME}/.rvm/scripts/rvm" ]] && . "${HOME}/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 export PATH=${PATH}:${HOME}/.rvm/bin # Add RVM to PATH for scripting
+
+
+# alias hub as git
+#
+# This MUST come after adding ~/bin to PATH AND after loading rvm.
+#
+eval "$(hub alias -s)"
+
 
 if [ -x ~/.maven_env ]; then
   source ~/.maven_env
