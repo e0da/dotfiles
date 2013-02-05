@@ -219,3 +219,6 @@ fi
 # kinds of shit, and it works fine with TERM=xterm-color. Dumb.
 #
 export TERM=xterm-color
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

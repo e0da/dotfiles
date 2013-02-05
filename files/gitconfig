@@ -20,7 +20,7 @@
   l  = log --stat
   f  = fetch origin --prune
   mm = merge origin/master
-  ff = merge origin/master --ff-only
+  ff = merge origin/master master --ff-only
   m  = merge --no-ff
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
