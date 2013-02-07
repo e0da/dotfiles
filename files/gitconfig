@@ -26,7 +26,7 @@
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   last = cat-file commit HEAD
   fuckit = reset --hard HEAD
-  alias = "!zsh -lc \"source ~/.zshrc; git_aliases\""
+  aliases = "!zsh -lc \"source ~/.zshrc; git_aliases\""
 
 [rerere]
   enabled = true
