@@ -116,11 +116,26 @@ function git_aliases() {
   git config --get-regexp alias | sed 's/^alias\.//g' | awk '{printf "%7s %s %s %s %s %s %s %s %s %s\n", $1, $2, $3, $4, $5, $6, $7, $8, $9, $10}'
 }
 
-# kill specified line from .ssh/known_hosts
+# sanitize ~/.ssh/known_hosts by removing chunks which break `ssh-keygen -R`. If
+# a line number is supplied, also delete that line.
 #
 function khk() {
-  sed -i ${1}d ~/.ssh/known_hosts
+  known_hosts=~/.ssh/known_hosts
+  if [ "$1" != "" ]; then
+    sed -i ${1}d $known_hosts
+  fi
+  sed -i 's/,<[^>]*>//g' $known_hosts
 }
+
+# wrap ssh-keygen so that we always sanitize the file before calling
+# `ssh-keygen -R`
+#
+function ssh-keygen-wrapper() {
+  khk
+  ssh-keygen $*
+}
+alias ssh-keygen=ssh-keygen-wrapper
+
 
 # wrap knife ssh with my constant arguments since their config file doesn't
 # support it FOR SOME RAISIN
@@ -182,14 +197,6 @@ export PROMPT='%B%F{cyan}%m%F{white}:%F{blue}%~%F{white}%#%b%f '
 source ~/.zsh/git-prompt/zshrc.sh
 export ZSH_THEME_GIT_PROMPT_NOCACHE=1
 export RPROMPT='$(git_super_status)'
-
-# The render width of these special characters gets doinked in Gnome Terminal,
-# so append a space.
-#
-export ZSH_THEME_GIT_PROMPT_STAGED="$ZSH_THEME_GIT_PROMPT_STAGED "
-export ZSH_THEME_GIT_PROMPT_CONFLICTS="$ZSH_THEME_GIT_PROMPT_CONFLICTS "
-export ZSH_THEME_GIT_PROMPT_CHANGED="$ZSH_THEME_GIT_PROMPT_CHANGED "
-export ZSH_PROMPT_CHARS_ALREADY_PATCHED=1
 
 # automatically configure make -j option to -j{number of CPUs +1}
 #

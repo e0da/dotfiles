@@ -59,6 +59,7 @@ private
 #
 Mappings = {
   'Xdefaults'        =>  '~/.Xdefaults',
+  'Xresources'       =>  '~/.Xresources',
   'bash_aliases'     =>  '~/.bash_aliases',
   'bash_profile'     =>  '~/.bash_profile',
   'bashrc'           =>  '~/.bashrc',
