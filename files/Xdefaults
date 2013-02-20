@@ -4,10 +4,10 @@
 URxvt*loginShell: true
 URxvt*saveLines:  32767
 URxvt*scrollBar:  false
-URxvt*font:       xft:Ubuntu Mono:pixelsize=11
-URxvt*boldFont:   xft:Ubuntu Mono:pixelsize=11
+URxvt*font:       xft:Ubuntu Mono:size=11
+URxvt*boldFont:   xft:Ubuntu Mono:size=11
 ! fix character spacing. Thanks https://bugs.launchpad.net/ubuntu/+source/rxvt-unicode/+bug/309792/comments/5
-!URxvt*letterSpace: -1
+URxvt*letterSpace: -1
 URxvt*scrollTtyOutput: false
 URxvt*scrollTtyKeypress: true
 URxvt*iconFile: /usr/share/icons/Humanity/apps/48/terminal.svg
