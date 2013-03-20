@@ -70,6 +70,9 @@ filetype plugin indent on
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
 autocmd filetype c,asm,python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
+" Makefile no expandtab
+autocmd FileType make setlocal noexpandtab
+
 " bindings to:
 " - cd current window to parent directory of file
 " - generate ctags
