@@ -4,3 +4,5 @@ tags
 .rvmrc
 ignore
 ignore.cp
+.ruby-version
+command-t.vba
