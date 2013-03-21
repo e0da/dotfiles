@@ -1,9 +1,4 @@
-" Pathogen!
-" http://github.com/tpope/vim-pathogen
-"
-runtime bundle/pathogen/autoload/pathogen.vim
-call pathogen#infect()
-Helptags
+source ~/.vim/plugins.vim
 
 set hidden                                                " don't unload buffer when switching away
 set modeline                                              " allow per-file settings via modeline
