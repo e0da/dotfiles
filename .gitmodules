@@ -1,6 +1,3 @@
-[submodule "vim"]
-	path = files/vim
-	url = https://github.com/justinforce/dotvim
 [submodule "files/zsh/git-prompt"]
 	path = files/zsh/git-prompt
 	url = https://github.com/justinforce/zsh-git-prompt

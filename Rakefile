@@ -68,8 +68,6 @@ Mappings = {
   'rake'             =>  '~/.rake',
   'rspec'            =>  '~/.rspec',
   'tmux.conf'        =>  '~/.tmux.conf',
-  'vim'              =>  '~/.vim',
-  'vim/vimrc'        =>  '~/.vimrc',
   'zsh'              =>  '~/.zsh',
   'zshrc'            =>  '~/.zshrc',
 }
