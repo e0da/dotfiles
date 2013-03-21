@@ -1,6 +1,6 @@
 require 'socket'
 
-task :default => [:pull]
+task :default => [ :pull ]
 
 desc 'Same as install, but overwrites any existing files.'
 task :force do
@@ -22,7 +22,7 @@ namespace :install do
 
   desc 'Symlink config files to appopriate locations.'
   task :links do
-    Mappings.each do |source, target|
+    MAPPINGS.each do |source, target|
       link_file source, target
     end
   end
@@ -46,7 +46,7 @@ end
 
 desc 'Save Gnome Terminal configuration to files/gnome-terminal-conf.xml'
 task :save_gnome_terminal do
-  `gconftool-2 --dump '/apps/gnome-terminal' > files/gnome-terminal-conf.xml`
+  `which gconftool-2 && gconftool-2 --dump '/apps/gnome-terminal' > files/gnome-terminal-conf.xml`
 end
 
 private
@@ -57,7 +57,7 @@ private
 # Each key corresponds to a file in the +files+ directory, and each value is the
 # destination of the symlink.
 #
-Mappings = {
+MAPPINGS = {
   'Xdefaults'        =>  '~/.Xdefaults',
   'Xresources'       =>  '~/.Xresources',
   'bash_aliases'     =>  '~/.bash_aliases',
