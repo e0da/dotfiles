@@ -1,0 +1,46 @@
+#!/bin/sh
+
+ME=`whoami`
+
+install_rvm() {
+  curl -L https://get.rvm.io | bash -s stable --ruby
+}
+
+reload_rvm() {
+  source ~/.rvm/scripts/rvm
+  rvm reload
+}
+
+install_ruby() {
+  rvm 2.0.0 --install --default
+}
+
+choose_repo() {
+  if [ $ME = 'force' ]; then
+    REPO=git@github.com:justinforce/dotfiles
+  else
+    REPO=https://github.com/justinforce/dotfiles
+  fi
+}
+
+clone_repo() {
+  git clone $REPO ~/.dotfiles
+}
+
+run_rake_task() {
+  cd ~/.dotfiles
+  rake force
+}
+
+main() {
+  install_rvm
+  reload_rvm
+  install_ruby
+  choose_repo
+  clone_repo
+  run_rake_task
+}
+
+main
+
+:
