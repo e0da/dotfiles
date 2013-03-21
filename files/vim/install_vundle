@@ -1,0 +1,13 @@
+#!/bin/sh
+
+VUNDLE_PATH=~/.vim/bundle/vundle
+PLUGINS_PATH=~/.vim/plugins.vim
+REPO=https://github.com/gmarik/vundle.git
+
+if [ -e $VUNDLE_PATH ]; then
+  cd $VUNDLE_PATH && git pull origin master
+else
+  git clone $REPO $VUNDLE_PATH
+fi
+
+vim -u $PLUGINS_PATH -c 'BundleInstall!' -c 'qall'
