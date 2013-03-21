@@ -1,6 +1,10 @@
 #!/bin/sh
 
 ME=`whoami`
+DOTFILES=~/.dotfiles
+REPO_ID=justinforce/dotfiles
+SSH_REPO=git@github.com:$REPO_ID
+HTTPS_REPO=https://github.com/$REPO_ID
 
 install_rvm() {
   curl -L https://get.rvm.io | bash -s stable --ruby
@@ -17,18 +21,23 @@ install_ruby() {
 
 choose_repo() {
   if [ $ME = 'force' ]; then
-    REPO=git@github.com:justinforce/dotfiles
+    REPO=$SSH_REPO
   else
-    REPO=https://github.com/justinforce/dotfiles
+    REPO=$HTTPS_REPO
   fi
 }
 
-clone_repo() {
-  git clone $REPO ~/.dotfiles
+clone_or_update_repo() {
+  if [ -e $DOTFILES ]; then
+    cd $DOTFILES
+    git pull origin master
+  else
+    git clone $REPO $DOTFILES
+  fi
 }
 
 run_rake_task() {
-  cd ~/.dotfiles
+  cd $DOTFILES
   rake force
 }
 
@@ -37,7 +46,7 @@ main() {
   reload_rvm
   install_ruby
   choose_repo
-  clone_repo
+  clone_or_update_repo
   run_rake_task
 }
 
