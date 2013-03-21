@@ -8,15 +8,14 @@ with and only expected to work on Ubuntu.
 Installation
 ------------
 
-### One-liner ###
+### Copypasta ###
 
 > [Here be dragons!][] This is for **me** to use. The goal is for me to be able
 > to copy and paste a couple of lines to get up and running with my local
 > configuration. I **definitely want** all of the **potentially destructive**
 > actions taken by this script to take place. I'm **not responsible** if you
 > lose data or break something using my script. If you **really** want to do all
-> of the things that this script does, you can just copy and paste this
-> one-liner and you're all set.
+> of the things that this script does, proceed **at your own peril!**
 
 This copypasta will:
 
