@@ -7,7 +7,7 @@ SSH_REPO=git@github.com:$REPO_ID
 HTTPS_REPO=https://github.com/$REPO_ID
 
 install_rvm() {
-  curl -L https://get.rvm.io | bash -s stable --ruby
+  curl -L https://get.rvm.io | bash -s stable
 }
 
 reload_rvm() {
