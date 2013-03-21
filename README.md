@@ -28,8 +28,8 @@ This copypasta will:
 If you understand the risks and want to press on, copy and paste this:
 
 ```sh
-sudo apt-get update &&\
-sudo apt-get --yes --no-install-recommends install bash curl git patch bzip2 &&\
+sudo apt-get update && \
+sudo apt-get --yes --no-install-recommends install bash curl git patch bzip2 && \
 curl https://raw.github.com/justinforce/dotfiles/master/bootstrap | bash
 ```
 
