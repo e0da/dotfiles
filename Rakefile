@@ -29,7 +29,7 @@ namespace :install do
 
   desc 'Install Gnome Terminal configuration'
   task :gnome_terminal do
-    `gconftool-2 --load files/gnome-terminal-conf.xml`
+    `which gconftool-2 && gconftool-2 --load files/gnome-terminal-conf.xml`
   end
 end
 
