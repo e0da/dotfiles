@@ -15,6 +15,10 @@ reload_rvm() {
   rvm reload
 }
 
+install_ruby_requirements() {
+  $(rvm requirements | grep 'For ruby:' -A1 | tail -n1)
+}
+
 install_ruby() {
   rvm 2.0.0 --install --default
 }
@@ -44,6 +48,7 @@ run_rake_task() {
 main() {
   install_rvm
   reload_rvm
+  install_ruby_requirements
   install_ruby
   choose_repo
   clone_or_update_repo
