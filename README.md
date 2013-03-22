@@ -49,7 +49,7 @@ Highlights
 ----------
 
 I use [Vundle][] to manage plugins. I use [my fork][my zsh-git-prompt] of
-[git-zsh-prompt][] to get nice git info in my prompt.
+[zsh-git-prompt][] to get nice git info in my prompt.
 
 License
 -------
