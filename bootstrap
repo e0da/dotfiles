@@ -35,6 +35,8 @@ clone_or_update_repo() {
   if [ -e $DOTFILES ]; then
     cd $DOTFILES
     git pull origin master
+    git submodule sync
+    git submodule update --init
   else
     git clone --recursive $REPO $DOTFILES
   fi
