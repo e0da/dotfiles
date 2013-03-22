@@ -36,7 +36,7 @@ clone_or_update_repo() {
     cd $DOTFILES
     git pull origin master
   else
-    git clone $REPO $DOTFILES
+    git clone --recursive $REPO $DOTFILES
   fi
 }
 
