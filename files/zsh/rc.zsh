@@ -7,8 +7,7 @@ for script in \
   heroku \
   functions \
   ric \
+  local \
 ; do
   source $HOME/.zsh/$script.zsh
 done
-
-[ -f $HOME/.zlocal ] && source $HOME/.zlocal # secret shit that can't be source controlled
