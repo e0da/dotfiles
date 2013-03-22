@@ -77,7 +77,7 @@ MAPPINGS = {
   'vim'              =>  '~/.vim',
   'vim/vimrc'        =>  '~/.vimrc',
   'zsh'              =>  '~/.zsh',
-  'zshrc'            =>  '~/.zshrc',
+  'zsh/rc.zsh'       =>  '~/.zshrc',
 }
 
 ##
