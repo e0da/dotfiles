@@ -25,7 +25,7 @@ namespace :install do
     end
   end
 
-  desc 'Install Gnome Terminal configuration'
+  desc 'Install Gnome Terminal configuration (NOOP if there is no gconftool-2 bin)'
   task :gnome_terminal do
     `which gconftool-2 && gconftool-2 --load files/gnome-terminal-conf.xml`
   end
@@ -50,7 +50,7 @@ task :update_plugins do
   `git submodule foreach 'git checkout master; git pull --force origin master'`
 end
 
-desc 'Save Gnome Terminal configuration to files/gnome-terminal-conf.xml'
+desc 'Save Gnome Terminal configuration to files/gnome-terminal-conf.xml (NOOP if there is no gconftool-2 bin)'
 task :save_gnome_terminal do
   `which gconftool-2 && gconftool-2 --dump '/apps/gnome-terminal' > files/gnome-terminal-conf.xml`
 end
