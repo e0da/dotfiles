@@ -8,7 +8,7 @@ with and only expected to work on Ubuntu.
 Installation
 ------------
 
-### Copypasta ###
+### Copypasta Installation ###
 
 > [Here be dragons!][] This is for **me** to use. The goal is for me to be able
 > to copy and paste a couple of lines to get up and running with my local
