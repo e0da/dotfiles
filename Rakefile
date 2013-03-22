@@ -2,7 +2,7 @@ task :default => [ :update_and_force ]
 
 desc 'Same as install, but overwrites any existing files.'
 task :force do
-  @force = true
+  ENV['force'] = 'yes'
   Rake::Task[:install].invoke
 end
 
@@ -13,7 +13,7 @@ task install: %w[
   vim
 ]
 
-desc 'Symlink config files to appopriate locations.'
+desc 'Symlink config files to appopriate locations. (force=yes to overwrite)'
 task :links do
   MAPPINGS.each do |source, target|
     link_file source, target
@@ -26,7 +26,7 @@ task :gnome_terminal do
 end
 
 desc 'Install vim config, including plugins'
-task vim: 'install:links' do
+task vim: :links do
   `~/.vim/install_vundle`
 end
 
@@ -51,7 +51,15 @@ end
 
 private
 
-@force = false
+COLORS = {
+  red:    '1;31',
+  yellow: '1;33',
+}
+
+alias :rake_warn :warn
+def warn(msg, color=:red)
+  rake_warn "\e[#{COLORS[color]}m#{msg}\e[m"
+end
 
 ##
 # Each key corresponds to a file in the +files+ directory, and each value is the
@@ -81,8 +89,16 @@ MAPPINGS = {
 def link_file(source, target)
   source = "#{pwd}/files/#{source}"
   target = File.expand_path target
-  rm_rf target if @force
-  ln_s source, target unless File.exists? target
+  if File.exists? target
+    if ENV['force'] =~ /y/i
+      rm_rf target if ENV['force'] =~ /y/i
+      ln_s source, target
+    elsif File.directory? target
+      warn "#{target} is a directory. I'm not symlinking that unless you use force=yes", :yellow
+    else
+      ln_s source, target
+    end
+  end
 rescue
-  $stderr.puts "Couldn't link #{source} to #{target}. Use `rake force` to overwrite."
+  warn "Couldn't create #{target} because it exists. Use `force=yes` to overwrite."
 end
