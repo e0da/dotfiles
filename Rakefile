@@ -7,9 +7,7 @@ task :force do
 end
 
 desc 'Run all installation tasks (same as install:all)'
-task :install do
-  Rake::Task['install:all'].invoke
-end
+task install: 'install:all'
 
 namespace :install do
 
@@ -41,7 +39,7 @@ end
 desc '[Default] Update repository and run force task'
 task update_and_force: [ :update, :force ]
 
-desc 'Pull the latest changes from Git and update all submodules'
+desc 'Update repository'
 task :update do
   `git fetch --prune`
   `git pull --rebase --recurse-submodules origin master`
