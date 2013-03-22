@@ -1,6 +1,4 @@
-require 'socket'
-
-task :default => [ :pull ]
+task :default => [ :update_and_force ]
 
 desc 'Same as install, but overwrites any existing files.'
 task :force do
@@ -8,17 +6,19 @@ task :force do
   Rake::Task[:install].invoke
 end
 
-desc 'Run all installation tasks'
+desc 'Run all installation tasks (same as install:all)'
 task :install do
   Rake::Task['install:all'].invoke
 end
 
 namespace :install do
 
-  task :all do
-    Rake::Task['install:links'].invoke
-    Rake::Task['install:gnome_terminal'].invoke
-  end
+  desc 'Run all installation tasks'
+  task all: %w[
+    install:links
+    install:gnome_terminal
+    install:vim
+  ]
 
   desc 'Symlink config files to appopriate locations.'
   task :links do
@@ -31,10 +31,18 @@ namespace :install do
   task :gnome_terminal do
     `which gconftool-2 && gconftool-2 --load files/gnome-terminal-conf.xml`
   end
+
+  desc 'Install vim config, including plugins'
+  task vim: 'install:links' do
+    `~/.vim/install_vundle`
+  end
 end
 
-desc '[default] Pull the latest changes from Git and update all submodules'
-task :pull do
+desc '[Default] Update repository and run force task'
+task update_and_force: [ :update, :force ]
+
+desc 'Pull the latest changes from Git and update all submodules'
+task :update do
   `git fetch --prune`
   `git pull --rebase --recurse-submodules origin master`
 end
@@ -68,6 +76,8 @@ MAPPINGS = {
   'rake'             =>  '~/.rake',
   'rspec'            =>  '~/.rspec',
   'tmux.conf'        =>  '~/.tmux.conf',
+  'vim'              =>  '~/.vim',
+  'vim/vimrc'        =>  '~/.vimrc',
   'zsh'              =>  '~/.zsh',
   'zshrc'            =>  '~/.zshrc',
 }
