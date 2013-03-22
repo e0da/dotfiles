@@ -1,5 +1,3 @@
-ZSH=$HOME/.zsh
-
 for script in \
   environment \
   prompts \
@@ -12,3 +10,5 @@ for script in \
 ; do
   source $HOME/.zsh/$script.zsh
 done
+
+[ -f $HOME/.zlocal ] && source $HOME/.zlocal # secret shit that can't be source controlled

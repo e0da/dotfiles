@@ -6,34 +6,28 @@ task :force do
   Rake::Task[:install].invoke
 end
 
-desc 'Run all installation tasks (same as install:all)'
-task install: 'install:all'
+desc 'Run all installation tasks'
+task install: %w[
+  links
+  gnome_terminal
+  vim
+]
 
-namespace :install do
-
-  desc 'Run all installation tasks'
-  task all: %w[
-    install:links
-    install:gnome_terminal
-    install:vim
-  ]
-
-  desc 'Symlink config files to appopriate locations.'
-  task :links do
-    MAPPINGS.each do |source, target|
-      link_file source, target
-    end
+desc 'Symlink config files to appopriate locations.'
+task :links do
+  MAPPINGS.each do |source, target|
+    link_file source, target
   end
+end
 
-  desc 'Install Gnome Terminal configuration (NOOP if there is no gconftool-2 bin)'
-  task :gnome_terminal do
-    `which gconftool-2 && gconftool-2 --load files/gnome-terminal-conf.xml`
-  end
+desc 'Install Gnome Terminal configuration (NOOP if there is no gconftool-2 bin)'
+task :gnome_terminal do
+  `which gconftool-2 && gconftool-2 --load files/gnome-terminal-conf.xml`
+end
 
-  desc 'Install vim config, including plugins'
-  task vim: 'install:links' do
-    `~/.vim/install_vundle`
-  end
+desc 'Install vim config, including plugins'
+task vim: 'install:links' do
+  `~/.vim/install_vundle`
 end
 
 desc '[Default] Update repository and run force task'
@@ -69,6 +63,7 @@ MAPPINGS = {
   'bash_aliases'     =>  '~/.bash_aliases',
   'bash_profile'     =>  '~/.bash_profile',
   'bashrc'           =>  '~/.bashrc',
+  'bin'              =>  '~/bin',
   'gitconfig'        =>  '~/.gitconfig',
   'gitignore_global' =>  '~/.gitignore_global',
   'rake'             =>  '~/.rake',
