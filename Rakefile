@@ -89,6 +89,7 @@ MAPPINGS = {
 def link_file(source, target)
   source = "#{pwd}/files/#{source}"
   target = File.expand_path target
+  link   = -> { ln_s source, target }
   if File.exists? target
     if ENV['force'] =~ /y/i
       rm_rf target if ENV['force'] =~ /y/i
@@ -96,8 +97,10 @@ def link_file(source, target)
     elsif File.directory? target
       warn "#{target} is a directory. I'm not symlinking that unless you use force=yes", :yellow
     else
-      ln_s source, target
+      link.call
     end
+  else
+    link.call
   end
 rescue
   warn "Couldn't create #{target} because it exists. Use `force=yes` to overwrite."
