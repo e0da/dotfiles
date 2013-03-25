@@ -1,2 +1,5 @@
-[ -s $HOME/.rvm/scripts/rvm ] && . "$HOME/.rvm/scripts/rvm"
-export PATH=$PATH:$HOME/.rvm/bin
+RVM_LOCATIONS="$HOME/.rvm /usr/local/rvm"
+for location in $RVM_LOCATIONS; do
+  source $location/scripts/rvm 2>/dev/null
+  export PATH=$location/bin:$PATH
+done
