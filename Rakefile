@@ -47,8 +47,12 @@ task vim: :links do
   `~/.vim/install_vundle`
 end
 
+# Because this may update the Rakefile, we depend on the update task, then we
+# actually exec a call to rake in the shell.
 desc '[Default] Update repository and run force task'
-task update_and_force: [ :update, :force ]
+task update_and_force: :update do
+  exec 'rake force' if $? == 0
+end
 
 desc 'Update repository'
 task :update do
