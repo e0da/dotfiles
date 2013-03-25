@@ -19,7 +19,7 @@ desc 'Install packages'
 task :packages do
   to_install  = PACKAGES[:global]
   to_install += PACKAGES[:gui] unless ENV['DISPLAY'].nil?
-  `sudo apt-get update && sudo apt-get install -y #{to_install.join(' ')}`
+  `sudo apt-get update ; sudo apt-get install -y #{to_install.join(' ')}`
 end
 
 desc 'Set environmental settings that are not simple config files (e.g. `chsh`)'
