@@ -8,10 +8,27 @@ end
 
 desc 'Run all installation tasks'
 task install: %w[
+  packages
   links
+  environment
   gnome_terminal
   vim
 ]
+
+desc 'Install packages'
+task :packages do
+  to_install  = PACKAGES[:global]
+  to_install += PACKAGES[:gui] unless ENV['DISPLAY'].nil?
+  `sudo apt-get update && sudo apt-get install -y #{to_install.join(' ')}`
+end
+
+desc 'Set environmental settings that are not simple config files (e.g. `chsh`)'
+task environment: :shell
+
+desc 'Set preferred shell'
+task shell: :packages do
+  `sudo chsh -s $(which #{PREFERRED_SHELL}) $(whoami)`
+end
 
 desc 'Symlink config files to appopriate locations. (force=yes to overwrite)'
 task :links do
@@ -51,6 +68,8 @@ end
 
 private
 
+PREFERRED_SHELL = 'zsh'
+
 COLORS = {
   red:    '1;31',
   yellow: '1;33',
@@ -81,6 +100,21 @@ MAPPINGS = {
   'vim/vimrc'        =>  '~/.vimrc',
   'zsh'              =>  '~/.zsh',
   'zsh/rc.zsh'       =>  '~/.zshrc',
+}
+
+##
+# Packages to be instaled. global packages are always installed; gui packages
+# are only installed if a GUI is detected.
+#
+PACKAGES = {
+  global: %w[
+    zsh
+    tmux
+    vim
+  ],
+  gui: %w[
+    vim-gnome
+  ]
 }
 
 ##
