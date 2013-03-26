@@ -13,4 +13,39 @@ function reloc() {
   done
 }
 
+##
+# Opens an editor in the zlocal directory for convenience.
+#
+# Use gvim if there's a display, otherwise use vim.
+#
+function edloc() {
+  __edloc_NOGUI=
+  case "$1" in
+    '-G')
+      __edloc_NOGUI=yes
+      ;;
+    '')
+      ;;
+    *)
+      echo "Usage: edloc [-G]"
+      echo "\t-G disables GUI in GUI-enabled environments"
+      return
+      ;;
+  esac
+
+  case "$DISPLAY" in
+    '')
+      vim  $ZLOCAL
+      ;;
+    *)
+      case "$__edloc_NOGUI" in
+        yes)
+          vim $ZLOCAL ;;
+        *)
+          gvim $ZLOCAL ;;
+      esac
+      ;;
+  esac
+}
+
 reloc
