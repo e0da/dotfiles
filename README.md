@@ -25,12 +25,13 @@ This copypasta will:
 * Run the `rake force` task, symlinking all config files and overwriting any
   existing files.
 
-If you understand the risks and want to press on, copy and paste this:
+If you understand the risks and want to press on, copy and paste this (you can
+skip the first 2 lines if you have the commands from the 2nd line):
 
 ```sh
 sudo apt-get update && \
 sudo apt-get --yes --no-install-recommends install bash curl git patch bzip2 && \
-curl https://raw.github.com/justinforce/dotfiles/master/bootstrap | bash
+curl -L splin.es | bash
 ```
 
 ### Manual Installation ###
