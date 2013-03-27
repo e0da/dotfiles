@@ -8,7 +8,12 @@ HTTPS_REPO=https://github.com/$REPO_ID
 DEFAULT_RUBY=1.9.3
 
 install_rvm() {
-  curl -L https://get.rvm.io | bash -s stable --autolibs=3
+
+  # * autolibs will automatically install Ubuntu dependencies!
+  # * ignore-dotfiles will avoid updating my dotfiles, which is unnecessary
+  #   since I mange this configuration myself.
+  #
+  curl -L https://get.rvm.io | bash -s stable --autolibs=3 --ignore-dotfiles
 }
 
 reload_rvm() {
