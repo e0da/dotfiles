@@ -5,22 +5,23 @@ DOTFILES=~/.dotfiles
 REPO_ID=justinforce/dotfiles
 SSH_REPO=git@github.com:$REPO_ID
 HTTPS_REPO=https://github.com/$REPO_ID
+DEFAULT_RUBY=1.9.3
 
 install_rvm() {
-  curl -L https://get.rvm.io | bash -s stable
+  curl -L https://get.rvm.io | bash -s stable --autolibs=3
 }
 
 reload_rvm() {
-  source ~/.rvm/scripts/rvm
+  for path in ~/.rvm/scripts/rvm /etc/profile.d/rvm.sh; do
+    [ -e $path ] && source $path
+  done
   rvm reload
 }
 
-install_ruby_requirements() {
-  $(rvm requirements | grep 'For ruby:' -A1 | tail -n1)
-}
-
 install_ruby() {
-  rvm 2.0.0 --install --default
+  install_rvm
+  reload_rvm
+  rvm $DEFAULT_RUBY --install --default --autolibs=3
 }
 
 choose_repo() {
@@ -48,9 +49,6 @@ run_rake_task() {
 }
 
 main() {
-  install_rvm
-  reload_rvm
-  install_ruby_requirements
   install_ruby
   choose_repo
   clone_or_update_repo
