@@ -78,13 +78,6 @@ rescue
   warn "Couldn't create #{target} because it exists. Use `force=yes` to overwrite."
 end
 
-##
-# Wraps INSTALL_TASKS constant so we can define it down here but utilize it in
-# tasks. Yes, this is a little icky.
-#
-def install_tasks
-  INSTALL_TASKS
-end
 
 ################################################################################
 # Tasks
