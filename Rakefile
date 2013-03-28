@@ -6,14 +6,16 @@ task :force do
   Rake::Task[:install].invoke
 end
 
-desc 'Run all installation tasks'
-task install: %w[
+INSTALL_TASKS = %w[
   packages
   links
   environment
   gnome_terminal
   vim
 ]
+
+desc "Run these tasks in order: #{INSTALL_TASKS.join(' ')}"
+task install: INSTALL_TASKS
 
 desc 'Install packages'
 task :packages do
@@ -30,7 +32,7 @@ task shell: :packages do
   `sudo chsh -s $(which #{PREFERRED_SHELL}) $(whoami)`
 end
 
-desc 'Symlink config files to appopriate locations. (force=yes to overwrite)'
+desc 'Symlink config files to appropriate locations. (force=yes to overwrite)'
 task :links do
   MAPPINGS.each do |source, target|
     link_file source, target
