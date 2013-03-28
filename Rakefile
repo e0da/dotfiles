@@ -11,7 +11,7 @@ INSTALL_TASKS = %w[
   packages
   links
   environment
-  gnome_terminal
+  gnome_terminal:install
   vim
 ]
 
