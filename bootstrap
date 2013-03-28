@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ME=`whoami`
 DOTFILES=~/.dotfiles
@@ -54,6 +54,7 @@ run_rake_task() {
 }
 
 main() {
+  echo -e "\e[1;32mReticulating splines...\e[m"
   install_ruby
   choose_repo
   clone_or_update_repo
