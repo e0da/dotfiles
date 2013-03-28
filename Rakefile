@@ -129,18 +129,11 @@ PACKAGES = {
 def link_file(source, target)
   source = "#{pwd}/files/#{source}"
   target = File.expand_path target
-  link   = -> { ln_s source, target }
-  if File.exists? target
-    if ENV['force'] =~ /y/i
-      rm_rf target if ENV['force'] =~ /y/i
-      ln_s source, target
-    elsif File.directory? target
-      warn "#{target} is a directory. I'm not symlinking that unless you use force=yes", :yellow
-    else
-      link.call
-    end
+  rm_rf target if File.exists?(target) and ENV['force'] =~ /y/i
+  if File.directory? target
+    warn "#{target} is a directory. I'm not symlinking that unless you use force=yes", :yellow
   else
-    link.call
+    ln_s source, target
   end
 rescue
   warn "Couldn't create #{target} because it exists. Use `force=yes` to overwrite."
