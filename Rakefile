@@ -9,6 +9,7 @@ COLORS = {
 
 INSTALL_TASKS = %w[
   packages
+  hub
   links
   environment
   gnome_terminal:install
@@ -104,6 +105,11 @@ namespace :gnome_terminal do
   task :save do
     `which gconftool-2 && gconftool-2 --dump '/apps/gnome-terminal' > files/gnome-terminal-conf.xml`
   end
+end
+
+desc 'Set up hub (GitHub CLI tool)'
+task hub: :links do
+  `curl http://defunkt.io/hub/standalone -sLo ~/bin/hub && chmod +x ~/bin/hub`
 end
 
 desc "Run these tasks in order: #{INSTALL_TASKS.join(' ')}"
