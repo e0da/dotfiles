@@ -44,9 +44,10 @@ MAPPINGS = {
 #
 PACKAGES = {
   global: %w[
-    zsh
+    ack-grep
     tmux
     vim
+    zsh
   ],
   gui: %w[
     vim-gnome
