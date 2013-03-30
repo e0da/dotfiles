@@ -8,6 +8,6 @@ alias g='git'
 alias gg='gitg&!'
 alias go=gnome-open
 alias grep='grep --color=auto'
-alias h='heroku'
+alias h='hub'
 alias ls='ls --color=auto'
 alias ack='ack-grep'

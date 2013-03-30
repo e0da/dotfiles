@@ -3,7 +3,6 @@ for script in \
   prompts \
   aliases \
   ruby \
-  hub \
   heroku \
   functions \
   ric \
