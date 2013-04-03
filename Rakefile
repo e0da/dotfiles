@@ -44,6 +44,7 @@ MAPPINGS = {
 PACKAGES = {
   global: %w[
     ack-grep
+    autojump
     tmux
     vim
     zsh

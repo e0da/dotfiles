@@ -4,6 +4,7 @@ for script in \
   aliases \
   ruby \
   heroku \
+  autojump \
   functions \
   ric \
   local \
