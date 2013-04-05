@@ -11,3 +11,4 @@ alias go=gnome-open
 alias grep='grep --color=auto'
 alias h='hub'
 alias ls='ls --color=auto'
+alias v='vi'
