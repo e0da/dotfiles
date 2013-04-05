@@ -94,11 +94,11 @@ noremap <leader>gl :Glog<cr>
 noremap <leader>gd :Gdiff<cr>
 noremap <leader>gb :Gblame<cr>
 
-" move by screen lines
-noremap j gj
-noremap k gk
-noremap <c-j> 5gj
-noremap <c-k> 5gk
+" move between windows with C-hjkl
+noremap <c-h> <c-w>h
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
 
 " NERDTree
 let NERDTreeWinPos='right'
