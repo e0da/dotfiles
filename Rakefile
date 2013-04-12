@@ -21,20 +21,20 @@ INSTALL_TASKS = %w[
 # destination of the symlink.
 #
 MAPPINGS = {
-  'Xdefaults'        =>  '~/.Xdefaults',
-  'Xresources'       =>  '~/.Xresources',
-  'bash_profile'     =>  '~/.bash_profile',
-  'bashrc'           =>  '~/.bashrc',
-  'bin'              =>  '~/bin',
-  'gitconfig'        =>  '~/.gitconfig',
-  'gitignore_global' =>  '~/.gitignore_global',
-  'rake'             =>  '~/.rake',
-  'rspec'            =>  '~/.rspec',
-  'tmux.conf'        =>  '~/.tmux.conf',
-  'vim'              =>  '~/.vim',
-  'vim/vimrc'        =>  '~/.vimrc',
-  'zsh'              =>  '~/.zsh',
-  'zsh/rc.zsh'       =>  '~/.zshrc',
+  'Xdefaults'        => '~/.Xdefaults',
+  'Xresources'       => '~/.Xresources',
+  'bash_profile'     => '~/.bash_profile',
+  'bashrc'           => '~/.bashrc',
+  'bin'              => '~/bin',
+  'gitconfig'        => '~/.gitconfig',
+  'gitignore_global' => '~/.gitignore_global',
+  'rake'             => '~/.rake',
+  'rspec'            => '~/.rspec',
+  'tmux.conf'        => '~/.tmux.conf',
+  'vim'              => '~/.vim',
+  'vim/vimrc'        => '~/.vimrc',
+  'zsh'              => '~/.zsh',
+  'zsh/rc.zsh'       => '~/.zshrc',
 }
 
 ##
@@ -86,7 +86,7 @@ end
 # Tasks
 ################################################################################
 
-task :default => [ :update_and_force ]
+task default: :update_and_force
 
 desc 'Set environmental settings that are not simple config files (e.g. `chsh`)'
 task environment: :shell
