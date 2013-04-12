@@ -104,6 +104,12 @@ noremap <c-l> <c-w>l
 let NERDTreeWinPos='right'
 map <c-\> :NERDTreeToggle<cr>
 
+" Tagbar
+nmap <leader>rt :TagbarToggle<cr>
+
+" Ack
+nmap <leader>f :Ack<space>
+
 " Run ric parser test on given parser
 function! ParserTest(parser)
   cd /home/force/code/work/ric/src/nutricate/tests
