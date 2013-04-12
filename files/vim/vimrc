@@ -77,6 +77,7 @@ autocmd FileType make setlocal noexpandtab
 " - rerun previous :command
 " - underline a line with equals (h1 in Markdown documents)
 " - underline a line with hyphens (h2 in Markdown documents)
+" - sort selection
 noremap <leader>cd :lcd %:h<cr>:pwd<cr>
 noremap <leader>ct :!ctags -R .<cr><cr>
 noremap <leader>cf :CommandTFlush<cr>
@@ -85,6 +86,7 @@ map <leader>W :FixWhitespace<cr>
 map <leader>] @:
 map <leader>= yypVr=
 map <leader>- yypVr-
+map <leader>s :sort<cr>
 
 " fugitive shortcuts
 noremap <leader>gs :Gstatus<cr>
@@ -109,6 +111,9 @@ nmap <leader>rt :TagbarToggle<cr>
 
 " Ack
 nmap <leader>f :Ack<space>
+
+" Tabular
+nmap <leader>T :Tabularize<cr>
 
 " Run ric parser test on given parser
 function! ParserTest(parser)
