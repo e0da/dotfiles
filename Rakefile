@@ -45,6 +45,7 @@ PACKAGES = {
   global: %w[
     ack-grep
     autojump
+    exuberant-ctags
     tmux
     vim
     zsh
