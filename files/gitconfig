@@ -36,3 +36,7 @@
 	browser = google-chrome
 [github]
 	user = justin.force@gmail.com
+[credential]
+	helper = cache
+[credential "https://github.com"]
+	username = justinforce
