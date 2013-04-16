@@ -3,4 +3,4 @@ front    front02 front03 front05 front06
 proc     proc01 proc02
 staging  staging01 staging02 staging03 staging04 staging05
 trans    ws-trans02 ws-trans03 ws-trans04 ws-trans05 ws-trans06
-cook     app front proc staging trans
+cook     app front proc trans
