@@ -1,47 +1,61 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!               xterm
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+XTerm.font:               xft:Ubuntu Mono:size=11
+XTerm.boldFont:           xft:Ubuntu Mono:size=11
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!                rxvt
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-URxvt*loginShell: true
-URxvt*saveLines:  32767
-URxvt*scrollBar:  false
-URxvt*font:       xft:Ubuntu Mono:size=11
-URxvt*boldFont:   xft:Ubuntu Mono:size=11
-! fix character spacing. Thanks https://bugs.launchpad.net/ubuntu/+source/rxvt-unicode/+bug/309792/comments/5
-URxvt*letterSpace: -1
-URxvt*scrollTtyOutput: false
-URxvt*scrollTtyKeypress: true
-URxvt*iconFile: /usr/share/icons/Humanity/apps/48/terminal.svg
+!!
+URxvt.iconFile:           /usr/share/icons/Humanity/apps/48/terminal.svg
+URxvt.loginShell:         true
+URxvt.saveLines:          32767
+URxvt.scrollBar:          false
+URxvt.scrollTtyKeypress:  true
+URxvt.scrollTtyOutput:    false
+
+URxvt.font:               xft:Ubuntu Mono:size=11
+URxvt.boldFont:           xft:Ubuntu Mono:size=11
+
+URxvt.foreground:         #f8f8f2
+URxvt.background:         #272822
+URxvt.color0:             #212121
+URxvt.color1:             #e52222
+URxvt.color2:             #a6e32d
+URxvt.color3:             #fc951e
+URxvt.color4:             #c48dff
+URxvt.color5:             #fa2573
+URxvt.color6:             #67d9f0
+URxvt.color7:             #f2f2f2
+URxvt.color8:             #212121
+URxvt.color9:             #e52222
+URxvt.color10:            #a6e32d
+URxvt.color11:            #fc951e
+URxvt.color12:            #c48dff
+URxvt.color13:            #fa2573
+URxvt.color14:            #67d9f0
+URxvt.color15:            #f8f8f2
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!            rxvt colors
+!!
+!!            hacks/fixes
+!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Molokai
-!rxvt*background: #1b1d1e
-!warmer bg color
-URxvt*background: #272822
-URxvt*foreground: #f8f8f2
-URxvt*color0:     #212121
-URxvt*color1:     #e52222
-URxvt*color2:     #a6e32d
-URxvt*color3:     #fc951e
-URxvt*color4:     #c48dff
-URxvt*color5:     #fa2573
-URxvt*color6:     #67d9f0
-URxvt*color7:     #f2f2f2
-URxvt*color8:     #212121
-URxvt*color9:     #e52222
-URxvt*color10:    #a6e32d
-URxvt*color11:    #fc951e
-URxvt*color12:    #c48dff
-URxvt*color13:    #fa2573
-URxvt*color14:    #67d9f0
-URxvt*color15:    #f8f8f2
-
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!! Fix Ctrl-[arrow] behavior
-!!   https://bbs.archlinux.org/viewtopic.php?pid=1057389#p1057389
+!!       fix character spacing
+!! https://bugs.launchpad.net/ubuntu/+source/rxvt-unicode/+bug/309792/comments/5
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+URxvt.letterSpace: -1
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!     Fix Ctrl-[arrow] behavior
+!! https://bbs.archlinux.org/viewtopic.php?pid=1057389#p1057389
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
 URxvt.keysym.Control-Up:     \033[1;5A
 URxvt.keysym.Control-Down:   \033[1;5B
 URxvt.keysym.Control-Left:   \033[1;5D
