@@ -1,0 +1,8 @@
+terminal_args           = -fa 'xft:Ubuntu Mono:size=11'
+terminal_reserve_top    = 30
+terminal_reserve_right  = 0
+terminal_reserve_bottom = 0
+terminal_reserve_left   = 30
+extra_cluster_file      = ~/.clusterssh/clusters
+
+# vim: set ft=conf :

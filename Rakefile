@@ -26,6 +26,7 @@ MAPPINGS = {
   'bash_profile'     => '~/.bash_profile',
   'bashrc'           => '~/.bashrc',
   'bin'              => '~/bin',
+  'clusterssh'       => '~/.clusterssh',
   'gitconfig'        => '~/.gitconfig',
   'gitignore_global' => '~/.gitignore_global',
   'rake'             => '~/.rake',
