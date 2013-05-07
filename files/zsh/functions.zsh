@@ -54,3 +54,12 @@ function rmq() {
   url=http://localhost:$local_port
   open $url || gnome-open $url
 }
+
+function shmux() {
+  host=$1 && shift
+  ssh $host -t tmux $*
+}
+
+function eshmux() {
+  exec shmux $*
+}
