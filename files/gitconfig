@@ -40,3 +40,5 @@
 	helper = cache
 [credential "https://github.com"]
 	username = justinforce
+[push]
+	default = simple
