@@ -78,50 +78,50 @@ autocmd FileType make setlocal noexpandtab
 " - underline a line with equals (h1 in Markdown documents)
 " - underline a line with hyphens (h2 in Markdown documents)
 " - sort selection
-noremap <leader>cd :lcd %:h<cr>:pwd<cr>
-noremap <leader>ct :!ctags -R .<cr><cr>
-noremap <leader>cf :CommandTFlush<cr>
+noremap <Leader>cd :lcd %:h<CR>:pwd<CR>
+noremap <Leader>ct :!ctags -R .<CR><CR>
+noremap <Leader>cf :CommandTFlush<CR>
 noremap ' `
-map <leader>W :FixWhitespace<cr>
-map <leader>] @:
-map <leader>= yypVr=
-map <leader>- yypVr-
-map <leader>s :sort<cr>
+map <Leader>W :FixWhitespace<CR>
+map <Leader>] @:
+map <Leader>= yypVr=
+map <Leader>- yypVr-
+map <Leader>s :sort<CR>
 
 " fugitive shortcuts
-noremap <leader>gs :Gstatus<cr>
-noremap <leader>gc :Gcommit<cr>
-noremap <leader>ga :Gwrite<cr>
-noremap <leader>gl :Glog<cr>
-noremap <leader>gd :Gdiff<cr>
-noremap <leader>gb :Gblame<cr>
+noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gc :Gcommit<CR>
+noremap <Leader>ga :Gwrite<CR>
+noremap <Leader>gl :Glog<CR>
+noremap <Leader>gd :Gdiff<CR>
+noremap <Leader>gb :Gblame<CR>
 
 " move between windows with C-HJKL
-noremap <c-H> <c-w>h
-noremap <c-J> <c-w>j
-noremap <c-K> <c-w>k
-noremap <c-L> <c-w>l
+noremap <C-H> <C-w>h
+noremap <C-J> <C-w>j
+noremap <C-K> <C-w>k
+noremap <C-L> <C-w>l
 
 " jump 5 lines with C-jk
-noremap <c-j> 5j
-noremap <c-k> 5k
+noremap <C-j> 5j
+noremap <C-k> 5k
 
 " NERDTree
 let NERDTreeWinPos='right'
-map <c-\> :NERDTreeToggle<cr>
+map <C-Bslash> :NERDTreeToggle<CR>
 
 " Tagbar
-nmap <leader>rt :TagbarToggle<cr>
+nmap <Leader>rt :TagbarToggle<CR>
 
 " Ack
-nmap <leader>f :Ack<space>
+nmap <Leader>f :Ack<Space>
 
 " Tabular
-nmap <leader>T :Tabularize<cr>
+nmap <Leader>T :Tabularize<CR>
 
 " Run ric parser test on given parser
 function! ParserTest(parser)
   cd /home/force/code/work/ric/src/nutricate/tests
-  call feedkeys("ggdG:read !./runner.py rparse/" . a:parser . " 2>&1\<cr>\<cr>gg")
+  call feedkeys("ggdG:read !./runner.py rparse/" . a:parser . " 2>&1\<CR>\<CR>gg")
 endfunction
 command! -nargs=1 PT :call ParserTest("test_<args>.py") " invoke with `:PT parser_name`. Best to load python 2.5 virtualenv first
