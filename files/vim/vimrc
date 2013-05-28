@@ -96,11 +96,15 @@ noremap <leader>gl :Glog<cr>
 noremap <leader>gd :Gdiff<cr>
 noremap <leader>gb :Gblame<cr>
 
-" move between windows with C-hjkl
-noremap <c-h> <c-w>h
-noremap <c-j> <c-w>j
-noremap <c-k> <c-w>k
-noremap <c-l> <c-w>l
+" move between windows with C-HJKL
+noremap <c-H> <c-w>h
+noremap <c-J> <c-w>j
+noremap <c-K> <c-w>k
+noremap <c-L> <c-w>l
+
+" jump 5 lines with C-jk
+noremap <c-j> 5j
+noremap <c-k> 5k
 
 " NERDTree
 let NERDTreeWinPos='right'
