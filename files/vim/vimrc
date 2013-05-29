@@ -24,6 +24,7 @@ set printoptions=paper:letter                             " use letter as the pr
 set guioptions-=T                                         " turn off GUI toolbar (icons)
 set guioptions-=r                                         " turn off GUI right scrollbar
 set guioptions-=L                                         " turn off GUI left scrollbar
+set winaltkeys=no                                         " turn off stupid fucking alt shortcuts
 set laststatus=2                                          " always show status bar
 
 " middle-click paste
@@ -96,11 +97,15 @@ noremap <Leader>gl :Glog<CR>
 noremap <Leader>gd :Gdiff<CR>
 noremap <Leader>gb :Gblame<CR>
 
-" move between windows with C-HJKL
-noremap <C-H> <C-w>h
-noremap <C-J> <C-w>j
-noremap <C-K> <C-w>k
-noremap <C-L> <C-w>l
+" move between windows with M-hjkl (urxvt then gvim)
+noremap <Esc>h <C-w>h
+noremap <Esc>j <C-w>j
+noremap <Esc>k <C-w>k
+noremap <Esc>l <C-w>l
+noremap <M-h> <C-w>h
+noremap <M-j> <C-w>j
+noremap <M-k> <C-w>k
+noremap <M-l> <C-w>l
 
 " jump 5 lines with C-jk
 noremap <C-j> 5j
