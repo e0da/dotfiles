@@ -80,7 +80,7 @@ autocmd FileType make setlocal noexpandtab
 " - underline a line with hyphens (h2 in Markdown documents)
 " - sort selection
 noremap <Leader>cd :lcd %:h<CR>:pwd<CR>
-noremap <Leader>ct :!ctags -R -f .git/tags .<CR><CR>
+noremap <Leader>ct :!ctags -R .<CR><CR>
 noremap <Leader>cf :CommandTFlush<CR>
 noremap ' `
 map <Leader>W :FixWhitespace<CR>
