@@ -80,7 +80,7 @@ autocmd FileType make setlocal noexpandtab
 " - underline a line with hyphens (h2 in Markdown documents)
 " - sort selection
 noremap <Leader>cd :lcd %:h<CR>:pwd<CR>
-noremap <Leader>ct :!ctags -R .<CR><CR>
+noremap <Leader>ct :!ctags -R -f .git/tags .<CR><CR>
 noremap <Leader>cf :CommandTFlush<CR>
 noremap ' `
 map <Leader>W :FixWhitespace<CR>
@@ -98,10 +98,10 @@ noremap <Leader>gd :Gdiff<CR>
 noremap <Leader>gb :Gblame<CR>
 
 " move between windows with M-hjkl (urxvt then gvim)
-noremap <Esc>h <C-w>h
-noremap <Esc>j <C-w>j
-noremap <Esc>k <C-w>k
-noremap <Esc>l <C-w>l
+" noremap <Esc>h <C-w>h
+" noremap <Esc>j <C-w>j
+" noremap <Esc>k <C-w>k
+" noremap <Esc>l <C-w>l
 noremap <M-h> <C-w>h
 noremap <M-j> <C-w>j
 noremap <M-k> <C-w>k
