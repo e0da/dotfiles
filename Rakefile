@@ -23,6 +23,7 @@ INSTALL_TASKS = %w[
 MAPPINGS = {
   'Xdefaults'        => '~/.Xdefaults',
   'Xresources'       => '~/.Xresources',
+  'ackrc'            => '~/.ackrc',
   'bash_profile'     => '~/.bash_profile',
   'bashrc'           => '~/.bashrc',
   'bin'              => '~/bin',
@@ -156,6 +157,6 @@ task :update_plugins do
 end
 
 desc 'Install vim config, including plugins'
-task vim: :links do
+task :vim => :links do
   `~/.vim/install_vundle`
 end
