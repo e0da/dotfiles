@@ -6,3 +6,4 @@ ignore
 ignore.cp
 .ruby-version
 command-t.vba
+libpeerconnection.log
