@@ -63,3 +63,19 @@ function shmux() {
 function eshmux() {
   exec shmux $*
 }
+
+function notify_sshable() {
+  host=$1
+  timeout=${2:-1}
+  sound=${3:-"$HOME/Dropbox/sounds/LOZ_Secret.wav"}
+  iteration=0
+  while true; do
+    let iteration=$iteration+1
+    echo "Attempt $iteration..."
+    ssh -oConnectTimeout=$timeout $host true
+    if [ $? = 0 ]; then
+      aplay $sound
+      break
+    fi
+  done
+}
