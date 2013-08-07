@@ -1,6 +1,7 @@
 [user]
   name = Justin Force
   email = justin.force@gmail.com
+	signingkey = 0x203EABFA
 
 [color]
   ui = auto
