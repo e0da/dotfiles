@@ -42,7 +42,7 @@ bindkey ';5D' backward-word
 # environment
 #
 export PATH=$HOME/bin:$PATH
-export TERM=xterm-color
+export TERM=screen-256color
 export EDITOR=vi
 export GIT_EDITOR=vi
 
