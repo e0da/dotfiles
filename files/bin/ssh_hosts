@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'pry'
-
 COMMAND = 'knife search node \* -a ipaddress'
 REGEX   = /(\S+):\n  ipaddress: (\S+)/
 FORMAT  =<<FMT
