@@ -1,7 +1,5 @@
-[user]
-  name = Justin Force
-  email = justin.force@gmail.com
-	signingkey = 0x203EABFA
+[include]
+  path = ~/.gitconfig.local
 
 [color]
   ui = auto
@@ -35,11 +33,7 @@
 	excludesfile = ~/.gitignore_global
 [web]
 	browser = google-chrome
-[github]
-	user = justin.force@gmail.com
 [credential]
 	helper = cache
-[credential "https://github.com"]
-	username = justinforce
 ; [push]
 ; 	default = simple
