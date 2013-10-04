@@ -1,7 +1,7 @@
 app      app04 app05 app06
-front    front02 front03 front05 front06
+front    front02 front04 front05 front06
 proc     proc01 proc02
 staging  staging01 staging02 staging03 staging04 staging05
-trans    ws-trans02 ws-trans03 ws-trans04 ws-trans05 ws-trans06
+trans    ws-trans02 ws-trans03 ws-trans04 ws-trans05 ws-trans06 ws-trans07 ws-trans08
 cook     app front proc trans
 gentoo   front01 dev02
