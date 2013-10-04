@@ -1,13 +1,14 @@
+# ruby comes last because RVM complains about the order of the PATH.
 for script in \
   environment  \
   prompts      \
   aliases      \
-  ruby         \
   heroku       \
   autojump     \
   functions    \
   ric          \
   local        \
+  ruby         \
 ; do
   source $HOME/.zsh/$script.zsh
 done
