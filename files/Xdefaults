@@ -19,6 +19,33 @@ URxvt.scrollTtyOutput:    false
 URxvt.font:               xft:Ubuntu Mono:size=11
 URxvt.boldFont:           xft:Ubuntu Mono:size=11
 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! My classic color theme
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+! URxvt.foreground:   #bebebe
+! URxvt.background:   #333333
+! URxvt.color0:       #2E3436
+! URxvt.color1:       #CC0000
+! URxvt.color2:       #4E9A06
+! URxvt.color3:       #C4A000
+! URxvt.color4:       #3465A4
+! URxvt.color5:       #75507B
+! URxvt.color6:       #06989A
+! URxvt.color7:       #D3D7CF
+! URxvt.color8:       #555753
+! URxvt.color9:       #EF2929
+! URxvt.color10:      #8AE234
+! URxvt.color11:      #FCE94F
+! URxvt.color12:      #729FCF
+! URxvt.color13:      #AD7FA8
+! URxvt.color14:      #34E2E2
+! URxvt.color15:      #EEEEEC
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! Molokai color theme
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
 URxvt.foreground:         #f8f8f2
 URxvt.background:         #272822
 URxvt.color0:             #212121
