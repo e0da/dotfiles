@@ -32,6 +32,7 @@ MAPPINGS = {
   'gitignore_global' => '~/.gitignore_global',
   'rake'             => '~/.rake',
   'rspec'            => '~/.rspec',
+  'terminfo'         => '~/.terminfo',
   'tmux.conf'        => '~/.tmux.conf',
   'vim'              => '~/.vim',
   'vim/vimrc'        => '~/.vimrc',

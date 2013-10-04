@@ -42,7 +42,6 @@ bindkey ';5D' backward-word
 # environment
 #
 export PATH=$HOME/bin:$PATH
-export TERM=screen-256color
 export EDITOR=vi
 export GIT_EDITOR=vi
 
@@ -50,3 +49,18 @@ export GIT_EDITOR=vi
 #
 let MAKEJOBS=$(grep -c processor /proc/cpuinfo)+1
 export MAKEOPTS=-j${MAKEJOBS}
+
+# Try setting the TERM to screen-256color-noit (my custom terminfo with no
+# fucking italics). If that fails, fall back to screen-256color.
+#
+# To create the custom terminfo,
+#
+#    infocmp screen-256color \
+#      | sed 's/screen-256color/screen-256color-noit/' \
+#      | sed 's/colors,$/colors without fucking italics,/' \
+#      | sed 's/3m/7m/g' \
+#      > /tmp/terminfo \
+#      && tic /tmp/terminfo
+#
+export TERM=screen-256color-noit 2>/dev/null
+infocmp &>/dev/null || export TERM=screen-256color
