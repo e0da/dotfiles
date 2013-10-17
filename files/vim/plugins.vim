@@ -11,13 +11,9 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'bronson/vim-trailing-whitespace'
 Bundle 'chikamichi/mediawiki.vim'
 Bundle 'chrisbra/csv.vim'
+Bundle 'ekalinin/Dockerfile.vim'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
-" XXX
-" Delete my dockerfile.vim fork when honza merges my changes
-Bundle 'justinforce/dockerfile.vim'
-" Bundle 'honza/dockerfile.vim'
-" /XXX
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'majutsushi/tagbar'
