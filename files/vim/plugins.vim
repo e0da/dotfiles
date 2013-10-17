@@ -13,7 +13,11 @@ Bundle 'chikamichi/mediawiki.vim'
 Bundle 'chrisbra/csv.vim'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
-Bundle 'honza/dockerfile.vim'
+" XXX
+" Delete my dockerfile.vim fork when honza merges my changes
+Bundle 'justinforce/dockerfile.vim'
+" Bundle 'honza/dockerfile.vim'
+" /XXX
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'majutsushi/tagbar'
