@@ -157,6 +157,7 @@ task :update_plugins do
   `git submodule foreach 'git checkout master; git pull --force origin master'`
 end
 
+# FIXME vim shouldn't symlink EVERYTHING. Need to make symlinker more granular.
 desc 'Install vim config, including plugins'
 task :vim => :links do
   `~/.vim/install_vundle`
