@@ -5,6 +5,7 @@ function git_aliases() {
 }
 
 alias ack='ack-grep'
+alias d='sudo docker'
 alias g='git'
 alias gg='gitg&!'
 alias go=gnome-open
