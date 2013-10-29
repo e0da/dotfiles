@@ -14,7 +14,8 @@ set mouse=a                                               " enable mouse for all
 set nomousehide                                           " don't hide the mouse cursor while typing
 set mousemodel=popup                                      " right-click pops up context menu
 set ruler                                                 " show cursor position in status bar
-set number                                                " show line numbers on left
+set relativenumber                                        " show relative line numbers
+set number                                                " show absolute line number of the current line
 set nofoldenable                                          " I fucking hate code folding
 set scrolloff=10                                          " scroll the window so we can always see 10 lines around the cursor
 set textwidth=80                                          " show a vertical line at the 79th character
