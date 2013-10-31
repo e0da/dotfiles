@@ -99,39 +99,53 @@ Xft.hintstyle: hintslight
 
 *background:            S_base03
 *foreground:            S_base00
-*fading:                40
+*fading:                50
 *fadeColor:             S_base03
 *cursorColor:           S_base1
 *pointerColorBackground:S_base01
 *pointerColorForeground:S_base1
 
 !! black dark/light
-*color0:                S_base02
-*color8:                S_base03
+! *color0:                S_base02
+! *color8:                S_base03
+*color0:                S_base03
+*color8:                S_base02
 
 !! red dark/light
-*color1:                S_red
-*color9:                S_orange
+! *color1:                S_red
+! *color9:                S_orange
+*color1:                S_orange
+*color9:                S_red
 
 !! green dark/light
-*color2:                S_green
-*color10:               S_base01
+! *color2:                S_green
+! *color10:               S_base01
+*color2:                S_cyan
+*color10:               S_green
 
 !! yellow dark/light
-*color3:                S_yellow
-*color11:               S_base00
+! *color3:                S_yellow
+! *color11:               S_base00
+*color3:                S_green
+*color11:               S_yellow
 
 !! blue dark/light
-*color4:                S_blue
-*color12:               S_base0
+! *color4:                S_blue
+! *color12:               S_base0
+*color4:                S_violet
+*color12:               S_blue
 
 !! magenta dark/light
-*color5:                S_magenta
-*color13:               S_violet
+*color5:                S_red
+*color13:               S_magenta
+! *color5:                S_magenta
+! *color13:               S_violet
 
 !! cyan dark/light
-*color6:                S_cyan
-*color14:               S_base1
+! *color6:                S_cyan
+! *color14:               S_base1
+*color6:                S_blue
+*color14:               S_cyan
 
 !! white dark/light
 *color7:                S_base2
