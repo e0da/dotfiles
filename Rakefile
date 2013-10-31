@@ -20,7 +20,12 @@ INSTALL_TASKS = %w[
 # Each key corresponds to a file in the +files+ directory, and each value is the
 # destination of the symlink.
 #
-MAPPINGS = {
+VIM_MAPPINGS = {
+  'vim'                => '~/.vim',
+  'vim/vimrc'          => '~/.vimrc',
+}
+
+NON_VIM_MAPPINGS = {
   'Xdefaults'          => '~/.Xdefaults',
   'Xresources'         => '~/.Xresources',
   'ackrc'              => '~/.ackrc',
@@ -34,8 +39,6 @@ MAPPINGS = {
   'rspec'              => '~/.rspec',
   'terminfo'           => '~/.terminfo',
   'tmux.conf'          => '~/.tmux.conf',
-  'vim'                => '~/.vim',
-  'vim/vimrc'          => '~/.vimrc',
   'xrdb-merge.desktop' => '~/.config/autostart/xrdb-merge.desktop',
   'zsh'                => '~/.zsh',
   'zsh/rc.zsh'         => '~/.zshrc',
@@ -123,8 +126,15 @@ desc "Run these tasks in order: #{INSTALL_TASKS.join(' ')}"
 task install: INSTALL_TASKS
 
 desc 'Symlink config files to appropriate locations. (force=yes to overwrite)'
-task :links do
-  MAPPINGS.each do |source, target|
+task links: :vim_links do
+  NON_VIM_MAPPINGS.each do |source, target|
+    link_file source, target
+  end
+end
+
+desc 'Symlink only Vim-related config files to appropriate locations. (force=yes to overwrite)'
+task :vim_links do
+  VIM_MAPPINGS.each do |source, target|
     link_file source, target
   end
 end
@@ -159,8 +169,7 @@ task :update_plugins do
   `git submodule foreach 'git checkout master; git pull --force origin master'`
 end
 
-# FIXME vim shouldn't symlink EVERYTHING. Need to make symlinker more granular.
 desc 'Install vim config, including plugins'
-task :vim => :links do
+task vim: :vim_links do
   `~/.vim/install_vundle`
 end
