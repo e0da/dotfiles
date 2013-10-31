@@ -63,3 +63,8 @@ export MAKEOPTS=-j${MAKEJOBS}
 #      && tic /tmp/terminfo
 #
 export TERM=screen-256color 2>/dev/null
+
+# Debian package development
+#
+export DEBEMAIL=justin.force@gmail.com
+export DEBFULLNAME='Justin Force'
