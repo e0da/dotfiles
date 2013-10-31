@@ -78,6 +78,7 @@ def link_file(source, target)
   if File.directory? target
     warn "#{target} is a directory. I'm not symlinking that unless you use force=yes", :yellow
   else
+    FileUtils.mkdir_p File.dirname(target)
     ln_s source, target
   end
 rescue
