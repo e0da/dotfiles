@@ -1,5 +1,7 @@
-[include]
-  path = ~/.gitconfig.local
+[user]
+  name       = Justin Force
+  email      = justin.force@gmail.com
+  signingkey = 0x203EABFA
 
 [color]
   ui = auto
@@ -29,11 +31,15 @@
 
 [rerere]
   enabled = true
+
 [core]
 	excludesfile = ~/.gitignore_global
+
 [web]
 	browser = google-chrome
+
 [credential]
-	helper = cache
+  helper = store
+
 ; [push]
 ; 	default = simple
