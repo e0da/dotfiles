@@ -1,0 +1,28 @@
+#!/bin/sh
+
+environment=$1
+lport=$2
+: ${environment:=staging}
+
+case "$environment" in
+  production)
+    default_lport=15672
+    rport=15672
+    host=mq01
+    ;;
+  staging)
+    default_lport=55672
+    rport=55672
+    host=staging04
+    ;;
+  *)
+    echo "Usage: $0 [staging|production]"
+    exit 1
+    ;;
+esac
+
+: ${lport:=$default_lport}
+url=http://localhost:$lport
+
+ssh -fNL$lport:localhost:$rport $host
+open $url || gnome-open $url
