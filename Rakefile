@@ -29,6 +29,7 @@ NON_VIM_MAPPINGS = {
   'Xdefaults'          => '~/.Xdefaults',
   'Xresources'         => '~/.Xresources',
   'ackrc'              => '~/.ackrc',
+  'aptitude'           => '~/.aptitude',
   'bash_profile'       => '~/.bash_profile',
   'bashrc'             => '~/.bashrc',
   'bin'                => '~/bin',
