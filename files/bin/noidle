@@ -1,0 +1,8 @@
+#!/bin/sh
+
+while true; do
+  location=$(xdotool getmouselocation | awk '{print $1; print $2}' | sed 's/.://g')
+  xdotool mousemove 0 0
+  xdotool mousemove $location
+  sleep 5
+done
