@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# For the first 10 seconds after login, spam xrdb hard, then settle in to
+# spamming it every 5 seconds.
+
+MERGE_XRESOURCES='xrdb -merge .Xresources'
+
+_spam_xrdb() {
+  for f in `seq 100`; do
+    $MERGE_XRESOURCES
+    sleep 0.1
+  done
+
+  while true; do
+    $MERGE_XRESOURCES
+    sleep 5
+  done
+}
+
+_spam_xrdb &
