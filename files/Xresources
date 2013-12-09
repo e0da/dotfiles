@@ -99,7 +99,7 @@ Xft.hintstyle: hintslight
 
 *background:            S_base03
 *foreground:            S_base00
-*fading:                40
+*fading:                25
 *fadeColor:             S_base03
 *cursorColor:           S_base1
 *pointerColorBackground:S_base01
@@ -147,7 +147,6 @@ xterm*boldFaceName:  Ubuntu Mono:pixelsize=11
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !! rxvt-unicode
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-URxvt.fade:               50
 URxvt.font:               xft:Ubuntu Mono:pixelsize=11
 URxvt.boldFont:           xft:Ubuntu Mono:bold:pixelsize=11
 URxvt.italicFont:         xft:Ubuntu Mono:italic:pixelsize=11
