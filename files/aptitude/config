@@ -1,15 +1,8 @@
-# aptitude is incompatible with a terminal in solarized dark.
-# So we need to tweak aptitude's color style.
-# Put the following lines in `/etc/apt.conf` or `~/.aptitude/config`.
-#
-# Source: https://gist.github.com/weakish/2994574
-
-Aptitude::UI::Styles {
-  Default {
-    bg default;
-  };
-  DepBroken {
-    fg white;
-    bg red;
-  };
-};
+Aptitude "";
+Aptitude::UI "";
+Aptitude::UI::Styles "";
+Aptitude::UI::Styles::Default "";
+Aptitude::UI::Styles::Default::bg "default";
+Aptitude::UI::Styles::DepBroken "";
+Aptitude::UI::Styles::DepBroken::fg "white";
+Aptitude::UI::Styles::DepBroken::bg "red";
