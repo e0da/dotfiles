@@ -71,4 +71,5 @@ export DEBFULLNAME='Justin Force'
 
 # awscli completion
 #
-source /usr/local/bin/aws_zsh_completer.sh
+[ -f /usr/local/bin/aws_zsh_completer.sh ] &&
+  source /usr/local/bin/aws_zsh_completer.sh
