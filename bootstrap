@@ -2,28 +2,16 @@
 
 DOTFILES=~/.dotfiles
 REPO=https://github.com/justinforce/dotfiles
-DEFAULT_RUBY=1.9.3
 
-install_rvm() {
-
-  # * autolibs will automatically install Ubuntu dependencies!
-  # * ignore-dotfiles will avoid updating my dotfiles, which is unnecessary
-  #   since I mange this configuration myself.
-  #
-  curl -L https://get.rvm.io | bash -s stable --autolibs=3 --ignore-dotfiles
+install_rvm_and_ruby() {
+  # --ignore-dotfiles will avoid updating my dotfiles, which I manage
+  curl -L https://get.rvm.io | bash -s stable --ignore-dotfiles --ruby
 }
 
-reload_rvm() {
+source_rvm() {
   for path in ~/.rvm/scripts/rvm /etc/profile.d/rvm.sh; do
     [ -e $path ] && source $path
   done
-  rvm reload
-}
-
-install_ruby() {
-  install_rvm
-  reload_rvm
-  rvm $DEFAULT_RUBY --install --default --autolibs=3
 }
 
 clone_or_update_repo() {
@@ -39,12 +27,13 @@ clone_or_update_repo() {
 
 run_rake_task() {
   cd $DOTFILES
+  source_rvm
   rake force
 }
 
 main() {
   echo -e "\e[1;32mReticulating splines...\e[m"
-  install_ruby
+  install_rvm_and_ruby
   clone_or_update_repo
   run_rake_task
 }

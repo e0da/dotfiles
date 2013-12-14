@@ -11,7 +11,7 @@ INSTALL_TASKS = %w[
   packages
   hub
   links
-  environment
+  shell
   gnome_terminal:install
   vim
 ]
@@ -73,13 +73,17 @@ def warn(msg, color=:red)
   rake_warn "\e[#{COLORS[color]}m#{msg}\e[m"
 end
 
+def force?
+  @force ||= ENV['force'] =~ /y/i
+end
+
 ##
 # Symlinks +src+ file or directory to +target+
 #
 def link_file(source, target)
   source = "#{pwd}/files/#{source}"
   target = File.expand_path target
-  rm_rf target if File.exists?(target) and ENV['force'] =~ /y/i
+  rm_rf target if File.exists?(target) and force?
   if File.directory? target
     warn "#{target} is a directory. I'm not symlinking that unless you use force=yes", :yellow
   else
@@ -97,9 +101,6 @@ end
 
 task default: :update_and_force
 
-desc 'Set environmental settings that are not simple config files (e.g. `chsh`)'
-task environment: :shell
-
 desc 'Same as install, but overwrites any existing files.'
 task :force do
   ENV['force'] = 'yes'
@@ -112,9 +113,9 @@ namespace :gnome_terminal do
     `which gconftool-2 && gconftool-2 --load files/gnome-terminal-conf.xml`
   end
 
-  desc 'Save Gnome Terminal configuration to files/gnome-terminal-conf.xml (NOOP if there is no gconftool-2 bin)'
+  desc 'Save Gnome Terminal configuration to files/gnome-terminal-conf.xml (requires gconftool-2 bin)'
   task :save do
-    `which gconftool-2 && gconftool-2 --dump '/apps/gnome-terminal' > files/gnome-terminal-conf.xml`
+    `gconftool-2 --dump '/apps/gnome-terminal' > files/gnome-terminal-conf.xml`
   end
 end
 
@@ -144,7 +145,7 @@ desc 'Install packages'
 task :packages do
   to_install  = PACKAGES[:global]
   to_install += PACKAGES[:gui] unless ENV['DISPLAY'].nil?
-  `sudo apt-get update ; sudo apt-get install -y #{to_install.join(' ')}`
+  `sudo apt-get update && sudo apt-get install --yes --quiet #{to_install.join(' ')}`
 end
 
 desc 'Set preferred shell'
@@ -171,6 +172,6 @@ task :update_plugins do
 end
 
 desc 'Install vim config, including plugins'
-task vim: :vim_links do
+task :vim => :vim_links do # hash rocket so vim doesn't burp when editing this file
   `~/.vim/install_vundle`
 end

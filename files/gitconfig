@@ -1,3 +1,5 @@
+; vi: set filetype=dosini:
+
 [user]
   name       = Justin Force
   email      = justin.force@gmail.com
@@ -40,6 +42,11 @@
 
 [credential]
   helper = store
-
-; [push]
-; 	default = simple
+  ; Credentials are stored in ~/.git-credentials. The format for a credentials
+  ; entry looks like this:
+  ;
+  ;   https://usename:password@example.com
+  ;
+  ; For GitHub the token is the username, and there is no password:
+  ;
+  ;   https://0123456789afcdef:@github.com
