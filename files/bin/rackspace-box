@@ -1,0 +1,8 @@
+#!/bin/sh
+
+knife rackspace server create \
+  --image 80fbcb55-b206-41f9-9bc2-2dd7aac6c061 \
+  --flavor 4 \
+  --environment production \
+  --run-list 'role[sr_base]' \
+  --node-name $1
