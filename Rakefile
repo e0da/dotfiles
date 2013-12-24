@@ -1,3 +1,5 @@
+require 'tmpdir'
+
 ################################################################################
 # Constants and helpers
 ################################################################################
@@ -121,7 +123,12 @@ end
 
 desc 'Set up hub (GitHub CLI tool)'
 task hub: :links do
-  `curl http://defunkt.io/hub/standalone -sLo ~/bin/hub && chmod +x ~/bin/hub`
+  `
+    set -x
+    gem install hub
+    hub hub standalone > ~/bin/hub && chmod +x ~/bin/hub
+    gem uninstall hub --all --executables --force
+  `
 end
 
 desc "Run these tasks in order: #{INSTALL_TASKS.join(' ')}"

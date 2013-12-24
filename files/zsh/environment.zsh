@@ -41,7 +41,7 @@ bindkey ';5D' backward-word
 
 # environment
 #
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin:$HOME/opt/bin:$PATH
 export EDITOR=vi
 export GIT_EDITOR=vi
 
