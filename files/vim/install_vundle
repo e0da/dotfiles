@@ -10,4 +10,4 @@ else
   git clone --depth=1 $REPO $VUNDLE_PATH
 fi
 
-vim -u $PLUGINS_PATH -c 'BundleInstall!' -c 'qall'
+vim -u $PLUGINS_PATH -c 'set nomore' -c 'BundleInstall!' -c 'qall'
