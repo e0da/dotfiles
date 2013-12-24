@@ -14,7 +14,7 @@ set mouse=a                                               " enable mouse for all
 set nomousehide                                           " don't hide the mouse cursor while typing
 set mousemodel=popup                                      " right-click pops up context menu
 set ruler                                                 " show cursor position in status bar
-set relativenumber                                        " show relative line numbers
+" set relativenumber                                        " show relative line numbers
 set number                                                " show absolute line number of the current line
 set nofoldenable                                          " I fucking hate code folding
 set scrolloff=10                                          " scroll the window so we can always see 10 lines around the cursor
@@ -38,22 +38,22 @@ set t_Co=256 " 256 colors in terminal
 set guifont=Ubuntu\ Mono\ 11
 
 "" Molokai theme
-" let g:molokai_original=1
-" colorscheme molokai
-" " override some highlight settings (turn off stupid italics in Molokai)
-" highlight ColorColumn  ctermbg=235 guibg=#2c2d27
-" highlight CursorLine   ctermbg=235 guibg=#2c2d27
-" highlight CursorColumn ctermbg=235 guibg=#2c2d27
-" highlight DiffText     gui=none
-" highlight Macro        gui=none
-" highlight SpecialKey   gui=none
-" highlight Special      gui=none
-" highlight StorageClass gui=none
-" highlight Tag          gui=none
+let g:molokai_original=1
+colorscheme molokai
+" override some highlight settings (turn off stupid italics in Molokai)
+highlight ColorColumn  ctermbg=235 guibg=#2c2d27
+highlight CursorLine   ctermbg=235 guibg=#2c2d27
+highlight CursorColumn ctermbg=235 guibg=#2c2d27
+highlight DiffText     gui=none
+highlight Macro        gui=none
+highlight SpecialKey   gui=none
+highlight Special      gui=none
+highlight StorageClass gui=none
+highlight Tag          gui=none
 
 "" Solarized theme
-colorscheme solarized
-set bg=dark
+" colorscheme solarized
+" set bg=dark
 
 " highlight the 80th column
 "
