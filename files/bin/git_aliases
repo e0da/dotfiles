@@ -1,0 +1,6 @@
+#!/bin/sh
+
+git config --get-regexp alias |
+  sed 's/alias.//' |
+  sed 's/ /GITALIASESPLACEHOLDER/' |
+  column -t -s 'GITALIASESPLACEHOLDER'
