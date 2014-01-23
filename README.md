@@ -59,5 +59,5 @@ License
 
 [Here be dragons!]:http://en.wikipedia.org/wiki/Here_be_dragons
 [Vundle]:https://github.com/gmarik/vundle
-[my zsh-git-prompt]:https://github.com/justinforce/zsh-git-prompt
+[my zsh-git-prompt]:https://github.com/justinforce/zsh-git-prompt/tree/silent
 [zsh-git-prompt]:https://github.com/olivierverdier/zsh-git-prompt
