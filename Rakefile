@@ -125,9 +125,9 @@ desc 'Set up hub (GitHub CLI tool)'
 task hub: :links do
   `
     set -x
-    gem install hub
-    hub hub standalone > ~/bin/hub && chmod +x ~/bin/hub
-    gem uninstall hub --all --executables --force
+    gem install hub &&
+      hub hub standalone > ~/bin/hub &&
+      chmod +x ~/bin/hub
   `
 end
 
