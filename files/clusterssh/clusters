@@ -1,5 +1,6 @@
 app           app04 app05 app06
 aleph-admin   admin01.aleph.receipt.com admin02.aleph.receipt.com admin03.aleph.receipt.com
+gimel-admin   admin01.gimel.receipt.com admin02.gimel.receipt.com admin03.gimel.receipt.com
 front         front02 front04 front05 front06
 proc          proc01 proc02
 staging       staging01 staging02 staging03 staging04 staging05 db-staging01 signet-staging01
