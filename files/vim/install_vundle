@@ -2,7 +2,7 @@
 
 VUNDLE_PATH=~/.vim/bundle/vundle
 PLUGINS_PATH=~/.vim/plugins.vim
-REPO=https://github.com/justinforce/vundle.git
+REPO=https://github.com/gmarik/vundle.git
 
 if [ -e $VUNDLE_PATH ]; then
   cd $VUNDLE_PATH && git pull --depth=1 origin master
