@@ -10,4 +10,5 @@ else
   git clone --depth=1 $REPO $VUNDLE_PATH
 fi
 
+# -c 'set nomore' keeps it from hanging when running in a really tiny window
 vim -u $PLUGINS_PATH -c 'set nomore' -c 'BundleInstall!' -c 'qall'
