@@ -1,11 +1,13 @@
 #!/bin/bash
 
-DOTFILES=~/.dotfiles
-REPO=https://github.com/justinforce/dotfiles
+dotfiles="$HOME/.dotfiles"
+repo='https://github.com/justinforce/dotfiles'
+
+set -e
 
 install_rvm_and_ruby() {
   # --ignore-dotfiles will avoid updating my dotfiles, which I manage
-  curl -L https://get.rvm.io | bash -s stable --ignore-dotfiles --ruby
+  \curl -sSL https://get.rvm.io | bash -s stable --ignore-dotfiles --ruby
 }
 
 source_rvm() {
@@ -15,18 +17,18 @@ source_rvm() {
 }
 
 clone_or_update_repo() {
-  if [ -e $DOTFILES ]; then
-    cd $DOTFILES
+  if [ -e $dotfiles ]; then
+    cd $dotfiles
     git pull origin master
     git submodule sync
     git submodule update --init
   else
-    git clone --recursive $REPO $DOTFILES
+    git clone --recursive $repo $dotfiles
   fi
 }
 
 run_rake_task() {
-  cd $DOTFILES
+  cd $dotfiles
   source_rvm
   rake force
 }
