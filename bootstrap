@@ -3,8 +3,6 @@
 dotfiles="$HOME/.dotfiles"
 repo='https://github.com/justinforce/dotfiles'
 
-set -e
-
 install_rvm_and_ruby() {
   # --ignore-dotfiles will avoid updating my dotfiles, which I manage
   \curl -sSL https://get.rvm.io | bash -s stable --ignore-dotfiles --ruby
