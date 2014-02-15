@@ -1,26 +1,38 @@
 #!/bin/bash
 
+set -e
+
 dotfiles="$HOME/.dotfiles"
 repo='https://github.com/justinforce/dotfiles'
+user_rvm_path="$HOME/.rvm/scripts/rvm"
+system_rvm_path='/usr/local/rvm/scripts/rvm'
+
+echo_in_green() {
+  echo -e "\e[1;32m$1\e[m"
+}
 
 install_rvm_and_ruby() {
+  echo_in_green 'Installing RVM and Ruby...'
   # --ignore-dotfiles will avoid updating my dotfiles, which I manage
   \curl -sSL https://get.rvm.io | bash -s stable --ignore-dotfiles --ruby
 }
 
 source_rvm() {
-  for path in ~/.rvm/scripts/rvm /etc/profile.d/rvm.sh; do
-    [ -e $path ] && source $path
+  echo_in_green 'Trying to load RVM...'
+  for path in $user_rvm_path $system_rvm_path; do
+    [ -e $path ] && source $path && return
   done
 }
 
 clone_or_update_repo() {
   if [ -e $dotfiles ]; then
+    echo_in_green 'Updating repo...'
     cd $dotfiles
     git pull origin master
     git submodule sync
     git submodule update --init
   else
+    echo_in_green 'Cloning dotfiles repo...'
     git clone --recursive $repo $dotfiles
   fi
 }
@@ -28,12 +40,18 @@ clone_or_update_repo() {
 run_rake_task() {
   cd $dotfiles
   source_rvm
+  echo_in_green 'Running rake task...FORCEFULLY!'
   rake force
 }
 
+rvm_is_installed() {
+  test -f $HOME/.rvm/scripts/rvm &&
+    echo_in_green 'RVM is already installed. If you want to update it, do it yourself. (e.g. rvm get stable)'
+}
+
 main() {
-  echo -e "\e[1;32mReticulating splines...\e[m"
-  install_rvm_and_ruby
+  echo_in_green 'Reticulating splines...'
+  rvm_is_installed || install_rvm_and_ruby
   clone_or_update_repo
   run_rake_task
 }

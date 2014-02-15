@@ -1,14 +1,17 @@
 #!/bin/sh
 
-VUNDLE_PATH=~/.vim/bundle/vundle
-PLUGINS_PATH=~/.vim/plugins.vim
-REPO=https://github.com/gmarik/vundle.git
+set -e
 
-if [ -e $VUNDLE_PATH ]; then
-  cd $VUNDLE_PATH && git pull --depth=1 origin master
+vundle_path="$HOME/.vim/bundle/vundle"
+plugins_path="$HOME/.vim/plugins.vim"
+repo='https://github.com/gmarik/vundle.git'
+
+if [ -e $vundle_path ]; then
+  cd $vundle_path
+  git pull --depth=1 origin master
 else
-  git clone --depth=1 $REPO $VUNDLE_PATH
+  git clone --depth=1 $repo $vundle_path
 fi
 
 # -c 'set nomore' keeps it from hanging when running in a really tiny window
-vim -u $PLUGINS_PATH -c 'set nomore' -c 'BundleInstall!' -c 'qall'
+vim -u $plugins_path -c 'set nomore' -c 'BundleInstall!' -c 'qall'
