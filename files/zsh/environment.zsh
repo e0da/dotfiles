@@ -47,7 +47,7 @@ export GIT_EDITOR=vi
 
 # automatically configure make -j option to -j{number of CPUs +1}
 #
-let MAKEJOBS=$(grep -c processor /proc/cpuinfo)+1
+[ `uname` = 'Darwin' ] || let MAKEJOBS=$(grep -c processor /proc/cpuinfo)+1
 export MAKEOPTS=-j${MAKEJOBS}
 
 # Set TERM to screen-256color (my modified, overridden custom terminfo with no
