@@ -51,3 +51,10 @@
   ; For GitHub the token is the username, and there is no password:
   ;
   ;   https://0123456789afcdef:@github.com
+
+; AppFolio config
+; http://af-academy.herokuapp.com/topics/dev-environment
+[init]
+	templatedir = ~/.git_template
+[push]
+	default = simple

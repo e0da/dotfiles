@@ -37,6 +37,7 @@ NON_VIM_MAPPINGS = {
   'bin'                => '~/bin',
   'clusterssh'         => '~/.clusterssh',
   'gitconfig'          => '~/.gitconfig',
+  'git_template'       => '~/.git_template',
   'gitignore_global'   => '~/.gitignore_global',
   'rake'               => '~/.rake',
   'rspec'              => '~/.rspec',
