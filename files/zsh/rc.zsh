@@ -8,6 +8,7 @@ for script in \
   functions    \
   ric          \
   local        \
+  appfolio     \
   ruby         \
 ; do
   source $HOME/.zsh/$script.zsh
