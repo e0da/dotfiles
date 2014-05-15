@@ -41,6 +41,7 @@ if has('gui_gnome')
 endif
 
 "" Molokai theme
+let g:rehash256=1
 let g:molokai_original=1
 colorscheme molokai
 " override some highlight settings (turn off stupid italics in Molokai)
