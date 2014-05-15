@@ -35,7 +35,10 @@ map! <S-Insert> <MiddleMouse>
 syntax on
 set background=dark
 set t_Co=256 " 256 colors in terminal
-set guifont=Ubuntu\ Mono\ 8.4
+
+if has('gui_gnome')
+  set guifont=Ubuntu\ Mono\ 8.4
+endif
 
 "" Molokai theme
 let g:molokai_original=1
