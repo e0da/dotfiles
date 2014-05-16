@@ -7,12 +7,12 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'bronson/vim-trailing-whitespace'
 Bundle 'chikamichi/mediawiki.vim'
 Bundle 'chrisbra/csv.vim'
 Bundle 'ekalinin/Dockerfile.vim'
-Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
