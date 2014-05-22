@@ -6,7 +6,6 @@ for script in \
   heroku       \
   autojump     \
   functions    \
-  ric          \
   local        \
   ruby         \
 ; do
