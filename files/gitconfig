@@ -25,8 +25,8 @@
   mm      = merge origin/master
   ff      = merge origin/master master --ff-only
   m       = merge --no-ff
-  lol     = log --graph --decorate --pretty      = oneline --abbrev-commit
-  lola    = log --graph --decorate --pretty      = oneline --abbrev-commit --all
+  lol     = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola    = log --graph --decorate --pretty=oneline --abbrev-commit --all
   last    = cat-file commit HEAD
   fuckit  = reset --hard HEAD
   aliases = !~/bin/git_aliases
@@ -36,25 +36,19 @@
   enabled = true
 
 [core]
-	excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore_global
+  editor = /usr/local/bin/vim
 
 [web]
-	browser = google-chrome
+  browser = google-chrome
 
+; Credentials are stored in ~/.git-credentials. The format for a credentials
+; entry looks like this:
+;
+;   https://usename:password@example.com
+;
+; For GitHub the token is the username, and there is no password:
+;
+;   https://0123456789afcdef:@github.com
 [credential]
   helper = store
-  ; Credentials are stored in ~/.git-credentials. The format for a credentials
-  ; entry looks like this:
-  ;
-  ;   https://usename:password@example.com
-  ;
-  ; For GitHub the token is the username, and there is no password:
-  ;
-  ;   https://0123456789afcdef:@github.com
-
-; AppFolio config
-; http://af-academy.herokuapp.com/topics/dev-environment
-[init]
-	templatedir = ~/.git_template
-[push]
-	default = simple
