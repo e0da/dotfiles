@@ -22,6 +22,9 @@ HISTSIZE=100000
 SAVEHIST=100000
 setopt appendhistory autocd beep extendedglob nomatch notify autopushd
 
+# brew-compatible zsh-completions
+[ `uname` = 'Darwin' ] && fpath=(/usr/local/share/zsh-completions $fpath)
+
 # C-x C-e command editing
 #
 autoload -U edit-command-line
