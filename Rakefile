@@ -39,7 +39,6 @@ NON_VIM_MAPPINGS = {
   'gitconfig'          => '~/.gitconfig',
   'git_template'       => '~/.git_template',
   'gitignore_global'   => '~/.gitignore_global',
-  'rake'               => '~/.rake',
   'rspec'              => '~/.rspec',
   'terminfo'           => '~/.terminfo',
   'tmux.conf'          => '~/.tmux.conf',
