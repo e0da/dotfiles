@@ -52,3 +52,9 @@
 ;   https://0123456789afcdef:@github.com
 [credential]
   helper = store
+
+[diff]
+  tool = pickavimdiff
+
+[difftool "pickavimdiff"]
+  cmd = `pickavimdiff` -f -d \"$LOCAL\" \"$REMOTE\"
