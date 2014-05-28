@@ -43,6 +43,7 @@ NON_VIM_MAPPINGS = {
   'xrdb-merge.desktop' => '~/.config/autostart/xrdb-merge.desktop',
   'zsh'                => '~/.zsh',
   'zsh/rc.zsh'         => '~/.zshrc',
+  'zsh/zshenv'         => '~/.zshenv',
 }
 
 ##
