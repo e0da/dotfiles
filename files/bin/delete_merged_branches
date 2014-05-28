@@ -1,5 +1,8 @@
 #!/bin/sh
 
-git branch | grep -v '\bmaster\b' | while read branch; do
+# Attempt to delete every branch except master and the currently checked out
+# branch. If the branch isn't merged, it won't delete, and it will be noted on
+# STDERR.
+git branch | grep -v '\bmaster\b\|^\*' | while read branch; do
   git branch -d $branch
 done
