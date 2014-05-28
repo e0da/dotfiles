@@ -56,5 +56,8 @@
 [diff]
   tool = pickavimdiff
 
+[merge]
+  tool = pickavimdiff
+
 [difftool "pickavimdiff"]
   cmd = `pickavimdiff` -f -d \"$LOCAL\" \"$REMOTE\"
