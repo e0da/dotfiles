@@ -1,7 +1,0 @@
-#!/bin/sh
-
-kitchen list |
-  sed 1d |
-  cat -v |
-  sed 's/\^.*$//g' |
-  xargs -P0 -n1 -I{} urxvt -e zsh -c 'kitchen converge {}; zsh'
