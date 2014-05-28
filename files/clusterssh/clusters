@@ -1,9 +1,0 @@
-app           app04 app05 app06
-admin-aleph   admin01.aleph.receipt.com admin02.aleph.receipt.com admin03.aleph.receipt.com
-admin-gimel   admin01.gimel.receipt.com admin02.gimel.receipt.com admin03.gimel.receipt.com
-front         front02 front04 front05 front06
-proc          proc01 proc02
-staging       staging01 staging03 staging04 staging05 db-staging01 signet-staging01
-trans         ws-trans02 ws-trans03 ws-trans04 ws-trans05 ws-trans06 ws-trans07 ws-trans08
-cook          app front proc trans
-gentoo        front01 dev02
