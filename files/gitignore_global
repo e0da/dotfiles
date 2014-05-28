@@ -7,3 +7,4 @@ ignore.cp
 .ruby-version
 command-t.vba
 libpeerconnection.log
+.vimrc
