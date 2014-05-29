@@ -6,6 +6,7 @@ for script in  \
   autojump     \
   functions    \
   local        \
+  matt         \
   ruby         \
 ; do
   source $HOME/.zsh/$script.zsh
