@@ -28,6 +28,11 @@ set guioptions-=L                                         " turn off GUI left sc
 set winaltkeys=no                                         " turn off stupid fucking alt shortcuts
 set laststatus=2                                          " always show status bar
 
+" check the parent directories for tags, too.
+set tags+=./tags,../tags,../../tags,../../../tags,../../../../tags
+set tags+=../../../../../tags,../../../../../../tags,../../../../../../../tags
+set tags+=../../../../../../../../tags,../../../../../../../../../tags
+
 " middle-click paste
 map! <S-Insert> <MiddleMouse>
 
