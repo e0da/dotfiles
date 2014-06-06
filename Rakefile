@@ -23,8 +23,7 @@ INSTALL_TASKS = %w[
 # destination of the symlink.
 #
 VIM_MAPPINGS = {
-  'vim'                => '~/.vim',
-  'vim/vimrc'          => '~/.vimrc',
+  'vimrc'          => '~/.vimrc',
 }
 
 NON_VIM_MAPPINGS = {
