@@ -9,7 +9,7 @@ set nobackup nowritebackup noswapfile autoread            " no backup or swap
 set hlsearch incsearch ignorecase smartcase               " search
 set wildmenu                                              " completion
 set backspace=indent,eol,start                            " sane backspace
-" set clipboard=unnamedplus                                 " use the system clipboard for yank/put/delete
+set clipboard=unnamed,unnamedplus                         " use the system clipboard for yank/put/delete
 set mouse=a                                               " enable mouse for all modes settings
 set nomousehide                                           " don't hide the mouse cursor while typing
 set mousemodel=popup                                      " right-click pops up context menu
