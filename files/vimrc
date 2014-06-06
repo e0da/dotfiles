@@ -1,4 +1,45 @@
-source ~/.vim/plugins.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                   Plugins!
+"                               Managed with VAM
+"                https://github.com/MarcWeber/vim-addon-manager
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set nocompatible | filetype indent plugin on | syn on
+
+fun! SetupVAM()
+  let c = get(g:, 'vim_addon_manager', {})
+  let g:vim_addon_manager = c
+  let c.plugin_root_dir = expand('$HOME', 1) . '/.vim/vim-addons'
+  " most used options you may want to use:
+  " let c.log_to_buf = 1
+  " let c.auto_install = 0
+  let &rtp.=(empty(&rtp)?'':',').c.plugin_root_dir.'/vim-addon-manager'
+  if !isdirectory(c.plugin_root_dir.'/vim-addon-manager/autoload')
+    execute '!git clone --depth=1 git://github.com/MarcWeber/vim-addon-manager '
+        \       shellescape(c.plugin_root_dir.'/vim-addon-manager', 1)
+  endif
+  call vam#ActivateAddons([], {'auto_install' : 0})
+endfun
+
+call SetupVAM()
+VAMActivate matchit.zip vim-addon-commenting
+" use <c-x><c-p> to complete plugin names
+
+" My plugin declarations
+VAMActivate EasyMotion
+VAMActivate Tabular
+VAMActivate YouCompleteMe
+VAMActivate endwise
+VAMActivate fugitive
+VAMActivate molokai Solarized
+VAMActivate snipmate vim-snippets
+
+" Plugins that aren't indexed or don't resolve correctly for some reason?
+VAMActivate github:scrooloose/nerdtree
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                 Vim Behavior
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set hidden                                                " don't unload buffer when switching away
 set modeline                                              " allow per-file settings via modeline
@@ -35,7 +76,10 @@ set tags+=../../../../../../../../tags,../../../../../../../../../tags
 " middle-click paste
 map! <S-Insert> <MiddleMouse>
 
-" appearance
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                  Appearance
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 syntax on
 set background=dark
 set t_Co=256 " 256 colors in terminal
@@ -44,51 +88,68 @@ if has('gui_gnome')
   set guifont=Ubuntu\ Mono\ 8.4
 endif
 
-"" Molokai theme
 let g:rehash256=1
 let g:molokai_original=1
-colorscheme molokai
+try
+  colorscheme molokai
+catch
+  try
+    colorscheme solarized
+  catch
+    colorscheme desert
+  endtry
+endtry
+
 
 " highlight the 80th column
 "
 " In Vim >= 7.3, also highlight columns 120+
 if exists('+colorcolumn')
-  " (I picked 120-320 because you have to provide an upper bound and 320 just
-  "  covers a 1080p GVim window in Ubuntu Mono 11 font.)
-  let &colorcolumn="80,".join(range(120,320),",")
+  " (I picked 120-320 because you have to provide an upper bound and 500 seems
+  " to be enough.)
+  let &colorcolumn="80,".join(range(120,500),",")
 else
   " fallback for Vim < v7.3
   autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
-" formatting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                  Formatting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 filetype plugin indent on
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
 autocmd filetype c,asm,python setlocal shiftwidth=4 tabstop=4 softtabstop=4
-
-" Makefile no expandtab
 autocmd FileType make setlocal noexpandtab
 
-" bindings to:
-" - cd current window to parent directory of file
-" - generate ctags
-" - flush command-t index
-" - better range
-" - fix white space
-" - rerun previous :command
-" - underline a line with equals (h1 in Markdown documents)
-" - underline a line with hyphens (h2 in Markdown documents)
-" - sort selection
-noremap <Leader>cd :lcd %:h<CR>:pwd<CR>
-noremap <Leader>ct :!ctags -R .<CR><CR>
-noremap <Leader>cf :CommandTFlush<CR>
-noremap <Leader>bd :1,999bd<CR>:NERDTree<CR>:NERDTree<CR>
-noremap ' `
-map <Leader>W :FixWhitespace<CR>
-map <Leader>] @:
-map <Leader>= yypVr=
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                   Bindings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" rerun previous :command
+map <Leader>' @:
+" underline a line with hyphens (h2 in Markdown documents)
 map <Leader>- yypVr-
+" underline a line with equals (h1 in Markdown documents)
+map <Leader>= yypVr=
+" fix white space
+map <Leader>W :FixWhitespace<CR>
+" sort selection
 map <Leader>s :sort<CR>
+" better range
+noremap ' `
+" Delete ALL THE BUFFERS!
+noremap <Leader>bd :1,999bd<CR>:NERDTree<CR>:NERDTree<CR>
+" cd current window to parent directory of file
+noremap <Leader>cd :lcd %:h<CR>:pwd<CR>
+" generate ctags
+noremap <Leader>ct :!ctags -R .<CR><CR>
+" Reload ~/.vimrc
+noremap <Leader>rc :source ~/.vimrc<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                Plugin Helpers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " fugitive shortcuts
 noremap <Leader>gs :Gstatus<CR>
@@ -98,29 +159,9 @@ noremap <Leader>gl :Glog<CR>
 noremap <Leader>gd :Gdiff<CR>
 noremap <Leader>gb :Gblame<CR>
 
-" move between windows with M-hjkl (urxvt then gvim)
-" noremap <Esc>h <C-w>h
-" noremap <Esc>j <C-w>j
-" noremap <Esc>k <C-w>k
-" noremap <Esc>l <C-w>l
-noremap <M-h> <C-w>h
-noremap <M-j> <C-w>j
-noremap <M-k> <C-w>k
-noremap <M-l> <C-w>l
-
-" jump 5 lines with C-jk
-noremap <C-j> 5j
-noremap <C-k> 5k
-
 " NERDTree
 let NERDTreeWinPos='right'
 map <C-Bslash> :NERDTreeToggle<CR>
-
-" Tagbar
-nmap <Leader>rt :TagbarToggle<CR>
-
-" Ack
-nmap <Leader>f :Ack<Space>
 
 " Tabular
 nmap <Leader>T :Tabularize<CR>
