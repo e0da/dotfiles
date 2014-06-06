@@ -15,18 +15,13 @@ INSTALL_TASKS = %w[
   links
   shell
   gnome_terminal:install
-  vim
 ]
 
 ##
 # Each key corresponds to a file in the +files+ directory, and each value is the
 # destination of the symlink.
 #
-VIM_MAPPINGS = {
-  'vimrc'          => '~/.vimrc',
-}
-
-NON_VIM_MAPPINGS = {
+MAPPINGS = {
   'Xdefaults'          => '~/.Xdefaults',
   'Xresources'         => '~/.Xresources',
   'ackrc'              => '~/.ackrc',
@@ -39,6 +34,7 @@ NON_VIM_MAPPINGS = {
   'rspec'              => '~/.rspec',
   'terminfo'           => '~/.terminfo',
   'tmux.conf'          => '~/.tmux.conf',
+  'vimrc'              => '~/.vimrc',
   'xrdb-merge.desktop' => '~/.config/autostart/xrdb-merge.desktop',
   'zsh'                => '~/.zsh',
   'zsh/rc.zsh'         => '~/.zshrc',
@@ -133,15 +129,8 @@ desc "Run these tasks in order: #{INSTALL_TASKS.join(' ')}"
 task install: INSTALL_TASKS
 
 desc 'Symlink config files to appropriate locations. (force=yes to overwrite)'
-task links: :vim_links do
-  NON_VIM_MAPPINGS.each do |source, target|
-    link_file source, target
-  end
-end
-
-desc 'Symlink only Vim-related config files to appropriate locations. (force=yes to overwrite)'
-task :vim_links do
-  VIM_MAPPINGS.each do |source, target|
+task :links do
+  MAPPINGS.each do |source, target|
     link_file source, target
   end
 end
@@ -174,9 +163,4 @@ end
 desc 'Update all plugins to latest origin/master/HEAD'
 task :update_plugins do
   `git submodule foreach 'git checkout master; git pull --force origin master'`
-end
-
-desc 'Install vim config, including plugins'
-task :vim => :vim_links do # hash rocket so vim doesn't burp when editing this file
-  `~/.vim/install_vundle`
 end
