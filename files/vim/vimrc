@@ -14,7 +14,6 @@ set mouse=a                                               " enable mouse for all
 set nomousehide                                           " don't hide the mouse cursor while typing
 set mousemodel=popup                                      " right-click pops up context menu
 set ruler                                                 " show cursor position in status bar
-" set relativenumber                                        " show relative line numbers
 set number                                                " show absolute line number of the current line
 set nofoldenable                                          " I fucking hate code folding
 set scrolloff=10                                          " scroll the window so we can always see 10 lines around the cursor
@@ -125,10 +124,3 @@ nmap <Leader>f :Ack<Space>
 
 " Tabular
 nmap <Leader>T :Tabularize<CR>
-
-" Run ric parser test on given parser
-function! ParserTest(parser)
-  cd /home/force/code/work/ric/src/nutricate/tests
-  call feedkeys("ggdG:read !./runner.py rparse/" . a:parser . " 2>&1\<CR>\<CR>gg")
-endfunction
-command! -nargs=1 PT :call ParserTest("test_<args>.py") " invoke with `:PT parser_name`. Best to load python 2.5 virtualenv first
