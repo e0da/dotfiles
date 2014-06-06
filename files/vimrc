@@ -28,10 +28,14 @@ VAMActivate matchit.zip vim-addon-commenting
 " My plugin declarations
 VAMActivate EasyMotion
 VAMActivate Tabular
+VAMActivate YouCompleteMe
+VAMActivate endwise
 VAMActivate fugitive
-VAMActivate molokai
+VAMActivate molokai Solarized
 VAMActivate snipmate vim-snippets
-VAMActivate trailing-whitespace
+
+" Plugins that aren't indexed or don't resolve correctly for some reason?
+VAMActivate github:scrooloose/nerdtree
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Vim Behavior
