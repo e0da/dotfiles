@@ -44,14 +44,22 @@ bindkey ';5D' backward-word
 
 # environment
 #
-export PATH=/usr/local/bin:$HOME/bin:$HOME/opt/bin:$PATH
+export DYLD_FORCE_FLAT_NAMESPACE=1 # I DON'T KNOW! If this isn't here, Vim won't work with YouCompleteMe.
 export EDITOR=vi
 export GIT_EDITOR=vi
+export PATH=$HOME/bin:$HOME/opt/bin:/usr/local/bin:$PATH
 
 # automatically configure make -j option to -j{number of CPUs +1}
 #
-[ `uname` = 'Darwin' ] || let MAKEJOBS=$(grep -c processor /proc/cpuinfo)+1
-export MAKEOPTS=-j${MAKEJOBS}
+case `uname` in
+  Linux)
+    let n_cores=$(grep -c processor /proc/cpuinfo)+1
+  ;;
+  Darwin)
+    let n_cores=$(sysctl hw.ncpu | awk '{print $2}')+1
+  ;;
+esac
+export MAKEOPTS=-j${n_cores}
 
 # Set TERM to screen-256color (my modified, overridden custom terminfo with no
 # fucking italics).
@@ -65,7 +73,8 @@ export MAKEOPTS=-j${MAKEJOBS}
 #      > /tmp/terminfo \
 #      && tic /tmp/terminfo
 #
-export TERM=screen-256color 2>/dev/null
+[ `uname` = 'Linux' ] &&
+  export TERM=screen-256color 2>/dev/null
 
 # Debian package development
 #
