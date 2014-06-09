@@ -8,3 +8,6 @@ ignore.cp
 command-t.vba
 libpeerconnection.log
 .vimrc
+
+# APM
+apps/property/property_qa.sql.bz2
