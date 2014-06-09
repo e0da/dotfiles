@@ -56,7 +56,7 @@ case `uname` in
     let n_cores=$(grep -c processor /proc/cpuinfo)+1
   ;;
   Darwin)
-    let n_cores=$(sysctl hw.ncpu | awk '{print $2}')+1
+    let n_cores=$(sysctl -n hw.ncpu)+1
   ;;
 esac
 export MAKEOPTS=-j${n_cores}
