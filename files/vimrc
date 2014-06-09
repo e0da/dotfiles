@@ -35,6 +35,7 @@ VAMActivate fugitive
 VAMActivate molokai Solarized
 VAMActivate snipmate vim-snippets
 VAMActivate tComment
+VAMActivate trailing-whitespace
 
 " Plugins that aren't indexed or don't resolve correctly for some reason?
 VAMActivate github:scrooloose/nerdtree
