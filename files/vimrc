@@ -171,3 +171,4 @@ noremap <Leader>bd :1,999bd<CR>:NERDTree<CR>:NERDTree<CR>| " Delete ALL THE BUFF
 noremap <Leader>cd :lcd %:h<CR>:pwd<CR>|                   " cd current window to parent directory of file
 noremap <Leader>ct :!ctags -R .<CR><CR>|                   " Generate ctags
 noremap <Leader>rc :source ~/.vimrc<CR>|                   " Reload ~/.vimrc
+nmap <Leader>cp :let @+ = expand("%")<CR>|                 " Reload ~/.vimrc
