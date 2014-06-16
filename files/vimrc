@@ -94,18 +94,20 @@ if has('gui_gnome')
   set guifont=Ubuntu\ Mono\ 8.4
 endif
 
-let g:rehash256=1
-let g:molokai_original=1
-try
-  colorscheme molokai
-catch
-  try
-    colorscheme solarized
-  catch
-    colorscheme desert
-  endtry
-endtry
 
+" Tweaks for Molokai colorscheme (ignored if Molokai isn't used)
+let g:molokai_original=1
+let g:rehash256=1
+
+" Use the first available colorscheme in this list
+for scheme in [ 'solarized', 'molokai', 'desert' ]
+  try
+    execute 'colorscheme '.scheme
+    break
+  catch
+    continue
+  endtry
+endfor
 
 " highlight the 80th column
 "
