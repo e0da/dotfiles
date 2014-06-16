@@ -21,3 +21,5 @@ if [ `uname` = 'Darwin' ]; then
 else
   alias ls='ls --color=auto'
 fi
+
+alias t='test_runner find'
