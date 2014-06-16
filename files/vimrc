@@ -151,11 +151,11 @@ noremap \nf :NERDTreeFind<cr>
 noremap \T :Tabularize<cr>
 
 " EasyMotion
-nmap <space> <plug>(easymotion-s)
+nmap <space> <Plug>(easymotion-s)
 
 " SnipMate
-imap <c-j> <plug>snipMateNextOrTrigger
-smap <c-j> <plug>snipMateNextOrTrigger
+imap <c-j> <Plug>snipMateNextOrTrigger
+smap <c-j> <Plug>snipMateNextOrTrigger
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   Mappings
