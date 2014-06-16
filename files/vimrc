@@ -27,8 +27,10 @@ VAMActivate matchit.zip vim-addon-commenting
 
 " My plugin declarations
 VAMActivate EasyMotion
+VAMActivate Gundo
 VAMActivate Tabular
 VAMActivate YouCompleteMe
+VAMActivate ag
 VAMActivate ctrlp
 VAMActivate endwise
 VAMActivate fugitive
