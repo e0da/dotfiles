@@ -80,7 +80,7 @@ set tags+=../../../../../tags,../../../../../../tags,../../../../../../../tags
 set tags+=../../../../../../../../tags,../../../../../../../../../tags
 
 " middle-click paste
-map! <S-Insert> <MiddleMouse>
+noremap! <s-insert> <middlemouse>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                  Appearance
@@ -135,26 +135,27 @@ autocmd FileType make setlocal noexpandtab
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " fugitive shortcuts
-noremap <Leader>gs :Gstatus<CR>
-noremap <Leader>gc :Gcommit<CR>
-noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gl :Glog<CR>
-noremap <Leader>gd :Gdiff<CR>
-noremap <Leader>gb :Gblame<CR>
+noremap \gs :Gstatus<cr>
+noremap \gc :Gcommit<cr>
+noremap \ga :Gwrite<cr>
+noremap \gl :Glog<cr>
+noremap \gd :Gdiff<cr>
+noremap \gb :Gblame<cr>
 
 " NERDTree
 let NERDTreeWinPos='right'
-map <C-Bslash> :NERDTreeToggle<CR>
+noremap <c-\> :NERDTreeToggle<cr>
+noremap \nf :NERDTreeFind<cr>
 
 " Tabular
-nmap <Leader>T :Tabularize<CR>
+noremap \T :Tabularize<cr>
 
 " EasyMotion
-nmap <Space> <Plug>(easymotion-s)
+nmap <space> <plug>(easymotion-s)
 
 " SnipMate
-imap <C-j> <Plug>snipMateNextOrTrigger
-smap <C-j> <Plug>snipMateNextOrTrigger
+imap <c-j> <plug>snipMateNextOrTrigger
+smap <c-j> <plug>snipMateNextOrTrigger
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   Mappings
@@ -165,14 +166,14 @@ smap <C-j> <Plug>snipMateNextOrTrigger
 " spaces instead of after because if you put it before the spaces the spaces
 " will run as part of the mapping.
 
-map <Leader>' @:|                                          " Rerun previous :command
-map <Leader>= yypVr=|                                      " Underline a line with equals (<h1> in Markdown documents)
-map <Leader>- yypVr-|                                      " Underline a line with hyphens (<h2> in Markdown documents)
-map <Leader>W :FixWhitespace<CR>|                          " Remove white space turds from the ends of lines
-map <Leader>s :sort<CR>|                                   " Sort selection
 noremap ' `|                                               " Use single quote as additional range key
-noremap <Leader>bd :1,999bd<CR>:NERDTree<CR>:NERDTree<CR>| " Delete ALL THE BUFFERS!
-noremap <Leader>cd :lcd %:h<CR>:pwd<CR>|                   " cd current window to parent directory of file
-noremap <Leader>ct :!ctags -R .<CR><CR>|                   " Generate ctags
-noremap <Leader>rc :source ~/.vimrc<CR>|                   " Reload ~/.vimrc
-nmap <Leader>cp :let @+ = expand("%")<CR>|                 " Reload ~/.vimrc
+noremap \' @:|                                      " Rerun previous :command
+noremap \- yypVr-|                                  " Underline a line with hyphens (<h2> in Markdown documents)
+noremap \= yypVr=|                                  " Underline a line with equals (<h1> in Markdown documents)
+noremap \W :FixWhitespace<cr>|                      " Remove white space turds from the ends of lines
+noremap \bd :1,999bd<cr>:NERDTree<cr>:NERDTree<cr>| " Delete ALL THE BUFFERS!
+noremap \cd :lcd %:h<cr>:pwd<cr>|                   " cd current window to parent directory of file
+noremap \cp :let @+ = expand("%")<cr>|              " Reload ~/.vimrc
+noremap \ct :!ctags -R .<cr><cr>|                   " Generate ctags
+noremap \rc :source ~/.vimrc<cr>|                   " Reload ~/.vimrc
+noremap \s :sort<cr>|                               " Sort selection
