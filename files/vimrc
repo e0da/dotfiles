@@ -22,7 +22,6 @@ fun! SetupVAM()
 endfun
 
 call SetupVAM()
-VAMActivate matchit.zip vim-addon-commenting
 " use <c-x><c-p> to complete plugin names
 
 " My plugin declarations
