@@ -31,6 +31,7 @@
   fuckit  = reset --hard HEAD
   aliases = !~/bin/git_aliases
   alias   = !~/bin/git_aliases
+  sc      = story-commit
 
 [rerere]
   enabled = true
