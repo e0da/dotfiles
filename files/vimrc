@@ -161,6 +161,9 @@ nmap <space> <Plug>(easymotion-s)
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
 
+" ctrlp.vim
+let g:ctrlp_max_files = 0
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
