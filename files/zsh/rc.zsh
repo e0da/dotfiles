@@ -1,4 +1,3 @@
-# ruby comes last because RVM complains about the order of the PATH.
 for script in  \
   environment  \
   prompts      \
@@ -7,7 +6,8 @@ for script in  \
   functions    \
   local        \
   matt         \
-  ruby         \
 ; do
   source $HOME/.zsh/$script.zsh
 done
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
