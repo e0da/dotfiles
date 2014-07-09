@@ -168,19 +168,35 @@ let g:ctrlp_max_files = 0
 "                                   Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" N.B. You can terminate a command with a | and the next command can just be a
-" comment. This let's us do end-of-line comments here. You put the | before the
-" spaces instead of after because if you put it before the spaces the spaces
-" will run as part of the mapping.
+" Use single quote as additional range key
+noremap ' `
 
-noremap ' `|                                               " Use single quote as additional range key
-noremap \' @:|                                      " Rerun previous :command
-noremap \- yypVr-|                                  " Underline a line with hyphens (<h2> in Markdown documents)
-noremap \= yypVr=|                                  " Underline a line with equals (<h1> in Markdown documents)
-noremap \W :FixWhitespace<cr>|                      " Remove white space turds from the ends of lines
-noremap \bd :1,999bd<cr>:NERDTree<cr>:NERDTree<cr>| " Delete ALL THE BUFFERS!
-noremap \cd :lcd %:h<cr>:pwd<cr>|                   " cd current window to parent directory of file
-noremap \cp :let @+ = expand("%")<cr>|              " Reload ~/.vimrc
-noremap \ct :!ctags -R .<cr><cr>|                   " Generate ctags
-noremap \rc :source ~/.vimrc<cr>|                   " Reload ~/.vimrc
-noremap \s :sort<cr>|                               " Sort selection
+" Rerun previous :command
+noremap \' @:
+
+" Underline a line with hyphens (<h2> in Markdown documents)
+noremap \- yypVr-
+
+" Underline a line with equals (<h1> in Markdown documents)
+noremap \= yypVr=
+
+" Remove white space turds from the ends of lines
+noremap \W :FixWhitespace<cr>
+
+" Delete ALL THE BUFFERS!
+noremap \bd :1,999bd<cr>:NERDTree<cr>:NERDTree<cr>
+
+" cd current window to parent directory of file
+noremap \cd :lcd %:h<cr>:pwd<cr>
+
+" Reload ~/.vimrc
+noremap \cp :let @+ = expand("%")<cr>
+
+" Generate ctags
+noremap \ct :!ctags -R .<cr><cr>
+
+" Reload ~/.vimrc
+noremap \rc :source ~/.vimrc<cr>
+
+" Sort selection
+noremap \s :sort<cr>
