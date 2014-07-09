@@ -28,20 +28,26 @@ call SetupVAM()
 VAMActivate EasyMotion
 VAMActivate Gundo
 VAMActivate Solarized
+VAMActivate Syntastic
 VAMActivate Tabular
 VAMActivate UltiSnips
 VAMActivate YouCompleteMe
 VAMActivate ag
 VAMActivate ctrlp
-VAMActivate endwise
+VAMActivate delimitMate
 VAMActivate fugitive
+VAMActivate html5
 VAMActivate molokai Solarized
+VAMActivate rails
 VAMActivate tComment
 VAMActivate trailing-whitespace
 VAMActivate vim-coffee-script
 VAMActivate vim-snippets
 
 " Plugins that aren't indexed or don't resolve correctly for some reason?
+VAMActivate github:jelera/vim-javascript-syntax
+VAMActivate github:nathanaelkane/vim-indent-guides
+VAMActivate github:pangloss/vim-javascript
 VAMActivate github:scrooloose/nerdtree
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
