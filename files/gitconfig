@@ -54,17 +54,27 @@
 [credential]
   helper = store
 
-[diff]
-  tool = pickavimdiff
-
 [merge]
-  tool = pickavimdiff
+  tool = vimdiff
+  conflictstyle = diff3
+  prompt = false
 
-[difftool "pickavimdiff"]
-  cmd = `pickavimdiff` -f -d \"$LOCAL\" \"$REMOTE\"
+[diff]
+  tool = vimdiff
+  conflictstyle = diff3
+  prompt = false
 
-[mergetool "pickavimdiff"]
-  cmd = `pickavimdiff` -f -d \"$LOCAL\" \"$REMOTE\"
+; [diff]
+;   tool = pickavimdiff
+;
+; [merge]
+;   tool = pickavimdiff
+;
+; [difftool "pickavimdiff"]
+;   cmd = `pickavimdiff` -f -d \"$LOCAL\" \"$REMOTE\"
+;
+; [mergetool "pickavimdiff"]
+;   cmd = `pickavimdiff` -f -d \"$LOCAL\" \"$REMOTE\"
 
 ; I don't want this in here, but SourceTree keeps adding it anyway. So I'll just
 ; leave it, but I'm not using it!
