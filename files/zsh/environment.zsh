@@ -85,3 +85,6 @@ export DEBFULLNAME='Justin Force'
 #
 [ -f /usr/local/bin/aws_zsh_completer.sh ] &&
   source /usr/local/bin/aws_zsh_completer.sh
+
+[ -f /usr/local/share/zsh-completions ] &&
+  export fpath=(/usr/local/share/zsh-completions $fpath)
