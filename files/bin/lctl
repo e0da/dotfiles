@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -ex
+
+if [ -z "$2" ]; then
+  command=restart
+  job=$1
+else
+  command=$1
+  job=$2
+fi
+
+start_or_stop() {
+  launchctl $command $(launchctl list | grep $job | awk '{print $3}')
+}
+
+case $command in
+  start|stop)
+    start_or_stop
+  ;;
+  restart)
+    command=stop
+    start_or_stop
+    command=start
+    start_or_stop
+  ;;
+esac
