@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# You can override the apm_bundle location as an environment variable, in a
+# config file, or by editing this file. You can also override the conffile
+# location.
+
+set -x
+
+: ${conffile:=$HOME/.apm_updaterc}
+
+[ -f $conffile ] && . $conffile
+
+: ${apm_bundle:=~/code/apm_bundle}
+
+cd $apm_bundle
+git pull --rebase origin master
+
+for dir in $apm_bundle/apps/* $apm_bundle/apps/property/engines/* ; do
+  pushd $dir
+  [ -f Gemfile ] && bundle
+  [ -f config/database.yml ] && (
+    for env in test development; do
+      RAILS_ENV=$env rake db:migrate
+    done
+  )
+  popd
+done
