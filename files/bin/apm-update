@@ -4,51 +4,202 @@
 # config file, or by editing this file. You can also override the conffile
 # location.
 
+[ ! -z "$DEBUG" ] && set -x
+
+readonly ARGS="$@"
+PIDS=''
+
+trap exit_gracefully SIGINT SIGTERM
+
 : ${conffile:=$HOME/.apm-updaterc}
+: ${apm_bundle:=~/code/apm_bundle}
 
 [ -f $conffile ] && . $conffile
 
-: ${apm_bundle:=~/code/apm_bundle}
+GIT_COMMAND="git pull --rebase origin master"
 
-git_command="git pull --rebase origin master"
+function usage() {
+  local script=$(basename $0)
+  printf "
+Usage: $script [OPTIONS]
 
-show_help() {
-  echo "Usage: $(basename $0) [OPTIONS]"
-  echo
-  echo "OPTIONS:"
-  echo "  -G  Don't do '$git_command'"
-  echo "  -h  Show this help"
+OPTIONS:
+	-C  Disable colors (Colors are automatically disabled when piping)
+	-G  Don't do '$GIT_COMMAND'
+	-P  Disable parallelism
+	-h  Show this help
+
+(Supports debug output thusly: DEBUG=1 $script)
+"
 }
 
-while getopts 'Gh' opt; do
-  case "$opt" in
-    h)
-      show_help
-      exit 0
-      ;;
-    G)
-      no_git=1
-    ;;
-  esac
-done
-
-cd $apm_bundle
-[ "$no_git" = 1 ] || $git_command
-
-(
-  for dir in $apm_bundle/apps/* $apm_bundle/apps/property/engines/* ; do
-    (
-      set -x
-      cd $dir
-      [ -f Gemfile ] && bundle
-      [ -f config/database.yml ] && (
-        for env in test development; do
-          (
-            RAILS_ENV=$env rake db:migrate
-          ) &
-        done
-      )
-    ) &
+function parse_options() {
+  local OPTIND
+  local OPTARG
+  local opt
+  while getopts 'CGPh' opt; do
+    case "$opt" in
+      h)
+        usage
+        exit 0
+        ;;
+      C)
+        OPTS__no_color=1
+        ;;
+      G)
+        OPTS__no_git=1
+        ;;
+      P)
+        OPTS__no_parallel=1
+        ;;
+    esac
   done
-  wait
-)
+  set +x
+}
+
+function colors_enabled() {
+  [ -z "$OPTS__no_color" ]
+}
+
+function git_enabled() {
+  [ -z "$OPTS__no_git" ]
+}
+
+function parallelism_enabled() {
+  [ -z "$OPTS__no_parallel" ]
+}
+
+
+function tell() {
+  printf "$@\n"
+  printf "$DEFAULT"
+}
+
+exit_gracefully() {
+  local pid
+  for pid in $PIDS; do
+    tell "${RED}Killing $pid!"
+    kill $pid || kill -9 $PID
+  done
+  exit
+}
+
+function do_bundle() {
+  local app=$1; shift
+  if [ -f Gemfile ]; then
+    tell "${BLUE}$app: ${GREEN}Bundling..."
+    run_with_optional_parallelism bundle
+  else
+    tell "${BLUE}$app: ${YELLOW}No Gemfile. I won't bundle."
+  fi
+}
+
+function do_migrate() {
+  local app=$1; shift
+  local env
+  if [ -f config/database.yml ]; then
+    for env in test development; do
+      tell "${BLUE}$app: ${GREEN}Migrating env $env..."
+      RAILS_ENV=$env run_with_optional_parallelism rake db:migrate
+    done
+  else
+    tell "${BLUE}$app: ${YELLOW}No config/database.yml. I won't migrate."
+  fi
+}
+
+function bundle_and_migrate() {
+  local app="$1"; shift
+  tell "${GREEN}Entering $app..."
+  cd $app
+  do_bundle $app
+  do_migrate $app
+}
+
+function run_with_optional_parallelism() {
+  if parallelism_enabled; then
+    $@ &
+    add_pid $!
+  else
+    $@
+  fi
+}
+
+function do_git() {
+  if git_enabled; then
+    tell "${GREEN}Doing ${GIT_COMMAND}..."
+    $GIT_COMMAND
+  else
+    tell "${YELLOW}Git disabled. Skipping ${GIT_COMMAND}."
+  fi
+}
+
+function enable_colors() {
+  if colors_enabled; then
+    BLACK="\033[30m"
+    RED="\033[31m"
+    GREEN="\033[32m"
+    YELLOW="\033[33m"
+    BLUE="\033[34m"
+    MAGENTA="\033[35m"
+    CYAN="\033[36m"
+    WHITE="\033[37m"
+    DEFAULT="\033[0m"
+  fi
+}
+
+function disable_colors() {
+  BLACK=
+  RED=
+  GREEN=
+  YELLOW=
+  BLUE=
+  MAGENTA=
+  CYAN=
+  WHITE=
+  DEFAULT=
+}
+
+function handle_piping() {
+  if [ -t 1 ]; then
+    enable_colors
+  else
+    disable_colors
+  fi
+}
+
+function add_pid() {
+  local pid=$1
+  PIDS="$PIDS $pid "
+}
+
+function remove_pid() {
+  local pid=$1
+  PIDS="$( printf "$PIDS" | sed "s/ $pid //" )"
+}
+
+function wait_for_processes_to_finish() {
+  local pid
+  while [ ! -z "$PIDS" ]; do
+    for pid in $PIDS; do
+      kill -0 $pid 2>/dev/null || remove_pid $pid
+    done
+    sleep 0.1
+  done
+}
+
+function main() {
+  local dir
+
+  parse_options $ARGS
+  handle_piping
+
+  tell "${GREEN}Entering $apm_bundle..."
+  cd $apm_bundle
+  do_git
+
+  for dir in $apm_bundle/apps/* $apm_bundle/apps/property/engines/* ; do
+    run_with_optional_parallelism bundle_and_migrate "$dir"
+  done
+  # wait_for_processes_to_finish
+}
+main
