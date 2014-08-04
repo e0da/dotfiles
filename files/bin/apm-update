@@ -24,8 +24,10 @@ function usage() {
 Usage: $script [OPTIONS]
 
 OPTIONS:
+	-B  Do not bundle
 	-C  Disable colors (Colors are automatically disabled when piping)
 	-G  Don't do '$GIT_COMMAND'
+	-M  Do not rake db:migrate
 	-P  Disable parallelism
 	-h  Show this help
 
@@ -37,17 +39,23 @@ function parse_options() {
   local OPTIND
   local OPTARG
   local opt
-  while getopts 'CGPh' opt; do
+  while getopts 'BCGMPh' opt; do
     case "$opt" in
       h)
         usage
         exit 0
+        ;;
+      B)
+        OPTS__no_bundle=1
         ;;
       C)
         OPTS__no_color=1
         ;;
       G)
         OPTS__no_git=1
+        ;;
+      M)
+        OPTS__no_migrate=1
         ;;
       P)
         OPTS__no_parallel=1
@@ -57,12 +65,20 @@ function parse_options() {
   set +x
 }
 
+function bundle_enabled() {
+  [ -z "$OPTS__no_bundle" ]
+}
+
 function colors_enabled() {
   [ -z "$OPTS__no_color" ]
 }
 
 function git_enabled() {
   [ -z "$OPTS__no_git" ]
+}
+
+function migrate_enabled() {
+  [ -z "$OPTS__no_migrate" ]
 }
 
 function parallelism_enabled() {
@@ -89,6 +105,7 @@ function do_bundle() {
   if [ -f Gemfile ]; then
     tell "${BLUE}$app: ${GREEN}Bundling..."
     run_with_optional_parallelism bundle
+    add_pid $!
   else
     tell "${BLUE}$app: ${YELLOW}No Gemfile. I won't bundle."
   fi
@@ -100,6 +117,8 @@ function do_migrate() {
   if [ -f config/database.yml ]; then
     for env in test development; do
       tell "${BLUE}$app: ${GREEN}Migrating env $env..."
+      tell "${BLUE}$app: ${GREEN}Bundling..."
+      add_pid $!
       RAILS_ENV=$env run_with_optional_parallelism rake db:migrate
     done
   else
@@ -111,8 +130,8 @@ function bundle_and_migrate() {
   local app="$1"; shift
   tell "${GREEN}Entering $app..."
   cd $app
-  do_bundle $app
-  do_migrate $app
+  bundle_enabled  && do_bundle  $app
+  migrate_enabled && do_migrate $app
 }
 
 function run_with_optional_parallelism() {
