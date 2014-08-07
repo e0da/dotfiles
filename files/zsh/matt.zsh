@@ -48,8 +48,7 @@ function kp() {
               multiplexer_ctl \
               nginx           \
               passenger       \
-              scheduler_ctl   \
-              Terminal        ; do
+              scheduler_ctl   ; do
     nuke $proc
   done
 }
