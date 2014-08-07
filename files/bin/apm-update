@@ -157,7 +157,6 @@ function do_migrate() {
 
 function bundle_and_migrate() {
   local app="$1"; shift
-  tell "${GREEN}Entering ${BLUE}$app${GREEN}..."
   cd $app
   bundle_enabled  && do_bundle  $app
   migrate_enabled && do_migrate $app
