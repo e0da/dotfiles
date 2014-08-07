@@ -28,7 +28,7 @@
   lol     = log --graph --decorate --pretty=oneline --abbrev-commit
   lola    = log --graph --decorate --pretty=oneline --abbrev-commit --all
   last    = cat-file commit HEAD
-  fuckit  = reset --hard HEAD
+  fuckit  = !git reset --hard HEAD && git clean -df
   aliases = !~/bin/git_aliases
   alias   = !~/bin/git_aliases
   sc      = story-commit
