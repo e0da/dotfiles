@@ -18,27 +18,33 @@ trap 'kill 0' INT TERM EXIT
 
 [ -f $conffile ] && . $conffile
 
-GIT_COMMAND='git pull --rebase origin master'
+HACK__GEMFILE_LOCK_COMMAND='git ls-files \*Gemfile.lock | xargs git checkout'
+
+GIT_FETCH='git fetch --all --prune'
+GIT_PULL='git pull --rebase origin master'
 
 function help() {
   local script=$(basename $0)
   printf "
-$script is cool because it intelligently parallelizes git pulling, bundling,
-and rake-db:migrating, to make it as fast as possible. It also tries
-'bundle --local' to make bundling faster. And it has pretty colors. Check the
-source ($0) for help locating your apm_bundle directory.
+apm-update: Easily update your APM environment
+
+apm-update is cool because it intelligently parallelizes git pulling, bundling,
+and rake-db:migrating, to make it as fast as possible. It also tries 'bundle
+--local' to make bundling faster. And it has pretty colors. Check the source
+($0) for help locating your apm_bundle directory.
 
 Usage: $script [OPTIONS]
 
 OPTIONS:
-	-B  Do not bundle
-	-C  Disable colors (Colors are automatically disabled when piping)
-	-G  Don't do '$GIT_COMMAND'
-	-M  Do not rake db:migrate
-	-P  Disable parallelism
-	-q  Quiet. Only show output from this script (quiet bundle, git, rake, etc.)
-	-s  Silent. Suppress all STDOUT output (still shows STDERR).
-	-h  Show this help
+  -B  No bundle
+  -C  No colors (Colors are automatically disabled when piping)
+  -G  No git operations '$GIT_FETCH' and '$GIT_PULL'
+  -H  No hacks (temporary fixes). See 'hack__*' functions in source.
+  -M  No rake db:migrate
+  -P  No parallelism. Do everything in serial. SLOWER.
+  -q  Quiet. Only show output from this script (quiet bundle, git, rake, etc.)
+  -s  Silent. Suppress all STDOUT output (still shows STDERR).
+  -h  Show this help
 
 (Supports debug output thusly: DEBUG_APMU=1 $script)
 "
@@ -48,7 +54,7 @@ function parse_options() {
   local OPTIND
   local OPTARG
   local opt
-  while getopts 'hBCGMPqs' opt; do
+  while getopts 'hBCGHMPqs' opt; do
     case "$opt" in
       h)
         help
@@ -62,6 +68,9 @@ function parse_options() {
         ;;
       G)
         OPTS__no_git=1
+        ;;
+      H)
+        OPTS__no_hacks=1
         ;;
       M)
         OPTS__no_migrate=1
@@ -91,6 +100,10 @@ function git_enabled() {
   [ -z "$OPTS__no_git" ]
 }
 
+function hacks_enabled() {
+  [ -z "$OPTS__no_hacks" ]
+}
+
 function migrate_enabled() {
   [ -z "$OPTS__no_migrate" ]
 }
@@ -116,12 +129,12 @@ function do_bundle() {
   local app=$1; shift
   local bundle_args=''
   if [ -f Gemfile ]; then
-    tell "${BLUE}$app: ${GREEN}Bundling..."
+    tell "${BLUE}$app${GREEN}: Bundling..."
     colors_enabled || bundle_args="$bundle_args --no-color"
     quiet_enabled  && bundle_args="$bundle_args --quiet"
     bundle --local $bundle_args || bundle $bundle_args
   else
-    tell "${BLUE}$app: ${YELLOW}No Gemfile. I won't bundle."
+    tell "${BLUE}$app${YELLOW}: No Gemfile. I won't bundle."
   fi
 }
 
@@ -131,34 +144,47 @@ function do_migrate() {
   local env
   if [ -f config/database.yml ]; then
     for env in test development; do
-      tell "${BLUE}$app: ${GREEN}Migrating env $env..."
+      tell "${BLUE}$app${GREEN}: Migrating env $env..."
       quiet_enabled && migrate_args="$migrate_args VERBOSE=false"
       RAILS_ENV=$env rake db:migrate $migrate_args&
       parallelism_enabled || wait
     done
     wait
   else
-    tell "${BLUE}$app: ${YELLOW}No config/database.yml. I won't migrate."
+    tell "${BLUE}$app${YELLOW}: No config/database.yml. I won't migrate."
   fi
 }
 
 function bundle_and_migrate() {
   local app="$1"; shift
-  tell "${GREEN}Entering $app..."
+  tell "${GREEN}Entering ${BLUE}$app${GREEN}..."
   cd $app
   bundle_enabled  && do_bundle  $app
   migrate_enabled && do_migrate $app
 }
 
+# XXX Check out gme
+function hack__gemfile_lock() {
+  if hacks_enabled; then
+    tell "${MAGENTA}Applying Gemfile.lock hack '${HACK__GEMFILE_LOCK_COMMAND}'..."
+    cd $apm_bundle
+    eval "$HACK__GEMFILE_LOCK_COMMAND" # We need eval because there's a pipe.
+  else
+    tell "${YELLOW}Hacks disabled. Skipping Gemfile.lock hack: '${HACK__GEMFILE_LOCK_COMMAND}'."
+  fi
+}
+
 function do_git() {
   local git_args=''
-  if git_enabled; then
-    tell "${GREEN}Doing ${GIT_COMMAND}..."
-    quiet_enabled && git_args="$git_args --quiet"
-    $GIT_COMMAND $git_args
-  else
-    tell "${YELLOW}Git disabled. Skipping ${GIT_COMMAND}."
-  fi
+  for command in "$GIT_FETCH" "$GIT_PULL"; do
+    if git_enabled; then
+      tell "${GREEN}Doing ${command}..."
+      quiet_enabled && git_args="$git_args --quiet"
+      $command $git_args
+    else
+      tell "${YELLOW}Git disabled. Skipping ${command} ${git_args}."
+    fi
+  done
 }
 
 function is_terminal() {
@@ -190,7 +216,7 @@ function main() {
   silence_enabled && silence
   set_colors
 
-  tell "${GREEN}Entering $apm_bundle..."
+  tell "${GREEN}Entering ${BLUE}${apm_bundle}${GREEN}..."
   cd $apm_bundle
   do_git
 
@@ -199,5 +225,7 @@ function main() {
     parallelism_enabled || wait
   done
   wait
+
+  hack__gemfile_lock
 }
 main
