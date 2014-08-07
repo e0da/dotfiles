@@ -7,7 +7,7 @@
 # export apm_bundle=/Users/foo/src/work/apm_bundle
 
 # DEBUG can also set child processes to DEBUG output, so also provide DEBUG_APMU
-[ ! -z "$DEBUG_APMU"] && set -x
+[ ! -z "$DEBUG_APMU" ] && set -x
 
 readonly ARGS="$@"
 
