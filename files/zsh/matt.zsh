@@ -23,17 +23,7 @@ KP_BANNER="\033[31m
 "
 
 function kill_Terminal() {
-  osascript -e "
-    try -- I don't care if everything fails
-      try -- So we can ignore when the timeout fails
-        with timeout of 0.1 seconds -- So we don't block on the modal
-          tell application \"Terminal\" to quit
-        end timeout
-      end try
-
-      tell application \"System Events\" to click UI element \"Close\" of sheet 1 of window 1 of application process \"Terminal\"
-    end try
-  "
+  osascript -e 'tell application "Terminal" to quit'
 }
 
 function nuke() {
