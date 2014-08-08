@@ -27,6 +27,7 @@ call SetupVAM()
 " My plugin declarations
 VAMActivate EasyMotion
 VAMActivate Gundo
+VAMActivate Rubytest
 VAMActivate Solarized
 VAMActivate Syntastic
 VAMActivate Tabular
@@ -151,9 +152,6 @@ noremap \gb :Gblame<cr>
 let NERDTreeWinPos='right'
 noremap <c-\> :NERDTreeToggle<cr>
 noremap \nf :NERDTreeFind<cr>
-
-" Tabular
-noremap \T :Tabularize<cr>
 
 " EasyMotion
 nmap <space> <Plug>(easymotion-s)
