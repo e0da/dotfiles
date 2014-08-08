@@ -22,6 +22,20 @@ KP_BANNER="\033[31m
 \033[34m____<_____\\__\__\033[31m(___)_))_((_(____))__(_(___.oooO_____Oooo.(_(_)_)((_
 "
 
+function kill_Terminal() {
+  osascript -e "
+    try -- I don't care if everything fails
+      try -- So we can ignore when the timeout fails
+        with timeout of 0.1 seconds -- So we don't block on the modal
+          tell application \"Terminal\" to quit
+        end timeout
+      end try
+
+      tell application \"System Events\" to click UI element \"Close\" of sheet 1 of window 1 of application process \"Terminal\"
+    end try
+  "
+}
+
 function nuke() {
   (
     for signal in TERM INT KILL; do
@@ -49,8 +63,10 @@ function kp() {
               nginx           \
               passenger       \
               scheduler_ctl   ; do
-    nuke $proc
+    nuke $proc &
   done
+  wait
+  kill_Terminal
 }
 
 function retag() {
