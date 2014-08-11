@@ -2,8 +2,11 @@ dotfiles
 ========
 
 These are my personal configuration files. The directory structure is designed
-so that you can symlink everything with a single command. This is only tested
-with and only expected to work on Ubuntu.
+so that you can symlink everything with a single command. ~~This is only tested
+with and only expected to work on Ubuntu.~~ I changed jobs and I work
+exclusively on a Mac now. _(Not thrilled about the Mac, but the job is
+excellent!  Do not cry for me.)_ So the Ubuntu-specific parts of this may
+become stale over time. **Bug reports and pull requests are appreciated!**
 
 Installation
 ------------
@@ -17,8 +20,6 @@ Installation
 > lose data or break something using my script. If you **really** want to do all
 > of the things that this script does, proceed **at your own peril!**
 
-This copypasta will:
-
 * Install a couple of prerequisites with APT.
 * Install RVM and Ruby.
 * Clone the repository.
@@ -31,7 +32,7 @@ skip the first 2 lines if you have the commands from the 2nd line):
 ```sh
 sudo apt-get update && \
 sudo apt-get --yes --no-install-recommends install bash curl git patch bzip2 && \
-curl -L splin.es | bash
+curl https://raw.githubusercontent.com/justinforce/dotfiles/master/bootstrap | bash
 ```
 
 ### Manual Installation ###
@@ -46,18 +47,23 @@ git clone https://github.com/justinforce/dotfiles ~/.dotfiles --recursive
 Then you can `cd` into `~/.dotfiles` and run `rake -T` to get a list of the
 available tasks.
 
-Highlights
-----------
-
-I use [Vundle][] to manage plugins. I use [my fork][my zsh-git-prompt] of
-[zsh-git-prompt][] to get nice git info in my prompt.
-
 License
 -------
 
-[MIT license](http://www.opensource.org/licenses/MIT)
+Highlights
+----------
 
-[Here be dragons!]:http://en.wikipedia.org/wiki/Here_be_dragons
-[Vundle]:https://github.com/gmarik/vundle
-[my zsh-git-prompt]:https://github.com/justinforce/zsh-git-prompt/tree/silent
-[zsh-git-prompt]:https://github.com/olivierverdier/zsh-git-prompt
+I use [VAM][] (the Vim Addon Manager) to manage plugins. I use
+[my fork][my zsh-git-prompt] of [zsh-git-prompt][] to get nice git info in my
+prompt.
+
+License and Copyright
+---------------------
+
+Copyright Justin Force and Licensed under the [MIT license][].
+
+[Here be dragons!]: http://en.wikipedia.org/wiki/Here_be_dragons
+[MIT license]: http://www.opensource.org/licenses/MIT
+[VAM]: https://github.com/MarcWeber/vim-addon-manager
+[my zsh-git-prompt]: https://github.com/justinforce/zsh-git-prompt/tree/silent
+[zsh-git-prompt]: https://github.com/olivierverdier/zsh-git-prompt
