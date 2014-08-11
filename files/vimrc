@@ -200,7 +200,7 @@ noremap \rc :source ~/.vimrc<cr>
 noremap \s :sort<cr>
 
 " Put contents of parentheses on their own newline and reindent (must position
-" cursor OVER opening perenthesis in normal mode first).
+" cursor inside parentheses in normal mode first).
 nmap \( ci(<cr><esc>Pa<cr><esc>Vkk=
 
 " Break a comma-delimited list onto new lines
