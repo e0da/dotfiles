@@ -38,7 +38,7 @@ VAMActivate ctrlp
 VAMActivate delimitMate
 VAMActivate fugitive
 VAMActivate html5
-VAMActivate molokai Solarized
+VAMActivate molokai
 VAMActivate rails
 VAMActivate tComment
 VAMActivate trailing-whitespace
