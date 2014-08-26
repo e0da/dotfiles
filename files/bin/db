@@ -1,0 +1,6 @@
+#!/bin/sh
+
+for e in test development; do
+  RAILS_ENV=$e rake db:$* &
+done
+wait
