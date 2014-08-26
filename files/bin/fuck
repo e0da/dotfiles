@@ -1,0 +1,20 @@
+#!/bin/sh
+
+MYSQL_JOB_NAME='homebrew.mxcl.mysql'
+
+function fuck_mysql() {
+  launchctl stop $MYSQL_JOB_NAME
+  printf 'Waiting for mysqld to die. Maybe you should grab a beer.'
+  while pgrep mysqld &>/dev/null; do
+    printf '.'
+    sleep 0.1
+  done
+  echo
+  launchctl start $MYSQL_JOB_NAME
+}
+
+case "$1" in
+  mysql)
+    fuck_mysql
+    ;;
+esac
