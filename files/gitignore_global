@@ -11,6 +11,7 @@ libpeerconnection.log
 
 # APM
 apps/property/property_qa.sql.bz2
+apps/property/engines/inspections/test/dummy/db/schema.rb
 
 # Mac o_o
 .DS_Store
