@@ -30,9 +30,11 @@ If you understand the risks and want to press on, copy and paste this (you can
 skip the first 2 lines if you have the commands from the 2nd line):
 
 ```sh
-sudo apt-get update && \
-sudo apt-get --yes --no-install-recommends install bash curl git patch bzip2 && \
-curl https://raw.githubusercontent.com/justinforce/dotfiles/master/bootstrap | bash
+(
+  sudo apt-get update
+  sudo apt-get install --yes --no-install-recommends bash curl git patch bzip2
+  curl https://raw.githubusercontent.com/justinforce/dotfiles/master/bootstrap | bash
+)
 ```
 
 ### Manual Installation ###
@@ -53,9 +55,8 @@ License
 Highlights
 ----------
 
-I use [VAM][] (the Vim Addon Manager) to manage plugins. I use
-[my fork][my zsh-git-prompt] of [zsh-git-prompt][] to get nice git info in my
-prompt.
+I use [VAM][] (the Vim Addon Manager) to manage plugins. I use Olivier Verdier's
+[zsh-git-prompt][] to get nice git info in my prompt.
 
 License and Copyright
 ---------------------
@@ -65,5 +66,4 @@ Copyright Justin Force and Licensed under the [MIT license][].
 [Here be dragons!]: http://en.wikipedia.org/wiki/Here_be_dragons
 [MIT license]: http://www.opensource.org/licenses/MIT
 [VAM]: https://github.com/MarcWeber/vim-addon-manager
-[my zsh-git-prompt]: https://github.com/justinforce/zsh-git-prompt/tree/silent
 [zsh-git-prompt]: https://github.com/olivierverdier/zsh-git-prompt
