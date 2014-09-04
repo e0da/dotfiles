@@ -22,6 +22,16 @@ HISTSIZE=100000
 SAVEHIST=100000
 setopt appendhistory autocd beep extendedglob nomatch notify autopushd
 
+# Helper functions
+#
+function use_coreutils_on_mac() {
+  local gnupath='/usr/local/opt/coreutils/libexec'
+  local gnubinpath="$gnupath/gnubin"
+  local gnumanpath="$gnupath/gnuman"
+  [ -d $gnubinpath ] && export PATH="$gnubinpath:$PATH"
+  [ -d $gnumanpath ] && export MANPATH="$gnumanpath:$MANPATH"
+}
+
 # brew-compatible zsh-completions
 [ `uname` = 'Darwin' ] && fpath=(/usr/local/share/zsh-completions $fpath)
 
@@ -48,6 +58,7 @@ export DYLD_FORCE_FLAT_NAMESPACE=1 # I DON'T KNOW! If this isn't here, Vim won't
 export EDITOR=vi
 export GIT_EDITOR=vi
 export PATH=$HOME/bin:$HOME/opt/bin:/usr/local/sbin:/usr/local/bin:$PATH
+use_coreutils_on_mac
 
 # automatically configure make -j option to -j{number of CPUs +1}
 #
