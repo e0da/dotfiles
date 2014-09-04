@@ -37,6 +37,11 @@ VAMActivate ag
 VAMActivate ctrlp
 VAMActivate delimitMate
 VAMActivate fugitive
+VAMActivate github:MarcWeber/vim-addon-local-vimrc
+VAMActivate github:jelera/vim-javascript-syntax
+VAMActivate github:nathanaelkane/vim-indent-guides
+VAMActivate github:pangloss/vim-javascript
+VAMActivate github:scrooloose/nerdtree
 VAMActivate html5
 VAMActivate molokai
 VAMActivate rails
@@ -45,19 +50,12 @@ VAMActivate trailing-whitespace
 VAMActivate vim-coffee-script
 VAMActivate vim-snippets
 
-" Plugins that aren't indexed or don't resolve correctly for some reason?
-VAMActivate github:jelera/vim-javascript-syntax
-VAMActivate github:nathanaelkane/vim-indent-guides
-VAMActivate github:pangloss/vim-javascript
-VAMActivate github:scrooloose/nerdtree
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Vim Behavior
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set hidden                                                " don't unload buffer when switching away
 set modeline                                              " allow per-file settings via modeline
-set exrc                                                  " enable per-directory .vimrc files
 set secure                                                " disable unsafe commands in local .vimrc files
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8  " saving and encoding
 set nobackup nowritebackup noswapfile autoread            " no backup or swap
