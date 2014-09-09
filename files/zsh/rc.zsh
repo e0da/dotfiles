@@ -9,5 +9,3 @@ for script in  \
 ; do
   source $HOME/.zsh/$script.zsh
 done
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
