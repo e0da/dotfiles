@@ -26,8 +26,6 @@ MAPPINGS = {
   'Xresources'         => '~/.Xresources',
   'ackrc'              => '~/.ackrc',
   'aptitude'           => '~/.aptitude',
-  'bash_profile'       => '~/.bash_profile',
-  'bashrc'             => '~/.bashrc',
   'bin'                => '~/bin',
   'gitconfig'          => '~/.gitconfig',
   'gitignore_global'   => '~/.gitignore_global',
@@ -38,6 +36,7 @@ MAPPINGS = {
   'xrdb-merge.desktop' => '~/.config/autostart/xrdb-merge.desktop',
   'zsh'                => '~/.zsh',
   'zsh/rc.zsh'         => '~/.zshrc',
+  'zsh/zlogin.zsh'     => '~/.zlogin',
   'zsh/zshenv'         => '~/.zshenv',
 }
 
