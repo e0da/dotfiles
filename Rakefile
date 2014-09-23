@@ -37,7 +37,6 @@ MAPPINGS = {
   'zsh'                => '~/.zsh',
   'zsh/rc.zsh'         => '~/.zshrc',
   'zsh/zlogin.zsh'     => '~/.zlogin',
-  'zsh/zshenv'         => '~/.zshenv',
 }
 
 ##
