@@ -16,10 +16,11 @@ alias vp='vagrant provision'
 alias vs='vagrant ssh'
 alias vu='vagrant up'
 
-if [ `uname` = 'Darwin' ]; then
-  alias ls='ls -G'
-else
+ls --color &>/dev/null
+if [ $? = 0 ]; then
   alias ls='ls --color=auto'
+else
+  alias ls='ls -G'
 fi
 
 alias t='test_runner find'

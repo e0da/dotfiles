@@ -22,6 +22,8 @@ HISTSIZE=100000
 SAVEHIST=100000
 setopt appendhistory autocd beep extendedglob nomatch notify autopushd
 
+readonly THIS_SCRIPT=$0
+
 # Helper functions
 #
 function use_coreutils_on_mac() {
@@ -30,6 +32,14 @@ function use_coreutils_on_mac() {
   local gnumanpath="$gnupath/gnuman"
   [ -d $gnubinpath ] && export PATH="$gnubinpath:$PATH"
   [ -d $gnumanpath ] && export MANPATH="$gnumanpath:$MANPATH"
+}
+
+function use_solarized_dircolors() {
+  local path_to_this_script="$(perl -MCwd -e 'print Cwd::abs_path shift' $THIS_SCRIPT)"
+  local this_script_dir=$(dirname $path_to_this_script)
+  local git_repo_dir="$this_script_dir/../.."
+  local dircolors_dir="$git_repo_dir/support/dircolors-solarized"
+  eval `dircolors $dircolors_dir/dircolors.ansi-dark`
 }
 
 # brew-compatible zsh-completions
@@ -59,6 +69,7 @@ export EDITOR=vi
 export GIT_EDITOR=vi
 export PATH=$HOME/bin:$HOME/opt/bin:/usr/local/sbin:/usr/local/bin:$PATH
 use_coreutils_on_mac
+use_solarized_dircolors
 
 # automatically configure make -j option to -j{number of CPUs +1}
 #
