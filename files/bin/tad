@@ -1,0 +1,6 @@
+#!/bin/sh
+
+for environment in test development; do
+  RAILS_ENV=$environment $* &
+done
+wait
