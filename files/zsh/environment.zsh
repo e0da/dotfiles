@@ -23,6 +23,7 @@ SAVEHIST=100000
 setopt appendhistory autocd beep extendedglob nomatch notify autopushd
 
 readonly THIS_SCRIPT=$0
+readonly UNAME=`uname`
 
 # Helper functions
 #
@@ -42,8 +43,11 @@ function use_solarized_dircolors() {
   eval `dircolors $dircolors_dir/dircolors.ansi-dark`
 }
 
+# max file descriptor limit on Mac
+[ $UNAME = 'Darwin' ] && ulimit -n 9999
+
 # brew-compatible zsh-completions
-[ `uname` = 'Darwin' ] && fpath=(/usr/local/share/zsh-completions $fpath)
+[ $UNAME = 'Darwin' ] && fpath=(/usr/local/share/zsh-completions $fpath)
 
 # C-x C-e command editing
 #
@@ -73,7 +77,7 @@ use_solarized_dircolors
 
 # automatically configure make -j option to -j{number of CPUs +1}
 #
-case `uname` in
+case $UNAME in
   Linux)
     let n_cores=$(grep -c processor /proc/cpuinfo)+1
   ;;
