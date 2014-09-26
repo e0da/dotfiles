@@ -11,7 +11,11 @@ else
 fi
 
 start_or_stop() {
-  launchctl $command $(launchctl list | grep $job | awk '{print $3}')
+  local job_name
+  launchctl list | grep $job | awk '{print $3}' |
+  while read job_name; do
+    launchctl $command $job_name
+  done
 }
 
 case $command in
