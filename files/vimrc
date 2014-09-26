@@ -40,7 +40,6 @@ VAMActivate fugitive
 VAMActivate github:MarcWeber/vim-addon-local-vimrc
 VAMActivate github:ekalinin/Dockerfile.vim
 VAMActivate github:jelera/vim-javascript-syntax
-" VAMActivate github:mschartman/yartr
 VAMActivate github:nathanaelkane/vim-indent-guides
 VAMActivate github:pangloss/vim-javascript
 VAMActivate github:scrooloose/nerdtree
