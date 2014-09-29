@@ -38,6 +38,7 @@ VAMActivate ctrlp
 VAMActivate delimitMate
 VAMActivate fugitive
 VAMActivate github:MarcWeber/vim-addon-local-vimrc
+VAMActivate github:cespare/vim-toml
 VAMActivate github:ekalinin/Dockerfile.vim
 VAMActivate github:jelera/vim-javascript-syntax
 VAMActivate github:nathanaelkane/vim-indent-guides
@@ -46,6 +47,7 @@ VAMActivate github:scrooloose/nerdtree
 VAMActivate html5
 VAMActivate molokai
 VAMActivate rails
+VAMActivate rust
 VAMActivate tComment
 VAMActivate trailing-whitespace
 VAMActivate vim-coffee-script
