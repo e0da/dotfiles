@@ -1,0 +1,13 @@
+#!/bin/sh
+
+readonly command=$1
+
+update_library() {
+  curl 'http://xbmc:@mike:8080/jsonrpc?request={"jsonrpc":"2.0","method":"VideoLibrary.Scan"}'
+}
+
+case "$command" in
+  scan|update)
+    update_library
+    ;;
+esac
