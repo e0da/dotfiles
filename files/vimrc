@@ -26,7 +26,6 @@ call SetupVAM()
 
 " My plugin declarations
 VAMActivate EasyMotion
-VAMActivate Gundo
 VAMActivate Rubytest
 VAMActivate Solarized
 VAMActivate Syntastic
@@ -44,6 +43,7 @@ VAMActivate github:jelera/vim-javascript-syntax
 VAMActivate github:nathanaelkane/vim-indent-guides
 VAMActivate github:pangloss/vim-javascript
 VAMActivate github:scrooloose/nerdtree
+VAMActivate github:sjl/gundo.vim
 VAMActivate html5
 VAMActivate molokai
 VAMActivate rails
