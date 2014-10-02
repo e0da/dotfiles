@@ -188,7 +188,7 @@ noremap \bd :1,999bd<cr>:NERDTree<cr>:NERDTree<cr>
 " cd current window to parent directory of file
 noremap \cd :lcd %:h<cr>:pwd<cr>
 
-" Reload ~/.vimrc
+" Copy path of current file to clipboard
 noremap \cp :let @+ = expand("%")<cr>
 
 " Generate ctags
