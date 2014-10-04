@@ -52,6 +52,7 @@ VAMActivate tComment
 VAMActivate trailing-whitespace
 VAMActivate vim-coffee-script
 VAMActivate vim-snippets
+VAMActivate wmgraphviz
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Vim Behavior
