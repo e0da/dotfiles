@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Customize path by setting export DING_SOUND_DIR=/path/to/sounds in .bashrc
+: ${DING_SOUND_DIR:=$HOME/Dropbox/sounds}
+
+SUCCESS="$DING_SOUND_DIR/smw_coin.wav"
+FAILURE="$DING_SOUND_DIR/smw_pipe.wav"
+player=$((which afplay &>/dev/null && echo afplay) || echo aplay)
+
+( $* && ($player "$SUCCESS" &)) || ($player "$FAILURE" &)
