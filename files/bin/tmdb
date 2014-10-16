@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+
+require 'date'
+require 'themoviedb'
+
+class Movie
+
+  def initialize(movie)
+    @movie = movie
+  end
+
+  def title
+    @movie.original_title
+  end
+
+  def year
+    Date.parse(@movie.release_date).year
+  end
+
+  def formatted_title
+    "#{title} (#{year})"
+  end
+end
+
+class CLI
+
+  def initialize(*args)
+    @title = args.join(' ')
+    Tmdb::Api.key api_key
+  end
+
+  def execute
+    movie = Tmdb::Movie.find(@title).first
+    if movie.nil?
+      warn "Couldn't find a movie with a title that matched '#{@title}'"
+      exit 1
+    end
+    puts Movie.new(movie).formatted_title
+  end
+
+  def api_key
+    @api_key ||= File.read("#{ENV['HOME']}/.tmdb-api-key").strip
+  end
+end
+
+CLI.new(ARGV).execute
