@@ -1,0 +1,121 @@
+#!/bin/bash
+
+[ ! -z "$DEBUG_APM" ] && set -x
+
+: ${APM_BUNDLE_PATH:=$HOME/code/apm_bundle}
+
+trap 'kill 0' INT TERM EXIT
+
+readonly ARGV=($*)
+
+declare OPTS__no_parallel
+declare OPTS__dropping
+
+readonly APPS_PATH=$APM_BUNDLE_PATH/apps
+
+readonly MIGRATE_DIRS=($(
+  find $APPS_PATH -type d -name db | xargs -I{} find {} -type d -name migrate
+))
+
+readonly DEFAULT="\033[0m"
+readonly BLUE="\033[34m"
+readonly GREEN="\033[32m"
+readonly YELLOW="\033[33m"
+
+function help() {
+  printf "mkdbs: Set up all of your APM Bundle databases
+
+Usage: mkdbs [OPTIONS]
+
+OPTIONS:
+  -C  Don't create databases (rake db:create)
+  -M  Don't migrate databases (rake db:migrate)
+  -F  Don't load fixtures (rake db:fixtures:load)
+  -P  No parallelism. Do everything in serial. SLOWER.
+  -d  Drop databases before creating (rake db:drop)
+  -h  Show this help
+
+(Supports debug output thusly: DEBUG_APM=1 mkdbs)
+"
+}
+
+function parse_options() {
+  local OPTIND
+  local OPTARG
+  local opt
+  while getopts 'hCFMPd' opt; do
+    case "$opt" in
+      h) help && exit 0 ;;
+      C) OPTS__no_creating=1 ;;
+      F) OPTS__no_loading_fixtures=1 ;;
+      M) OPTS__no_migrating=1 ;;
+      P) OPTS__no_parallel=1 ;;
+      d) OPTS__dropping=1 ;;
+      *) help && exit 1 ;;
+    esac
+  done
+}
+
+function is_creating() {
+  [ "$OPTS__no_creating" != 1 ]
+}
+
+function is_loading_fixtures() {
+  [ "$OPTS__no_loading_fixtures" != 1 ]
+}
+
+function is_migrating() {
+  [ "$OPTS__no_migrating" != 1 ]
+}
+function is_parallel() {
+  [ "$OPTS__no_parallel" != 1 ]
+}
+
+function is_dropping() {
+  [ "$OPTS__dropping" == 1 ]
+}
+
+function app_path_for() {
+  local path=$1
+  cd $path/../..
+  pwd
+}
+
+function rake_do() {
+  local path=$1; shift
+  local environment=$1; shift
+  local cmd=($*)
+
+  echo -e "${BLUE}$path ${GREEN}$environment ${YELLOW}rake ${cmd[*]}${DEFAULT}"
+
+  cd $path
+  RAILS_ENV=$environment rake ${cmd[*]}
+}
+
+function create_databases() {
+  for migrate_path in ${MIGRATE_DIRS[*]}; do
+    path=$(app_path_for $migrate_path)
+    (
+      for environment in test development; do
+        (
+          is_dropping         && rake_do $path $environment db:drop
+          is_creating         && rake_do $path $environment db:create
+          is_migrating        && rake_do $path $environment db:migrate
+          is_loading_fixtures && rake_do $path $environment db:fixtures:load
+        ) &
+        is_parallel || wait
+      done
+      wait
+    ) &
+    is_parallel || wait
+  done
+  wait
+}
+
+function main() {
+  local argv=$*
+  parse_options $argv
+  create_databases
+}
+
+main ${ARGV[*]}
