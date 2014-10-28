@@ -1,11 +1,3 @@
-# enable pasting of command lines beginning with $. When do you ever mean to
-# start a command with '$'?
-#
-# source: http://stackoverflow.com/questions/68372/what-is-your-single-most-favorite-command-line-trick-using-bash
-function $ {
-  $@
-}
-
 # Dirty hack for gvim not integrating with unity when launched from command line
 #   https://bugs.launchpad.net/ubuntu/+source/vim/+bug/776499
 function gvim() {
@@ -39,4 +31,12 @@ function retag() {
     --exclude='*.log' \
     -R \
     ./* $(bundle show --paths) 2> /dev/null
+}
+
+# enable pasting of command lines beginning with $. When do you ever mean to
+# start a command with '$'?
+#
+# source: http://stackoverflow.com/questions/68372/what-is-your-single-most-favorite-command-line-trick-using-bash
+function \$ {
+  "$@"
 }
