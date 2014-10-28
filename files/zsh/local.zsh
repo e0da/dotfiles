@@ -9,7 +9,7 @@ function reloc() {
     global \
     $HOST \
   ; do
-    [ -e $ZLOCAL/$script ] && source $ZLOCAL/$script
+    [ -e "$ZLOCAL/$script" ] && source "$ZLOCAL/$script"
   done
 }
 
@@ -28,21 +28,21 @@ function edloc() {
       ;;
     *)
       echo "Usage: edloc [-G]"
-      echo "\t-G disables GUI in GUI-enabled environments"
+      echo -e "\t-G disables GUI in GUI-enabled environments"
       return
       ;;
   esac
 
   case "$DISPLAY" in
     '')
-      vim  $ZLOCAL
+      vim  "$ZLOCAL"
       ;;
     *)
       case "$__edloc_NOGUI" in
         yes)
-          vim $ZLOCAL ;;
+          vim "$ZLOCAL" ;;
         *)
-          gvim $ZLOCAL ;;
+          gvim "$ZLOCAL" ;;
       esac
       ;;
   esac

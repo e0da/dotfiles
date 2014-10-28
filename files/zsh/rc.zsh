@@ -5,9 +5,8 @@ for script in  \
   autojump     \
   functions    \
   local        \
-  matt         \
 ; do
-  source $HOME/.zsh/$script.zsh
+  source "$HOME/.zsh/$script.zsh"
 done
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

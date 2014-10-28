@@ -1,20 +1,22 @@
 # Dirty hack for gvim not integrating with unity when launched from command line
 #   https://bugs.launchpad.net/ubuntu/+source/vim/+bug/776499
 function gvim() {
-  /usr/bin/gvim -f $* &!
+  /usr/bin/gvim -f "$@" "&!"
 }
 
 function notify_sshable() {
-  host=$1
-  timeout=${2:-1}
-  sound=${3:-"$HOME/Dropbox/sounds/LOZ_Secret.wav"}
-  iteration=0
+  local host=$1
+  local timeout=${2:-1}
+  local sound="${3:-$HOME/Dropbox/sounds/LOZ_Secret.wav}"
+  local iteration=0
+  local player=$( (which afplay &>/dev/null && echo afplay) || echo aplay)
+
   while true; do
     let iteration=$iteration+1
     echo "Attempt $iteration..."
-    ssh -oConnectTimeout=$timeout $host true
+    ssh -oConnectTimeout="$timeout" "$host" true
     if [ $? = 0 ]; then
-      aplay $sound
+      $player "$sound" &
       break
     fi
   done

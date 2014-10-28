@@ -13,7 +13,7 @@ zstyle ':completion:*' menu select=0
 zstyle ':completion:*' original true
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' verbose true
-zstyle :compinstall filename '~/.zshrc'
+zstyle :compinstall filename ~/.zshrc
 autoload -Uz compinit
 compinit
 disable which # I HATE zsh which.
@@ -23,7 +23,7 @@ SAVEHIST=100000
 setopt appendhistory autocd beep extendedglob nomatch notify autopushd
 
 readonly THIS_SCRIPT=$0
-readonly UNAME=`uname`
+readonly UNAME=$(uname)
 
 # Helper functions
 #
@@ -36,18 +36,18 @@ function use_coreutils_on_mac() {
 }
 
 function use_solarized_dircolors() {
-  local path_to_this_script="$(perl -MCwd -e 'print Cwd::abs_path shift' $THIS_SCRIPT)"
-  local this_script_dir=$(dirname $path_to_this_script)
+  local path_to_this_script="$(perl -MCwd -e 'print Cwd::abs_path shift' "$THIS_SCRIPT")"
+  local this_script_dir=$(dirname "$path_to_this_script")
   local git_repo_dir="$this_script_dir/../.."
   local dircolors_dir="$git_repo_dir/support/dircolors-solarized"
-  eval `dircolors $dircolors_dir/dircolors.ansi-dark`
+  eval "$(dircolors "$dircolors_dir/dircolors.ansi-dark")"
 }
 
 # max file descriptor limit on Mac
-[ $UNAME = 'Darwin' ] && ulimit -n 9999
+[ "$UNAME" = 'Darwin' ] && ulimit -n 9999
 
 # brew-compatible zsh-completions
-[ $UNAME = 'Darwin' ] && fpath=(/usr/local/share/zsh-completions $fpath)
+[ "$UNAME" = 'Darwin' ] && fpath=(/usr/local/share/zsh-completions $fpath)
 
 # C-x C-e command editing
 #
@@ -79,10 +79,10 @@ use_solarized_dircolors
 #
 case $UNAME in
   Linux)
-    let n_cores=$(grep -c processor /proc/cpuinfo)+1
+    let n_cores="$(grep -c processor /proc/cpuinfo)+1"
   ;;
   Darwin)
-    let n_cores=$(sysctl -n hw.ncpu)+1
+    let n_cores="$(sysctl -n hw.ncpu)+1"
   ;;
 esac
 export MAKEOPTS=-j${n_cores}
@@ -99,8 +99,7 @@ export MAKEOPTS=-j${n_cores}
 #      > /tmp/terminfo \
 #      && tic /tmp/terminfo
 #
-[ `uname` = 'Linux' ] &&
-  export TERM=screen-256color 2>/dev/null
+[ "$(uname)" = 'Linux' ] && export TERM=screen-256color 2>/dev/null
 
 # Debian package development
 #
