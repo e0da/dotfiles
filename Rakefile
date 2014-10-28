@@ -25,6 +25,7 @@ MAPPINGS = {
   'Xdefaults'          => '~/.Xdefaults',
   'Xresources'         => '~/.Xresources',
   'ackrc'              => '~/.ackrc',
+  'agignore'           => '~/.agignore',
   'aptitude'           => '~/.aptitude',
   'bin'                => '~/bin',
   'gitconfig'          => '~/.gitconfig',
