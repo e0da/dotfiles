@@ -79,3 +79,16 @@ function notify_sshable() {
     fi
   done
 }
+
+# Adapted from Matt Schartman's function.
+function retag() {
+  rm tags tags 2> /dev/null
+
+  # shellcheck disable=SC2046
+  ctags \
+    --exclude=.git \
+    --exclude=tmp \
+    --exclude='*.log' \
+    -R \
+    ./* $(bundle show --paths) 2> /dev/null
+}
