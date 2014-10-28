@@ -6,10 +6,13 @@
 
 trap 'kill 0' INT TERM EXIT
 
-readonly ARGV=($*)
+readonly ARGV=$*
 
-declare OPTS__no_parallel
+declare OPTS__creating
 declare OPTS__dropping
+declare OPTS__loading_fixtures
+declare OPTS__no_migrating
+declare OPTS__no_parallel
 
 readonly APPS_PATH=$APM_BUNDLE_PATH/apps
 
@@ -28,11 +31,11 @@ function help() {
 Usage: mkdbs [OPTIONS]
 
 OPTIONS:
-  -C  Don't create databases (rake db:create)
   -M  Don't migrate databases (rake db:migrate)
-  -F  Don't load fixtures (rake db:fixtures:load)
   -P  No parallelism. Do everything in serial. SLOWER.
+  -c  Create databases (rake db:create)
   -d  Drop databases before creating (rake db:drop)
+  -f  Load fixtures (rake db:fixtures:load)
   -h  Show this help
 
 (Supports debug output thusly: DEBUG_APM=1 mkdbs)
@@ -43,25 +46,25 @@ function parse_options() {
   local OPTIND
   local OPTARG
   local opt
-  while getopts 'hCFMPd' opt; do
+  while getopts 'hMPcdf' opt; do
     case "$opt" in
       h) help && exit 0 ;;
-      C) OPTS__no_creating=1 ;;
-      F) OPTS__no_loading_fixtures=1 ;;
       M) OPTS__no_migrating=1 ;;
       P) OPTS__no_parallel=1 ;;
+      c) OPTS__creating=1 ;;
       d) OPTS__dropping=1 ;;
+      f) OPTS__loading_fixtures=1 ;;
       *) help && exit 1 ;;
     esac
   done
 }
 
 function is_creating() {
-  [ "$OPTS__no_creating" != 1 ]
+  [ "$OPTS__creating" == 1 ]
 }
 
 function is_loading_fixtures() {
-  [ "$OPTS__no_loading_fixtures" != 1 ]
+  [ "$OPTS__loading_fixtures" == 1 ]
 }
 
 function is_migrating() {
@@ -82,14 +85,15 @@ function app_path_for() {
 }
 
 function rake_do() {
-  local path=$1; shift
+  local path=$1;        shift
   local environment=$1; shift
-  local cmd=($*)
+  local task=$1;        shift
+  local cmd="rake $task"
 
-  echo -e "${BLUE}$path ${GREEN}$environment ${YELLOW}rake ${cmd[*]}${DEFAULT}"
+  echo -e "${BLUE}$path ${GREEN}$environment ${YELLOW}$cmd${DEFAULT}"
 
   cd $path
-  RAILS_ENV=$environment rake ${cmd[*]}
+  RAILS_ENV=$environment $cmd
 }
 
 function create_databases() {
@@ -113,9 +117,8 @@ function create_databases() {
 }
 
 function main() {
-  local argv=$*
-  parse_options $argv
+  parse_options $*
   create_databases
 }
 
-main ${ARGV[*]}
+main $ARGV
