@@ -12,58 +12,6 @@ function gvim() {
   /usr/bin/gvim -f $* &!
 }
 
-# sanitize ~/.ssh/known_hosts by removing chunks which break `ssh-keygen -R`. If
-# a line number is supplied, also delete that line.
-#
-function khk() {
-  known_hosts=~/.ssh/known_hosts
-  if [ "$1" != "" ]; then
-    sed -i ${1}d $known_hosts
-  fi
-  sed -i 's/,<[^>]*>//g' $known_hosts
-}
-
-# wrap ssh-keygen so that we always sanitize the file before calling
-# `ssh-keygen -R`
-#
-function ssh-keygen-wrapper() {
-  khk
-  ssh-keygen $*
-}
-alias ssh-keygen=ssh-keygen-wrapper
-
-
-# wrap knife ssh with my constant arguments since their config file doesn't
-# support it FOR SOME RAISIN
-#
-function kssh() {
-  knife ssh -x justinforce -a name $*
-}
-
-##
-# Opens an ssh tunnel to repo01 and opens a browser to RabbitMQ management
-# interface.
-#
-# Arguments:
-#   $1: local port to listen on (defaults to 55672)
-#
-function rmq() {
-  : ${1=55672}
-  local_port=$1
-  ssh repo01 -fNL${local_port}:flint-mq01:55672
-  url=http://localhost:$local_port
-  open $url || gnome-open $url
-}
-
-function shmux() {
-  host=$1 && shift
-  ssh $host -t tmux $*
-}
-
-function eshmux() {
-  exec shmux $*
-}
-
 function notify_sshable() {
   host=$1
   timeout=${2:-1}
