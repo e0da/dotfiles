@@ -24,7 +24,10 @@ readonly MIGRATE_DIRS=($(
 readonly DEFAULT="\033[0m"
 readonly BLUE="\033[34m"
 readonly GREEN="\033[32m"
+readonly MAGENTA="\033[35m"
 readonly YELLOW="\033[33m"
+
+readonly SCHEMA_CMD='git ls-files \*/schema.rb | xargs git checkout'
 
 function help() {
   printf "mkdbs: Set up all of your APM Bundle databases
@@ -34,6 +37,7 @@ Usage: mkdbs [OPTIONS]
 OPTIONS:
   -M  Don't migrate databases (rake db:migrate)
   -P  No parallelism. Do everything in serial. SLOWER.
+  -S  No checking out schemas afterward. (git ls \\*/schema.rb | xargs git checkout)
   -c  Create databases (rake db:create)
   -d  Drop databases before creating (rake db:drop)
   -f  Load fixtures (rake db:fixtures:load)
@@ -47,11 +51,12 @@ function parse_options() {
   local OPTIND
   local OPTARG
   local opt
-  while getopts 'hMPcdf' opt; do
+  while getopts 'hMPScdf' opt; do
     case "$opt" in
       h) help && exit 0 ;;
       M) OPTS__no_migrating=1 ;;
       P) OPTS__no_parallel=1 ;;
+      S) OPTS__no_checking_out_schemas=1 ;;
       c) OPTS__creating=1 ;;
       d) OPTS__dropping=1 ;;
       f) OPTS__loading_fixtures=1 ;;
@@ -73,6 +78,10 @@ function is_migrating() {
 }
 function is_parallel() {
   [ "$OPTS__no_parallel" != 1 ]
+}
+
+function is_checking_out_schemas() {
+  [ "$OPTS__no_checking_out_schemas" != 1 ]
 }
 
 function is_dropping() {
@@ -117,9 +126,19 @@ function create_databases() {
   wait
 }
 
+# XXX This is to deal with the fact that some schemas get updated by migrating
+# and then differ from the canonical versions in git.
+function checkout_schemas() {
+  echo -e "${MAGENTA}Checking out schema.rb files..."
+  echo -e "${YELLOW}${SCHEMA_CMD}${DEFAULT}"
+  cd "$APM_BUNDLE_PATH"
+  eval "$SCHEMA_CMD" # Need eval because there's a pipe
+}
+
 function main() {
   parse_options "$@"
   create_databases
+  is_checking_out_schemas && checkout_schemas
 }
 
 main "$ARGV"
