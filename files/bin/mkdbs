@@ -65,17 +65,10 @@ function parse_options() {
   done
 }
 
-function is_creating() {
-  [ "$OPTS__creating" == 1 ]
-}
-
-function is_loading_fixtures() {
-  [ "$OPTS__loading_fixtures" == 1 ]
-}
-
 function is_migrating() {
   [ "$OPTS__no_migrating" != 1 ]
 }
+
 function is_parallel() {
   [ "$OPTS__no_parallel" != 1 ]
 }
@@ -84,8 +77,16 @@ function is_checking_out_schemas() {
   [ "$OPTS__no_checking_out_schemas" != 1 ]
 }
 
+function is_creating() {
+  [ "$OPTS__creating" == 1 ]
+}
+
 function is_dropping() {
   [ "$OPTS__dropping" == 1 ]
+}
+
+function is_loading_fixtures() {
+  [ "$OPTS__loading_fixtures" == 1 ]
 }
 
 function app_path_for() {
