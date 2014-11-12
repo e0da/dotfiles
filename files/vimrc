@@ -62,7 +62,6 @@ VAMActivate wmgraphviz
 "                                 Vim Behavior
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set hidden                                                " don't unload buffer when switching away
 set modeline                                              " allow per-file settings via modeline
 set secure                                                " disable unsafe commands in local .vimrc files
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8  " saving and encoding
@@ -93,6 +92,9 @@ set tags=./tags,tags;$HOME
 
 " middle-click paste
 noremap! <s-insert> <middlemouse>
+
+" auto save
+autocmd BufLeave,CursorHold,CursorHoldI,FocusLost * silent! wa
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                  Appearance
@@ -211,3 +213,7 @@ nmap \( ci(<cr><esc>Pa<cr><esc>Vkk=
 
 " Break a comma-delimited list onto new lines
 vmap \, :s/,/,\r/g<cr>
+
+" Ag for string in gem directories, too!
+" https://github.com/FergusonSean/dotfiles/blob/master/.vimrc#L109
+command! -nargs=* Gag call ag#Ag('grep<bang>', <q-args> . ' . ' . system('bundle show --paths | tr "\n" " "'))
