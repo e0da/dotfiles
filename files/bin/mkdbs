@@ -12,7 +12,6 @@ declare OPTS__creating
 declare OPTS__dropping
 declare OPTS__loading_fixtures
 declare OPTS__no_migrating
-declare OPTS__no_parallel
 
 readonly APPS_PATH=$APM_BUNDLE_PATH/apps
 
@@ -36,7 +35,6 @@ Usage: mkdbs [OPTIONS]
 
 OPTIONS:
   -M  Don't migrate databases (rake db:migrate)
-  -P  No parallelism. Do everything in serial. SLOWER.
   -S  No checking out schemas afterward. (git ls \\*/schema.rb | xargs git checkout)
   -c  Create databases (rake db:create)
   -d  Drop databases before creating (rake db:drop)
@@ -51,11 +49,10 @@ function parse_options() {
   local OPTIND
   local OPTARG
   local opt
-  while getopts 'hMPScdf' opt; do
+  while getopts 'hMScdf' opt; do
     case "$opt" in
       h) help && exit 0 ;;
       M) OPTS__no_migrating=1 ;;
-      P) OPTS__no_parallel=1 ;;
       S) OPTS__no_checking_out_schemas=1 ;;
       c) OPTS__creating=1 ;;
       d) OPTS__dropping=1 ;;
@@ -67,10 +64,6 @@ function parse_options() {
 
 function is_migrating() {
   [ "$OPTS__no_migrating" != 1 ]
-}
-
-function is_parallel() {
-  [ "$OPTS__no_parallel" != 1 ]
 }
 
 function is_checking_out_schemas() {
@@ -117,12 +110,10 @@ function create_databases() {
           is_creating         && rake_do "$path" $environment db:create
           is_migrating        && rake_do "$path" $environment db:migrate
           is_loading_fixtures && rake_do "$path" $environment db:fixtures:load
-        ) &
-        is_parallel || wait
+        )
       done
       wait
-    ) &
-    is_parallel || wait
+    )
   done
   wait
 }
