@@ -62,6 +62,7 @@ VAMActivate wmgraphviz
 "                                 Vim Behavior
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+set hidden                                                " don't unload buffer when switching away
 set modeline                                              " allow per-file settings via modeline
 set secure                                                " disable unsafe commands in local .vimrc files
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8  " saving and encoding
