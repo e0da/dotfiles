@@ -18,3 +18,5 @@ apps/property/property_qa.sql.bz2
 
 # Mac o_o
 .DS_Store
+
+# vi: set filetype=dosini:
