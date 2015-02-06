@@ -11,27 +11,24 @@
 [alias]
   a       = add
   aa      = add --all
+  alias   = !~/bin/git_aliases
+  aliases = !~/bin/git_aliases
   b       = branch
   ci      = commit
   co      = checkout
   d       = diff
   dc      = diff --cached
-  pl      = pull --rebase
-  pr      = pull-request
-  ps      = push
-  s       = status --short
-  l       = log --stat
   f       = fetch origin --prune
-  mm      = merge origin/master
   ff      = merge origin/master master --ff-only
-  m       = merge --no-ff
+  fuckit  = !git reset --hard HEAD && git clean -df
+  l       = log --stat
+  last    = log -p -n1
   lol     = log --graph --decorate --pretty=oneline --abbrev-commit
   lola    = log --graph --decorate --pretty=oneline --abbrev-commit --all
-  last    = cat-file commit HEAD
-  fuckit  = !git reset --hard HEAD && git clean -df
-  aliases = !~/bin/git_aliases
-  alias   = !~/bin/git_aliases
-  sc      = story-commit
+  pl      = pull --rebase
+  ps      = push
+  s       = status --short
+  sha     = !git log -n1 | head -n1 |  grep -Eo '[a-f0-9]{40}'
 
 [rerere]
   enabled = true
