@@ -35,6 +35,7 @@ VAMActivate YouCompleteMe
 VAMActivate ag
 VAMActivate ctrlp
 VAMActivate delimitMate
+VAMActivate fish
 VAMActivate fugitive
 VAMActivate github:MarcWeber/vim-addon-local-vimrc
 VAMActivate github:cespare/vim-toml
@@ -87,6 +88,7 @@ set guioptions-=r                                         " turn off GUI right s
 set guioptions-=L                                         " turn off GUI left scrollbar
 set winaltkeys=no                                         " turn off stupid fucking alt shortcuts
 set laststatus=2                                          " always show status bar
+set shell=bash
 
 " check the parent directories for tags, too.
 set tags=./tags,tags;$HOME

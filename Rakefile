@@ -28,6 +28,7 @@ MAPPINGS = {
   'agignore'           => '~/.agignore',
   'aptitude'           => '~/.aptitude',
   'bin'                => '~/bin',
+  'config.fish'        => '~/.config/fish/config.fish',
   'gitconfig'          => '~/.gitconfig',
   'gitignore_global'   => '~/.gitignore_global',
   'rspec'              => '~/.rspec',

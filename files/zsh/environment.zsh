@@ -13,6 +13,7 @@ zstyle ':completion:*' menu select=0
 zstyle ':completion:*' original true
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' verbose true
+zstyle ':completion:*' show-completer true
 zstyle :compinstall filename ~/.zshrc
 autoload -Uz compinit
 compinit
