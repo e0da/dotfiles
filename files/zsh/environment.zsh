@@ -23,8 +23,8 @@ HISTSIZE=100000
 SAVEHIST=100000
 setopt appendhistory autocd beep extendedglob nomatch notify autopushd
 
-readonly THIS_SCRIPT=$0
-readonly UNAME=$(uname)
+export THIS_SCRIPT=$0
+export UNAME=$(uname)
 
 # Helper functions
 #
@@ -116,5 +116,6 @@ export DOCKER_HOST=tcp://192.168.59.103:2375
 [ -f /usr/local/bin/aws_zsh_completer.sh ] &&
   source /usr/local/bin/aws_zsh_completer.sh
 
-[ -f /usr/local/share/zsh-completions ] &&
-  export fpath=(/usr/local/share/zsh-completions $fpath)
+# APM
+#
+export APM_BUNDLE="$HOME/code/apm_bundle"
