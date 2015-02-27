@@ -42,7 +42,7 @@ MAPPINGS = {
 }
 
 ##
-# Packages to be instaled. global packages are always installed; gui packages
+# Packages to be installed. global packages are always installed; gui packages
 # are only installed if a GUI is detected.
 #
 PACKAGES = {
