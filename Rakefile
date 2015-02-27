@@ -62,11 +62,11 @@ PACKAGES = {
 PREFERRED_SHELL = 'zsh'
 
 ##
-# Wraps rake's own #warn with support for colors.
+# Wraps Kernel#warn with support for colors.
 #
-alias :rake_warn :warn
+alias :kernel_warn :warn
 def warn(msg, color=:red)
-  rake_warn "\e[#{COLORS[color]}m#{msg}\e[m"
+  kernel_warn "\e[#{COLORS[color]}m#{msg}\e[m"
 end
 
 def force?
