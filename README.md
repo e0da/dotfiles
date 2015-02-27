@@ -27,7 +27,7 @@ Installation
   existing files.
 
 If you understand the risks and want to press on, copy and paste this (you can
-skip the first 2 lines if you have the commands from the 2nd line):
+skip the first 2 lines if you have the packages from the 2nd line):
 
 ```sh
 (
