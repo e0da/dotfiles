@@ -49,9 +49,6 @@ git clone https://github.com/justinforce/dotfiles ~/.dotfiles --recursive
 Then you can `cd` into `~/.dotfiles` and run `rake -T` to get a list of the
 available tasks.
 
-License
--------
-
 Highlights
 ----------
 
