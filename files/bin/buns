@@ -1,0 +1,24 @@
+#!/bin/bash
+
+[ ! -z "$DEBUG_BUNS" ] && set -x
+
+trap 'kill 0' INT TERM EXIT
+
+readonly GREEN="\033[32m"
+readonly BLUE="\033[34m"
+readonly DEFAULT="\033[0m"
+readonly BUNDLE_ARGS=(--quiet)
+
+function bundle_with {
+  local gemfile dir
+  gemfile="$1"
+  dir="$(dirname "$gemfile")"
+  echo -e "${GREEN}Bundling in ${BLUE}${dir}${DEFAULT}"
+  pushd "$dir" >/dev/null
+  bundle --local "${BUNDLE_ARGS[@]}" || bundle "${BUNDLE_ARGS[@]}"
+  popd >/dev/null
+}
+
+find . -name Gemfile | while read gemfile; do
+  bundle_with "$gemfile"
+done
