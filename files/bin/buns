@@ -1,6 +1,11 @@
 #!/bin/bash
 
-[ ! -z "$DEBUG_BUNS" ] && set -x
+if [ "$DEBUG_BUNS" ]; then
+  set -x
+  exec 3>&1
+else
+  exec 3>/dev/null
+fi
 
 trap 'kill 0' INT TERM EXIT
 
@@ -10,15 +15,40 @@ readonly DEFAULT="\033[0m"
 readonly BUNDLE_ARGS=(--quiet)
 
 function bundle_with {
-  local gemfile dir
+  local gemfile dir ruby_version
   gemfile="$1"
   dir="$(dirname "$gemfile")"
   echo -e "${GREEN}Bundling in ${BLUE}${dir}${DEFAULT}"
-  pushd "$dir" >/dev/null
+  pushd "$dir" >&3
+  ruby_version=$(cat .ruby-version 2>&3)
+  [ ! -z "$ruby_version" ] && install_and_use_ruby_version "$ruby_version"
   bundle --local "${BUNDLE_ARGS[@]}" || bundle "${BUNDLE_ARGS[@]}"
-  popd >/dev/null
+  popd >&3
 }
 
-find . -name Gemfile | while read gemfile; do
-  bundle_with "$gemfile"
-done
+function install_and_use_ruby_version {
+  local ruby_version=$1; shift
+  rvm use "$ruby_version" --install >&3
+}
+
+function load_ruby_environment {
+  source ~/.rvm/scripts/rvm
+}
+
+function ensure_crucial_ruby_gems_are_installed {
+  local gem
+  for gem in bundler rake; do
+    gem list -i $gem >&3 2>&1
+    [ $? = 0 ] || gem install $gem
+  done
+}
+
+function main {
+  load_ruby_environment
+  ensure_crucial_ruby_gems_are_installed
+  find . -name Gemfile | while read gemfile; do
+    bundle_with "$gemfile"
+  done
+}
+
+main
