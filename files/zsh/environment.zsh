@@ -69,7 +69,6 @@ bindkey ';5D' backward-word
 
 # environment
 #
-export DYLD_FORCE_FLAT_NAMESPACE=1 # I DON'T KNOW! If this isn't here, Vim won't work with YouCompleteMe.
 export EDITOR=vi
 export GIT_EDITOR=vi
 export PATH=$HOME/bin:$HOME/opt/bin:/usr/local/sbin:/usr/local/bin:$PATH
