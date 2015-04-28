@@ -33,7 +33,6 @@ VAMActivate Tabular
 VAMActivate UltiSnips
 VAMActivate YouCompleteMe
 VAMActivate ag
-VAMActivate ctrlp
 VAMActivate delimitMate
 VAMActivate fish
 VAMActivate fugitive
@@ -43,6 +42,7 @@ VAMActivate github:digitaltoad/vim-jade
 VAMActivate github:ekalinin/Dockerfile.vim
 VAMActivate github:jelera/vim-javascript-syntax
 VAMActivate github:jimmyhchan/dustjs.vim
+VAMActivate github:junegunn/fzf
 VAMActivate github:nathanaelkane/vim-indent-guides
 VAMActivate github:noc7c9/vim-iced-coffee-script
 VAMActivate github:pangloss/vim-javascript
@@ -171,8 +171,8 @@ nmap <space> <Plug>(easymotion-s)
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
 
-" ctrlp.vim
-let g:ctrlp_max_files = 0
+" FZF
+nmap <c-p> :FZF<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   Mappings
