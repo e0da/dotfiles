@@ -2,6 +2,8 @@ files/bin/apm
 files/bin/dang
 files/bin/fuck
 files/bin/hub
+files/bin/vi
+files/bin/vim
 
 Gemfile.lock
 
