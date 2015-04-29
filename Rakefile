@@ -34,7 +34,8 @@ MAPPINGS = {
   'rspec'              => '~/.rspec',
   'terminfo'           => '~/.terminfo',
   'tmux.conf'          => '~/.tmux.conf',
-  'vimrc'              => '~/.vimrc',
+  'vim'                => %w[~/.vim ~/.nvim],
+  'vimrc'              => %w[~/.vimrc ~/.nvimrc],
   'xrdb-merge.desktop' => '~/.config/autostart/xrdb-merge.desktop',
   'zsh'                => '~/.zsh',
   'zsh/rc.zsh'         => '~/.zshrc',
@@ -131,7 +132,13 @@ task install: INSTALL_TASKS
 desc 'Symlink config files to appropriate locations. (force=yes to overwrite)'
 task :links do
   MAPPINGS.each do |source, target|
-    link_file source, target
+    if target.is_a? Array
+      target.each do |targetlet|
+        link_file source, targetlet
+      end
+    else
+      link_file source, target
+    end
   end
 end
 

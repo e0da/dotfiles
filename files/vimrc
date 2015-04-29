@@ -1,64 +1,37 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   Plugins!
-"                               Managed with VAM
-"                https://github.com/MarcWeber/vim-addon-manager
+"                            Managed with vim-plug
+"                     https://github.com/junegunn/vim-plug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set nocompatible | filetype indent plugin on | syn on
+call plug#begin()
 
-let g:vim_addon_manager = {}
-let g:vim_addon_manager.shell_commands_run_method='system'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'tomasr/molokai'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'MarcWeber/vim-addon-local-vimrc'
+Plug 'SirVer/ultisnips'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
+Plug 'honza/vim-snippets'
+Plug 'janx/vim-rubytest', { 'for': 'ruby' }
+Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
+Plug 'junegunn/fzf'
+Plug 'junegunn/vim-plug' " vimception!
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+Plug 'morhetz/gruvbox'
+Plug 'othree/html5.vim', { 'for': 'html' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' } " May try javascript_enable_domhtmlcss later
+Plug 'rking/ag.vim', { 'on': 'Ag' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/syntastic'
+Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-fugitive', { 'on': ['Gblame', 'Gbrowse', 'Gcommit', 'Gdiff', 'Gedit', 'Ggrep', 'Gmove', 'Gread', 'Gremove', 'Gsplit', 'Gstatus', 'Gtabedit', 'Gvsplit'] }
+Plug 'tpope/vim-rails'
+Plug 'vim-scripts/tComment'
 
-fun! SetupVAM()
-  let c = get(g:, 'vim_addon_manager', {})
-  let g:vim_addon_manager = c
-  let c.plugin_root_dir = expand('$HOME', 1) . '/.vim/vim-addons'
-  let &rtp.=(empty(&rtp)?'':',').c.plugin_root_dir.'/vim-addon-manager'
-  if !isdirectory(c.plugin_root_dir.'/vim-addon-manager/autoload')
-    execute '!git clone --depth=1 git://github.com/MarcWeber/vim-addon-manager '
-        \       shellescape(c.plugin_root_dir.'/vim-addon-manager', 1)
-  endif
-  call vam#ActivateAddons([], {'auto_install' : 0})
-endfun
-
-call SetupVAM()
-" use <c-x><c-p> to complete plugin names
-
-" My plugin declarations
-VAMActivate EasyMotion
-VAMActivate Rubytest
-VAMActivate Solarized
-VAMActivate Syntastic
-VAMActivate Tabular
-VAMActivate UltiSnips
-VAMActivate YouCompleteMe
-VAMActivate ag
-VAMActivate delimitMate
-VAMActivate fish
-VAMActivate fugitive
-VAMActivate github:MarcWeber/vim-addon-local-vimrc
-VAMActivate github:cespare/vim-toml
-VAMActivate github:digitaltoad/vim-jade
-VAMActivate github:ekalinin/Dockerfile.vim
-VAMActivate github:jelera/vim-javascript-syntax
-VAMActivate github:jimmyhchan/dustjs.vim
-VAMActivate github:junegunn/fzf
-VAMActivate github:nathanaelkane/vim-indent-guides
-VAMActivate github:noc7c9/vim-iced-coffee-script
-VAMActivate github:pangloss/vim-javascript
-VAMActivate github:scrooloose/nerdtree
-VAMActivate github:sjl/gundo.vim
-VAMActivate github:wavded/vim-stylus
-VAMActivate gruvbox
-VAMActivate html5
-VAMActivate molokai
-VAMActivate rails
-VAMActivate rust
-VAMActivate tComment
-VAMActivate trailing-whitespace
-VAMActivate vim-coffee-script
-VAMActivate vim-snippets
-VAMActivate wmgraphviz
+call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Vim Behavior
