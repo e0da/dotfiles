@@ -52,8 +52,8 @@ available tasks.
 Highlights
 ----------
 
-I use [VAM][] (the Vim Addon Manager) to manage plugins. I use Olivier Verdier's
-[zsh-git-prompt][] to get nice git info in my prompt.
+I use [vim-plug][] to manage plugins. I use Olivier Verdier's [zsh-git-prompt][]
+to get nice git info in my prompt.
 
 License and Copyright
 ---------------------
@@ -62,5 +62,5 @@ Copyright Justin Force and Licensed under the [MIT license][].
 
 [Here be dragons!]: http://en.wikipedia.org/wiki/Here_be_dragons
 [MIT license]: http://www.opensource.org/licenses/MIT
-[VAM]: https://github.com/MarcWeber/vim-addon-manager
+[vim-plug]: https://github.com/junegunn/vim-plug
 [zsh-git-prompt]: https://github.com/olivierverdier/zsh-git-prompt
