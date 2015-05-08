@@ -45,7 +45,7 @@ function use_solarized_dircolors() {
 }
 
 # max file descriptor limit on Mac
-[ "$UNAME" = 'Darwin' ] && ulimit -n 9999
+[ "$UNAME" = 'Darwin' ] && ulimit -n 10240
 
 # brew-compatible zsh-completions
 [ "$UNAME" = 'Darwin' ] && fpath=(/usr/local/share/zsh-completions $fpath)
