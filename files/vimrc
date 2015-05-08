@@ -54,8 +54,6 @@ set number                                                " show absolute line n
 set nofoldenable                                          " I fucking hate code folding
 set scrolloff=10                                          " scroll the window so we can always see 10 lines around the cursor
 set textwidth=80                                          " wrap at 80 characters like a valid human
-set cursorline                                            " highlight the current line
-set cursorcolumn                                          " highlight the current line
 set printoptions=paper:letter                             " use letter as the print output format
 set guioptions-=T                                         " turn off GUI toolbar (icons)
 set guioptions-=r                                         " turn off GUI right scrollbar
