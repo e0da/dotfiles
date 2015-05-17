@@ -36,24 +36,24 @@ Xft.hintstyle: hintslight
 !! Molokai color theme
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
-*foreground:  #f8f8f2
-*background:  #272822
-*color0:      #212121
-*color1:      #e52222
-*color2:      #a6e32d
-*color3:      #fc951e
-*color4:      #c48dff
-*color5:      #fa2573
-*color6:      #67d9f0
-*color7:      #f2f2f2
-*color8:      #212121
-*color9:      #e52222
-*color10:     #a6e32d
-*color11:     #fc951e
-*color12:     #c48dff
-*color13:     #fa2573
-*color14:     #67d9f0
-*color15:     #f8f8f2
+! *foreground:  #f8f8f2
+! *background:  #272822
+! *color0:      #212121
+! *color1:      #e52222
+! *color2:      #a6e32d
+! *color3:      #fc951e
+! *color4:      #c48dff
+! *color5:      #fa2573
+! *color6:      #67d9f0
+! *color7:      #f2f2f2
+! *color8:      #212121
+! *color9:      #e52222
+! *color10:     #a6e32d
+! *color11:     #fc951e
+! *color12:     #c48dff
+! *color13:     #fa2573
+! *color14:     #67d9f0
+! *color15:     #f8f8f2
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !! Solarized color theme                                            !!
@@ -136,6 +136,47 @@ Xft.hintstyle: hintslight
 ! !! white dark/light
 ! *color7:                S_base2
 ! *color15:               S_base3
+
+! -----------------------------------------------------------------------------
+! ! File: gruvbox-urxvt256.xresources
+! ! Description: Retro groove colorscheme generalized
+! ! Author: morhetz <morhetz@gmail.com>
+! ! Source: https://github.com/morhetz/gruvbox-generalized
+! ! Last Modified: 13 Dec 2013
+! !
+! -----------------------------------------------------------------------------
+!
+URxvt.color24:  #076678
+URxvt.color66:  #427b58
+URxvt.color88:  #9d0006
+URxvt.color96:  #8f3f71
+URxvt.color100: #79740e
+URxvt.color108: #8ec07c
+URxvt.color109: #83a598
+URxvt.color130: #af3a03
+URxvt.color136: #b57614
+URxvt.color142: #b8bb26
+URxvt.color167: #fb4934
+URxvt.color175: #d3869b
+URxvt.color208: #fe8019
+URxvt.color214: #fabd2f
+URxvt.color223: #ebdbb2
+URxvt.color228: #f4e8ba
+URxvt.color229: #fdf4c1
+URxvt.color230: #ffffc8
+URxvt.color234: #1d2021
+URxvt.color235: #282828
+URxvt.color236: #32302f
+URxvt.color237: #3c3836
+URxvt.color239: #504945
+URxvt.color241: #665c54
+URxvt.color243: #7c6f64
+URxvt.color244: #928374
+URxvt.color245: #928374
+URxvt.color246: #a89984
+URxvt.color248: #bdae93
+URxvt.color250: #d5c4a1
+
 
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
