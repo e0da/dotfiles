@@ -8,14 +8,17 @@ readonly BLUE="\033[34m"
 readonly DEFAULT="\033[0m"
 readonly GREEN="\033[32m"
 readonly YELLOW="\033[33m"
+readonly START_DIR=$(pwd)
 
 function do_migrate() {
   local migrate_dir="$1"; shift
   local app_dir migrate_env
   pushd "$migrate_dir/../.." >/dev/null
-  app_dir=$(pwd)
+  app_dir=$(pwd | sed "s@$START_DIR@.@g")
   for migrate_env in test development; do
-    printf "%b\n" "${GREEN}Migrating ${YELLOW}${migrate_env}${GREEN} in ${BLUE}${app_dir}${DEFAULT}"
+    # Experimentation revealed 16 to be the right width for the test/development
+    # column. I don't know why. Seems like it should be ~11?
+    printf "%b %-16b %b\n" "${GREEN}Migrating " "${YELLOW}${migrate_env}" "${GREEN} in ${BLUE}${app_dir}${DEFAULT}"
     RAILS_ENV="$migrate_env" rake db:migrate &
   done
   wait
