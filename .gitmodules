@@ -1,6 +1,3 @@
-[submodule "files/zsh/git-prompt"]
-	path = files/zsh/git-prompt
-	url = https://github.com/olivierverdier/zsh-git-prompt
 [submodule "support/dircolors-solarized"]
 	path = support/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized
