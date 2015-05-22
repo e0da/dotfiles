@@ -213,3 +213,22 @@ vmap \, :s/,/,\r/g<cr>
 " Ag for string in gem directories, too!
 " https://github.com/FergusonSean/dotfiles/blob/master/.vimrc#L109
 command! -nargs=* Gag call ag#Ag('grep<bang>', <q-args> . ' . ' . system('bundle show --paths | tr "\n" " "'))
+
+" Dealing with splits
+" Thanks http://flaviusim.com/blog/resizing-vim-window-splits-like-a-boss/
+"
+" XXX The order and repetition of these width/height settings looks funny, but
+" it is what I determined works through experimentation. This was helpful to me
+" in finding my way. https://github.com/junegunn/goyo.vim/issues/13
+set winwidth=30
+set winheight=5
+set winminwidth=30
+set winminheight=5
+set winwidth=80
+set winheight=30
+nnoremap <silent> _ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
