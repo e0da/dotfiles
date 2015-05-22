@@ -12,9 +12,10 @@ Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe',       { 'do': './install.sh' }
 Plug 'ashisha/image.vim',            { 'on': 'Image' }
 Plug 'honza/vim-snippets'
-Plug 'janx/vim-rubytest',            { 'for': 'ruby' }
+Plug 'janko-m/vim-test'
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'junegunn/vim-easy-align',      { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
+Plug 'kassio/neoterm'
 Plug 'kchmck/vim-coffee-script',     { 'for': 'coffee' }
 Plug 'kien/ctrlp.vim'
 Plug 'mbbill/undotree',              { 'on': 'UndotreeToggle'   }
@@ -151,6 +152,14 @@ vmap <Enter> <Plug>(EasyAlign)
 
 "" Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" vim-test
+nmap <silent> <leader>tt :TestNearest<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>ts :TestSuite<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tv :TestVisit<CR>
+let test#strategy = 'neoterm'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   Mappings
