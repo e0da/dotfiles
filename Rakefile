@@ -38,8 +38,9 @@ MAPPINGS = {
   'vimrc'              => %w[~/.vimrc ~/.nvimrc],
   'xrdb-merge.desktop' => '~/.config/autostart/xrdb-merge.desktop',
   'zsh'                => '~/.zsh',
-  'zsh/rc.zsh'         => '~/.zshrc',
   'zsh/zlogin.zsh'     => '~/.zlogin',
+  'zsh/zshenv.zsh'     => '~/.zshenv',
+  'zsh/zshrc.zsh'      => '~/.zshrc',
 }
 
 ##
