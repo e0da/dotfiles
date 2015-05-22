@@ -27,6 +27,7 @@ Plug 'rking/ag.vim',                 { 'on': 'Ag' }
 Plug 'scrooloose/nerdtree',          { 'on': [ 'NERDTreeToggle', 'NERDTreeFind' ] }
 Plug 'scrooloose/syntastic'
 Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'troydm/zoomwintab.vim',        { 'on': 'ZoomWinTabToggle' }
