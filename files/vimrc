@@ -85,6 +85,9 @@ if has('gui_gnome')
   set guifont=Ubuntu\ Mono\ 8.4
 endif
 
+" Neovim
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " not yet supported in iTerm 2 stable
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " Tweaks for Molokai colorscheme (ignored if Molokai isn't used)
 let g:molokai_original=1
