@@ -145,7 +145,7 @@ noremap \nf :NERDTreeFind<cr>
 nmap <space> <Plug>(easymotion-s)
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsExpandTrigger = "<c-j>"
 
 " ctrlp
 let g:ctrlp_working_path_mode = 'c'
