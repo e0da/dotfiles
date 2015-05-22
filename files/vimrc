@@ -11,7 +11,6 @@ Plug 'MarcWeber/vim-addon-local-vimrc'
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe',       { 'do': './install.sh' }
 Plug 'ashisha/image.vim',            { 'on': 'Image' }
-Plug 'bronson/vim-trailing-whitespace'
 Plug 'honza/vim-snippets'
 Plug 'janx/vim-rubytest',            { 'for': 'ruby' }
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
@@ -20,6 +19,7 @@ Plug 'kchmck/vim-coffee-script',     { 'for': 'coffee' }
 Plug 'kien/ctrlp.vim'
 Plug 'mbbill/undotree',              { 'on': 'UndotreeToggle'   }
 Plug 'morhetz/gruvbox'
+Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/html5.vim',             { 'for': 'html' }
 Plug 'pangloss/vim-javascript',      { 'for': 'javascript' } " May try javascript_enable_domhtmlcss later
 Plug 'rking/ag.vim',                 { 'on': 'Ag' }
@@ -168,8 +168,9 @@ noremap \- yypVr-
 " Underline a line with equals (<h1> in Markdown documents)
 noremap \= yypVr=
 
-" Remove white space turds from the ends of lines
-noremap \W :FixWhitespace<cr>
+" Handle white space turds
+noremap \W :StripWhitespace<cr>
+noremap \w :ToggleWhitespace<cr>
 
 " Delete ALL THE BUFFERS!
 noremap \bd :1,999bd<cr>:NERDTree<cr>:NERDTree<cr>
