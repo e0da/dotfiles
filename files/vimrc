@@ -6,6 +6,7 @@
 
 call plug#begin()
 
+" Plug 'kien/ctrlp.vim'
 Plug 'Lokaltog/vim-easymotion',      { 'on': '<Plug>(easymotion-s)' }
 Plug 'MarcWeber/vim-addon-local-vimrc'
 Plug 'SirVer/ultisnips'
@@ -14,10 +15,10 @@ Plug 'ashisha/image.vim',            { 'on': 'Image' }
 Plug 'honza/vim-snippets'
 Plug 'janko-m/vim-test'
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
+Plug 'junegunn/fzf',                 { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/vim-easy-align',      { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
 Plug 'kassio/neoterm'
 Plug 'kchmck/vim-coffee-script',     { 'for': 'coffee' }
-Plug 'kien/ctrlp.vim'
 Plug 'mbbill/undotree',              { 'on': 'UndotreeToggle'   }
 Plug 'morhetz/gruvbox'
 Plug 'ntpeters/vim-better-whitespace'
@@ -148,7 +149,10 @@ nmap <space> <Plug>(easymotion-s)
 let g:UltiSnipsExpandTrigger = "<c-j>"
 
 " ctrlp
-let g:ctrlp_working_path_mode = 'c'
+" let g:ctrlp_working_path_mode = 'c'
+
+" FZF
+nmap <c-p> :FZF<cr>
 
 " vim-easy-align
 "" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
