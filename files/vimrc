@@ -17,7 +17,6 @@ Plug 'janko-m/vim-test'
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'junegunn/fzf',                 { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/vim-easy-align',      { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
-Plug 'kassio/neoterm'
 Plug 'kchmck/vim-coffee-script',     { 'for': 'coffee' }
 Plug 'mbbill/undotree',              { 'on': 'UndotreeToggle'   }
 Plug 'morhetz/gruvbox'
@@ -167,7 +166,7 @@ nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>ts :TestSuite<CR>
 nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
-let test#strategy = 'neoterm'
+let test#strategy = 'dispatch'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   Mappings
