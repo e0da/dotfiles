@@ -1,0 +1,15 @@
+#!/bin/bash
+
+[ "$DEBUG" ] && set -x
+
+BASE_URL='http://splatoperator.com/img'
+
+file_path=$(find ~/Dropbox/Screenshots | tail -n1)
+basename=$(basename "$file_path")
+escaped_name=$(ruby -ruri -e "puts URI.escape '$basename'")
+url="${BASE_URL}/$escaped_name"
+
+scp "$file_path" nfs:/home/public/img/
+
+echo -n "$url" | pbcopy
+echo "$url"
