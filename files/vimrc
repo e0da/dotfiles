@@ -6,7 +6,6 @@
 
 call plug#begin()
 
-" Plug 'kien/ctrlp.vim'
 Plug 'Lokaltog/vim-easymotion',      { 'on': '<Plug>(easymotion-s)' }
 Plug 'MarcWeber/vim-addon-local-vimrc'
 Plug 'SirVer/ultisnips'
