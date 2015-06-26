@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+brew update
+brew upgrade --all
+# brew reinstall --HEAD fzf neovim
+source ~/.rvm/scripts/rvm
+rvm get stable
+rvm reload
+nvim +PlugUpgrade +PlugUpdate +qa
+cd ~/code/apm_bundle
+git checkout master
+git fetch --prune
+git merge origin/master --ff-only
+buns
+migs
+:
