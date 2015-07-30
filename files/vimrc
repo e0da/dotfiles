@@ -26,6 +26,7 @@ Plug 'pangloss/vim-javascript',      { 'for': 'javascript' } " May try javascrip
 Plug 'rking/ag.vim',                 { 'on': 'Ag' }
 Plug 'scrooloose/nerdtree',          { 'on': [ 'NERDTreeToggle', 'NERDTreeFind' ] }
 Plug 'scrooloose/syntastic'
+Plug 'slim-template/vim-slim',       { 'for': 'slim' }
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
