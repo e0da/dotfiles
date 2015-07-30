@@ -4,7 +4,7 @@ set -e
 
 brew update
 brew upgrade --all
-# brew reinstall --HEAD fzf neovim
+brew reinstall --HEAD fzf neovim
 source ~/.rvm/scripts/rvm
 rvm get stable
 rvm reload
