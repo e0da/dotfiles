@@ -218,6 +218,9 @@ vmap \, :s/,/,\r/g<cr>
 " https://github.com/FergusonSean/dotfiles/blob/master/.vimrc#L109
 command! -nargs=* Gag call ag#Ag('grep<bang>', <q-args> . ' . ' . system('bundle show --paths | tr "\n" " "'))
 
+" Replace `:key =>` with `key:`, accommodating extra spaces before the =>
+noremap \hr :s/:\(\S\+\)\s*=>/\1:/g<cr>
+
 " Dealing with splits
 " Thanks http://flaviusim.com/blog/resizing-vim-window-splits-like-a-boss/
 "
