@@ -47,7 +47,7 @@ function bundle_with {
 
 function ensure_crucial_ruby_gems_are_installed {
   local gem
-  for gem in bundler rake; do
+  for gem in bundler rake rubygems-bundler; do
     gem list -i $gem >&3 2>&1
     [ $? = 0 ] || gem install $gem
   done
@@ -58,6 +58,7 @@ function main {
   find . -name Gemfile | while read gemfile; do
     bundle_with "$gemfile"
   done
+  gem regenerate_binstubs
 }
 
 main
