@@ -53,7 +53,16 @@ function ensure_crucial_ruby_gems_are_installed {
   done
 }
 
+function ensure_ruby_works {
+  ruby --version >&3
+  if [ $? != 0 ]; then
+    echo "There seems to be a problem with your ruby environment" &&
+    exit 1
+  fi
+}
+
 function main {
+  ensure_ruby_works
   ensure_crucial_ruby_gems_are_installed
   find . -name Gemfile | while read gemfile; do
     bundle_with "$gemfile"
