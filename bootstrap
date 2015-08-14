@@ -3,37 +3,34 @@
 dotfiles="$HOME/.dotfiles"
 repo='https://github.com/justinforce/dotfiles'
 
-install_rvm_and_ruby() {
-  # --ignore-dotfiles will avoid updating my dotfiles, which I manage
-  \curl -sSL https://get.rvm.io | bash -s stable --ignore-dotfiles --ruby
-}
-
-source_rvm() {
-  for path in ~/.rvm/scripts/rvm /etc/profile.d/rvm.sh; do
-    [ -e $path ] && source $path
-  done
-}
-
 clone_or_update_repo() {
-  if [ -e $dotfiles ]; then
-    cd $dotfiles
+  if [ -e "$dotfiles" ]; then
+    cd "$dotfiles"
     git pull origin master
     git submodule sync
     git submodule update --init
   else
-    git clone --recursive $repo $dotfiles
+    git clone --recursive "$repo" "$dotfiles"
   fi
 }
 
+set_up_ruby_environment() {
+  ( which rbenv && rbenv install -h ) &>/dev/null && return
+  git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+  git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+  which bundle || gem install bundler
+}
+
 run_rake_task() {
-  cd $dotfiles
-  source_rvm
+  cd "$dotfiles"
   rake force
 }
 
 main() {
   echo -e "\e[1;32mReticulating splines...\e[m"
-  install_rvm_and_ruby
+  set_up_ruby_environment
   clone_or_update_repo
   run_rake_task
 }

@@ -5,14 +5,26 @@ set -e
 brew update
 brew upgrade --all
 brew reinstall --HEAD fzf neovim
-source ~/.rvm/scripts/rvm
-rvm get stable
-rvm reload
+
+pushd ~/.rbenv
+  git pull
+  pushd ~/.rbenv/plugins
+    for plugin in *; do
+      pushd "$plugin"
+        git pull
+      popd
+    done
+  popd
+popd
+
 nvim +PlugUpgrade +PlugUpdate +qa
-cd ~/code/apm_bundle
-git checkout master
-git fetch --prune
-git merge origin/master --ff-only
-buns
-migs
+
+pushd ~/code/apm_bundle
+  git checkout master
+  git fetch --prune
+  git merge origin/master --ff-only
+  buns
+  migs
+popd
+
 :
