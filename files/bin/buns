@@ -40,7 +40,7 @@ function bundle_with {
   echo -e "${GREEN}Bundling in ${BLUE}${dir}${DEFAULT}"
   pushd "$dir" >&3
   set -e
-  bundle --local "${bundle_args[@]}" || bundle "${bundle_args[@]}"
+  bundle --local "${bundle_args[@]}" 2>/dev/null || bundle "${bundle_args[@]}"
   set +e
   popd >&3
 }
