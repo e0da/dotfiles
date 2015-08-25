@@ -15,16 +15,16 @@ clone_or_update_repo() {
 }
 
 set_up_ruby_environment() {
-  ( which rbenv && rbenv install -h ) &>/dev/null && return
-  git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-  git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
+  gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+  curl -sSL https://get.rvm.io | bash -s stable
+
+  source ~/.rvm/scripts/rvm
+  rvm use ruby --install --default
 
   for gem in bundle rubygems-bundler rake; do
-    gem list -i $gem >&3 2>&1
-    [ $? = 0 ] || gem install $gem
+    gem list -i $gem &>/dev/null || gem install $gem
   done
+
   gem regenerate_binstubs
 }
 
