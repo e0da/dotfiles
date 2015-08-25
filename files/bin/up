@@ -1,6 +1,7 @@
 #!/bin/bash
 
-set -e
+set -ex
+
 
 brew update
 brew upgrade --all
