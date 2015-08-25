@@ -17,6 +17,7 @@ pushd ~/.rbenv
     done
   popd
 popd
+rbenv rehash
 
 nvim +PlugUpgrade +PlugUpdate +qa
 
