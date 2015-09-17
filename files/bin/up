@@ -7,17 +7,9 @@ brew update
 brew upgrade --all
 brew reinstall --HEAD fzf neovim
 
-pushd ~/.rbenv
-  git pull
-  pushd ~/.rbenv/plugins
-    for plugin in *; do
-      pushd "$plugin"
-        git pull
-      popd
-    done
-  popd
-popd
-rbenv rehash
+source ~/.rvm/scripts/rvm
+rvm get stable
+rvm reload
 
 nvim +PlugUpgrade +PlugUpdate +qa
 
