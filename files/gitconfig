@@ -93,3 +93,6 @@
 
 [hub]
 	protocol = https
+
+[init]
+	templatedir = ~/.git_template
