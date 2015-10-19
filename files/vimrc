@@ -9,7 +9,7 @@ call plug#begin()
 Plug 'Lokaltog/vim-easymotion',      { 'on': '<Plug>(easymotion-s)' }
 Plug 'MarcWeber/vim-addon-local-vimrc'
 Plug 'SirVer/ultisnips'
-Plug 'Valloric/YouCompleteMe',       { 'do': './install.sh' }
+Plug 'Valloric/YouCompleteMe',       { 'do': './install.py' }
 Plug 'ashisha/image.vim',            { 'on': 'Image' }
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'honza/vim-snippets'
