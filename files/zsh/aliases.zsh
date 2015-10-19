@@ -23,4 +23,4 @@ else
   alias ls='ls -G'
 fi
 
-alias t='test_runner find'
+alias t='test_launcher find'
