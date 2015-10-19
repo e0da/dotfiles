@@ -7,9 +7,12 @@ brew update
 brew upgrade --all
 brew reinstall --HEAD fzf neovim
 
-source ~/.rvm/scripts/rvm
-rvm get stable
-rvm reload
+set +x
+echo "Doing RVM stuff..."
+  source ~/.rvm/scripts/rvm
+  rvm get stable
+  rvm reload
+set -x
 
 nvim +PlugUpgrade +PlugUpdate +qa
 
