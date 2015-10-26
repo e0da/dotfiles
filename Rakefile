@@ -37,6 +37,7 @@ MAPPINGS = {
   'terminfo'           => '~/.terminfo',
   'tmux.conf'          => '~/.tmux.conf',
   'xrdb-merge.desktop' => '~/.config/autostart/xrdb-merge.desktop',
+  'ycm_extra_conf.py'  => '~/.ycm_extra_conf.py',
   'zsh'                => '~/.zsh',
   'zsh/zlogin.zsh'     => '~/.zlogin',
   'zsh/zshenv.zsh'     => '~/.zshenv',

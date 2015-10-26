@@ -9,7 +9,7 @@ call plug#begin()
 Plug 'Lokaltog/vim-easymotion',      { 'on': '<Plug>(easymotion-s)' }
 Plug 'MarcWeber/vim-addon-local-vimrc'
 Plug 'SirVer/ultisnips'
-Plug 'Valloric/YouCompleteMe',       { 'do': './install.py' }
+Plug 'Valloric/YouCompleteMe',       { 'do': './install.py --clang-completer' }
 Plug 'ashisha/image.vim',            { 'on': 'Image' }
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'gregsexton/MatchTag',          { 'for': 'html' }
@@ -127,7 +127,7 @@ autocmd filetype c,asm,python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType make setlocal noexpandtab
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                Plugin Helpers
+"                             Plugin Configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " fugitive shortcuts
@@ -169,6 +169,9 @@ nmap <silent> <leader>ts :TestSuite<CR>
 nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
 let test#strategy = 'dispatch'
+
+" Don't prompt to load ycm_extra_conf.py for YouCompleteMe; just load it.
+let g:ycm_confirm_extra_conf = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   Mappings
