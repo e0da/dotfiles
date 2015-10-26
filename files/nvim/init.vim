@@ -41,10 +41,13 @@ call plug#end()
 "                                 Vim Behavior
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+if (!has('nvim'))
+  set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8  " saving and encoding can only be set on startup in NeoVim
+endif
+
 set hidden                                                " don't unload buffer when switching away
 set modeline                                              " allow per-file settings via modeline
 set secure                                                " disable unsafe commands in local .vimrc files
-set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8  " saving and encoding
 set nobackup nowritebackup noswapfile autoread            " no backup or swap
 set hlsearch incsearch ignorecase smartcase               " search
 set wildmenu                                              " completion
