@@ -5,12 +5,17 @@
 BASE_URL='http://splatoperator.com/img'
 SCREENSHOT_DIR="$HOME/Dropbox/Screenshots"
 
-file_name=$(ls -t "$SCREENSHOT_DIR" | head -n1)
+if [ ! -z "$1" ]; then
+  file_name="$1"
+else
+  file_name="$SCREENSHOT_DIR/$(ls -t "$SCREENSHOT_DIR" | head -n1)"
+fi
+
 basename=$(basename "$file_name")
 escaped_name=$(ruby -ruri -e "puts URI.escape '$basename'")
 url="${BASE_URL}/$escaped_name"
 
-scp "$SCREENSHOT_DIR/$file_name" nfs:/home/public/img/
+scp "$file_name" nfs:/home/public/img/
 
 echo -n "$url" | pbcopy
 echo "$url"
