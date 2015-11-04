@@ -1,0 +1,65 @@
+#!/usr/bin/env ruby
+
+begin
+  require 'trollop'
+rescue LoadError
+  warn <<STR
+Trollop isn't installed. We need that for argument parsing.
+
+  gem install trollop
+STR
+  exit false
+end
+
+class ScriptStart
+
+  VERSION = '0.0'.freeze
+
+  APM_BUNDLE_PATH = ENV['APM_BUNDLE'].freeze
+  DEFAULT_APPS = ['property'.freeze].freeze
+  DEFAULT_FORCE = false
+
+  def initialize(opts)
+    if APM_BUNDLE_PATH.nil?
+      warn <<STR
+You need to export APM_BUNDLE to match your apm_bundle repo location.
+e.g. Add this to your ~/.bash_profile
+
+  export APM_BUNDLE=~/src/apm_bundle
+STR
+      exit false
+    end
+    @apps = opts.apps
+    @force = opts.force
+  end
+
+  def run
+    threads = []
+    @apps.each do |app|
+      threads << Thread.new do
+        system <<-SH
+          cd #{app_path(app)} && script/start #{'--force' if force?}
+        SH
+      end
+    end
+    threads.each(&:join)
+  end
+
+  private
+
+  def force?
+    @force
+  end
+
+  def app_path(app)
+    "#{APM_BUNDLE_PATH}/apps/#{app}"
+  end
+end
+
+ScriptStart.new(
+  Trollop::options do
+    opt :apps, 'A list of apps to start delimited by spaces', default: ScriptStart::DEFAULT_APPS
+    opt :force, 'Whether to use --force with script/start (applies to all)', default: ScriptStart::DEFAULT_FORCE
+    version ScriptStart::VERSION
+  end
+).run
