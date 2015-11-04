@@ -33,7 +33,10 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'troydm/zoomwintab.vim',        { 'on': 'ZoomWinTabToggle' }
-Plug 'vim-ruby/vim-ruby',            { 'for': 'ruby' }
+
+" vim-ruby disabled until this (apparent) bug gets resolved
+"   https://github.com/vim-ruby/vim-ruby/issues/280
+" Plug 'vim-ruby/vim-ruby',            { 'for': 'ruby' }
 
 call plug#end()
 
