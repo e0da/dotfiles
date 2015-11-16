@@ -2,19 +2,19 @@
 
 set -ex
 
-
 brew update
 brew upgrade --all
 brew reinstall --HEAD fzf neovim
 
 set +x
-echo "Doing RVM stuff..."
+echo 'Doing RVM stuff...'
+  # shellcheck disable=SC1091
   source ~/.rvm/scripts/rvm
   rvm get stable
   rvm reload
 set -x
 
-nvim +PlugUpgrade +PlugUpdate +qa
+nvim +PlugUpgrade +"source \$MYVIMRC" +PlugUpdate +qa
 
 pushd ~/code/apm_bundle
   git checkout master
