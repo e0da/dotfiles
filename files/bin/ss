@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require 'io/console'
+
 begin
   require 'trollop'
 rescue LoadError
@@ -9,6 +11,10 @@ Trollop isn't installed. We need that for argument parsing. Run
   gem install trollop
 STR
   exit false
+end
+
+%w[INT TERM].each do |signal|
+  trap(signal) { ScriptStart.quit }
 end
 
 module ScriptStart
@@ -21,7 +27,44 @@ module ScriptStart
 
   def self.run(opts)
     exit_if_bad_environment
-    opts.apps.each { |app| Command.new(app, opts.force).run }
+    @apps = opts.apps
+    @force = opts.force
+    start_apps
+    input_loop
+  end
+
+  def self.command_app(app, verb)
+    Command.new(app, verb, @force).run
+  end
+
+  def self.command_apps(verb)
+    @apps.each { |app| command_app app, verb }
+  end
+
+  def self.start_apps
+    command_apps :start
+  end
+
+  def self.stop_apps
+    command_apps :stop
+  end
+
+  def self.start_app(app)
+    command_app app, :start
+  end
+
+  def self.stop_app(app)
+    command_app app, :stop
+  end
+
+  def self.restart_app(app)
+    stop_app app
+    start_app app
+  end
+
+  def self.restart_apps
+    stop_apps
+    start_apps
   end
 
   def self.exit_if_bad_environment
@@ -36,14 +79,47 @@ STR
     end
   end
 
+  def self.input_loop
+
+    print_help
+    loop do
+      key = STDIN.getch.downcase
+      case key
+      when 'r'
+        restart_apps
+      when /\d/
+        restart_app @apps[key.to_i - 1]
+      when 'q', 's', "\x03" # \x03 is Ctrl-C
+        quit
+      else
+        print_help
+      end
+    end
+  end
+
+  def self.print_help
+    puts '='*40
+    @apps.each_with_index { |app, index| puts "Press #{index+1} to restart #{app}" }
+    puts 'Press r to restart apps'
+    puts 'Press q to stop apps and quit'
+    puts '='*40
+  end
+
+
+  def self.quit
+    stop_apps
+    exit true
+  end
+
   private
 
   class Command
 
-    COMMAND_TEMPLATE = "cd %{app_path} && script/start %{force}"
+    COMMAND_TEMPLATE = "cd %{app_path} && script/%{verb} %{force}"
 
-    def initialize(app, force)
+    def initialize(app, verb, force)
       @app   = app
+      @verb  = verb
       @force = force
     end
 
@@ -55,7 +131,9 @@ STR
     private
 
     def command
-      @command ||= COMMAND_TEMPLATE % {app_path: app_path(@app), force: force}
+      @command ||= COMMAND_TEMPLATE % {app_path: app_path(@app),
+                                       verb: @verb,
+                                       force: force}
     end
 
     def app_path(app)
