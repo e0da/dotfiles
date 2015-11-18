@@ -41,20 +41,14 @@ module ScriptStart
     @apps.each { |app| command_app app, verb }
   end
 
-  def self.start_apps
-    command_apps :start
-  end
+  %w[start stop].each do |verb|
+    define_singleton_method "#{verb}_apps" do
+      command_apps verb
+    end
 
-  def self.stop_apps
-    command_apps :stop
-  end
-
-  def self.start_app(app)
-    command_app app, :start
-  end
-
-  def self.stop_app(app)
-    command_app app, :stop
+    define_singleton_method "#{verb}_app" do |app|
+      command_app app, verb
+    end
   end
 
   def self.restart_app(app)
@@ -63,8 +57,7 @@ module ScriptStart
   end
 
   def self.restart_apps
-    stop_apps
-    start_apps
+    @apps.each { |app| restart_app app }
   end
 
   def self.exit_if_bad_environment
@@ -88,13 +81,22 @@ STR
       when 'r'
         restart_apps
       when /\d/
-        restart_app @apps[key.to_i - 1]
+        index = key.to_i - 1
+        if app_index_out_of_bounds? index
+          print_help
+          next
+        end
+        restart_app @apps[index]
       when 'q', 's', "\x03" # \x03 is Ctrl-C
         quit
       else
         print_help
       end
     end
+  end
+
+  def self.app_index_out_of_bounds?(index)
+    ![*0...@apps.size].include?(index)
   end
 
   def self.print_help
@@ -104,7 +106,6 @@ STR
     puts 'Press q to stop apps and quit'
     puts '='*40
   end
-
 
   def self.quit
     stop_apps
