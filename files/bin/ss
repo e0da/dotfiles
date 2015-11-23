@@ -15,7 +15,7 @@ end
 
 module ScriptStart
 
-  VERSION = '0.1'.freeze
+  VERSION = '0.1.1'.freeze
 
   APM_BUNDLE_PATH  = ENV['APM_BUNDLE'].freeze
   DEFAULT_APPS     = ['property'.freeze].freeze
@@ -107,18 +107,25 @@ OPTIONS
   end
 
   def self.print_help
+    s = multiple_apps? ? 's' : ''
     say '='*40
-    @apps.each_with_index do |app, index|
-      say "Press #{index+1} to restart #{app}"
+    if multiple_apps?
+      @apps.each_with_index do |app, index|
+        say "Press #{index+1} to restart #{app}"
+      end
     end
-    say 'Press r to restart apps'
-    say 'Press q to stop apps and quit'
+    say "Press r to restart app#{s}"
+    say "Press q to stop app#{s} and quit"
     say '='*40
   end
 
   def self.quit
     stop_apps
     exit true
+  end
+
+  def self.multiple_apps?
+    @apps.size > 1
   end
 
   module Say
