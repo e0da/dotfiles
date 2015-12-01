@@ -176,6 +176,7 @@ nmap <silent> <leader>ts :TestSuite<CR>
 nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
 let test#strategy = 'tslime'
+let test#ruby#minitest#executable = '$([ -x bin/rake ] && echo bin/rake || echo rake)'
 
 " Don't prompt to load ycm_extra_conf.py for YouCompleteMe; just load it.
 let g:ycm_confirm_extra_conf = 0
