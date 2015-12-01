@@ -42,12 +42,21 @@ directory to run the script.
 OPTIONS
   EOS
 
-  def self.run(apps:, force:)
-    @apps  = apps
+  def self.run(app_names:, force:)
+    @apps  = apps_for(app_names)
     @force = force
     exit_if_bad_environment
     start_apps
     input_loop
+  rescue AppPath::AmbiguousGlobPattern => error
+    warn error.message
+    exit false
+  end
+
+  def self.apps_for(app_names)
+    app_names.map do |name|
+      app_basename(name)
+    end
   end
 
   def self.command_app(app, verb)
@@ -85,7 +94,6 @@ OPTIONS
   end
 
   def self.input_loop
-
     loop do
       print_help
       key = STDIN.getch.downcase
@@ -128,6 +136,45 @@ OPTIONS
     @apps.size > 1
   end
 
+  module AppPath
+
+    APPS_PATH = "#{APM_BUNDLE_PATH}/apps"
+
+    class AmbiguousGlobPattern < StandardError; end
+
+    def app_basename(name)
+      File.basename app_path(name)
+    end
+
+    def app_paths
+      Dir["#{APPS_PATH}/apps/*"]
+    end
+
+    def app_path(name)
+      absolute_path(name) || glob_path(name)
+    end
+
+
+    def absolute_path(name)
+      Dir["#{APM_BUNDLE_PATH}/apps/#{name}"].first
+    end
+
+    def glob_path(name)
+      matches = Dir["#{APM_BUNDLE_PATH}/apps/#{name}*"]
+      if matches.length > 1
+        raise AmbiguousGlobPattern.new <<-STR
+The app name `#{name}' is ambiguous. It matches
+  #{matches.join("\n  ")}
+It's safer to make you list the apps individually so we don't go crazy launching
+too many apps. Please be more specific.
+      STR
+      else
+        return matches.first
+      end
+    end
+  end
+
+  extend AppPath
   module Say
 
     DEFAULT = "\033[0m"
@@ -142,6 +189,7 @@ OPTIONS
   private
 
   class Command
+    include AppPath
     include Say
 
     COMMAND_TEMPLATE = 'cd %{app_path} && script/%{verb}%{force}'
@@ -154,7 +202,7 @@ OPTIONS
 
     def run
       say "Running `#{command}'"
-      system command
+      system command unless ENV['DEBUG_NO_START']
     end
 
     private
@@ -163,10 +211,6 @@ OPTIONS
       @command ||= COMMAND_TEMPLATE % {app_path: app_path(@app),
                                        verb:     @verb,
                                        force:    force}
-    end
-
-    def app_path(app)
-      "#{APM_BUNDLE_PATH}/apps/#{app}"
     end
 
     def force
@@ -189,7 +233,7 @@ if __FILE__ == $0
         default: false)
   end
 
-  apps = ARGV.empty? ? ['property'] : ARGV
+  app_names = ARGV.empty? ? ['property'] : ARGV
 
-  ScriptStart.run apps: apps, force: opts.force
+  ScriptStart.run app_names: app_names, force: opts.force
 end
