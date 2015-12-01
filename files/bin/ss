@@ -15,7 +15,7 @@ end
 
 module ScriptStart
 
-  VERSION = '0.1.1'.freeze
+  VERSION = '0.2.0'.freeze
 
   APM_BUNDLE_PATH  = ENV['APM_BUNDLE'].freeze
   DEFAULT_APPS     = ['property'.freeze].freeze
