@@ -35,6 +35,13 @@ function retag() {
     ./* $(bundle show --paths) 2> /dev/null
 }
 
+# Given a session name, try to attach to that tmux session. If the session
+# doesn't exist, create a session with the given name and attach to it.
+function taon {
+  name="$1"
+  tmux attach -t "$name" || tmux new -s "$name"
+}
+
 # enable pasting of command lines beginning with $. When do you ever mean to
 # start a command with '$'?
 #
