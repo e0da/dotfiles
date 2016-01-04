@@ -2,7 +2,7 @@
 
 [ ! -z "$DEBUG_APM" ] && set -x
 
-trap 'kill 0 && exit' INT TERM EXIT
+trap 'kill 0 && exit' INT TERM
 
 readonly BLUE="\033[34m"
 readonly DEFAULT="\033[0m"
