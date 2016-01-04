@@ -6,25 +6,25 @@ DEFAULT="\033[0m"
 set -e
 
 function announce() {
-  printf "%b\n" "$GREEN$*"
+  printf "%bUpdating %b...\n" "$GREEN" "$*"
   printf "%b" "$DEFAULT"
 }
 
-announce 'Updating Homebrew...'
+announce 'Homebrew'
 brew update
 brew upgrade --all
 brew reinstall --HEAD fzf neovim
 
-announce 'Updating RVM...'
+announce 'RVM'
 # shellcheck disable=SC1091
 source ~/.rvm/scripts/rvm
 rvm get stable
 rvm reload
 
-announce 'Updating Vim plugins...'
+announce 'Vim plugins'
 nvim +PlugUpgrade +"source \$MYVIMRC" +PlugUpdate +qa
 
-announce 'Updating APM...'
+announce 'APM'
 pushd ~/code/apm_bundle
 git checkout master
 git fetch --prune
