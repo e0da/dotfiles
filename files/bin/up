@@ -7,14 +7,18 @@ brew upgrade --all
 brew reinstall --HEAD fzf neovim
 
 set +x
+
   echo 'Doing mysterious RVM stuff (set -x disabled due to verbosity)...'
   # shellcheck disable=SC1091
   source ~/.rvm/scripts/rvm
   rvm get stable
   rvm reload
-set -x
 
-nvim +PlugUpgrade +"source \$MYVIMRC" +PlugUpdate +qa
+  echo "Now we're upgrading NeoVim. This also involes a lot of RVM blather."
+
+set +x
+  nvim +PlugUpgrade +"source \$MYVIMRC" +PlugUpdate +qa
+set -x
 
 pushd ~/code/apm_bundle
   git checkout master
