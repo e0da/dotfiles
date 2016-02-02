@@ -181,6 +181,9 @@ let test#ruby#minitest#executable = '$([ -x bin/rake ] && echo bin/rake || echo 
 " Don't prompt to load ycm_extra_conf.py for YouCompleteMe; just load it.
 let g:ycm_confirm_extra_conf = 0
 
+" Customize shellcheck
+let g:syntastic_sh_shellcheck_args = '-x'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
