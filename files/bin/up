@@ -16,7 +16,7 @@ brew upgrade --all
 brew reinstall --HEAD fzf neovim
 
 announce 'RVM'
-# shellcheck disable=SC1091
+# shellcheck disable=SC1091 disable=SC1090
 source ~/.rvm/scripts/rvm
 rvm get stable
 rvm reload
@@ -26,9 +26,6 @@ nvim +PlugUpgrade +"source \$MYVIMRC" +PlugUpdate +qa
 
 announce 'APM'
 pushd ~/code/apm_bundle
-git checkout master
-git fetch --prune
-git merge origin/master --ff-only
-buns
-migs
+git checkout master || exit 1
+apm update
 popd
