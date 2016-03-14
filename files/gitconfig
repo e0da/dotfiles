@@ -96,3 +96,11 @@
 
 [init]
 	templatedir = ~/.git_template
+
+; Automatically added by something? Probably the post-install script for git
+; from Homebrew. Large file storage settings. Aliases? I don't even know.
+; https://git-lfs.github.com/
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
