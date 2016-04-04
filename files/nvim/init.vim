@@ -11,6 +11,7 @@ Plug 'MarcWeber/vim-addon-local-vimrc'
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe',       { 'do': './install.py --clang-completer' }
 Plug 'ashisha/image.vim',            { 'on': 'Image' }
+Plug 'ekalinin/Dockerfile.vim',      { 'for': 'dockerfile', 'do': 'make install' }
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'gregsexton/MatchTag',          { 'for': 'html' }
 Plug 'honza/vim-snippets'
