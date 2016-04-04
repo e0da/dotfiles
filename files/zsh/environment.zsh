@@ -117,7 +117,7 @@ export DOCKER_HOST=tcp://192.168.59.103:2375
 
 # APM
 #
-export APM_BUNDLE="$HOME/code/apm_bundle"
+export APM_BUNDLE="$HOME/src/apm_bundle"
 
 # Host-specific stuff
 [ -f "$HOME/.zsh-local" ] && source "$HOME/.zsh-local"
