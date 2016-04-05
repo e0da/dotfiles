@@ -4,7 +4,7 @@ GREEN="\033[32m"
 DEFAULT="\033[0m"
 
 ENOUGH_TIME_PASSED_FILE_PATH="$HOME/.config/up/enough_time_passed"
-ENOUGH_TIME_PASSED_FILE_DIR=$(dirname "$HOME/.config/up/enough_time_passed")
+ENOUGH_TIME_PASSED_FILE_DIR=$(dirname "$ENOUGH_TIME_PASSED_FILE_PATH")
 
 PERCONA_LAUNCH_AGENT_PLIST_PATH=\
 "$HOME/Library/LaunchAgents/homebrew.mxcl.percona-server.plist"
