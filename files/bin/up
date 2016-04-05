@@ -3,6 +3,17 @@
 GREEN="\033[32m"
 DEFAULT="\033[0m"
 
+ENOUGH_TIME_PASSED_FILE_PATH="$HOME/.config/up/enough_time_passed"
+ENOUGH_TIME_PASSED_FILE_DIR=$(dirname "$HOME/.config/up/enough_time_passed")
+
+PERCONA_LAUNCH_AGENT_PLIST_PATH=\
+"$HOME/Library/LaunchAgents/homebrew.mxcl.percona-server.plist"
+
+# Latest percona-server 5.6.x from Homebrew
+PERCONA_56_FORMULA_URL=\
+"https://raw.githubusercontent.com/Homebrew/homebrew-core/\
+eb60a5d42468552a6b6467378340d38573b503b4/Formula/percona-server.rb"
+
 set -e
 
 function announce() {
@@ -10,22 +21,70 @@ function announce() {
   printf "%b" "$DEFAULT"
 }
 
-announce 'Homebrew'
-brew update
-brew upgrade --all
-brew reinstall --HEAD fzf neovim
+function ensure_enough_time_passed_dir_exists() {
+  mkdir -p "$ENOUGH_TIME_PASSED_FILE_DIR"
+}
 
-announce 'RVM'
-# shellcheck disable=SC1091 disable=SC1090
-source ~/.rvm/scripts/rvm
-rvm get stable
-rvm reload
+function enough_time_passed() {
+  ensure_enough_time_passed_dir_exists
+  test "$(find "$ENOUGH_TIME_PASSED_FILE_DIR" -mtime +7 | wc -l)" -gt 0
+}
 
-announce 'Vim plugins'
-nvim +PlugUpgrade +"source \$MYVIMRC" +PlugUpdate +qa
+function update_last_updated() {
+  ensure_enough_time_passed_dir_exists
+  touch "$ENOUGH_TIME_PASSED_FILE_PATH"
+}
 
-announce 'APM'
-pushd ~/code/apm_bundle
-git checkout master || exit 1
-apm update
-popd
+function do_percona_hack() {
+  announce 'Homebrew is garbage. So is Mac OS X.'
+  set -x
+  brew install "$PERCONA_56_FORMULA_URL"
+  brew switch percona-server 5.6.28-76.1
+  brew pin percona-server
+  mysql.server stop ||:
+  rm -f /usr/local/var/mysql/ib_logfile*
+  mysql.server start ||:
+  mysql_upgrade -uroot ||:
+  launchctl unload "$PERCONA_LAUNCH_AGENT_PLIST_PATH"
+  launchctl load "$PERCONA_LAUNCH_AGENT_PLIST_PATH"
+  set +x
+}
+
+function set_up_homebrew() {
+  announce 'Homebrew'
+  brew update
+  brew upgrade --all
+  enough_time_passed && brew reinstall --HEAD fzf neovim
+  do_percona_hack
+}
+
+function set_up_rvm() {
+  announce 'RVM'
+  # shellcheck disable=SC1091 disable=SC1090
+  source "$HOME/.rvm/scripts/rvm"
+  rvm get stable
+  rvm reload
+}
+
+function set_up_vim() {
+  announce 'Vim plugins'
+  nvim +PlugUpgrade +"source \$MYVIMRC" +PlugUpdate +qa
+}
+
+function set_up_apm() {
+  announce 'APM'
+  pushd "$HOME/code/apm_bundle"
+    git checkout master || exit 1
+    apm update
+  popd
+}
+
+function main() {
+  set_up_homebrew
+  set_up_rvm
+  set_up_vim
+  set_up_apm
+  enough_time_passed && update_enough_time_passed
+}
+
+main
