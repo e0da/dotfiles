@@ -2,6 +2,7 @@
 
 MACHINE='docker-machine'
 RUNNING='Running'
+DOCKER='/usr/local/bin/docker'
 
 START="$MACHINE start"
 STATUS="$MACHINE status"
@@ -12,4 +13,4 @@ if [ "$($STATUS)" != $RUNNING ]; then
   $START
 fi
 
-docker "$@"
+$DOCKER "$@"
