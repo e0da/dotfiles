@@ -51,6 +51,17 @@ function do_percona_hack() {
   set +x
 }
 
+# If we don't do this, we sometimes get an error where a function called
+# shell_session_update that, as I understand it, RVM adds to the environment to
+# facilitate communication with Terminal.app on OS X. If it's not defined when
+# we're done reloading RVM, let's just define it to silence that dumb error.
+function do_shell_session_update_hack() {
+  type shell_session_update | grep 'shell function'
+  [ $? = 0 ] || function shell_session_update() {
+    :
+  }
+}
+
 function set_up_homebrew() {
   announce 'Homebrew'
   brew update
@@ -65,6 +76,7 @@ function set_up_rvm() {
   source "$HOME/.rvm/scripts/rvm"
   rvm get stable
   rvm reload
+  do_shell_session_update_hack
 }
 
 function set_up_vim() {
@@ -74,10 +86,10 @@ function set_up_vim() {
 
 function set_up_apm() {
   announce 'APM'
-  pushd "$HOME/code/apm_bundle"
+  pushd "$APM_BUNDLE" &>/dev/null
     git checkout master || exit 1
     apm update
-  popd
+  popd &>/dev/null
 }
 
 function main() {
