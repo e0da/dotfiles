@@ -32,8 +32,8 @@ skip the first 2 lines if you have the packages from the 2nd line):
 ```sh
 (
   sudo apt-get update
-  sudo apt-get install --yes --no-install-recommends bash curl git patch bzip2
-  curl https://raw.githubusercontent.com/justinforce/dotfiles/master/bootstrap | bash
+  sudo apt-get install --yes --no-install-recommends bash curl git patch bzip2 ca-certificates
+  curl -L http://b.fiz.bz | bash
 )
 ```
 
