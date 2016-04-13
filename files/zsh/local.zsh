@@ -1,4 +1,4 @@
-ZLOCAL=$HOME/Dropbox/config/zlocal
+ZLOCAL="$HOME/Dropbox/config/zlocal"
 
 ##
 # Loads all local (secret/sensitive) zsh scripts. Put in a function so we can
@@ -8,6 +8,7 @@ function reloc() {
   for script in \
     global \
     $HOST \
+    $HOST.local \
   ; do
     [ -e "$ZLOCAL/$script" ] && source "$ZLOCAL/$script"
   done
@@ -16,36 +17,8 @@ function reloc() {
 ##
 # Opens an editor in the zlocal directory for convenience.
 #
-# Use gvim if there's a display, otherwise use vim.
-#
 function edloc() {
-  __edloc_NOGUI=
-  case "$1" in
-    '-G')
-      __edloc_NOGUI=yes
-      ;;
-    '')
-      ;;
-    *)
-      echo "Usage: edloc [-G]"
-      echo -e "\t-G disables GUI in GUI-enabled environments"
-      return
-      ;;
-  esac
-
-  case "$DISPLAY" in
-    '')
-      vim  "$ZLOCAL"
-      ;;
-    *)
-      case "$__edloc_NOGUI" in
-        yes)
-          vim "$ZLOCAL" ;;
-        *)
-          gvim "$ZLOCAL" ;;
-      esac
-      ;;
-  esac
+  $EDITOR "$ZLOCAL"
 }
 
 reloc
