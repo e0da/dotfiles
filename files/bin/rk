@@ -1,0 +1,24 @@
+#!/bin/bash
+
+function prefix() {
+  if [ -f Gemfile.lock ]; then
+    echo 'bundle exec'
+  fi
+}
+
+function preferred_rake() {
+  if [ -x bin/rake ]; then
+    echo 'bin/rake'
+  else
+    echo 'rake'
+  fi
+}
+
+function rake_command() {
+  local cmd;
+  cmd=($(prefix) $(preferred_rake) $@)
+  echo "${cmd[*]}"
+  ${cmd[*]}
+}
+
+rake_command "$@"
