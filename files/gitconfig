@@ -14,6 +14,7 @@
   alias   = !~/bin/git_aliases
   aliases = !~/bin/git_aliases
   b       = branch
+  cdf     = clean -df
   ci      = commit
   co      = checkout
   d       = diff
