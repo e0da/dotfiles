@@ -194,11 +194,30 @@ noremap ' `
 " Rerun previous :command
 noremap \' @:
 
-" Underline a line with hyphens (<h2> in Markdown documents)
-noremap \- yypVr-
+" Underline a line with equals (<h1> in Markdown documents) and put the cursor
+" after the line.
+"
+"   Example Thing
+"   =============
+"
+noremap \= yypVr=j
 
-" Underline a line with equals (<h1> in Markdown documents)
-noremap \= yypVr=
+" Underline a line with hyphens (<h2> in Markdown documents) and put the cursor
+" after the line.
+"
+"   Example Thing
+"   -------------
+"
+noremap \- yypVr-j
+
+" Wrap a line with a # at the beginning and end, then put a solid line of #s
+" above and below it and place the cursor after the bottom line, e.g.
+"
+"   #################
+"   # Example Thing #
+"   #################
+"
+noremap \# I#<space><esc>A<space>#<esc>yyPVr#yyjpj
 
 " Handle white space turds
 noremap \W :StripWhitespace<cr>
