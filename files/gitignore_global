@@ -8,6 +8,7 @@ ignore.cp
 command-t.vba
 libpeerconnection.log
 .vimrc
+.stack-work
 
 # APM
 apps/property/config/solr_48/conf/_rest_managed.json
