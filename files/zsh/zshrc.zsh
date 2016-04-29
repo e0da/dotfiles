@@ -11,3 +11,5 @@ for script in  \
 done
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
