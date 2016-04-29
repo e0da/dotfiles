@@ -66,10 +66,15 @@ function set_up_homebrew() {
   announce 'Homebrew'
   brew update
   brew upgrade --all
-  enough_time_passed && brew reinstall --HEAD fzf neovim
+  enough_time_passed && brew reinstall --HEAD fzf
+  do_percona_hack
+}
+
+function set_up_neovim() {
+  announce 'NeoVim'
+  enough_time_passed && brew reinstall --HEAD neovim
   pip2 install --upgrade neovim
   pip3 install --upgrade neovim
-  do_percona_hack
 }
 
 function set_up_rvm() {
