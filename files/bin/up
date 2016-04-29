@@ -99,7 +99,7 @@ function main() {
   set_up_rvm
   set_up_vim
   set_up_apm
-  enough_time_passed && update_enough_time_passed
+  enough_time_passed && update_last_updated
 }
 
 main
