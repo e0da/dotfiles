@@ -17,8 +17,7 @@ eb60a5d42468552a6b6467378340d38573b503b4/Formula/percona-server.rb"
 set -e
 
 function announce() {
-  printf "%bUpdating %b...\n" "$GREEN" "$*"
-  printf "%b" "$DEFAULT"
+  printf "%b%b%b...\n" "$GREEN" "$*" "$DEFAULT"
 }
 
 function ensure_enough_time_passed_dir_exists() {
@@ -31,7 +30,12 @@ function enough_time_passed() {
   test "$(find "$ENOUGH_TIME_PASSED_FILE_DIR" -mtime +7 | wc -l)" -gt 0
 }
 
-function update_last_updated() {
+function reset_enough_time_passed() {
+  announce 'Resetting enough time passed'
+  rm -f "$ENOUGH_TIME_PASSED_FILE_PATH"
+}
+
+function update_enough_time_passed() {
   ensure_enough_time_passed_dir_exists
   touch "$ENOUGH_TIME_PASSED_FILE_PATH"
 }
@@ -56,6 +60,7 @@ function do_percona_hack() {
 # facilitate communication with Terminal.app on OS X. If it's not defined when
 # we're done reloading RVM, let's just define it to silence that dumb error.
 function do_shell_session_update_hack() {
+  announce 'shell_session_update hack'
   type shell_session_update | grep 'shell function'
   [ $? = 0 ] || function shell_session_update() {
     :
@@ -72,7 +77,7 @@ function set_up_homebrew() {
 
 function set_up_neovim() {
   announce 'NeoVim'
-  enough_time_passed && brew reinstall --HEAD neovim
+  enough_time_passed && brew reinstall --HEAD neovim neovim-dot-app
   pip2 install --upgrade neovim
   pip3 install --upgrade neovim
 }
@@ -99,12 +104,37 @@ function set_up_apm() {
   popd &>/dev/null
 }
 
+function help() {
+  printf "\
+Usage: %b [-f]
+" "$0"
+}
+
+function parse_options() {
+  local OPTIND
+  local OPTARG
+  local opt
+  while getopts 'hf' opt; do
+    case "$opt" in
+      f) OPTS__forcing=1 ;;
+      h) help && exit 0 ;;
+      *) help && exit 1 ;;
+    esac
+  done
+}
+
+function forcing() {
+  [ ! -z $OPTS__forcing ]
+}
+
 function main() {
+  parse_options "$*"
+  forcing && reset_enough_time_passed
   set_up_homebrew
   set_up_rvm
   set_up_vim
   set_up_apm
-  enough_time_passed && update_last_updated
+  enough_time_passed && update_enough_time_passed
 }
 
-main
+main "$*"
