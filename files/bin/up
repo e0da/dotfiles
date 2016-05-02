@@ -27,7 +27,7 @@ function ensure_enough_time_passed_dir_exists() {
 function enough_time_passed() {
   ensure_enough_time_passed_dir_exists
   # Has it been more than 7 days since the file was touched?
-  test "$(find "$ENOUGH_TIME_PASSED_FILE_DIR" -mtime +7 | wc -l)" -gt 0
+  test "$(find "$ENOUGH_TIME_PASSED_FILE_DIR" -mtime +6 | wc -l)" -gt 0
 }
 
 function reset_enough_time_passed() {
