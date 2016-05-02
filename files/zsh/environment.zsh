@@ -118,6 +118,9 @@ export DOCKER_HOST=tcp://192.168.59.103:2375
 # APM
 #
 export APM_BUNDLE="$HOME/src/apm_bundle"
+export MAILCATCHER_PROPERTY=yes
+export MAILCATCHER_OPORTAL=yes
+export MAILCATCHER_TPORTAL=yes
 
 # Host-specific stuff
 [ -f "$HOME/.zsh-local" ] && source "$HOME/.zsh-local"
