@@ -69,8 +69,8 @@ bindkey ';5D' backward-word
 
 # environment
 #
-export EDITOR=vi
-export GIT_EDITOR=vi
+export EDITOR=nvim
+export GIT_EDITOR=nvim
 export PATH=$HOME/bin:$HOME/opt/bin:/usr/local/sbin:/usr/local/bin:$PATH
 use_coreutils_on_mac
 use_solarized_dircolors
