@@ -251,11 +251,11 @@ command! -nargs=* Gag call ag#Ag('grep<bang>', <q-args> . ' . ' . system('bundle
 " Replace `:key =>` with `key:`, accommodating extra spaces before the =>
 noremap \hr :s/:\(\S\+\)\s*=>/\1:/g<cr>
 
-" Fix broken iskeyword in ruby (i.e. . isn't terminating constants as words, so
-" hitting w on the 'F' in 'Foo.bar(:stuff)' puts your cursor on '(' instead of
-" '.'. See more here: https://github.com/vim-ruby/vim-ruby/issues/280
-" This also seems to fix syntax highlighting of constants when it breaks. I
-" still don't understand this problem!  ARG!
+" Fix broken iskeyword (i.e. . isn't terminating constants as words, so hitting
+" w on the 'F' in 'Foo.bar(:stuff)' puts your cursor on '(' instead of '.'. See
+" more here: https://github.com/vim-ruby/vim-ruby/issues/280 This also seems to
+" fix syntax highlighting of constants when it breaks. I still don't understand
+" this problem!  ARG!
 noremap \kw :set iskeyword=@,48-57,_,192-255<cr>
 
 " Dealing with splits
