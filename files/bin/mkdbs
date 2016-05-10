@@ -1,12 +1,10 @@
 #!/bin/bash
 
-[ ! -z "$DEBUG_APM" ] && set -x
-
-: "${APM_BUNDLE_PATH:=$HOME/code/apm_bundle}"
+: "${APM_BUNDLE:=$HOME/src/apm_bundle}"
 
 trap 'kill 0' INT TERM EXIT
 
-readonly ARGV="$@"
+readonly ARGV=($@)
 
 declare OPTS__creating
 declare OPTS__dropping
@@ -14,10 +12,11 @@ declare OPTS__loading_fixtures
 declare OPTS__no_migrating
 declare OPTS__no_parallel
 
-readonly APPS_PATH=$APM_BUNDLE_PATH/apps
+readonly APPS_PATH=$APM_BUNDLE/apps
+readonly SCRIPT_NAME=$(basename "$0")
 
 readonly MIGRATE_DIRS=($(
-  find "$APPS_PATH" -type d -name db -print0 |
+  find "$APPS_PATH" -maxdepth 2 -type d -name db -print0 |
     xargs -0 -I{} find {} -type d -name migrate
 ))
 
@@ -27,39 +26,49 @@ readonly GREEN="\033[32m"
 readonly MAGENTA="\033[35m"
 readonly YELLOW="\033[33m"
 
-readonly SCHEMA_CMD='git ls-files \*/schema.rb | xargs git checkout'
-
 function help() {
-  printf "mkdbs: Set up all of your APM Bundle databases
+  printf "\
+%s: Set up all of your APM Bundle databases
 
-Usage: mkdbs [OPTIONS]
+Usage: %s [OPTIONS]
 
 OPTIONS:
   -M  Don't migrate databases (rake db:migrate)
   -P  No parallelism. Do everything in serial. SLOWER.
-  -S  No checking out schemas afterward. (git ls \\*/schema.rb | xargs git checkout)
+  -S  Don't rm schema.rb files first. Only matters if dropping (-d)
   -c  Create databases (rake db:create)
   -d  Drop databases before creating (rake db:drop)
   -f  Load fixtures (rake db:fixtures:load)
+  -q  Quiet mode. Suppress stdout from this script.
+  -v  Verbose mode. Enable stdout from scripts called by this script.
   -h  Show this help
 
-(Supports debug output thusly: DEBUG_APM=1 mkdbs)
-"
+EXAMPLE:
+  %s -dcfq # drop then create dbs with fixtures while printing minimal output
+
+stdout from commands run by this script is suppressed. To see the stdout of
+those commands, enable verbose mode (-v). To suppress the stdout of this script
+in addition to the commands it runs, enable quiet mode (-q). stderr is always
+printed from this script AND the scripts it runs. To suppress that try appending
+2>/dev/null or open a pull request. :)
+" "$SCRIPT_NAME" "$SCRIPT_NAME" "$SCRIPT_NAME"
 }
 
 function parse_options() {
   local OPTIND
   local OPTARG
   local opt
-  while getopts 'hMPScdf' opt; do
+  while getopts 'MPScdfqvh' opt; do
     case "$opt" in
-      h) help && exit 0 ;;
       M) OPTS__no_migrating=1 ;;
       P) OPTS__no_parallel=1 ;;
-      S) OPTS__no_checking_out_schemas=1 ;;
+      S) OPTS__no_resetting_schemas=1 ;;
       c) OPTS__creating=1 ;;
       d) OPTS__dropping=1 ;;
       f) OPTS__loading_fixtures=1 ;;
+      q) OPTS__quiet=1 ;;
+      v) OPTS__verbose=1 ;;
+      h) help && exit 0 ;;
       *) help && exit 1 ;;
     esac
   done
@@ -73,8 +82,8 @@ function is_parallel() {
   [ "$OPTS__no_parallel" != 1 ]
 }
 
-function is_checking_out_schemas() {
-  [ "$OPTS__no_checking_out_schemas" != 1 ]
+function is_resetting_schemas() {
+  [ "$OPTS__no_resetting_schemas" != 1 ]
 }
 
 function is_creating() {
@@ -85,31 +94,53 @@ function is_dropping() {
   [ "$OPTS__dropping" == 1 ]
 }
 
+function is_quiet() {
+  [ "$OPTS__quiet" == 1 ]
+}
+
+function is_verbose() {
+  [ "$OPTS__verbose" == 1 ]
+}
+
 function is_loading_fixtures() {
   [ "$OPTS__loading_fixtures" == 1 ]
 }
 
 function app_path_for() {
   local path=$1
-  cd "$path/../.."
+  cd "$path/../.." || exit 1
   pwd
+}
+
+function announce() {
+  local msg=$1; shift
+  printf "%b%b\n" "$msg" "$DEFAULT" >&3
 }
 
 function rake_do() {
   local path=$1;        shift
   local environment=$1; shift
   local task=$1;        shift
-  local cmd="rake $task"
+  local cmd=(rake $task)
 
-  echo -e "${BLUE}$path ${GREEN}$environment ${YELLOW}$cmd${DEFAULT}"
+  announce "${BLUE}$path ${GREEN}$environment ${YELLOW}${cmd[*]}"
 
-  cd "$path"
-  RAILS_ENV=$environment $cmd
+  cd "$path" || exit 1
+  RAILS_ENV=$environment "${cmd[@]}" 1>&5 2>&6
 }
 
-function create_databases() {
-  for migrate_path in ${MIGRATE_DIRS[*]}; do
+function rm_schema() {
+  local path=$1; shift
+  local cmd
+  cmd=(rm -f db/schema.rb)
+  announce "${BLUE}$path ${YELLOW}${cmd[*]}"
+  "${cmd[@]}" 1>&5 2>&6
+}
+
+function update_databases() {
+  for migrate_path in "${MIGRATE_DIRS[@]}"; do
     path=$(app_path_for "$migrate_path")
+    is_dropping && is_resetting_schemas && rm_schema "$path"
     (
       for environment in test development; do
         (
@@ -127,19 +158,28 @@ function create_databases() {
   wait
 }
 
-# XXX This is to deal with the fact that some schemas get updated by migrating
-# and then differ from the canonical versions in git.
-function checkout_schemas() {
-  echo -e "${MAGENTA}Checking out schema.rb files..."
-  echo -e "${YELLOW}${SCHEMA_CMD}${DEFAULT}"
-  cd "$APM_BUNDLE_PATH"
-  eval "$SCHEMA_CMD" # Need eval because there's a pipe
+function set_up_io() {
+  local null=/dev/null
+
+  # default configuration
+  # fd 3 is stdout from this script
+  # fd 4 is stderr from this script
+  # fd 5 is stdout from scripts run by this script (e.g. rake tasks)
+  # fd 6 is stderr from scripts run by this script (e.g. rake tasks)
+  exec 3>&1
+  exec 4>&2
+  exec 5<>$null
+  exec 6>&2
+
+  # optional overrides
+  is_verbose && exec 5>&1
+  is_quiet   && exec 3<>$null
 }
 
 function main() {
   parse_options "$@"
-  create_databases
-  is_checking_out_schemas && checkout_schemas
+  set_up_io
+  update_databases
 }
 
-main "$ARGV"
+main "${ARGV[@]}"
