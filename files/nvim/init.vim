@@ -110,17 +110,8 @@ for scheme in [ 'gruvbox', 'solarized', 'molokai', 'desert' ]
   endtry
 endfor
 
-" highlight the 80th column
-"
-" In Vim >= 7.3, also highlight columns 120+
-if exists('+colorcolumn')
-  " (I picked 120-320 because you have to provide an upper bound and 500 seems
-  " to be enough.)
-  let &colorcolumn="80,".join(range(120,500),",")
-else
-  " fallback for Vim < v7.3
-  autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
+" Highlight columns 80 and 120
+let &colorcolumn='80,120'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                  Formatting
