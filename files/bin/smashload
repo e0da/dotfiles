@@ -43,10 +43,8 @@ function set_up_io {
 }
 
 function main() {
-  local urls
   set_up_io
-  urls=($(gather_urls "$@"))
-  download_all "${urls[@]}"
+  download_all "$(gather_urls "$@")"
 }
 
 main "$@"
