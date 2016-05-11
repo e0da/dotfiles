@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# TODO
+# - Allow configuring verbose/quiet?
+# - Allow disabling parallelism?
+
+function download() {
+  local url=$1; shift
+  axel -n5 "$url" 1>&5 2>&6
+}
+
+function file_attached_to_stdin() {
+  ! test -t 0
+}
+
+function gather_urls() {
+  local urls=($@)
+  if file_attached_to_stdin; then
+    while read -r url; do
+      urls=("${urls[@]}" "$url")
+    done
+  fi
+  echo "${urls[@]}"
+}
+
+function download_all() {
+  local urls=($@)
+  for url in "${urls[@]}"; do
+    download "$url" &
+  done
+  wait
+}
+
+function set_up_io {
+  # fd 3 is stdout from this script
+  # fd 4 is stderr from this script
+  # fd 5 is stdout from scripts run by this script, e.g. axel
+  # fd 6 is stderr from scripts run by this script, e.g. axel
+  exec 3>&1
+  exec 4>&2
+  exec 5<>/dev/null
+  exec 6>&2
+}
+
+function main() {
+  local urls
+  set_up_io
+  urls=($(gather_urls "$@"))
+  download_all "${urls[@]}"
+}
+
+main "$@"
