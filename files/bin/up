@@ -1,10 +1,15 @@
 #!/bin/bash
 
+set -e
+
+SCRIPT_NAME=$(basename "$0")
+
 GREEN="\033[32m"
 DEFAULT="\033[0m"
 
-ENOUGH_TIME_PASSED_FILE_PATH="$HOME/.config/up/enough_time_passed"
-ENOUGH_TIME_PASSED_FILE_DIR=$(dirname "$ENOUGH_TIME_PASSED_FILE_PATH")
+EXPENSIVE_TIMESTAMP="$HOME/.config/up/expensive_timestamp"
+EXPENSIVE_INTERVAL=6
+A_LONG_TIME=999999
 
 PERCONA_LAUNCH_AGENT_PLIST_PATH=\
 "$HOME/Library/LaunchAgents/homebrew.mxcl.percona-server.plist"
@@ -14,36 +19,28 @@ PERCONA_56_FORMULA_URL=\
 "https://raw.githubusercontent.com/Homebrew/homebrew-core/\
 eb60a5d42468552a6b6467378340d38573b503b4/Formula/percona-server.rb"
 
-set -e
+USAGE="\
+$SCRIPT_NAME: Update all the things!
+
+Usage: $SCRIPT_NAME [OPTIONS]
+
+OPTIONS:
+  -f  Ignore \"expensive timestamp\" and force updating.
+  -r  Delete \"expensive timestamp\" before updating.
+  -v  Verbose mode. Enable stdout from scripts called by this script.
+  -q  Quiet mode. Suppress stdout from this script.
+  -h  Show this help
+
+\"Expensive timestamp\" is a file that keeps track of the last time some of the
+more expensive operations (e.g. recompiling NeoVim from source) were performed.
+You can manually manipulate this file. It's here: $EXPENSIVE_TIMESTAMP"
 
 function announce() {
-  printf "%b%b%b...\n" "$GREEN" "$*" "$DEFAULT"
-}
-
-function ensure_enough_time_passed_dir_exists() {
-  mkdir -p "$ENOUGH_TIME_PASSED_FILE_DIR"
-}
-
-function enough_time_passed() {
-  ensure_enough_time_passed_dir_exists
-  # Has it been more than 7 days since the file was touched?
-  test "$(find "$ENOUGH_TIME_PASSED_FILE_DIR" -mtime +6 | wc -l)" -gt 0
-}
-
-function reset_enough_time_passed() {
-  announce 'Resetting enough time passed'
-  ensure_enough_time_passed_dir_exists
-  touch --date '@0' "$ENOUGH_TIME_PASSED_FILE_PATH"
-}
-
-function update_enough_time_passed() {
-  ensure_enough_time_passed_dir_exists
-  touch "$ENOUGH_TIME_PASSED_FILE_PATH"
+  printf "%b%b%b...\n" "$GREEN" "$*" "$DEFAULT" >&3
 }
 
 function do_percona_hack() {
   announce 'Homebrew is garbage. So is Mac OS X.'
-  set -x
   brew install "$PERCONA_56_FORMULA_URL"
   brew switch percona-server 5.6.28-76.1
   brew pin percona-server
@@ -53,7 +50,6 @@ function do_percona_hack() {
   mysql_upgrade -uroot ||:
   launchctl unload "$PERCONA_LAUNCH_AGENT_PLIST_PATH"
   launchctl load "$PERCONA_LAUNCH_AGENT_PLIST_PATH"
-  set +x
 }
 
 # If we don't do this, we sometimes get an error where a function called
@@ -62,28 +58,28 @@ function do_percona_hack() {
 # we're done reloading RVM, let's just define it to silence that dumb error.
 function do_shell_session_update_hack() {
   announce 'shell_session_update hack'
-  type shell_session_update | grep 'shell function'
+  type shell_session_update 2>/dev/null | grep 'shell function' >/dev/null
   [ $? = 0 ] || function shell_session_update() {
     :
   }
 }
 
-function set_up_homebrew() {
+function update_homebrew() {
   announce 'Homebrew'
   brew update
   brew upgrade --all
-  enough_time_passed && brew reinstall --HEAD fzf
+  expensive brew reinstall --HEAD fzf
   do_percona_hack
 }
 
-function set_up_neovim() {
+function update_neovim() {
   announce 'NeoVim'
-  enough_time_passed && brew reinstall --HEAD neovim neovim-dot-app
+  expensive brew reinstall --HEAD neovim neovim-dot-app
   pip2 install --upgrade neovim
   pip3 install --upgrade neovim
 }
 
-function set_up_rvm() {
+function update_rvm() {
   announce 'RVM'
   # shellcheck disable=SC1091 disable=SC1090
   source "$HOME/.rvm/scripts/rvm"
@@ -92,12 +88,12 @@ function set_up_rvm() {
   do_shell_session_update_hack
 }
 
-function set_up_vim() {
+function update_vim() {
   announce 'Vim plugins'
   nvim +PlugUpgrade +"source \$MYVIMRC" +PlugUpdate +qa
 }
 
-function set_up_apm() {
+function update_apm() {
   announce 'APM'
   pushd "$APM_BUNDLE" &>/dev/null
     git checkout master || exit 1
@@ -106,36 +102,101 @@ function set_up_apm() {
 }
 
 function help() {
-  printf "\
-Usage: %b [-f]
-" "$0"
+  echo "$USAGE"
 }
 
 function parse_options() {
-  local OPTIND
-  local OPTARG
-  local opt
-  while getopts 'hf' opt; do
+  local OPTIND OPTARG opt
+  while getopts 'frvqh' opt; do
     case "$opt" in
       f) OPTS__forcing=1 ;;
+      r) OPTS__resetting=1 ;;
+      v) OPTS__verbose=1 ;;
+      q) OPTS__quiet=1 ;;
       h) help && exit 0 ;;
       *) help && exit 1 ;;
     esac
   done
 }
 
+function is_quiet() {
+  [ "$OPTS__quiet" == 1 ]
+}
+
+function is_verbose() {
+  [ "$OPTS__verbose" == 1 ]
+}
 function forcing() {
-  [ ! -z $OPTS__forcing ]
+  [ ! -z "$OPTS__forcing" ]
+}
+
+function resetting() {
+  [ ! -z "$OPTS__resetting" ]
+}
+
+function update_expensive_operation_timestamp() {
+  if doing_expensive_things; then
+    mkdir -p "$(dirname "$EXPENSIVE_TIMESTAMP")"
+    touch "$EXPENSIVE_TIMESTAMP"
+  fi
+}
+
+function expensive() {
+  if doing_expensive_things; then
+    printf "%b\$\$\$%b:" "$GREEN" "$DEFAULT"
+    "$@"
+  else
+    :
+  fi
+}
+
+function days_since_expensive_timestamp_updated() {
+  if expensive_timestamp_does_not_exist; then
+    echo "$A_LONG_TIME"
+  else
+    find "$EXPENSIVE_TIMESTAMP" -mtime +$EXPENSIVE_INTERVAL | wc -l 2>/dev/null
+  fi
+}
+
+function expensive_timestamp_does_not_exist() {
+  [ ! -f "$EXPENSIVE_TIMESTAMP" ]
+}
+
+function doing_expensive_things() {
+  forcing ||
+    expensive_timestamp_does_not_exist ||
+    [ "$(days_since_expensive_timestamp_updated)" -gt 0 ]
+}
+
+function set_up_io() {
+  local null=/dev/null
+
+  # fd 3 is stdout from this script
+  # fd 4 is stderr from this script
+  exec 3>&1
+  exec 4>&2
+
+  is_verbose || exec 1<>$null
+  is_quiet   && exec 2<>$null
+  :
+}
+
+function reset_expensive_timestamp() {
+  rm -f "$EXPENSIVE_TIMESTAMP"
 }
 
 function main() {
-  parse_options "$*"
-  forcing && reset_enough_time_passed
-  set_up_homebrew
-  set_up_rvm
-  set_up_vim
-  set_up_apm
-  enough_time_passed && update_enough_time_passed
+  parse_options "$@"
+  set_up_io
+
+  resetting && reset_expensive_timestamp
+
+  update_homebrew
+  update_neovim
+  update_rvm
+  update_vim
+  update_apm
+  update_expensive_operation_timestamp
 }
 
-main "$*"
+main "$@"
