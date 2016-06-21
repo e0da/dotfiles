@@ -1,4 +1,4 @@
-; vi: set filetype=dosini:
+; vi: set filetype=dosini nowrap:
 
 [user]
   name       = Justin Force
