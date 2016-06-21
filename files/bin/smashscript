@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo '$("a").filter(function(_, link) {return $(link).text().match(/\bEPUB\b/);}).map(function (_, link) { return link.href; }).toArray().join("\n")' | tee | pbcopy
+
+# vi: set textwidth=0:
