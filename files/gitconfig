@@ -9,27 +9,34 @@
   ui = auto
 
 [alias]
-  a       = add
-  aa      = add --all
-  alias   = !~/bin/git_aliases
-  aliases = !~/bin/git_aliases
-  b       = branch
-  cdf     = clean -df
-  ci      = commit
-  co      = checkout
-  d       = diff
-  dc      = diff --cached
-  f       = fetch origin --prune
-  ff      = merge origin/master master --ff-only
-  fuckit  = !git reset --hard HEAD && git clean -df
-  l       = log --stat
-  last    = log -p -n1
-  lol     = log --graph --decorate --pretty=oneline --abbrev-commit
-  lola    = log --graph --decorate --pretty=oneline --abbrev-commit --all
-  pl      = pull --rebase
-  ps      = push
-  s       = status --short
-  sha     = !git log -n1 | head -n1 |  grep -Eo '[a-f0-9]{40}'
+  a                    = add
+  aa                   = add --all
+  alias                = !~/bin/git_aliases
+  aliases              = !~/bin/git_aliases
+  b                    = branch
+  branches-with-commit = branch --all --contains
+  branches-with-file   = "!f() { git commits-with-file $1 | awk '{print $1}' | xargs -n1 git branches-with-commit | sort | uniq; }; f"
+  bwc                  = !git branches-with-commit
+  bwf                  = !git branches-with-file
+  cdf                  = clean -df
+  ci                   = commit
+  co                   = checkout
+  commits-with-file    = "!f() { if [ -t 1 ]; then pretty='format:%C(yellow)%h%Creset %s'; else pretty='format:%h %s'; fi; git log --all --pretty=\"$pretty\" -- $@ ; }; f"
+  cwf                  = !git commits-with-file
+  d                    = diff
+  dc                   = diff --cached
+  f                    = fetch origin --prune
+  ff                   = merge origin/master master --ff-only
+  fuckit               = !git reset --hard HEAD && git clean -df
+  l                    = log --stat
+  last                 = log -p -n1
+  lol                  = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola                 = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  pl                   = pull --rebase
+  ps                   = push
+  s                    = status --short
+  sha                  = rev-parse --short HEAD
+  shal                 = rev-parse HEAD
 
 [rerere]
   enabled = true
