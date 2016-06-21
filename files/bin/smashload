@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# $('a').filter(function(_, link) {return $(link).text().match(/\bEPUB\b/);}).map(function (_, link) { return link.href; }).toArray().join("\n")
+
 function urls() {
   local urls=()
   while read -r url; do
