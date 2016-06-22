@@ -55,7 +55,7 @@
 
 [core]
   excludesfile = ~/.gitignore_global
-  editor = /usr/local/bin/vim
+  editor = nvim
 
 [web]
   browser = google-chrome
