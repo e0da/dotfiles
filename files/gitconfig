@@ -60,12 +60,12 @@
 [web]
   browser = google-chrome
 
-[merge]
+[diff]
   tool = vimdiff
   conflictstyle = diff3
   prompt = false
 
-[diff]
+[merge]
   tool = vimdiff
   conflictstyle = diff3
   prompt = false
