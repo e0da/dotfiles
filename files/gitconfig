@@ -75,9 +75,6 @@
 	smudge = git media smudge %f
 	required = true
 
-; [push]
-; 	default = simple
-
 [hub]
 	protocol = https
 
