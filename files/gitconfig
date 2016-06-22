@@ -5,6 +5,17 @@
   email      = justin.force@gmail.com
   signingkey = 0x203EABFA
 
+; Credentials are stored in ~/.git-credentials. The format for a credentials
+; entry looks like this:
+;
+;   https://usename:password@example.com
+;
+; For GitHub the token is the username, and there is no password:
+;
+;   https://0123456789afcdef:@github.com
+[credential]
+  helper = store
+
 [color]
   ui = auto
 
@@ -48,17 +59,6 @@
 
 [web]
   browser = google-chrome
-
-; Credentials are stored in ~/.git-credentials. The format for a credentials
-; entry looks like this:
-;
-;   https://usename:password@example.com
-;
-; For GitHub the token is the username, and there is no password:
-;
-;   https://0123456789afcdef:@github.com
-[credential]
-  helper = store
 
 [merge]
   tool = vimdiff
