@@ -6,10 +6,15 @@
 
 call plug#begin()
 
+" Plugins that only install if this is NeoVim
+if has('nvim')
+  Plug 'SirVer/ultisnips'
+  Plug 'Valloric/YouCompleteMe',       { 'do': './install.py --clang-completer' }
+  Plug 'vim-ruby/vim-ruby',            { 'for': 'ruby' }
+endif
+
 Plug 'Lokaltog/vim-easymotion',      { 'on': '<Plug>(easymotion-s)' }
 Plug 'MarcWeber/vim-addon-local-vimrc'
-Plug 'SirVer/ultisnips'
-Plug 'Valloric/YouCompleteMe',       { 'do': './install.py --clang-completer' }
 Plug 'ashisha/image.vim',            { 'on': 'Image' }
 Plug 'briancollins/vim-jst',         { 'for': ['ejs', 'jst'] }
 Plug 'ekalinin/Dockerfile.vim',      { 'for': 'dockerfile', 'do': 'make install' }
@@ -36,7 +41,6 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'troydm/zoomwintab.vim',        { 'on': 'ZoomWinTabToggle' }
-Plug 'vim-ruby/vim-ruby',            { 'for': 'ruby' }
 
 call plug#end()
 
