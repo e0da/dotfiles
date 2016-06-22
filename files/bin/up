@@ -52,6 +52,11 @@ function do_percona_hack() {
   launchctl load "$PERCONA_LAUNCH_AGENT_PLIST_PATH"
 }
 
+function do_npm_hack() {
+  announce 'Homebrew is garbage. So is npm.'
+  npm install -g npm@3.8.7
+}
+
 # If we don't do this, we sometimes get an error where a function called
 # shell_session_update that, as I understand it, RVM adds to the environment to
 # facilitate communication with Terminal.app on OS X. If it's not defined when
@@ -70,6 +75,7 @@ function update_homebrew() {
   brew upgrade --all
   expensive brew reinstall --HEAD fzf
   do_percona_hack
+  do_npm_hack
 }
 
 function update_neovim() {
