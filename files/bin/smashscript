@@ -1,5 +1,9 @@
 #!/bin/bash
 
-echo '$("a").filter(function(_, link) {return $(link).text().match(/\bEPUB\b/);}).map(function (_, link) { return link.href; }).toArray().join("\n")' | tee | pbcopy
+cmd='$("a").filter(function(_, link) {return $(link).text().match(/\bEPUB\b/);}).map(function (_, link) { return link.href; }).toArray().join("\n")'
+
+pbcopy <<< "$cmd"
+echo "Copied script to clipboard:"
+echo '$("a").filter(function(_, link) {return $(link).text().match(/\bEPUB\b/);}).map(function (_, link) { return link.href; }).toArray().join("\n")'
 
 # vi: set textwidth=0:
