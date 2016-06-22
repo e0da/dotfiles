@@ -70,28 +70,6 @@
   conflictstyle = diff3
   prompt = false
 
-; [diff]
-;   tool = pickavimdiff
-;
-; [merge]
-;   tool = pickavimdiff
-;
-; [difftool "pickavimdiff"]
-;   cmd = `pickavimdiff` -f -d \"$LOCAL\" \"$REMOTE\"
-;
-; [mergetool "pickavimdiff"]
-;   cmd = `pickavimdiff` -f -d \"$LOCAL\" \"$REMOTE\"
-
-; I don't want this in here, but SourceTree keeps adding it anyway. So I'll just
-; leave it, but I'm not using it!
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-
 [filter "media"]
 	clean = git media clean %f
 	smudge = git media smudge %f
