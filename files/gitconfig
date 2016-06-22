@@ -1,9 +1,9 @@
 ; vi: set filetype=dosini nowrap:
 
 [user]
-  name       = Justin Force
-  email      = justin.force@gmail.com
-  signingkey = 0x203EABFA
+	name       = Justin Force
+	email      = justin.force@gmail.com
+	signingkey = 0x203EABFA
 
 ; Credentials are stored in ~/.git-credentials. The format for a credentials
 ; entry looks like this:
@@ -14,61 +14,61 @@
 ;
 ;   https://0123456789afcdef:@github.com
 [credential]
-  helper = store
+	helper = store
 
 [color]
-  ui = auto
+	ui = auto
 
 [alias]
-  a                    = add
-  aa                   = add --all
-  alias                = !~/bin/git_aliases
-  aliases              = !~/bin/git_aliases
-  b                    = branch
-  branches-with-commit = branch --all --contains
-  branches-with-file   = "!f() { git commits-with-file $1 | awk '{print $1}' | xargs -n1 git branches-with-commit | sort | uniq; }; f"
-  bwc                  = !git branches-with-commit
-  bwf                  = !git branches-with-file
-  cdf                  = clean -df
-  ci                   = commit
-  co                   = checkout
-  commits-with-file    = "!f() { if [ -t 1 ]; then pretty='format:%C(yellow)%h%Creset %s'; else pretty='format:%h %s'; fi; git log --all --pretty=\"$pretty\" -- $@ ; }; f"
-  cwf                  = !git commits-with-file
-  d                    = diff
-  dc                   = diff --cached
-  f                    = fetch origin --prune
-  ff                   = merge origin/master master --ff-only
-  fuckit               = !git reset --hard HEAD && git clean -df
-  l                    = log --stat
-  last                 = log -p -n1
-  lol                  = log --graph --decorate --pretty=oneline --abbrev-commit
-  lola                 = log --graph --decorate --pretty=oneline --abbrev-commit --all
-  pl                   = pull --rebase
-  ps                   = push
-  s                    = status --short
-  sha                  = rev-parse --short HEAD
-  shal                 = rev-parse HEAD
-  shacp                = !git shal | pbcopy
+	a                    = add
+	aa                   = add --all
+	alias                = !~/bin/git_aliases
+	aliases              = !~/bin/git_aliases
+	b                    = branch
+	branches-with-commit = branch --all --contains
+	branches-with-file   = "!f() { git commits-with-file $1 | awk '{print $1}' | xargs -n1 git branches-with-commit | sort | uniq; }; f"
+	bwc                  = !git branches-with-commit
+	bwf                  = !git branches-with-file
+	cdf                  = clean -df
+	ci                   = commit
+	co                   = checkout
+	commits-with-file    = "!f() { if [ -t 1 ]; then pretty='format:%C(yellow)%h%Creset %s'; else pretty='format:%h %s'; fi; git log --all --pretty=\"$pretty\" -- $@ ; }; f"
+	cwf                  = !git commits-with-file
+	d                    = diff
+	dc                   = diff --cached
+	f                    = fetch origin --prune
+	ff                   = merge origin/master master --ff-only
+	fuckit               = !git reset --hard HEAD && git clean -df
+	l                    = log --stat
+	last                 = log -p -n1
+	lol                  = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola                 = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	pl                   = pull --rebase
+	ps                   = push
+	s                    = status --short
+	sha                  = rev-parse --short HEAD
+	shal                 = rev-parse HEAD
+	shacp                = !git shal | pbcopy
 
 [rerere]
-  enabled = true
+	enabled = true
 
 [core]
-  excludesfile = ~/.gitignore_global
-  editor = nvim
+	excludesfile = ~/.gitignore_global
+	editor = nvim
 
 [web]
-  browser = google-chrome
+	browser = google-chrome
 
 [diff]
-  tool = vimdiff
-  conflictstyle = diff3
-  prompt = false
+	tool = vimdiff
+	conflictstyle = diff3
+	prompt = false
 
 [merge]
-  tool = vimdiff
-  conflictstyle = diff3
-  prompt = false
+	tool = vimdiff
+	conflictstyle = diff3
+	prompt = false
 
 [filter "media"]
 	clean = git media clean %f
@@ -88,3 +88,5 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+
+; vi: set noexpandtab:
