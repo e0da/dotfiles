@@ -4,8 +4,15 @@ set -e
 
 SCRIPT_NAME=$(basename "$0")
 
-GREEN="\033[32m"
 DEFAULT="\033[0m"
+# BLACK="\033[30m"
+# BLUE="\033[34m"
+# CYAN="\033[36m"
+GREEN="\033[32m"
+# MAGENTA="\033[35m"
+# RED="\033[31m"
+# WHITE="\033[37m"
+YELLOW="\033[33m"
 
 EXPENSIVE_TIMESTAMP="$HOME/.config/up/expensive_timestamp"
 EXPENSIVE_INTERVAL=6
