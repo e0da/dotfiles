@@ -156,7 +156,7 @@ function update_expensive_operation_timestamp() {
 
 function expensive() {
   if doing_expensive_things; then
-    printf "%b\$\$\$%b:" "$GREEN" "$DEFAULT"
+    printf "%b\$\$\$%b: %b$*%b\n" "$GREEN" "$DEFAULT" "$YELLOW" "$DEFAULT" >&3
     "$@"
   else
     :
