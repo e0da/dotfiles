@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 SCRIPT_NAME=$(basename "$0")
 
 DEFAULT="\033[0m"
