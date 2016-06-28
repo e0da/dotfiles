@@ -85,7 +85,7 @@ function update_homebrew() {
 
 function update_neovim() {
   announce 'NeoVim'
-  expensive brew reinstall --HEAD neovim neovim-dot-app
+  expensive brew reinstall --HEAD neovim
   pip2 install --upgrade neovim
   pip3 install --upgrade neovim
 }
