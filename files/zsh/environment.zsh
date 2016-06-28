@@ -124,3 +124,7 @@ export MAILCATCHER_TPORTAL=yes
 
 # Host-specific stuff
 [ -f "$HOME/.zsh-local" ] && source "$HOME/.zsh-local"
+
+# Replace the beer mug with something more appropriate because I FUCKING HATE
+# HOMEBREW.
+export HOMEBREW_INSTALL_BADGE="💩"
