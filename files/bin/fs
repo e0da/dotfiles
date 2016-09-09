@@ -18,6 +18,10 @@ mirror --continue --loop"
 
 sync_all() {
   cd $INBOX
+  echo "lftp sync command:
+  $LFTP_SYNC_COMMAND
+"
+
   lftp sftp://feral <<< "$LFTP_SYNC_COMMAND"
 }
 
