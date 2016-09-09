@@ -1,0 +1,29 @@
+#!/bin/bash
+
+INBOX=~/inbox
+
+# You can set parallel transfer count by supplying an argument or use the
+# default value
+PARALLEL_TRANSFER_COUNT="${1:-4}"
+
+PGET_N="${2:-4}"
+
+LFTP_SYNC_COMMAND="
+set mirror:use-pget-n $PGET_N
+set mirror:parallel-transfer-count $PARALLEL_TRANSFER_COUNT
+set mirror:parallel-directories false
+set mirror:sort-by name
+cd outbox
+mirror --continue --loop"
+
+sync_all() {
+  cd $INBOX
+  lftp sftp://feral <<< "$LFTP_SYNC_COMMAND"
+}
+
+if [ "$1" = '-h' ]; then
+  echo 'fs [PARALLEL_N [PGET_N]]'
+  exit
+fi
+
+time sync_all
