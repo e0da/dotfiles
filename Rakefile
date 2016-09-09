@@ -22,21 +22,13 @@ INSTALL_TASKS = %w[
 # destination of the symlink.
 #
 MAPPINGS = {
-# 'Xdefaults'          => '~/.Xdefaults',
-# 'Xresources'         => '~/.Xresources',
-# 'ackrc'              => '~/.ackrc',
   'agignore'           => '~/.agignore',
-# 'aptitude'           => '~/.aptitude',
   'bin'                => '~/bin',
-# 'config.fish'        => '~/.config/fish/config.fish',
   'gitconfig'          => '~/.gitconfig',
   'gitignore_global'   => '~/.gitignore_global',
   'nvim'               => %w[~/.config/nvim ~/.vim],
   'nvim/init.vim'      => '~/.vimrc',
-# 'rspec'              => '~/.rspec',
-# 'terminfo'           => '~/.terminfo',
   'tmux.conf'          => '~/.tmux.conf',
-# 'xrdb-merge.desktop' => '~/.config/autostart/xrdb-merge.desktop',
   'ycm_extra_conf.py'  => '~/.ycm_extra_conf.py',
   'zsh'                => '~/.zsh',
   'zsh/zlogin.zsh'     => '~/.zlogin',
