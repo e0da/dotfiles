@@ -73,7 +73,7 @@ export EDITOR=nvim
 export GIT_EDITOR=nvim
 export PATH=$HOME/bin:$HOME/opt/bin:/usr/local/sbin:/usr/local/bin:$PATH
 use_coreutils_on_mac
-use_solarized_dircolors
+# use_solarized_dircolors
 
 # automatically configure make -j option to -j{number of CPUs +1}
 #
@@ -128,3 +128,12 @@ export MAILCATCHER_TPORTAL=yes
 # Replace the beer mug with something more appropriate because I FUCKING HATE
 # HOMEBREW.
 export HOMEBREW_INSTALL_BADGE="💩"
+
+# Make stupid Mac garbage do colors
+export CLICOLORS=1
+
+# Add Postgres bins to PATH
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.5/bin
+
+# TrackR
+export devdb="trackr_web_development"

@@ -44,23 +44,23 @@ function announce() {
   printf "%b%b%b...\n" "$GREEN" "$*" "$DEFAULT" >&3
 }
 
-function do_percona_hack() {
-  announce 'Homebrew is garbage. So is Mac OS X.'
-  brew install "$PERCONA_56_FORMULA_URL"
-  brew switch percona-server 5.6.28-76.1
-  brew pin percona-server
-  mysql.server stop ||:
-  rm -f /usr/local/var/mysql/ib_logfile*
-  mysql.server start ||:
-  mysql_upgrade -uroot ||:
-  launchctl unload "$PERCONA_LAUNCH_AGENT_PLIST_PATH"
-  launchctl load "$PERCONA_LAUNCH_AGENT_PLIST_PATH"
-}
+# function do_percona_hack() {
+#   announce 'Homebrew is garbage. So is Mac OS X.'
+#   brew install "$PERCONA_56_FORMULA_URL"
+#   brew switch percona-server 5.6.28-76.1
+#   brew pin percona-server
+#   mysql.server stop ||:
+#   rm -f /usr/local/var/mysql/ib_logfile*
+#   mysql.server start ||:
+#   mysql_upgrade -uroot ||:
+#   launchctl unload "$PERCONA_LAUNCH_AGENT_PLIST_PATH"
+#   launchctl load "$PERCONA_LAUNCH_AGENT_PLIST_PATH"
+# }
 
-function do_npm_hack() {
-  announce 'Homebrew is garbage. So is npm.'
-  npm install -g npm@3.8.7
-}
+# function do_npm_hack() {
+#   announce 'Homebrew is garbage. So is npm.'
+#   npm install -g npm@3.8.7
+# }
 
 # If we don't do this, we sometimes get an error where a function called
 # shell_session_update that, as I understand it, RVM adds to the environment to
@@ -78,15 +78,15 @@ function update_homebrew() {
   announce 'Homebrew'
   brew update
   brew upgrade --all
-  expensive brew reinstall --HEAD fzf
-  do_percona_hack
-  do_npm_hack
+  # expensive brew reinstall --HEAD fzf
+  # do_percona_hack
+  # do_npm_hack
 }
 
 function update_neovim() {
   announce 'NeoVim'
-  expensive brew reinstall --HEAD neovim
-  pip2 install --upgrade neovim
+  # expensive brew reinstall --HEAD neovim
+  # pip2 install --upgrade neovim
   pip3 install --upgrade neovim
 }
 
@@ -104,13 +104,13 @@ function update_vim() {
   nvim +PlugUpgrade +"source \$MYVIMRC" +PlugUpdate +qa
 }
 
-function update_apm() {
-  announce 'APM'
-  pushd "$APM_BUNDLE" &>/dev/null
-    git checkout master || exit 1
-    apm update
-  popd &>/dev/null
-}
+# function update_apm() {
+#   announce 'APM'
+#   pushd "$APM_BUNDLE" &>/dev/null
+#     git checkout master || exit 1
+#     apm update
+#   popd &>/dev/null
+# }
 
 function help() {
   echo "$USAGE"
@@ -206,7 +206,7 @@ function main() {
   update_neovim
   update_rvm
   update_vim
-  update_apm
+  # update_apm
   update_expensive_operation_timestamp
 }
 
