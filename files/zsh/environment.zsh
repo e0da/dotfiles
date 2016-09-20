@@ -99,7 +99,8 @@ export MAKEOPTS=-j${n_cores}
 #      > /tmp/terminfo \
 #      && tic /tmp/terminfo
 #
-[ "$(uname)" = 'Linux' ] && export TERM=screen-256color 2>/dev/null
+# [ "$(uname)" = 'Linux' ] && export TERM=screen-256color 2>/dev/null
+export TERM=xterm-256color
 
 # Debian package development
 #
