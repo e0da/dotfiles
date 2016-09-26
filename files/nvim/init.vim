@@ -272,3 +272,8 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" Dumb shit for Mac garbage because this operating system is bullshit for idiots
+if has('mac')
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+endif
