@@ -10,16 +10,6 @@ libpeerconnection.log
 .vimrc
 .stack-work
 
-# APM
-apps/property/config/solr_48/conf/_rest_managed.json
-apps/property/config/solr_48/core.properties
-apps/property/config/solr_48/core.properties.unloaded
-apps/property/engines/inspections/test/dummy/db/schema.rb
-apps/property/property_qa.sql.bz2
-
-# Screenings
-config/screenings_credentials.yml
-
 # Mac o_o
 .DS_Store
 
