@@ -13,4 +13,7 @@ libpeerconnection.log
 # Mac o_o
 .DS_Store
 
+# TrackR
+.elasticbeanstalk
+
 # vi: set filetype=dosini:
