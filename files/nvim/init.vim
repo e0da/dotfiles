@@ -174,7 +174,7 @@ let g:test#preserve_screen = 1
 let g:ycm_confirm_extra_conf = 0
 
 " Customize shellcheck
-let g:syntastic_sh_shellcheck_args = '-x'
+" let g:syntastic_sh_shellcheck_args = '-x'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   Mappings
