@@ -16,26 +16,20 @@ endif
 Plug 'Lokaltog/vim-easymotion',      { 'on': '<Plug>(easymotion-s)' }
 Plug 'MarcWeber/vim-addon-local-vimrc'
 Plug 'ashisha/image.vim',            { 'on': 'Image' }
-Plug 'briancollins/vim-jst',         { 'for': ['ejs', 'jst'] }
-Plug 'ekalinin/Dockerfile.vim',      { 'for': 'dockerfile', 'do': 'make install' }
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'gregsexton/MatchTag',          { 'for': 'html' }
 Plug 'honza/vim-snippets'
 Plug 'janko-m/vim-test'
-Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'jgdavey/tslime.vim'
 Plug 'junegunn/fzf',                 { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/vim-easy-align',      { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
-Plug 'kchmck/vim-coffee-script',     { 'for': 'coffee' }
 Plug 'mbbill/undotree',              { 'on': 'UndotreeToggle'   }
 Plug 'morhetz/gruvbox'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'othree/html5.vim',             { 'for': 'html' }
-Plug 'pangloss/vim-javascript',      { 'for': 'javascript' } " May try javascript_enable_domhtmlcss later
 Plug 'rking/ag.vim',                 { 'on': 'Ag' }
 Plug 'scrooloose/nerdtree',          { 'on': [ 'NERDTreeToggle', 'NERDTreeFind' ] }
 Plug 'scrooloose/syntastic'
-Plug 'slim-template/vim-slim',       { 'for': 'slim' }
+Plug 'sheerun/vim-polyglot',         { 'do': './build' }
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
