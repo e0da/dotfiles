@@ -24,7 +24,7 @@ function notify_sshable() {
 
 # Adapted from Matt Schartman's function.
 function retag() {
-  rm tags 2> /dev/null
+  rm -f tags
 
   # shellcheck disable=SC2046
   ctags \
