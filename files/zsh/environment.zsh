@@ -71,7 +71,7 @@ bindkey ';5D' backward-word
 #
 export EDITOR=nvim
 export GIT_EDITOR=nvim
-export PATH=$HOME/bin:$HOME/opt/bin:/usr/local/sbin:/usr/local/bin:$PATH
+export PATH=./node_modules/.bin:$HOME/bin:$HOME/opt/bin:/usr/local/sbin:/usr/local/bin:$PATH
 use_coreutils_on_mac
 # use_solarized_dircolors
 
