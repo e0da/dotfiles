@@ -1,0 +1,34 @@
+#!/bin/bash
+
+function _bundler_environment_available() {
+  while [ "$(pwd)" != / ]; do
+    # We know we're looking for Gemfile or gems.rb because of this:
+    #   https://github.com/bundler/bundler/blob/3a09448d8b060f2688dbc73bfa1eb08e1bd126f3/lib/bundler/shared_helpers.rb#L129
+    [[ -f Gemfile || -f gems.rb ]] && return 0
+    cd ..
+  done
+  return 1
+}
+
+function _prefix() {
+  _bundler_environment_available && echo 'bundle exec'
+}
+
+function _preferred_bin() {
+  local bin=$1
+  [ -x "bin/$bin" ] && echo "bin/$bin" || echo "$bin"
+}
+
+function _command() {
+  local bin=$1; shift
+  local cmd=($(_prefix) $(_preferred_bin "$bin") $@)
+  echo "${cmd[*]}"
+  ${cmd[*]}
+}
+
+function _main() {
+  local bin=$1; shift
+  _command "$bin" "$@"
+}
+
+_main "$@"

@@ -4,6 +4,10 @@ alias g='git'
 alias grep='grep --color=auto'
 alias t='test_launcher find'
 
+for bin in rails rake spring; do
+  alias $bin="best-ruby-bin ${bin}"
+done
+
 # NeoVim a lot
 for vi in v vi vim mvim gvim; do
   eval "alias $vi=nvim"
