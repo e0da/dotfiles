@@ -36,9 +36,10 @@ function retag() {
 }
 
 # Given a session name, try to attach to that tmux session. If the session
-# doesn't exist, create a session with the given name and attach to it.
+# doesn't exist, create a session with the given name and attach to it. If no
+# name is given, calculate a name based on the current directory.
 function taon {
-  name="$1"
+  local name=${1:-$(basename $(pwd) | sed 's/\W\+/-/g')}
   tmux attach -t "$name" || tmux new -s "$name"
 }
 
