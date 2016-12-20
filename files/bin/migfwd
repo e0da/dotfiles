@@ -7,25 +7,36 @@ function _print_usage() {
   echo "Usage: $0 PATH_TO_MIGRATION_FILE"
 }
 
-function _new_date() {
+function _old_version() {
+  local migration_file_path
+  migration_file_path="$1"
+  grep -o "$DATE_PATTERN" <<< "$migration_file_path"
+}
+
+function _new_version() {
   date +"$DATE_FORMAT"
 }
 
 function _new_path() {
-  local old_path date
+  local old_path new_version
   old_path="$1"
-  date="$(_new_date)"
-
-  # shellcheck disable=SC2001
-  echo "$old_path" | sed "s/$DATE_PATTERN/$date/"
+  new_version="$2"
+  sed "s/$DATE_PATTERN/$new_version/" <<< "$old_path"
 }
 
-function _rename_migration_to_current_timestamp() {
-  local migration_file_path new_path
+function _rename_migration_with_new_version() {
+  local migration_file_path new_version new_path
   migration_file_path="$1"
-  new_path="$(_new_path "$migration_file_path")"
-
+  new_version="$2"
+  new_path="$(_new_path "$migration_file_path" "$new_version")"
   (set -x; mv "$migration_file_path" "$new_path")
+}
+
+function _migrate() {
+  local direction version
+  direction="$1"
+  version="$2"
+  (set -x; rake db:migrate:"$direction" VERSION="$version")
 }
 
 if [ $# != 1 ]; then
@@ -33,5 +44,15 @@ if [ $# != 1 ]; then
   exit 1
 fi
 
-_rename_migration_to_current_timestamp "$1"
+function _main() {
+  local migration_file_path old_version new_version
+  migration_file_path="$1"
+  old_version=$(_old_version "$migration_file_path")
+  new_version=$(_new_version)
+  _migrate down "$old_version"
+  _rename_migration_with_new_version "$migration_file_path" "$new_version"
+  _migrate up "$new_version"
+}
+
+_main "$1"
 exit 0
