@@ -22,8 +22,10 @@ function _preferred_bin() {
 function _command() {
   local bin=$1; shift
   local cmd=($(_prefix) $(_preferred_bin "$bin") $@)
-  echo "${cmd[*]}"
-  ${cmd[*]}
+  (
+    set -x
+    ${cmd[*]}
+  )
 }
 
 function _main() {
