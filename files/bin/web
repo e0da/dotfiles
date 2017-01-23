@@ -6,6 +6,7 @@ document_root=${2:-.}
 function _start_web_server() {
   local port="$1"; shift
   local document_root="$1"; shift
+  echo -e "\e[38;5;202mhttp://localhost:${port}/\e[0m"
   ruby -run -e httpd "$document_root" -p "$port"
 }
 
