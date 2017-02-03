@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -x
+
+rm -f tags
+
+bundle_paths=($([ -d .bundle ] && bundle show --paths))
+
+ctags --recurse \
+      --exclude=.git \
+      --exclude=tmp \
+      --exclude='*.log' \
+      ./* "${bundle_paths[@]}" 2> /dev/null

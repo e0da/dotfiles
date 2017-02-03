@@ -22,19 +22,6 @@ function notify_sshable() {
   done
 }
 
-# Adapted from Matt Schartman's function.
-function retag() {
-  rm -f tags
-
-  # shellcheck disable=SC2046
-  ctags \
-    --exclude=.git \
-    --exclude=tmp \
-    --exclude='*.log' \
-    -R \
-    ./* $(bundle show --paths) 2> /dev/null
-}
-
 # Given a session name, try to attach to that tmux session. If the session
 # doesn't exist, create a session with the given name and attach to it. If no
 # name is given, calculate a name based on the current directory.
