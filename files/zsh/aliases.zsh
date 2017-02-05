@@ -4,7 +4,7 @@ alias g='git'
 alias grep='grep --color=auto'
 alias t='test_launcher find'
 
-for bin in rails rake spring; do
+for bin in rails rake spring rspec; do
   alias $bin="best-ruby-bin ${bin}"
 done
 
