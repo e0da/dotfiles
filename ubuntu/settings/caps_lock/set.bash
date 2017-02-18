@@ -1,6 +1,5 @@
 #!/bin/bash
 
-target=${1:-escape}
+source common.bash
 
-set -x
-dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:${target}']"
+_set_capslock_to escape

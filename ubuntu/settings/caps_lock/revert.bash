@@ -1,5 +1,5 @@
 #!/bin/bash
 
-scriptpath="$(cd "$(dirname "$0")"; pwd -P)"
+source common.bash
 
-"$scriptpath"/../set/caps-lock.bash caps
+_set_capslock_to caps
