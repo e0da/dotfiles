@@ -4,12 +4,12 @@ require 'tmpdir'
 # Constants and helpers
 ################################################################################
 
-BIN_PATH        = "#{ENV['HOME']}/.local/bin"
+LOCAL_BIN_PATH  = "#{ENV['HOME']}/.local/bin"
 PREFERRED_SHELL = 'zsh'
 COLORS          = {red: '1;31', yellow: '1;33'}
 INSTALL_TASKS   = %w[packages hub links shell]
-PACKAGES        = %w[silversearcher-ag autojump exuberant-ctags tmux zsh
-                     golang-go]
+PACKAGES        = %W[silversearcher-ag autojump exuberant-ctags tmux
+                     #{PREFERRED_SHELL} golang-go build-essential]
 
 ##
 # Each key corresponds to a file in the +files+ directory, and each value is the
@@ -69,8 +69,13 @@ task :force do
   Rake::Task[:install].invoke
 end
 
+desc "Create local bin directory at #{LOCAL_BIN_PATH}"
+task :local_bin do
+  mkdir_p LOCAL_BIN_PATH
+end
+
 desc 'Set up hub (GitHub CLI tool)'
-task :hub do
+task hub: [:packages, :local_bin] do
   sh <<-SH
     set -e
     tmpdir=$(mktemp -d)
@@ -78,7 +83,7 @@ task :hub do
     git clone --depth=1 https://github.com/github/hub.git
     cd hub
     ./script/build
-    install bin/hub #{BIN_PATH}
+    install bin/hub #{LOCAL_BIN_PATH}
   SH
 end
 
