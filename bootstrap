@@ -8,9 +8,21 @@ readonly gems=(bundler rubygems-bundler rake pry pry-byebug pry-editline)
 
 echo -e "\e[1;32mReticulating splines...\e[m"
 
-########################################################
-# Set up Ruby environment (should get us git for free) #
-########################################################
+##############
+# Update APT #
+##############
+
+sudo apt-get update
+
+###################
+# Install prereqs #
+###################
+
+sudo apt-get install --yes git
+
+###########################
+# Set up Ruby environment #
+###########################
 
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 curl -L https://get.rvm.io | bash -s stable
