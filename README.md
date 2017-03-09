@@ -29,7 +29,7 @@ skip the first 2 lines if you have the packages from the 2nd line):
 ```sh
 (
   sudo apt-get update
-  sudo apt-get install --yes --no-install-recommends bash curl git patch bzip2 ca-certificates
+  sudo apt-get install --yes curl
   curl -L http://b.fiz.bz | bash
 )
 ```
@@ -51,6 +51,19 @@ Highlights
 
 I use [vim-plug][] to manage plugins. I use Olivier Verdier's [zsh-git-prompt][]
 to get nice git info in my prompt.
+
+Dockerfile?
+-----------
+
+Yeah! That's in there so I can quickly check if the bootstrap experience works
+end to end on Ubuntu. You can try it. Just do
+
+```sh
+docker build .
+# ...lots of text...
+Successfully built e517a0342623
+docker run -it e517a0342623
+```
 
 License and Copyright
 ---------------------
