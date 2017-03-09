@@ -4,7 +4,6 @@ set -e
 
 readonly dotfiles="$HOME/.dotfiles"
 readonly repo='https://github.com/justinforce/dotfiles'
-readonly gems=(bundler rubygems-bundler rake pry pry-byebug pry-editline)
 
 echo -e "\e[1;32mReticulating splines...\e[m"
 
@@ -30,11 +29,8 @@ curl -L https://get.rvm.io | bash -s stable
 source ~/.rvm/scripts/rvm
 rvm use ruby --install --default
 
-for gem in ${gems[*]}; do
-  gem list -i "$gem" &>/dev/null || gem install "$gem"
-done
-
-gem regenerate_binstubs
+gem install bundler # do we want rubygems-bundler?
+# gem regenerate_binstubs
 
 ########################
 # Clone or update repo #
@@ -49,9 +45,10 @@ else
   git clone --recursive "$repo" "$dotfiles"
 fi
 
-###########################
-# Run preferred rake task #
-###########################
+######################################
+# Bundle and run preferred rake task #
+######################################
 
 cd "$dotfiles"
+bundle install
 rake force
