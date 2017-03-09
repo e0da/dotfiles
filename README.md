@@ -2,11 +2,8 @@ dotfiles
 ========
 
 These are my personal configuration files. The directory structure is designed
-so that you can symlink everything with a single command. ~~This is only tested
-with and only expected to work on Ubuntu.~~ I changed jobs and I work
-exclusively on a Mac now. _(Not thrilled about the Mac, but the job is
-excellent!  Do not cry for me.)_ So the Ubuntu-specific parts of this may
-become stale over time. **Bug reports and pull requests are appreciated!**
+so that you can symlink everything with a single command. This is only tested
+with and only expected to work on Ubuntu.
 
 Installation
 ------------
@@ -46,7 +43,7 @@ just get you the content, and it's up to you to symlink what you like.
 git clone https://github.com/justinforce/dotfiles ~/.dotfiles --recursive
 ```
 
-Then you can `cd` into `~/.dotfiles` and run `rake -T` to get a list of the
+Then you can `cd` into `~/.dotfiles` and run `rake --tasks` to get a list of the
 available tasks.
 
 Highlights
