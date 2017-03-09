@@ -1,45 +1,45 @@
 #!/bin/bash
 
-dotfiles="$HOME/.dotfiles"
-repo='https://github.com/justinforce/dotfiles'
+set -e
 
-clone_or_update_repo() {
-  if [ -e "$dotfiles" ]; then
-    cd "$dotfiles"
-    git pull origin master
-    git submodule sync
-    git submodule update --init
-  else
-    git clone --recursive "$repo" "$dotfiles"
-  fi
-}
+readonly dotfiles="$HOME/.dotfiles"
+readonly repo='https://github.com/justinforce/dotfiles'
+readonly gems=(bundler rubygems-bundler rake pry pry-byebug pry-editline)
 
-set_up_ruby_environment() {
-  gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-  curl -sSL https://get.rvm.io | bash -s stable
+echo -e "\e[1;32mReticulating splines...\e[m"
 
-  source ~/.rvm/scripts/rvm
-  rvm use ruby --install --default
+########################################################
+# Set up Ruby environment (should get us git for free) #
+########################################################
 
-  for gem in bundle rubygems-bundler rake; do
-    gem list -i $gem &>/dev/null || gem install $gem
-  done
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+wget -O- https://get.rvm.io | bash -s stable
 
-  gem regenerate_binstubs
-}
+source ~/.rvm/scripts/rvm
+rvm use ruby --install --default
 
-run_rake_task() {
+for gem in ${gems[*]}; do
+  gem list -i "$gem" &>/dev/null || gem install "$gem"
+done
+
+gem regenerate_binstubs
+
+########################
+# Clone or update repo #
+########################
+
+if [ -e "$dotfiles" ]; then
   cd "$dotfiles"
-  rake force
-}
+  git pull origin master
+  git submodule sync
+  git submodule update --init
+else
+  git clone --recursive "$repo" "$dotfiles"
+fi
 
-main() {
-  echo -e "\e[1;32mReticulating splines...\e[m"
-  set_up_ruby_environment
-  clone_or_update_repo
-  run_rake_task
-}
+###########################
+# Run preferred rake task #
+###########################
 
-main
-
-:
+cd "$dotfiles"
+rake force
