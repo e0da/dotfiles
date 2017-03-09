@@ -106,10 +106,6 @@ export MAKEOPTS=-j${n_cores}
 export DEBEMAIL=justin.force@gmail.com
 export DEBFULLNAME='Justin Force'
 
-# Docker
-export DOCKER_HOST=tcp://192.168.59.103:2375
-
-
 # awscli completion
 #
 [ -f /usr/local/bin/aws_zsh_completer.sh ] &&
