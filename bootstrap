@@ -29,8 +29,7 @@ curl -L https://get.rvm.io | bash -s stable
 source ~/.rvm/scripts/rvm
 rvm use ruby --install --default
 
-gem install bundler # do we want rubygems-bundler?
-# gem regenerate_binstubs
+gem install bundler
 
 ########################
 # Clone or update repo #
