@@ -3,6 +3,7 @@ alias brake='bundle exec rake'
 alias g='git'
 alias grep='grep --color=auto'
 alias t='test_launcher find'
+alias here='xdg-open . 2>/dev/null'
 
 for bin in rails rake spring rspec; do
   alias $bin="best-ruby-bin ${bin}"
