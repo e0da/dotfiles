@@ -22,7 +22,7 @@ sync_all() {
   $LFTP_SYNC_COMMAND
 "
 
-  lftp sftp://feral <<< "$LFTP_SYNC_COMMAND"
+  nice -n19 lftp sftp://feral <<< "$LFTP_SYNC_COMMAND"
 }
 
 if [ "$1" = '-h' ]; then
