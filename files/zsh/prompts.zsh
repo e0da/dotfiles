@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 
-export PROMPT='%F{cyan}%m%F{white}:%F{blue}%~%F{white}%#%b%f '
+export PROMPT='%B%F{cyan}%m%F{white}:%F{blue}%~%F{white}%#%b%f '
 
 source "$HOME/.zsh/git-prompt/zshrc.sh"
 [ -x "$HOME/.bin/gitstatus" ] && export GIT_PROMPT_EXECUTABLE="haskell"
