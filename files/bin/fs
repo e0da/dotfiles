@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INBOX=~/inbox
+INBOX="${INBOX:-$HOME/inbox}"
 
 # You can set parallel transfer count by supplying an argument or use the
 # default value
