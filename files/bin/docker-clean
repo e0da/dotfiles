@@ -2,6 +2,11 @@
 
 # Thanks http://blog.yohanliyanage.com/2015/05/docker-clean-up-after-yourself/
 
-docker rm -v $(docker ps -a -q -f status=exited)
-docker rmi $(docker images -f "dangling=true" -q)
-docker volume rm $(docker volume ls -qf dangling=true)
+exited_containers=($(docker ps -a -q -f 'status=exited'))
+[ ${#exited_containers[@]} -eq 0 ] || docker rm -v "${exited_containers[@]}"
+
+dangling_images=($(docker images -f 'dangling=true' -q))
+[ ${#dangling_images[@]} -eq 0 ] || docker rmi "${dangling_images[@]}"
+
+dangling_volumes=($(docker volume ls -qf 'dangling=true'))
+[ ${#dangling_volumes[@]} -eq 0 ] || docker volume rm "${dangling_volumes[@]}"
