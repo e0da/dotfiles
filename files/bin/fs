@@ -13,6 +13,11 @@ if [ 'rar' = "$1" ]; then
   PGET_N=4
 fi
 
+if [ 'big' = "$1" ]; then
+  PARALLEL_TRANSFER_COUNT=2
+  PGET_N=64
+fi
+
 LFTP_SYNC_COMMAND="
 set mirror:use-pget-n $PGET_N
 set mirror:parallel-transfer-count $PARALLEL_TRANSFER_COUNT
