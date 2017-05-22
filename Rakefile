@@ -9,7 +9,7 @@ PREFERRED_SHELL = 'zsh'
 COLORS          = {red: '1;31', yellow: '1;33'}
 INSTALL_TASKS   = %w[packages hub links shell]
 PACKAGES        = %W[silversearcher-ag autojump exuberant-ctags tmux
-                     #{PREFERRED_SHELL} golang-go build-essential]
+                     #{PREFERRED_SHELL} golang-go build-essential].join(' ')
 
 ##
 # Each key corresponds to a file in the +files+ directory, and each value is the
@@ -105,9 +105,11 @@ end
 
 desc 'Install packages'
 task :packages do
+  # Exit early if all the packages are installed.
   sh <<-SH
+    dpkg --status #{PACKAGES} >/dev/null && exit 0
     sudo apt-get update
-    sudo apt-get install --yes --quiet #{PACKAGES.join(' ')}
+    sudo apt-get install --yes --quiet #{PACKAGES}
   SH
 end
 
