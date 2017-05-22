@@ -115,7 +115,10 @@ end
 
 desc 'Set preferred shell'
 task shell: :packages do
-  sh "sudo chsh -s $(which #{PREFERRED_SHELL}) $USER"
+  sh <<-SH
+    grep $USER.\*$(which #{PREFERRED_SHELL}) /etc/passwd >/dev/null ||
+      sudo chsh -s $(which #{PREFERRED_SHELL}) $USER
+  SH
 end
 
 # Because this may update the Rakefile, we depend on the update task, then we
