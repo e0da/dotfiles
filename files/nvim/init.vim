@@ -35,6 +35,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'troydm/zoomwintab.vim',        { 'on': 'ZoomWinTabToggle' }
+Plug 'vim-scripts/AnsiEsc.vim'
 
 call plug#end()
 
