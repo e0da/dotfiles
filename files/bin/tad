@@ -1,6 +1,6 @@
 #!/bin/sh
 
-trap 'kill 0 && exit' INT TERM EXIT
+trap 'kill 0 && exit' INT TERM
 
 in_test_and_development() {
   for environment in test development; do
