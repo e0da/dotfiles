@@ -1,0 +1,7 @@
+#!/bin/bash
+
+FONTS_CONF=$HOME/.config/fontconfig/fonts.conf
+
+mv $FONTS_CONF{,.bak}
+/usr/bin/gitg
+mv $FONTS_CONF{.bak,}
