@@ -67,6 +67,9 @@ bindkey ';5D' backward-word
 #
 [ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
 
+# find-the-command
+[ -f /usr/share/doc/find-the-command/ftc.zsh ] && source /usr/share/doc/find-the-command/ftc.zsh
+
 # environment
 #
 export EDITOR=nvim
