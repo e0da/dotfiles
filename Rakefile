@@ -105,11 +105,12 @@ end
 
 desc 'Install packages'
 task :packages do
-  # Exit early if all the packages are installed.
   sh <<-SH
-    dpkg --status #{PACKAGES} >/dev/null && exit 0
-    sudo apt-get update
-    sudo apt-get install --yes --quiet #{PACKAGES}
+    if (which dpkg &>/dev/null && which apt-get &>/dev/null); then
+      dpkg --status #{PACKAGES} >/dev/null && exit 0
+      sudo apt-get update
+      sudo apt-get install --yes --quiet #{PACKAGES}
+    fi
   SH
 end
 
