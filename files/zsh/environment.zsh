@@ -139,3 +139,6 @@ export devdb="trackr_web_development"
 
 # Load any local secret environment variables
 [ -f $HOME/.secrets ] && source $HOME/.secrets
+
+# The Fuck
+which thefuck &>/dev/null && eval $(thefuck --alias)
