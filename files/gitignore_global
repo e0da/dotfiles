@@ -1,7 +1,6 @@
 tags
 *.zip
 *.pyc
-.rvmrc
 ignore
 ignore.cp
 .ruby-version

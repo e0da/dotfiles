@@ -24,7 +24,6 @@ MAPPINGS = {'agignore'           => '~/.agignore',
             'tmux.conf'          => '~/.tmux.conf',
             'ycm_extra_conf.py'  => '~/.ycm_extra_conf.py',
             'zsh'                => '~/.zsh',
-            'zsh/zlogin.zsh'     => '~/.zlogin',
             'zsh/zshrc.zsh'      => '~/.zshrc'}
 
 ##

@@ -18,7 +18,6 @@ Installation
 > of the things that this script does, proceed **at your own peril!**
 
 * Install a couple of prerequisites with APT.
-* Install RVM and Ruby.
 * Clone the repository.
 * Run the `rake force` task, symlinking all config files and overwriting any
   existing files.
