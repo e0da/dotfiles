@@ -164,6 +164,9 @@ nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
 let g:test#strategy = 'tslime'
 let g:test#preserve_screen = 1
+let g:tslime_always_current_session = 1
+let g:tslime_always_current_window = 1
+
 
 " Don't prompt to load ycm_extra_conf.py for YouCompleteMe; just load it.
 let g:ycm_confirm_extra_conf = 0
