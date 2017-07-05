@@ -22,6 +22,7 @@ MAPPINGS = {'agignore'           => '~/.agignore',
             'nvim'               => %w[~/.config/nvim ~/.vim],
             'nvim/init.vim'      => '~/.vimrc',
             'tmux.conf'          => '~/.tmux.conf',
+            'xbindkeysrc'        => '~/.xbindkeysrc',
             'ycm_extra_conf.py'  => '~/.ycm_extra_conf.py',
             'zsh'                => '~/.zsh',
             'zsh/zshrc.zsh'      => '~/.zshrc'}
