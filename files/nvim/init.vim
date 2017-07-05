@@ -9,7 +9,7 @@ call plug#begin()
 " Plugins that only install if this is NeoVim
 if has('nvim')
   Plug 'SirVer/ultisnips'
-  Plug 'Valloric/YouCompleteMe',       { 'do': './install.py --clang-completer --system-libclang' }
+  Plug 'Valloric/YouCompleteMe',       { 'do': './install.py' }
   Plug 'vim-ruby/vim-ruby',            { 'for': 'ruby' }
 endif
 
