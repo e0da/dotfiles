@@ -1,2 +1,2 @@
 "xdotool key Super_L"
-release + b:13
+b:13 + Release
