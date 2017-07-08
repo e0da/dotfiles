@@ -19,7 +19,7 @@ Installation
 
 * Install a couple of prerequisites with APT.
 * Clone the repository.
-* Run the `rake force` task, symlinking all config files and overwriting any
+* Run the `rake install` task, symlinking all config files and overwriting any
   existing files.
 
 If you understand the risks and want to press on, copy and paste this (you can

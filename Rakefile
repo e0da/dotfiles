@@ -35,39 +35,22 @@ def warn(msg, color=:red)
   kernel_warn "\e[#{COLORS[color]}m#{msg}\e[m"
 end
 
-def force?
-  @force ||= ENV['force'] =~ /y/i
-end
-
 ##
 # Symlinks +src+ file or directory to +target+
 #
 def link_file(source, target)
   source = "#{pwd}/files/#{source}"
   target = File.expand_path target
-  rm_rf target if File.exists?(target) and force?
-  if File.directory? target
-    warn "#{target} is a directory. I'm not symlinking that unless you use force=yes", :yellow
-  else
-    FileUtils.mkdir_p File.dirname(target)
-    ln_s source, target
-  end
-rescue
-  warn "Couldn't create #{target} because it exists. Use `force=yes` to overwrite."
+  rm_rf target
+  FileUtils.mkdir_p File.dirname(target)
+  ln_s source, target
 end
-
 
 ################################################################################
 # Tasks
 ################################################################################
 
-task default: :update_and_force
-
-desc 'Same as install, but overwrites any existing files.'
-task :force do
-  ENV['force'] = 'yes'
-  Rake::Task[:install].invoke
-end
+task default: :update_and_install
 
 desc "Create local bin directory at #{LOCAL_BIN_PATH}"
 task :local_bin do
@@ -90,7 +73,7 @@ end
 desc "Run these tasks in order: #{INSTALL_TASKS.join(' ')}"
 task install: INSTALL_TASKS
 
-desc 'Symlink config files to appropriate locations. (force=yes to overwrite)'
+desc 'Symlink config files to appropriate locations'
 task :links do
   MAPPINGS.each do |source, target|
     if target.is_a? Array
@@ -124,9 +107,9 @@ end
 
 # Because this may update the Rakefile, we depend on the update task, then we
 # actually exec a call to rake in the shell.
-desc '[Default] Update repository and run force task'
-task update_and_force: :update do
-  exec 'rake force' if $? == 0
+desc '[Default] Update repository and run install task'
+task update_and_install: :update do
+  exec 'rake install' if $? == 0
 end
 
 desc 'Update repository'

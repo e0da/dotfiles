@@ -39,4 +39,4 @@ fi
 
 cd "$dotfiles"
 bundle install
-rake force
+rake install
