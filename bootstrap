@@ -2,7 +2,7 @@
 
 set -e
 
-readonly dotfiles="$HOME/.dotfiles"
+readonly dotfiles="$HOME/src/dotfiles"
 readonly repo='https://github.com/justinforce/dotfiles'
 
 echo -e "\e[1;32mReticulating splines...\e[m"
@@ -29,6 +29,7 @@ if [ -e "$dotfiles" ]; then
   git submodule sync
   git submodule update --init
 else
+  mkdir -p "$(dirname "$dotfiles")"
   git clone --recursive "$repo" "$dotfiles"
 fi
 
