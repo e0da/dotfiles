@@ -60,6 +60,9 @@
 [web]
 	browser = google-chrome
 
+[mergetool "vimdiff"]
+	path = nvim
+
 [diff]
 	tool = vimdiff
 	conflictstyle = diff3
