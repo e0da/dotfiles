@@ -1,2 +1,11 @@
+# # Logitech MX thumb button to Windows key
+# "xdotool key Super_L"
+# b:13 + Release
+
+# # Logitech MX Master back button to Windows key
+# "xdotool key Super_L"
+# b:8 + Release
+
+# Logitech MX Master forward button to Windows key
 "xdotool key Super_L"
-b:13 + Release
+b:9 + Release
