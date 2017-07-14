@@ -16,7 +16,6 @@ endif
 Plug 'Lokaltog/vim-easymotion',      { 'on': '<Plug>(easymotion-s)' }
 Plug 'MarcWeber/vim-addon-local-vimrc'
 Plug 'ashisha/image.vim',            { 'on': 'Image' }
-Plug 'gorodinskiy/vim-coloresque'
 Plug 'gregsexton/MatchTag',          { 'for': 'html' }
 Plug 'honza/vim-snippets'
 Plug 'janko-m/vim-test'
