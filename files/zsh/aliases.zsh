@@ -20,6 +20,3 @@ if [ $? = 0 ]; then
 else
   alias ls='ls -G'
 fi
-
-# TrackR
-alias prodcon='spring stop; PROD_DB=y rails c ; spring stop'
