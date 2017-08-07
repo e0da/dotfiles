@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'http'
+require 'json'
+
+URL_BASE = 'https://api.github.com/rate_limit?access_token=%{token}'.freeze
+URL      = (URL_BASE % {token: ENV['CHANGELOG_GITHUB_TOKEN']}).freeze
+OUTPUT   = '%{remaining}/%{limit} remaining; reset @ %{reset}'.freeze
+
+rate = JSON.parse(HTTP.get(URL).body.to_s)['rate']
+remaining, limit, reset = rate.values_at 'remaining', 'limit', 'reset'
+puts OUTPUT % {remaining: remaining, limit: limit, reset: Time.at(reset)}
