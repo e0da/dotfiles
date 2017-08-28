@@ -245,6 +245,11 @@ command! -nargs=* Gag call ag#Ag('grep<bang>', <q-args> . ' . ' . system('bundle
 " Replace `:key =>` with `key:`, accommodating extra spaces before the =>
 noremap \hr :s/:\(\S\+\)\s*=>/\1:/g<cr>
 
+" Replace continugous non-word characters in a visual selection with a dash
+" ex. BK-11 BurgerKing::Broiler served your way
+"  -> BK-11-BurgerKing-Broiler-served-your-way
+vmap \\- :s@\%V\W\+@-@g<cr>
+
 " Fix broken iskeyword (i.e. . isn't terminating constants as words, so hitting
 " w on the 'F' in 'Foo.bar(:stuff)' puts your cursor on '(' instead of '.'. See
 " more here: https://github.com/vim-ruby/vim-ruby/issues/280 This also seems to
