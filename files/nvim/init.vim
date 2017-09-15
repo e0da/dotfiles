@@ -119,6 +119,7 @@ let &colorcolumn='80,120'
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
 autocmd filetype c,asm,python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType make setlocal noexpandtab
+autocmd BufNewFile,BufRead *.hdbs setlocal ft=mustache
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin Configuration
