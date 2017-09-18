@@ -12,7 +12,7 @@ HELPTEXT
   exit
 fi
 
-branch=$(git branch --points-at HEAD | awk '{print $2}')
+branch=$(git branch | grep '^*' | awk '{print $2}')
 
 set -ex
 
