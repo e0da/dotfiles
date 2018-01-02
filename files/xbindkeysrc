@@ -1,11 +1,17 @@
-# # Logitech MX thumb button to Windows key
+# Logitech MX Master forward: b:8
+# Logitech MX Master    back: b:9
+# Logitech MX Master   thumb: b:13
+
+# Windows keys: Super_L Super_R
+
+# Example: Logitech MX Master thumb to Super_L
 # "xdotool key Super_L"
 # b:13 + Release
 
-# # Logitech MX Master back button to Windows key
-# "xdotool key Super_L"
-# b:8 + Release
-
-# Logitech MX Master forward button to Windows key
-"xdotool key Super_L"
+# Cinnamon: spread windows
+"xdotool key 'ctrl+alt+Down'"
 b:9 + Release
+
+# Cinnamon: show workspaces
+"xdotool key 'ctrl+alt+Up'"
+b:8 + Release
