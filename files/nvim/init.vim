@@ -175,6 +175,9 @@ let g:ycm_confirm_extra_conf = 0
 " Customize shellcheck
 " let g:syntastic_sh_shellcheck_args = '-x'
 
+" Use eslint for JavaScript linting
+let g:syntastic_javascript_checkers=['eslint']
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
