@@ -6,3 +6,6 @@ hub
 vi
 vim
 teensy
+rubocop
+ruby-parse
+ruby-rewrite
