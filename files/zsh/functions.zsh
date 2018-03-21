@@ -30,6 +30,16 @@ function taon {
   tmux attach -t "$name" || tmux new -s "$name"
 }
 
+# Prints the names of any tags containing the word release that are not found in
+# the CHANGELOG or Rakefile (CHANGELOG lists all releases; Rakefile lists all
+# tags (which may or may not exist anymore) which were created erroneously and
+# do not correspond to a release.
+function check-release-tags() {
+  git tag | grep release | while read tag; do
+    grep $tag CHANGELOG.md Rakefile >/dev/null || echo $tag
+  done
+}
+
 # enable pasting of command lines beginning with $. When do you ever mean to
 # start a command with '$'?
 #
