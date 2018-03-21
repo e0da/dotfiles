@@ -5,7 +5,7 @@ alias grep='grep --color=auto'
 alias t='test_launcher find'
 alias here='xdg-open . 2>/dev/null'
 
-for bin in rails rake spring rspec; do
+for bin in rails rake spring rspec zat; do
   alias $bin="best-ruby-bin ${bin}"
 done
 
