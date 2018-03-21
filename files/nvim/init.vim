@@ -172,11 +172,12 @@ let g:tslime_always_current_window = 1
 " Don't prompt to load ycm_extra_conf.py for YouCompleteMe; just load it.
 let g:ycm_confirm_extra_conf = 0
 
-" Customize shellcheck
+" Customize Syntastic
 " let g:syntastic_sh_shellcheck_args = '-x'
-
-" Use eslint for JavaScript linting
 let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+let g:syntastic_always_populate_loc_list = 1
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   Mappings
