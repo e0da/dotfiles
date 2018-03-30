@@ -17,6 +17,7 @@ PACKAGES        = %W[silversearcher-ag autojump exuberant-ctags tmux
 #
 MAPPINGS = {'agignore'           => '~/.agignore',
             'bin'                => '~/bin',
+            'dotfiles'           => '~/.dotfiles',
             'gitconfig'          => '~/.gitconfig',
             'gitignore_global'   => '~/.gitignore_global',
             'nvim'               => %w[~/.config/nvim ~/.vim],

@@ -133,3 +133,6 @@ export devdb="trackr_web_development"
 
 # The Fuck
 which thefuck &>/dev/null && eval $(thefuck --alias)
+
+# dircolors if you got 'em
+[ -f $HOME/.dircolors ] && eval $(dircolors $HOME/.dircolors)
