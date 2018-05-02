@@ -7,7 +7,7 @@ trap 'kill 0' INT TERM KILL
 
 success="$DING_SOUND_DIR/smw_coin.wav"
 failure="$DING_SOUND_DIR/smw_pipe.wav"
-player=$((which afplay &>/dev/null && echo afplay) || echo aplay)
+player=$( (which afplay >/dev/null 2>&1 && echo afplay) || echo aplay )
 
 eval "$*"
 
