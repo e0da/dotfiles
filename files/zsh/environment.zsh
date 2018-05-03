@@ -56,7 +56,6 @@ bindkey ';5C' forward-word
 bindkey ';5D' backward-word
 
 # command not found
-#
 [ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
 
 # find-the-command
@@ -136,3 +135,6 @@ which thefuck &>/dev/null && eval $(thefuck --alias)
 
 # dircolors if you got 'em
 [ -f $HOME/.dircolors ] && eval $(dircolors $HOME/.dircolors)
+
+# Default host for psql bin
+export PGHOST=localhost
