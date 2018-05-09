@@ -17,14 +17,13 @@ PACKAGES        = %W[silversearcher-ag autojump exuberant-ctags tmux
 #
 MAPPINGS = {'agignore'           => '~/.agignore',
             'bin'                => '~/bin',
+            'dircolors'          => '~/.dircolors',
             'dotfiles'           => '~/.dotfiles',
             'gitconfig'          => '~/.gitconfig',
             'gitignore_global'   => '~/.gitignore_global',
             'nvim'               => %w[~/.config/nvim ~/.vim],
             'nvim/init.vim'      => '~/.vimrc',
             'tmux.conf'          => '~/.tmux.conf',
-            'xbindkeysrc'        => '~/.xbindkeysrc',
-            'ycm_extra_conf.py'  => '~/.ycm_extra_conf.py',
             'zsh'                => '~/.zsh',
             'zsh/zshrc.zsh'      => '~/.zshrc'}
 

@@ -1,4 +1,0 @@
-11c11
-< GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
----
-> GRUB_CMDLINE_LINUX_DEFAULT="quiet splash intel_pstate=disable"
