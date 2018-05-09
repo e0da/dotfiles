@@ -1,3 +1,0 @@
-#!/bin/sh
-
-rxvt -fn "xft:Ubuntu Mono:size=17" -fb "xft:Ubuntu Mono:size=17"

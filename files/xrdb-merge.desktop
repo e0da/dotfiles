@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=xrdb-merge
-Comment=Merge Xresources manually since the automatic one disables #defines
-Exec=bash -c "xrdb -merge ~/.Xresources"
-Terminal=false
-Type=Application
-StartupNotify=false

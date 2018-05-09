@@ -1,4 +1,0 @@
-#!/bin/bash
-
-source /usr/local/etc/autojump.sh
-cd;j prop;script/start;j oport;script/start
