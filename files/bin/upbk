@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -ex
+git co master
+git f
+git ff
+bundle
+tadmig
+
+# If called as upbkr, also run RSpec (stop Spring first)
+grep upbkr <<< "$0" && spring stop && rspec
+
+# If any other commands are given, run them at the end. May not be useful?
+[ -z "$*" ] || eval "$@"
