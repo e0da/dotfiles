@@ -1,6 +1,10 @@
 #!/bin/bash
 
+set -ex
 for env in test development; do
-  ( set -x && RAILS_ENV=$env "$@" ) &
+  # By running it in a subshell we get job management for free, i.e. Ctrl-C will
+  # kill the subshells and their child processes. Without the subshell Ctrl-C
+  # does not kill the process because it was backgrounded with &.
+  ( RAILS_ENV=$env "$@" ) &
 done
 wait
