@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for env in test development; do
+  ( set -x && RAILS_ENV=$env "$@" ) &
+done
+wait
