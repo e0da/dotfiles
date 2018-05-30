@@ -45,6 +45,39 @@ git clone https://github.com/justinforce/dotfiles ~/.dotfiles --recursive
 Then you can `cd` into `~/.dotfiles` and run `rake --tasks` to get a list of the
 available tasks.
 
+#### rbenv+ruby-build on Ubuntu ####
+
+ruby-build doesn't seem to give a shit about working with Ubuntu. Every single
+time I install it, I run into some new goddamned issue with OpenSSL or GCC or
+something. Remember when RVM was the thing? And they had pre-built binaries for
+Ubuntu? Those were the good old days. I digress.
+
+##### Using old libssl on Ubuntu #####
+
+```sh
+sudo apt install -y libssl1.0-dev
+```
+
+##### Compiling with GCC 6 on Ubuntu #####
+
+Source: <https://github.com/rbenv/ruby-build/issues/1146#issuecomment-345275165>
+
+```sh
+sudo apt-get install -y gcc-6 g++-6
+CC=/usr/bin/gcc-6 rbenv install <<< .ruby-version
+```
+
+##### Using rbenv with GCC 6 #####
+
+Define this function in your shell. _(Safer than using an alias which may
+interfere with rbenv's initialization.)_
+
+```sh
+function rbenv {
+  CC=/usr/bin/gcc-6 command rbenv "$@"
+}
+```
+
 Highlights
 ----------
 
