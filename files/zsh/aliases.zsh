@@ -17,3 +17,6 @@ if [ $? = 0 ]; then
 else
   alias ls='ls -G'
 fi
+
+# work
+alias bkcl='xdg-open "https://github.com/TrackRbyPhoneHalo/TrackR/blob/master/CHANGELOG.md"'
