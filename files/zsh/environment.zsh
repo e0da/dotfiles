@@ -21,7 +21,18 @@ disable which # I HATE zsh which.
 HISTFILE=$HOME/.histfile
 HISTSIZE=100000
 SAVEHIST=100000
-setopt appendhistory autocd beep extendedglob nomatch notify autopushd
+
+zsh_opts=(
+  autocd             # Allows typing path without cd to cd, e.g. `..` == `cd ..`
+  autopushd          # push directories to stack when using cd/autocd
+  beep               # Beep on error
+  extendedglob       # Does what it says
+  inc_append_history # History is appended before each command is run
+  nomatch            # Print an error when no file matches completion pattern
+  notify             # Report status of background jobs immediately
+  share_history      # History is read each time prompt is printed
+)
+setopt "${zsh_opts[@]}"
 
 export THIS_SCRIPT=$0
 export UNAME=$(uname)
