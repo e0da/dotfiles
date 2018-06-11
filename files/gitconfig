@@ -56,9 +56,6 @@
 	excludesfile = ~/.gitignore_global
 	editor = nvim
 
-[web]
-	browser = google-chrome
-
 [mergetool "vimdiff"]
 	path = nvim
 
