@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Why make this a shell script instead of an alias? Because it's hard to call as
+# an alias, e.g. `watch rbps`
+
+pgrep -a 'ruby|rails|rspec|spring'
