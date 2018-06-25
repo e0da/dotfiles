@@ -7,8 +7,17 @@ git ff
 bundle
 tadmig
 
+whichbin() {
+  which best-ruby-bin >/dev/null 2>&1 &&
+    echo best-ruby-bin "$1" ||
+    echo "$1"
+}
+
+springbin=$(whichbin spring)
+rspecbin=$(whichbin rspec)
+
 # If called as upbkr, also run RSpec (stop Spring first)
-grep upbkr <<< "$0" && spring stop && rspec
+grep upbkr <<< "$0" && $springbin stop && $rspecbin
 
 # If any other commands are given, run them at the end. May not be useful?
 [ -z "$*" ] || eval "$@"
