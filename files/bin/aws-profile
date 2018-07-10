@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Given a file formatted like
+#
+#   scsi__home_force_src_trackr bk
+#   enzo__home_force_src_project_phoenix_cloud_entity cloud_entity
+#
+# which exists in $_MAP_PATH, use the correct profile with the aws command line
+# tool automatically based on the current working directory. e.g. if I'm in
+# /home/force/src/trackr on scsi, use the bk profile. If I'm at
+# /home/force/src/project-phoenix-cloud-entity on enzo, use the cloud-entity
+# profile. The profiles are defined in the usual way in ~/.aws/config
+
+_AWS_BIN=$HOME/.local/bin/aws
+_MAP_PATH=$HOME/Dropbox/aws_profile_map
+_NO_PROFILE_ERROR=1
+_NO_MAP_FILE_ERROR=2
+
+if [ ! -f "$_MAP_PATH" ]; then
+  echo "No map file found at $_MAP_PATH" >&2
+  exit $_NO_MAP_FILE_ERROR
+fi
+
+_working_directory=$1
+_key=$(sed 's/[[:punct:]]/_/g' <<< "$(hostname)_$_working_directory")
+_key_profile=$(grep "\b$_key\b" < "$_MAP_PATH")
+
+if _profile=$(awk '{print $2}' <<< "$_key_profile") && test -n "$_profile"; then
+  echo -n "$_profile"
+else
+  echo "No profile found in $_MAP_PATH for key: $_key" >&2
+  exit $_NO_PROFILE_ERROR
+fi

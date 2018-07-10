@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# This bin can be called with any name and it'll try to do the same thing. This
+# is so I can use the same code for aws and eb. The underlying bin will be
+# called depending on what was used to invoke the command, e.g. eb runs
+# ~/.local/bin/eb and aws runs ~/.local/bin/aws.
+
+_BIN_PATH=$HOME/.local/bin
+
+_profile=$(aws-profile "$(pwd)")
+_invocation=$(basename "$0")
+_bin="$_BIN_PATH/$_invocation"
+
+set -ex
+"$_bin" "$@" --profile "$_profile"
