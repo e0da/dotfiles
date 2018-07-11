@@ -7,7 +7,7 @@
 
 _BIN_PATH=$HOME/.local/bin
 
-_profile=$(aws-profile "$(pwd)")
+_profile=$(aws-profile "$(pwd)") || exit $?
 _invocation=$(basename "$0")
 _bin="$_BIN_PATH/$_invocation"
 
