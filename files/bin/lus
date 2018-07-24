@@ -1,0 +1,3 @@
+#!/bin/bash
+
+git --work-tree=/ --git-dir=$HOME/Dropbox/git/lus "$@"
