@@ -1,0 +1,70 @@
+#!/bin/bash
+
+_EXECED_BIN=$(basename "$0")
+
+_PWD_APP="$(basename "$(pwd)")"
+_DEFAULT_TAG="local/$_PWD_APP"
+_DEFAULT_CONTAINER_NAME="$(sed 's/[^[:alnum:].-]\+/_/g' <(echo "$_DEFAULT_TAG"))"
+
+_OK_CODE=0
+_BAD_INVOCATION_CODE=1
+
+_USAGE="Usage: $_EXECED_BIN"
+
+_main() {
+  local action
+  local target_function
+  case "$_EXECED_BIN" in
+    'docker-helpers')
+      action="$1"
+      shift
+      ;;
+    'help')
+      _do_usage $_OK_CODE
+      ;;
+    *)
+      # bins have names like drun and dbuild, so remove the d to get the action
+      action=$(sed 's/^d//' <(echo "$_EXECED_BIN"))
+      ;;
+  esac
+  target_function="_do_$action"
+  if _is_function "$target_function"; then
+    "$target_function" "$@"
+  else
+    _do_usage $_BAD_INVOCATION_CODE
+  fi
+}
+
+_is_function() {
+  local function_name
+  function_name="$1"
+  type -t "$function_name" | grep 'function' >/dev/null 2>&1
+}
+
+_do_run() {
+  set -x
+  docker rm "$_DEFAULT_CONTAINER_NAME"
+  docker run -it \
+    --name="$_DEFAULT_CONTAINER_NAME" \
+    --hostname="$_DEFAULT_CONTAINER_NAME" \
+    --net host \
+    -p 9292:9292 \
+    -e DD_API_KEY="$DD_API_KEY" \
+    -e DD_AGENT_HOSTNAME='localhost' \
+    "$_DEFAULT_TAG" \
+    puma -v
+}
+
+_do_build() {
+  set -x
+  docker build -t "$_DEFAULT_TAG" -t "$_DEFAULT_TAG:latest" .
+}
+
+_do_usage() {
+  local exit_code
+  exit_code="$1"
+  printf "%s\n" "$_USAGE"
+  exit "$exit_code"
+}
+
+_main "$@"
