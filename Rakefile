@@ -23,6 +23,7 @@ MAPPINGS = {'agignore'           => '~/.agignore',
             'nvim'               => %w[~/.config/nvim ~/.vim],
             'nvim/init.vim'      => '~/.vimrc',
             'tmux.conf'          => '~/.tmux.conf',
+            'vscode-user'        => '~/.config/Code/User',
             'zsh'                => '~/.zsh',
             'zsh/zshrc.zsh'      => '~/.zshrc'}
 
