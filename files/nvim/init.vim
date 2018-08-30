@@ -17,6 +17,7 @@ Plug 'Lokaltog/vim-easymotion',      { 'on': '<Plug>(easymotion-s)' }
 Plug 'MarcWeber/vim-addon-local-vimrc'
 Plug 'ap/vim-css-color'
 Plug 'ashisha/image.vim',            { 'on': 'Image' }
+Plug 'flowtype/vim-flow',            { 'for': 'javascript', 'do': 'npm install -g flow-bin' }
 Plug 'gregsexton/MatchTag',          { 'for': 'html' }
 Plug 'honza/vim-snippets'
 Plug 'janko-m/vim-test'
