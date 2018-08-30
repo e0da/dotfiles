@@ -1,0 +1,34 @@
+#!/bin/bash
+
+USAGE=1
+
+list="$HOME/src/dotfiles/files/vscode-extensions"
+
+_import() {
+  set -x
+  cat $list | while read extension; do
+    code --install-extension $extension
+  done
+}
+
+_export() {
+  set -x
+  code --list-extensions | tee $list
+}
+
+case "$1" in
+  import)
+    _import
+    ;;
+  export)
+    _export
+    ;;
+  *)
+    echo "Usage:"
+    echo "  $(basename $0) export - write list of installed extensions to $list"
+    echo "  $(basename $0) import - install extensions listed in $list"
+    exit $USAGE
+    ;;
+esac
+
+:
