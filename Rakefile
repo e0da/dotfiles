@@ -8,8 +8,10 @@ LOCAL_BIN_PATH  = "#{ENV['HOME']}/.local/bin"
 PREFERRED_SHELL = 'zsh'
 COLORS          = {red: '1;31', yellow: '1;33'}
 INSTALL_TASKS   = %w[packages links shell]
-PACKAGES        = %W[silversearcher-ag autojump exuberant-ctags tmux
-                     #{PREFERRED_SHELL} build-essential].join(' ')
+PACKAGES        = %W[
+  silversearcher-ag autojump exuberant-ctags tmux #{PREFERRED_SHELL}
+  build-essential fonts-firacode
+].join(' ')
 
 ##
 # Each key corresponds to a file in the +files+ directory, and each value is the
