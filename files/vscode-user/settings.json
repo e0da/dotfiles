@@ -1,5 +1,26 @@
 {
-  "workbench.colorTheme": "Gruvbox Dark Soft",
   "editor.formatOnSave": true,
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "keyboard.dispatch": "keyCode",
+  "vim.easymotion": true,
+  "vim.easymotionMarkerFontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "vim.easymotionMarkerFontSize": "14",
+  "vim.easymotionMarkerFontWeight": "bold",
+  "vim.easymotionMarkerYOffset": 5,
+  "vim.enableNeovim": true,
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "after": ["<Esc>"],
+      "before": ["j", "j"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "after": ["<Leader>", "<Leader>", "s"],
+      "before": ["<Space>"]
+    }
+  ],
+  "vim.useSystemClipboard": true,
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Gruvbox Dark Soft"
 }
