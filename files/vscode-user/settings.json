@@ -17,12 +17,38 @@
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "after": ["<Leader>", "<Leader>", "s"],
-      "before": ["<Space>"]
+      "after": ["v", "i", "w", "g", "b"],
+      "before": ["<C-d>"]
+    },
+    {
+      "after": [],
+      "before": ["u"],
+      "commands": [
+        {
+          "args": [],
+          "command": "undo"
+        }
+      ]
+    },
+    {
+      "after": [],
+      "before": ["<C-r>"],
+      "commands": [
+        {
+          "args": [],
+          "command": "redo"
+        }
+      ]
     }
   ],
   "vim.useCtrlKeys": false,
   "vim.useSystemClipboard": true,
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "after": ["g", "b"],
+      "before": ["<C-d>"]
+    }
+  ],
   "window.zoomLevel": 0,
-	"workbench.colorTheme": "Gruvbox Dark Soft",
+  "workbench.colorTheme": "Gruvbox Dark Soft"
 }
