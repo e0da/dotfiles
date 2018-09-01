@@ -1,6 +1,7 @@
 {
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
+  "git.autofetch": true,
   "keyboard.dispatch": "keyCode",
   "vim.easymotion": true,
   "vim.easymotionMarkerFontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
@@ -22,5 +23,5 @@
   ],
   "vim.useSystemClipboard": true,
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Gruvbox Dark Soft"
+	"workbench.colorTheme": "Gruvbox Dark Soft",
 }
