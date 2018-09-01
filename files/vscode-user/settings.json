@@ -21,6 +21,7 @@
       "before": ["<Space>"]
     }
   ],
+  "vim.useCtrlKeys": false,
   "vim.useSystemClipboard": true,
   "window.zoomLevel": 0,
 	"workbench.colorTheme": "Gruvbox Dark Soft",
