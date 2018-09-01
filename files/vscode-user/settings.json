@@ -19,6 +19,10 @@
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
+      "after": ["<Leader>", "<Leader>", "s"],
+      "before": ["<Space>"]
+    },
+    {
       "after": ["v", "i", "w", "g", "b"],
       "before": ["<C-d>"]
     },
@@ -51,6 +55,7 @@
       "before": ["<C-d>"]
     }
   ],
+  "window.menuBarVisibility": "toggle",
   "window.zoomLevel": 0,
   "workbench.colorTheme": "Gruvbox Dark Soft"
 }
