@@ -5,12 +5,21 @@
   "editor.tabSize": 2,
   "git.autofetch": true,
   "keyboard.dispatch": "keyCode",
+  "shellformat.flag": "-i 2 -p",
+  "shellformat.path": "/home/force/go/bin/shfmt",
   "vim.easymotion": true,
   "vim.easymotionMarkerFontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "vim.easymotionMarkerFontSize": "14",
   "vim.easymotionMarkerFontWeight": "bold",
   "vim.easymotionMarkerYOffset": 5,
   "vim.enableNeovim": true,
+  "vim.handleKeys": {
+    "<C-b>": false,
+    "<C-d>": true,
+    "<C-f>": false,
+    "<C-j>": false,
+    "<C-w>": false
+  },
   "vim.insertModeKeyBindingsNonRecursive": [
     {
       "after": ["<Esc>"],
@@ -47,7 +56,8 @@
       ]
     }
   ],
-  "vim.useCtrlKeys": false,
+  "vim.textwidth": 80,
+  "vim.useCtrlKeys": true,
   "vim.useSystemClipboard": true,
   "vim.visualModeKeyBindingsNonRecursive": [
     {
