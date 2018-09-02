@@ -1,0 +1,57 @@
+#!/bin/bash
+
+OK=0
+USAGE=1
+DEFAULT_LIST="$HOME/src/dotfiles/files/vxm.list"
+SCRIPT_NAME="$(basename $0)"
+
+LIST=${LIST:-$DEFAULT_LIST}
+
+USAGE_TEXT="Usage: $SCRIPT_NAME [ACTION] [LIST=path/to/vxm.list]
+
+ACTIONS
+  merge - [default] import then export
+  export - write list of installed extensions to LIST
+  import - install extensions listed in LIST
+
+LIST
+  LIST=path/to/vxm.list is optional, and allows you to override the default
+  LIST path of $LIST
+"
+
+_import() {
+  set -x
+  cat "$LIST" | while read extension; do
+    code --install-extension $extension
+  done
+}
+
+_export() {
+  set -x
+  code --list-extensions | tee "$LIST"
+}
+
+_print_usage_and_exit() {
+  printf "thing: %s" "$USAGE_TEXT"
+  exit $1
+}
+
+case "$1" in
+merge | '')
+  _import && _export
+  ;;
+import)
+  _import
+  ;;
+export)
+  _export
+  ;;
+-h | --help | help)
+  _print_usage_and_exit $OK
+  ;;
+*)
+  _print_usage_and_exit $USAGE
+  ;;
+esac
+
+:
