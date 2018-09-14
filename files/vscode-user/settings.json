@@ -4,7 +4,12 @@
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
+  "explorer.confirmDragAndDrop": false,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "flow.showUncovered": true,
   "git.autofetch": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
   "keyboard.dispatch": "keyCode",
   "shellformat.flag": "-i 2 -p",
   "shellformat.path": "/home/force/go/bin/shfmt",
@@ -15,10 +20,12 @@
   "vim.easymotionMarkerYOffset": 5,
   "vim.enableNeovim": true,
   "vim.handleKeys": {
+    "<C-'>": false,
     "<C-b>": false,
     "<C-d>": true,
     "<C-f>": false,
     "<C-j>": false,
+    "<C-n>": false,
     "<C-w>": false
   },
   "vim.insertModeKeyBindingsNonRecursive": [
