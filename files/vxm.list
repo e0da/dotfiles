@@ -1,5 +1,6 @@
 BriteSnow.vscode-toggle-quotes
 CoenraadS.bracket-pair-colorizer
+DavidWang.ini-for-vscode
 dbaeumer.vscode-eslint
 dsznajder.es7-react-js-snippets
 esbenp.prettier-vscode
@@ -8,6 +9,7 @@ foxundermoon.shell-format
 gamunu.vscode-yarn
 gcazaciuc.vscode-flow-ide
 jdinhlife.gruvbox
+Orta.vscode-jest
 richie5um2.vscode-sort-json
 Tyriar.sort-lines
 vscodevim.vim
