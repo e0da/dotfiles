@@ -49,9 +49,7 @@ _do_run() {
     --hostname="$_DEFAULT_CONTAINER_NAME" \
     --net host \
     -p 9292:9292 \
-    -e DD_API_KEY="$DD_API_KEY" \
     -e APM_ENABLED='true' \
-    -e DD_AGENT_HOSTNAME='localhost' \
     "$_DEFAULT_TAG" \
     puma -v
 }
