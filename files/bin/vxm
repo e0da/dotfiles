@@ -22,7 +22,7 @@ LIST
 _import() {
   set -x
   cat "$LIST" | while read extension; do
-    code --install-extension $extension
+    yes 0 | code --install-extension $extension
   done
 }
 
