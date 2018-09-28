@@ -9,8 +9,8 @@ PARALLEL_TRANSFER_COUNT="${1:-4}"
 PGET_N="${2:-4}"
 
 if [ 'rar' = "$1" ]; then
-  PARALLEL_TRANSFER_COUNT=32
-  PGET_N=4
+  PARALLEL_TRANSFER_COUNT=16
+  PGET_N=8
 fi
 
 if [ 'big' = "$1" ]; then
