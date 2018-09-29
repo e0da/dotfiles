@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ ! -z "$DEBUG" ]; then
+  set -x
+fi
+
 OK=0
 USAGE=1
 SCRIPT_NAME="$(basename $0)"
@@ -24,7 +28,6 @@ LIST
 "
 
 _import() {
-  set -x
   cat "$LIST" | while read extension; do
     yes 0 | code --install-extension $extension
   done
@@ -32,7 +35,6 @@ _import() {
 }
 
 _export() {
-  set -x
   code --list-extensions | tee "$LIST"
   set +x
 }
