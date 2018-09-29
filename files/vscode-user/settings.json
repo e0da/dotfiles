@@ -75,5 +75,6 @@
   ],
   "window.menuBarVisibility": "toggle",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Gruvbox Dark Soft"
+  "workbench.colorTheme": "Gruvbox Dark Soft",
+  "C_Cpp.formatting": "Disabled"
 }
