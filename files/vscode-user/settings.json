@@ -76,5 +76,7 @@
   "window.menuBarVisibility": "toggle",
   "window.zoomLevel": 0,
   "workbench.colorTheme": "Gruvbox Dark Soft",
-  "C_Cpp.formatting": "Disabled"
+  "C_Cpp.formatting": "Disabled",
+  "c-cpp-flylint.flexelint.enable": false,
+  "c-cpp-flylint.cppcheck.enable": false
 }
