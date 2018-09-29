@@ -28,11 +28,13 @@ _import() {
   cat "$LIST" | while read extension; do
     yes 0 | code --install-extension $extension
   done
+  set +x
 }
 
 _export() {
   set -x
   code --list-extensions | tee "$LIST"
+  set +x
 }
 
 _print_usage_and_exit() {
