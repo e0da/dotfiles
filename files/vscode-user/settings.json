@@ -25,6 +25,7 @@
     "<C-d>": true,
     "<C-f>": false,
     "<C-j>": false,
+    "<C-k>": false,
     "<C-n>": false,
     "<C-w>": false
   },
