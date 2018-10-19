@@ -1,6 +1,7 @@
 {
   "C_Cpp.formatting": "Disabled",
   "breadcrumbs.enabled": true,
+  "clang-format.language.javascript.enable": false,
   "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
@@ -10,6 +11,7 @@
   "files.trimFinalNewlines": true,
   "flow.showUncovered": true,
   "git.autofetch": true,
+  "javascript.format.enable": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "keyboard.dispatch": "keyCode",
   "shellformat.flag": "-i 2 -p",
