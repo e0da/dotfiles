@@ -4,40 +4,34 @@ require 'tmpdir'
 # Constants and helpers
 ################################################################################
 
-LOCAL_BIN_PATH  = "#{ENV['HOME']}/.local/bin"
-PREFERRED_SHELL = 'zsh'
-COLORS          = {red: '1;31', yellow: '1;33'}
-INSTALL_TASKS   = %w[packages links shell]
-RECENT_UBUNTU   = `which lsb_release >/dev/null 2>&1 && lsb_release -rs`.chomp.to_i >= 18
+LOCAL_BIN_PATH  = "#{ENV['HOME']}/.local/bin".freeze
+PREFERRED_SHELL = 'zsh'.freeze
+INSTALL_TASKS   = %w[packages links shell].freeze
+UBUNTU          = `which lsb_release` && $CHILD_STATUS.to_i.zero?
+RECENT_UBUNTU   = UBUNTU && `lsb_release -rs`.chomp.to_i >= 18
 CODING_FONT     = RECENT_UBUNTU ? 'fonts-firacode' : ''
 PACKAGES        = %W[
-  silversearcher-ag autojump exuberant-ctags tmux #{PREFERRED_SHELL}
-  build-essential #{CODING_FONT}
+  #{CODING_FONT} #{PREFERRED_SHELL} autojump build-essential exuberant-ctags
+  silversearcher-ag tmux
 ].join(' ')
 
 ##
 # Each key corresponds to a file in the +files+ directory, and each value is the
 # destination of the symlink.
 #
-MAPPINGS = {'agignore'           => '~/.agignore',
-            'bin'                => '~/bin',
-            'dircolors'          => '~/.dircolors',
-            'gitconfig'          => '~/.gitconfig',
-            'gitignore_global'   => '~/.gitignore_global',
-            'nvim'               => %w[~/.config/nvim ~/.vim],
-            'nvim/init.vim'      => '~/.vimrc',
-            'tmux.conf'          => '~/.tmux.conf',
-            'vscode-user'        => '~/.config/Code/User',
-            'zsh'                => '~/.zsh',
-            'zsh/zshrc.zsh'      => '~/.zshrc'}
-
-##
-# Wraps Kernel#warn with support for colors.
-#
-alias :kernel_warn :warn
-def warn(msg, color=:red)
-  kernel_warn "\e[#{COLORS[color]}m#{msg}\e[m"
-end
+MAPPINGS = {
+  'agignore'         => '~/.agignore',
+  'bin'              => '~/bin',
+  'dircolors'        => '~/.dircolors',
+  'gitconfig'        => '~/.gitconfig',
+  'gitignore_global' => '~/.gitignore_global',
+  'nvim'             => %w[~/.config/nvim ~/.vim],
+  'nvim/init.vim'    => '~/.vimrc',
+  'tmux.conf'        => '~/.tmux.conf',
+  'vscode-user'      => '~/.config/Code/User',
+  'zsh'              => '~/.zsh',
+  'zsh/zshrc.zsh'    => '~/.zshrc'
+}.freeze
 
 ##
 # Symlinks +src+ file or directory to +target+
@@ -100,7 +94,7 @@ end
 # actually exec a call to rake in the shell.
 desc '[Default] Update repository and run install task'
 task update_and_install: :update do
-  exec 'rake install' if $? == 0
+  exec 'rake install' if $CHILD_STATUS.to_i.zero?
 end
 
 desc 'Update repository'
