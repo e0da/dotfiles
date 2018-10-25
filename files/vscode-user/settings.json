@@ -79,5 +79,8 @@
   ],
   "window.menuBarVisibility": "toggle",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Gruvbox Dark Soft"
+  "workbench.colorTheme": "Gruvbox Dark Soft",
+  "json.format.enable": false,
+  "typescript.format.enable": false,
+  "prettier.eslintIntegration": true
 }
