@@ -8,9 +8,11 @@ LOCAL_BIN_PATH  = "#{ENV['HOME']}/.local/bin"
 PREFERRED_SHELL = 'zsh'
 COLORS          = {red: '1;31', yellow: '1;33'}
 INSTALL_TASKS   = %w[packages links shell]
+RECENT_UBUNTU   = `which lsb_release >/dev/null 2>&1 && lsb_release -rs`.chomp.to_i >= 18
+CODING_FONT     = RECENT_UBUNTU ? 'fonts-firacode' : ''
 PACKAGES        = %W[
   silversearcher-ag autojump exuberant-ctags tmux #{PREFERRED_SHELL}
-  build-essential fonts-firacode
+  build-essential #{CODING_FONT}
 ].join(' ')
 
 ##
