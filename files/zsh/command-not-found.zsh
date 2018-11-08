@@ -2,6 +2,7 @@
 # Licensed under GPL, see COPYING for the whole text
 #
 # Modified by Justin Force, 2018, released under the same license.
+# Original location: /etc/zsh_command_not_found
 #
 # This script will look-up command in the database and suggest
 # installation of packages available from the repository
