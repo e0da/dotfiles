@@ -1,5 +1,5 @@
 # Order is significant. local should be last
-scripts=(environment prompts aliases autojump functions local)
+scripts=(environment command-not-found prompts aliases autojump functions local)
 
 for script in "${scripts[@]}"; do
   source "$HOME/.zsh/$script.zsh"

@@ -66,9 +66,6 @@ bindkey '^R' history-incremental-pattern-search-backward
 bindkey ';5C' forward-word
 bindkey ';5D' backward-word
 
-# command not found
-[ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
-
 # find-the-command
 [ -f /usr/share/doc/find-the-command/ftc.zsh ] && source /usr/share/doc/find-the-command/ftc.zsh
 
