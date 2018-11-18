@@ -1,4 +1,5 @@
 aaron-bond.better-comments
+actboy168.lua-debug
 alefragnani.rtf
 BriteSnow.vscode-toggle-quotes
 castwide.solargraph
@@ -15,13 +16,17 @@ gamunu.vscode-yarn
 gcazaciuc.vscode-flow-ide
 jbenden.c-cpp-flylint
 jdinhlife.gruvbox
+keyring.Lua
 misogi.ruby-rubocop
 ms-python.python
 ms-vscode.cpptools
 Orta.vscode-jest
 rebornix.ruby
 richie5um2.vscode-sort-json
+streetsidesoftware.code-spell-checker
 tickleforce.scrolloff
+timonwong.shellcheck
+trixnz.vscode-lua
 twxs.cmake
 Tyriar.sort-lines
 vscodevim.vim
