@@ -82,5 +82,9 @@
   "workbench.colorTheme": "Gruvbox Dark Soft",
   "json.format.enable": false,
   "typescript.format.enable": false,
-  "prettier.eslintIntegration": true
+  "prettier.eslintIntegration": true,
+  "cSpell.userWords": [
+    "gmail",
+    "mkdir"
+  ]
 }
