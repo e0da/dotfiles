@@ -6,7 +6,7 @@ fi
 
 OK=0
 USAGE=1
-SCRIPT_NAME="$(basename $0)"
+SCRIPT_NAME="$(basename "$0")"
 DEFAULT_LIST="$HOME/src/dotfiles/files/$SCRIPT_NAME.list"
 
 LIST=${LIST:-$DEFAULT_LIST}
@@ -14,9 +14,10 @@ LIST=${LIST:-$DEFAULT_LIST}
 USAGE_TEXT="Usage: $SCRIPT_NAME [ACTION]
 
 ACTIONS
-  merge  - [default] import then export
-  import - install extensions listed in LIST
-  export - write list of installed extensions to LIST
+  merge   - [default] upgrade then export
+  install - install extensions listed in LIST
+  upgrade - like install, but passes --force to upgrade installed extensions
+  export  - write list of installed extensions to LIST
 
 LIST
   The path to the list.
@@ -24,32 +25,38 @@ LIST
   Current LIST: $LIST
   Override by setting LIST environment variable, e.g.
 
-    LIST=my/list.txt $SCRIPT_NAME import
+    LIST=my/list.txt $SCRIPT_NAME install
 "
 
-_import() {
-  cat "$LIST" | while read extension; do
-    yes 0 | code --install-extension $extension
-  done
-  set +x
+_install() {
+  local code_args=( "$@" )
+  while read -r extension; do
+    yes 0 | code --install-extension "$extension" "${code_args[@]}"
+  done < "$LIST"
+}
+
+_upgrade() {
+  _install --force
 }
 
 _export() {
   code --list-extensions | tee "$LIST"
-  set +x
 }
 
 _print_usage_and_exit() {
   echo "$USAGE_TEXT"
-  exit $1
+  exit "$1"
 }
 
 case "$1" in
 merge | '')
-  _import && _export
+  _upgrade && _export
   ;;
-import)
-  _import
+install)
+  _install
+  ;;
+upgrade)
+  _upgrade
   ;;
 export)
   _export
