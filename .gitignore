@@ -8,3 +8,4 @@ Gemfile.lock
 .emacs.d/auto-save-list/*
 *~
 #*#
+files/vscode-user/workspaceStorage

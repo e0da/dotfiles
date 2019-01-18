@@ -86,7 +86,12 @@
   "cSpell.userWords": [
     "gdpr",
     "gmail",
+    "idempotence",
+    "instantiable",
+    "kobject",
     "mkdir"
   ],
   "cSpell.language": "en"
+  ],
+  "javascript.suggestionActions.enabled": false
 }
