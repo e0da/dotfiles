@@ -89,7 +89,8 @@
     "idempotence",
     "instantiable",
     "kobject",
-    "mkdir"
+    "mkdir",
+    "snes"
   ],
   "cSpell.language": "en"
   ],
