@@ -25,4 +25,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# This is me overriding a PATH change made by nvm or Node at some point that
+# leads to the global bin being favored over the ./node_modules/.bin one. Maybe
+# this can be removed at some point?
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="./node_modules/.bin:$PATH"
+
 # vi: set ft=sh:
