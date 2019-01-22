@@ -84,7 +84,9 @@
   "typescript.format.enable": false,
   "prettier.eslintIntegration": true,
   "cSpell.userWords": [
+    "gdpr",
     "gmail",
     "mkdir"
-  ]
+  ],
+  "cSpell.language": "en"
 }
