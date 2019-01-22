@@ -220,7 +220,7 @@ noremap \W :StripWhitespace<cr>
 noremap \w :ToggleWhitespace<cr>
 
 " Delete ALL THE BUFFERS!
-noremap \bd :bufdo bd<cr>:NERDTree<cr>:NERDTree<cr>
+noremap \bd :bufdo bd<cr>
 
 " cd current window to parent directory of file
 noremap \cd :lcd %:h<cr>:pwd<cr>
