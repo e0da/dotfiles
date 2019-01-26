@@ -31,4 +31,9 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
 
+if uname -a | grep Microsoft >/dev/null 2>&1; then
+  unsetopt BG_NICE
+  export TERM=xterm-color
+fi
+
 # vi: set ft=sh:
