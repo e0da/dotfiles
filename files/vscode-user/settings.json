@@ -22,6 +22,7 @@
   "vim.easymotionMarkerFontWeight": "bold",
   "vim.easymotionMarkerYOffset": 5,
   "vim.enableNeovim": true,
+  "vim.neovimPath": "/usr/bin/nvim",
   "vim.handleKeys": {
     "<C-'>": false,
     "<C-b>": false,
@@ -92,7 +93,6 @@
     "mkdir",
     "snes"
   ],
-  "cSpell.language": "en"
-  ],
+  "cSpell.language": "en",
   "javascript.suggestionActions.enabled": false
 }
