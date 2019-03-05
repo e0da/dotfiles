@@ -13,6 +13,9 @@
   "git.autofetch": true,
   "javascript.format.enable": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript-test-runner.envVars": {
+    "CI": "true"
+  },
   "keyboard.dispatch": "keyCode",
   "shellformat.flag": "-i 2 -p",
   "shellformat.path": "/home/force/go/bin/shfmt",
@@ -91,8 +94,13 @@
     "instantiable",
     "kobject",
     "mkdir",
-    "snes"
+    "snes",
+    "unmount"
   ],
   "cSpell.language": "en",
-  "javascript.suggestionActions.enabled": false
+  "javascript.suggestionActions.enabled": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.hideStatusBar": false,
+  "zenMode.hideTabs": false,
+  "zenMode.hideActivityBar": false
 }
