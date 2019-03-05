@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=Postman
+Icon=postman.png
+Path=/home/force/.local/opt/Postman
+Exec=/home/force/.local/opt/Postman/Postman
+StartupNotify=false
+StartupWMClass=Postman
+OnlyShowIn=Unity;GNOME;
+X-UnityGenerated=true

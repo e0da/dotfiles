@@ -27,6 +27,7 @@ MAPPINGS = {
   'gitignore_global' => '~/.gitignore_global',
   'nvim'             => %w[~/.config/nvim ~/.vim],
   'nvim/init.vim'    => '~/.vimrc',
+  'postman.desktop'  => '~/.local/share/applications/postman.desktop',
   'tmux.conf'        => '~/.tmux.conf',
   'vscode-user'      => '~/.config/Code/User',
   'zsh'              => '~/.zsh',
