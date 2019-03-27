@@ -102,5 +102,9 @@
   "zenMode.hideLineNumbers": false,
   "zenMode.hideStatusBar": false,
   "zenMode.hideTabs": false,
-  "zenMode.hideActivityBar": false
+  "zenMode.hideActivityBar": false,
+  "javascript.validate.enable": false,
+  "typescript.validate.enable": false,
+  "standard.autoFixOnSave": true,
+  "eslint.autoFixOnSave": true
 }
