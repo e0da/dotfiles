@@ -6,7 +6,7 @@ _ZLOC_PATH="$HOME/Dropbox/config/zloc"
 #
 function zloc-load() {
   for scope in global $(hostname -s); do
-    script="$_ZLOC_PATH/$scope"
+    script="$_ZLOC_PATH/$scope.zsh"
     [ -e "$script" ] && source "$script"
   done
 }
