@@ -1,10 +1,23 @@
-# Order is significant. local should be last
-scripts=(environment command-not-found prompts aliases autojump functions local)
+# Order is significant. zloc should be last
+sources=( autojump
+          command-not-found
+          dotenv
+          functions
+          environment
+          prompts
+          aliases
+          windows
+          zloc )
 
-for script in "${scripts[@]}"; do
-  source "$HOME/.zsh/$script.zsh"
+for source in "${sources[@]}"; do
+  # shellcheck disable=1090
+  source "$HOME/.zsh/$source.zsh"
 done
 
+#==============================================================================#
+#---------------------------  Contested Territory  ----------------------------#
+#==============================================================================#
+#
 # This is all stuff that keeps getting shoved into or suggested for this file.
 # It's less work to just leave them here than to fight it.
 
@@ -30,10 +43,3 @@ export NVM_DIR="$HOME/.nvm"
 # this can be removed at some point?
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
-
-if uname -a | grep Microsoft >/dev/null 2>&1; then
-  unsetopt BG_NICE
-  export TERM=xterm-color
-fi
-
-# vi: set ft=sh:

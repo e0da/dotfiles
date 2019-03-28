@@ -1,5 +1,3 @@
-# vi: set ft=sh: -- So ShellCheck can check it
-
 # Dirty hack for gvim not integrating with unity when launched from command line
 #   https://bugs.launchpad.net/ubuntu/+source/vim/+bug/776499
 function gvim {
