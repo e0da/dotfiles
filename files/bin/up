@@ -15,9 +15,12 @@ sudo apt-get dist-upgrade -yqq
 
 # XXX vim-polyglot breaks PlugUpdate, so clean it up first
 (
-  cd ~/.config/nvim/plugged/vim-polyglot
-  git reset --hard
-  git clean -df
+  POLYGLOT=~/.config/nvim/plugged/vim-polyglot
+  if [ -d "${POLYGLOT}" ]; then
+  cd "${POLYGLOT}"
+    git reset --hard
+    git clean -df
+  fi
 )
 
 # shellcheck disable=2016
