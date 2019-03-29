@@ -1,8 +1,10 @@
 aaron-bond.better-comments
 actboy168.lua-debug
 alefragnani.rtf
+blanu.vscode-styled-jsx
 BriteSnow.vscode-toggle-quotes
 castwide.solargraph
+clinyong.vscode-css-modules
 CoenraadS.bracket-pair-colorizer
 DavidWang.ini-for-vscode
 dbaeumer.vscode-eslint
@@ -24,6 +26,7 @@ ms-vscode.cpptools
 Orta.vscode-jest
 rebornix.ruby
 richie5um2.vscode-sort-json
+samuelroy.vscode-styled-jsx-stylus
 streetsidesoftware.code-spell-checker
 tickleforce.scrolloff
 timonwong.shellcheck
@@ -32,3 +35,4 @@ twxs.cmake
 Tyriar.sort-lines
 vscodevim.vim
 xaver.clang-format
+Zignd.html-css-class-completion
