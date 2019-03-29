@@ -7,7 +7,8 @@ set -ex
 _EXT='PlugSnapshot'
 _ISO_8601='%Y-%m-%dT%H:%M:%S%z'
 _TIMESTAMP=$(date +"${_ISO_8601}")
-_LATEST_SNAPSHOT=$(find "${_PLUG_SNAPSHOTS}" -name "*.${_EXT}" | head -n1)
+# shellcheck disable=2012
+_LATEST_SNAPSHOT=$(ls -t "${_PLUG_SNAPSHOTS}/"*.${_EXT} | head -n1)
 _NEW_SNAPSHOT="${_PLUG_SNAPSHOTS}/${_TIMESTAMP}.${_EXT}"
 
 sudo apt-get update -qq
