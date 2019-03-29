@@ -112,13 +112,6 @@ export DEBFULLNAME='Justin Force'
 [ -f /usr/local/bin/aws_zsh_completer.sh ] &&
     source /usr/local/bin/aws_zsh_completer.sh
 
-# APM
-#
-export APM_BUNDLE="$HOME/src/apm_bundle"
-export MAILCATCHER_PROPERTY=yes
-export MAILCATCHER_OPORTAL=yes
-export MAILCATCHER_TPORTAL=yes
-
 # Host-specific stuff
 [ -f "$HOME/.zsh-local" ] && source "$HOME/.zsh-local"
 
