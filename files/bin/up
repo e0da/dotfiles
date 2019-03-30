@@ -7,10 +7,18 @@ _ISO_8601='%Y-%m-%dT%H:%M:%S%z'
 _NVIM_DIR="$HOME/.config/nvim"
 _PLUG_SNAPSHOTS="${_NVIM_DIR}/PlugSnapshots"
 _POLYGLOT="${_NVIM_DIR}/plugged/vim-polyglot"
+_DOTFILES="$HOME/src/dotfiles"
 
 update-os() {
   sudo apt-get update -qq
   sudo apt-get dist-upgrade -yqq
+}
+
+update-dotfiles() {
+  if [ -d "${_DOTFILES}" ]; then
+    cd "${_DOTFILES}"
+    rake
+  fi
 }
 
 update-vscode-extensions() {
@@ -48,5 +56,6 @@ update-vim-plugins() {
 }
 
 update-os
+update-dotfiles
 update-vim-plugins
 update-vscode-extensions
