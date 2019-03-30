@@ -2,7 +2,6 @@
 
 set -ex
 
-
 _ISO_8601='%Y-%m-%dT%H:%M:%S%z'
 _NVIM_DIR="$HOME/.config/nvim"
 _PLUG_SNAPSHOTS="${_NVIM_DIR}/PlugSnapshots"
@@ -10,8 +9,10 @@ _POLYGLOT="${_NVIM_DIR}/plugged/vim-polyglot"
 _DOTFILES="$HOME/src/dotfiles"
 
 update-os() {
-  sudo apt-get update -qq
-  sudo apt-get dist-upgrade -yqq
+  if command -v apt-get; then
+    sudo apt-get update -qq
+    sudo apt-get dist-upgrade -yqq
+  fi
 }
 
 update-dotfiles() {
@@ -22,35 +23,39 @@ update-dotfiles() {
 }
 
 update-vscode-extensions() {
-  vscs
+  if command -v vscs; then
+    vscs
+  fi
 }
 
 update-vim-plugins() {
   local _ext _timestamp _latest_snapshot _new_snapshot
-  _ext='PlugSnapshot'
-  _timestamp=$(date +"${_ISO_8601}")
-  # shellcheck disable=2012
-  _latest_snapshot=$(ls -t "${_PLUG_SNAPSHOTS}/"*.${_ext} | head -n1)
-  _new_snapshot="${_PLUG_SNAPSHOTS}/${_timestamp}.${_ext}"
+  if command -v nvim && [ -d "${_PLUG_SNAPSHOTS}" ]; then
+    _ext='PlugSnapshot'
+    _timestamp=$(date +"${_ISO_8601}")
+    # shellcheck disable=2012
+    _latest_snapshot=$(ls -t "${_PLUG_SNAPSHOTS}/"*.${_ext} | head -n1)
+    _new_snapshot="${_PLUG_SNAPSHOTS}/${_timestamp}.${_ext}"
 
-  # XXX vim-polyglot breaks PlugUpdate, so just start clean
-  rm -rf "${_POLYGLOT}"
+    # XXX vim-polyglot breaks PlugUpdate, so just start clean
+    rm -rf "${_POLYGLOT}"
 
-  # shellcheck disable=2016
-  nvim +'PlugUpgrade' \
-       +'source $MYVIMRC' \
-       +"PlugSnapshot! ${_new_snapshot}" \
-       +'PlugUpdate' \
-       +'PlugClean!' \
-       +'qa'
+    # shellcheck disable=2016
+    nvim +'PlugUpgrade' \
+        +'source $MYVIMRC' \
+        +"PlugSnapshot! ${_new_snapshot}" \
+        +'PlugUpdate' \
+        +'PlugClean!' \
+        +'qa'
 
-  # Remove the timestamp to compare it to the latest snapshot
-  # shellcheck disable=1117
-  sed -i "/.*\".*\b[0-9]\{4\}\b.*\b[0-9][0-9]:[0-9][0-9]/Id" "${_new_snapshot}"
+    # Remove the timestamp to compare it to the latest snapshot
+    # shellcheck disable=1117
+    sed -i "/.*\".*\b[0-9]\{4\}\b.*\b[0-9][0-9]:[0-9][0-9]/Id" "${_new_snapshot}"
 
-  if [ -n "${_latest_snapshot}" ]; then
-    if diff "${_latest_snapshot}" "${_new_snapshot}"; then
-      rm "${_new_snapshot}"
+    if [ -n "${_latest_snapshot}" ]; then
+      if diff "${_latest_snapshot}" "${_new_snapshot}"; then
+        rm "${_new_snapshot}"
+      fi
     fi
   fi
 }
