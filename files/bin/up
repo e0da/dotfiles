@@ -14,15 +14,9 @@ _NEW_SNAPSHOT="${_PLUG_SNAPSHOTS}/${_TIMESTAMP}.${_EXT}"
 sudo apt-get update -qq
 sudo apt-get dist-upgrade -yqq
 
-# XXX vim-polyglot breaks PlugUpdate, so clean it up first
-(
-  POLYGLOT=~/.config/nvim/plugged/vim-polyglot
-  if [ -d "${POLYGLOT}" ]; then
-  cd "${POLYGLOT}"
-    git reset --hard
-    git clean -df
-  fi
-)
+# XXX vim-polyglot breaks PlugUpdate, so kill it for now?
+_POLYGLOT=~/.config/nvim/plugged/vim-polyglot
+rm -rf "${_POLYGLOT}"
 
 # shellcheck disable=2016
 nvim +'PlugUpgrade' \
