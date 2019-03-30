@@ -2,36 +2,51 @@
 
 set -ex
 
-: "${_PLUG_SNAPSHOTS:="$HOME"/.config/nvim/PlugSnapshots}"
 
-_EXT='PlugSnapshot'
 _ISO_8601='%Y-%m-%dT%H:%M:%S%z'
-_TIMESTAMP=$(date +"${_ISO_8601}")
-# shellcheck disable=2012
-_LATEST_SNAPSHOT=$(ls -t "${_PLUG_SNAPSHOTS}/"*.${_EXT} | head -n1)
-_NEW_SNAPSHOT="${_PLUG_SNAPSHOTS}/${_TIMESTAMP}.${_EXT}"
+_NVIM_DIR="$HOME/.config/nvim"
+_PLUG_SNAPSHOTS="${_NVIM_DIR}/PlugSnapshots"
+_POLYGLOT="${_NVIM_DIR}/plugged/vim-polyglot"
 
-sudo apt-get update -qq
-sudo apt-get dist-upgrade -yqq
+update-os() {
+  sudo apt-get update -qq
+  sudo apt-get dist-upgrade -yqq
+}
 
-# XXX vim-polyglot breaks PlugUpdate, so kill it for now?
-_POLYGLOT=~/.config/nvim/plugged/vim-polyglot
-rm -rf "${_POLYGLOT}"
+update-vscode-extensions() {
+  vscs
+}
 
-# shellcheck disable=2016
-nvim +'PlugUpgrade' \
-     +'source $MYVIMRC' \
-     +"PlugSnapshot! ${_NEW_SNAPSHOT}" \
-     +'PlugUpdate' \
-     +'PlugClean!' \
-     +'qa'
+update-vim-plugins() {
+  local _ext _timestamp _latest_snapshot _new_snapshot
+  _ext='PlugSnapshot'
+  _timestamp=$(date +"${_ISO_8601}")
+  # shellcheck disable=2012
+  _latest_snapshot=$(ls -t "${_PLUG_SNAPSHOTS}/"*.${_ext} | head -n1)
+  _new_snapshot="${_PLUG_SNAPSHOTS}/${_timestamp}.${_ext}"
 
-# Remove the timestamp to compare it to the latest snapshot
-# shellcheck disable=1117
-sed -i "/.*\".*\b[0-9]\{4\}\b.*\b[0-9][0-9]:[0-9][0-9]/Id" "${_NEW_SNAPSHOT}"
+  # XXX vim-polyglot breaks PlugUpdate, so just start clean
+  rm -rf "${_POLYGLOT}"
 
-if [ -n "${_LATEST_SNAPSHOT}" ]; then
-  if diff "${_LATEST_SNAPSHOT}" "${_NEW_SNAPSHOT}"; then
-    rm "${_NEW_SNAPSHOT}"
+  # shellcheck disable=2016
+  nvim +'PlugUpgrade' \
+       +'source $MYVIMRC' \
+       +"PlugSnapshot! ${_new_snapshot}" \
+       +'PlugUpdate' \
+       +'PlugClean!' \
+       +'qa'
+
+  # Remove the timestamp to compare it to the latest snapshot
+  # shellcheck disable=1117
+  sed -i "/.*\".*\b[0-9]\{4\}\b.*\b[0-9][0-9]:[0-9][0-9]/Id" "${_new_snapshot}"
+
+  if [ -n "${_latest_snapshot}" ]; then
+    if diff "${_latest_snapshot}" "${_new_snapshot}"; then
+      rm "${_new_snapshot}"
+    fi
   fi
-fi
+}
+
+update-os
+update-vim-plugins
+update-vscode-extensions
