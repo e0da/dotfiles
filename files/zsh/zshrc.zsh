@@ -41,5 +41,4 @@ export NVM_DIR="$HOME/.nvm"
 # This is me overriding a PATH change made by nvm or Node at some point that
 # leads to the global bin being favored over the ./node_modules/.bin one. Maybe
 # this can be removed at some point?
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"

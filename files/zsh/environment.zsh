@@ -73,7 +73,7 @@ bindkey ';5D' backward-word
 #
 export EDITOR=nvim
 export GIT_EDITOR=nvim
-export PATH=$HOME/go/bin:./node_modules/.bin:/home/force/.yarn/bin:$HOME/bin:$HOME/.local/bin:$HOME/.local/opt/bin:/usr/local/sbin:/usr/local/bin:$PATH
+export PATH=$HOME/go/bin:./node_modules/.bin:$HOME/bin:$HOME/.local/bin:$HOME/.local/opt/bin:/usr/local/sbin:/usr/local/bin:$PATH
 use_coreutils_on_mac
 
 # automatically configure make -j option to -j{number of CPUs +1}
