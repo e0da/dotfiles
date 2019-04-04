@@ -15,6 +15,7 @@ endif
 
 Plug 'Lokaltog/vim-easymotion',      { 'on': '<Plug>(easymotion-s)' }
 Plug 'MarcWeber/vim-addon-local-vimrc'
+Plug 'alampros/vim-styled-jsx', {'for': ['javascript', 'jsx']}
 Plug 'ap/vim-css-color'
 Plug 'ashisha/image.vim',            { 'on': 'Image' }
 Plug 'flowtype/vim-flow',            { 'for': 'javascript', 'do': 'npm install -g flow-bin' }
