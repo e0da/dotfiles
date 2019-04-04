@@ -45,10 +45,17 @@ LINUX_USER_CFG and WINDOWS_USER_CFG
 "
 
 _install() {
-  local code_args=( "$@" )
-  while read -r extension; do
-    yes 0 | code --install-extension "$extension" "${code_args[@]}"
-  done < "$LIST"
+  local code_args install_directives
+  code_args=( "$@" )
+  read -ra install_directives <<< "$(
+    sed <"$LIST" 's/^/--install-extension /g' |
+      tr '\n' ' '
+  )"
+  (
+    set -ex
+    # eval is an easy way to get the arguments to parse after array expansion
+    yes 0 | code "${code_args[@]}" "${install_directives[@]}"
+  )
 }
 
 _upgrade() {
