@@ -4,9 +4,9 @@
 
 silent! let g:plugs['AnsiEsc.vim'].commit = 'd2bb787'
 silent! let g:plugs['MatchTag'].commit = 'f190ed0'
-silent! let g:plugs['YouCompleteMe'].commit = '25ebc0b'
+silent! let g:plugs['YouCompleteMe'].commit = '25ebc0b9'
 silent! let g:plugs['ag.vim'].commit = '4a0dd6e'
-silent! let g:plugs['fzf'].commit = '315e568'
+silent! let g:plugs['fzf'].commit = 'ff95134'
 silent! let g:plugs['gruvbox'].commit = 'cb4e7a5'
 silent! let g:plugs['image.vim'].commit = '02161bb'
 silent! let g:plugs['nerdtree'].commit = '7513f25'
