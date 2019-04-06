@@ -13,30 +13,30 @@ if has('nvim')
   Plug 'vim-ruby/vim-ruby',            { 'for': 'ruby' }
 endif
 
-Plug 'Lokaltog/vim-easymotion',      { 'on': '<Plug>(easymotion-s)' }
+Plug 'Lokaltog/vim-easymotion', { 'on': '<Plug>(easymotion-s)' }
 Plug 'MarcWeber/vim-addon-local-vimrc'
 Plug 'alampros/vim-styled-jsx', {'for': ['javascript', 'jsx']}
 Plug 'ap/vim-css-color'
-Plug 'ashisha/image.vim',            { 'on': 'Image' }
-Plug 'flowtype/vim-flow',            { 'for': 'javascript', 'do': 'npm install -g flow-bin' }
-Plug 'gregsexton/MatchTag',          { 'for': 'html' }
+Plug 'ashisha/image.vim', { 'on': 'Image' }
+Plug 'flowtype/vim-flow', { 'for': 'javascript', 'do': 'npm install -g flow-bin' }
+Plug 'gregsexton/MatchTag', { 'for': 'html' }
 Plug 'honza/vim-snippets'
 Plug 'janko-m/vim-test'
 Plug 'jgdavey/tslime.vim'
-Plug 'junegunn/fzf',                 { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-Plug 'junegunn/vim-easy-align',      { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
-Plug 'mbbill/undotree',              { 'on': 'UndotreeToggle'   }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle'   }
 Plug 'morhetz/gruvbox'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'rking/ag.vim',                 { 'on': 'Ag' }
-Plug 'scrooloose/nerdtree',          { 'on': [ 'NERDTreeToggle', 'NERDTreeFind' ] }
+Plug 'rking/ag.vim', { 'on': 'Ag' }
+Plug 'scrooloose/nerdtree', { 'on': [ 'NERDTreeToggle', 'NERDTreeFind' ] }
 Plug 'scrooloose/syntastic'
-Plug 'sheerun/vim-polyglot',         { 'do': './build' }
+Plug 'sheerun/vim-polyglot', { 'do': './build' }
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
-Plug 'troydm/zoomwintab.vim',        { 'on': 'ZoomWinTabToggle' }
+Plug 'troydm/zoomwintab.vim', { 'on': 'ZoomWinTabToggle' }
 Plug 'vim-scripts/AnsiEsc.vim'
 
 call plug#end()
