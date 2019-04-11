@@ -1,6 +1,4 @@
-#!/bin/bash
-
-set -ex
+#!/bin/bash -ex
 
 _NVIM_DIR="$HOME/.config/nvim"
 _PLUG_SNAPSHOT="${_NVIM_DIR}/PlugSnapshot"
