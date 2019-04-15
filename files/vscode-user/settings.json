@@ -16,7 +16,6 @@
   "javascript-test-runner.envVars": {
     "CI": "true"
   },
-  "keyboard.dispatch": "keyCode",
   "shellformat.flag": "-i 2 -p",
   "shellformat.path": "/home/force/go/bin/shfmt",
   "vim.easymotion": true,
