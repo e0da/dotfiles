@@ -105,5 +105,6 @@
   "javascript.validate.enable": false,
   "typescript.validate.enable": false,
   "standard.autoFixOnSave": true,
-  "eslint.autoFixOnSave": true
+  "eslint.autoFixOnSave": true,
+  "keyboard.dispatch": "keyCode"
 }
