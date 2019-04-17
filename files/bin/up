@@ -5,8 +5,6 @@ _PLUG_SNAPSHOT="${_NVIM_DIR}/PlugSnapshot"
 _POLYGLOT="${_NVIM_DIR}/plugged/vim-polyglot"
 _DOTFILES="$HOME/src/dotfiles"
 
-_APT_ARGS=( -q )
-
 update-os() {
   if command -v apt-get; then
     sudo apt-get update
