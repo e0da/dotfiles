@@ -31,7 +31,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'rking/ag.vim', { 'on': 'Ag' }
 Plug 'scrooloose/nerdtree', { 'on': [ 'NERDTreeToggle', 'NERDTreeFind' ] }
 Plug 'scrooloose/syntastic'
-Plug 'sheerun/vim-polyglot', { 'do': './build' }
+Plug 'sheerun/vim-polyglot' | " XXX building polyglot is managed by bin/up
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
