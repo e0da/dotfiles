@@ -40,9 +40,9 @@ update-vim-plugins() {
     # shellcheck disable=2016
     nvim +'PlugUpgrade' \
         +'source $MYVIMRC' \
-        +"PlugSnapshot! ${_PLUG_SNAPSHOT}" \
-        +'PlugUpdate' \
         +'PlugClean!' \
+        +'PlugUpdate' \
+        +"PlugSnapshot! ${_PLUG_SNAPSHOT}" \
         +'qa'
 
     # XXX [vim-polyglot 2/2] Build
