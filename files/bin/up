@@ -25,19 +25,17 @@ update-vscode-extensions() {
   fi
 }
 
-clean-vim-polyglot() {
-  cd "${_POLYGLOT}" &&
-    git reset --hard &&
-    git clean -d --force
-}
-
 update-vim-plugins() {
   if command -v nvim; then
     # shellcheck disable=2012
 
     # XXX [vim-polyglot 1/2] breaks PlugUpdate, so we'll manage its clean up and
     # installation here instead of with vim-plug's { 'do': './build' }
-    clean-vim-polyglot || true
+    (
+      cd "${_POLYGLOT}" &&
+        git reset --hard &&
+        git clean -d --force
+    )
 
     # shellcheck disable=2016
     nvim +'PlugUpgrade' \
@@ -49,8 +47,10 @@ update-vim-plugins() {
         +'qa'
 
     # XXX [vim-polyglot 2/2] Build
-    clean-vim-polyglot || true
-    cd "${_POLYGLOT}" && ./build
+    (
+      cd "${_POLYGLOT}" &&
+        ./build
+    )
 
     # Remove the timestamp so it won't affect diffs
     # shellcheck disable=1117
