@@ -42,6 +42,7 @@ update-vim-plugins() {
         +'source $MYVIMRC' \
         +'PlugClean!' \
         +'PlugUpdate' \
+        +'source $MYVIMRC' \
         +"PlugSnapshot! ${_PLUG_SNAPSHOT}" \
         +'qa'
 
