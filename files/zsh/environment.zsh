@@ -134,5 +134,8 @@ which thefuck &>/dev/null && eval $(thefuck --alias)
 # dircolors if you got 'em
 [ -f $HOME/.dircolors ] && eval $(dircolors $HOME/.dircolors)
 
+[ -f "$HOME/src/emsdk/emsdk_env.sh" ] &&
+  source "$HOME/src/emsdk/emsdk_env.sh" >/dev/null
+
 # Default host for psql bin
 export PGHOST=localhost
