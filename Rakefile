@@ -22,6 +22,7 @@ PACKAGES        = %W[
 MAPPINGS = {
   'agignore'         => '~/.agignore',
   'bin'              => '~/bin',
+  'compton.conf'     => '~/.config/compton.conf',
   'dircolors'        => '~/.dircolors',
   'gitconfig'        => '~/.gitconfig',
   'gitignore_global' => '~/.gitignore_global',
