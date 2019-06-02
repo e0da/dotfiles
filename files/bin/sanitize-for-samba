@@ -1,0 +1,15 @@
+#!/bin/bash
+
+find . \
+      -name '*\*' \
+  -or -name '*\*' \
+  -or -name '*:*' \
+  -or -name '*/*' \
+  -or -name '*\**' \
+  -or -name '*\?*' \
+  -or -name '*"*' \
+  -or -name '*>*' \
+  -or -name '*<*' \
+  -or -name '*|*'
+
+echo "TODO: Rename them"
