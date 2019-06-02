@@ -12,6 +12,3 @@ done
 for vi in v vi vim mvim gvim; do
   eval "alias $vi=nvim"
 done
-
-# work
-alias bkcl='xdg-open "https://github.com/TrackRbyPhoneHalo/TrackR/blob/master/CHANGELOG.md"'
