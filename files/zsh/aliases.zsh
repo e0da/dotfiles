@@ -2,6 +2,7 @@ alias g='git'
 alias grep='grep --color=auto'
 alias here='xdg-open . 2>/dev/null'
 alias ls='ls --color=auto'
+alias rmt='find . -type d -empty -exec rmdir "{}" \;'
 
 for bin in pry rails rake spring rspec zat sidekiq; do
   alias $bin="best-ruby-bin ${bin}"
