@@ -31,7 +31,6 @@ MAPPINGS = {
   'postman.desktop'  => '~/.local/share/applications/postman.desktop',
   'tmux.conf'        => '~/.tmux.conf',
   'vscode-user'      => '~/.config/Code/User',
-  'xfce4'            => '~/.config/xfce4',
   'zim/style.conf'   => '~/.config/zim/style.conf',
   'zsh'              => '~/.zsh',
   'zsh/zshrc.zsh'    => '~/.zshrc'
