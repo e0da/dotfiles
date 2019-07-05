@@ -19,8 +19,8 @@ if [ 'big' = "$1" ]; then
 fi
 
 LFTP_SYNC_COMMAND="
-set mirror:use-pget-n $PGET_N
 set mirror:parallel-transfer-count $PARALLEL_TRANSFER_COUNT
+set mirror:use-pget-n $PGET_N
 set mirror:parallel-directories false
 set mirror:sort-by name
 cd outbox
