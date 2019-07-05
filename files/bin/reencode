@@ -1,0 +1,19 @@
+#!/bin/bash -ex
+
+input="$1"; shift
+extension="${input##*.}"
+output="${input%.*}.out.${extension}"
+cores="$(lscpu | grep '^CPU(s):' | awk '{print $2}')"
+threads=$(perl -e "printf('%d', 1.5*${cores})")
+
+test -f "$input" || exit 1
+test -f "$output" && exit 2
+
+ffmpeg \
+  -i "$input" \
+  -threads "$threads" \
+  -map 0:v \
+  -map 0:a \
+  -c:v libx264 \
+  -c:a libvorbis \
+  "$output"
