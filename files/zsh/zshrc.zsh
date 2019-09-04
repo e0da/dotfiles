@@ -25,7 +25,7 @@ done
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # python
-export PATH="/home/force/.pyenv/bin:$PATH"
+export PATH="/home/$USER/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
