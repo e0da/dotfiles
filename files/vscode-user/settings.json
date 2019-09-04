@@ -107,5 +107,6 @@
   "standard.autoFixOnSave": true,
   "eslint.autoFixOnSave": true,
   "keyboard.dispatch": "keyCode",
-  "editor.minimap.enabled": false
+  "editor.minimap.enabled": false,
+  "sync.gist": "43750452a6ab69e4ce05b1af5f8b45ed"
 }
