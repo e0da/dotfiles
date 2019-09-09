@@ -7,5 +7,10 @@
   {
     "key": "ctrl+numpad0",
     "command": "-workbench.action.zoomReset"
+  },
+  {
+    "key": "ctrl+p h",
+    "command": "-handlebarsPreview.preview",
+    "when": "!terminalFocus"
   }
 ]
