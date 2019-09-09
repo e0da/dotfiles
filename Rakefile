@@ -30,7 +30,6 @@ MAPPINGS = {
   'nvim/init.vim'    => '~/.vimrc',
   'postman.desktop'  => '~/.local/share/applications/postman.desktop',
   'tmux.conf'        => '~/.tmux.conf',
-  'vscode-user'      => '~/.config/Code/User',
   'zim/style.conf'   => '~/.config/zim/style.conf',
   'zsh'              => '~/.zsh',
   'zsh/zshrc.zsh'    => '~/.zshrc'
