@@ -61,4 +61,7 @@ update-vim-plugins() {
 update-os
 update-dotfiles
 update-vim-plugins
-update-vscode-extensions
+
+# Disabled in favor of Shan.code-settings-sync; remove if not needed
+# https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync
+# update-vscode-extensions
