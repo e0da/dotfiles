@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -ex
+
+source ~/.vpn-vars
+
+docker run --rm -it --privileged --net=host \
+           -v /lib/modules:/lib/modules:ro \
+           -e VPN_SERVER_IPV4 \
+           -e VPN_PSK \
+           -e VPN_USERNAME \
+           -e VPN_PASSWORD \
+              ubergarm/l2tp-ipsec-vpn-client sh
