@@ -10,6 +10,9 @@ update-os() {
     sudo apt-get update
     sudo apt-get dist-upgrade -y
   fi
+  if command -v snap; then
+    sudo snap refresh
+  fi
 }
 
 update-dotfiles() {
