@@ -137,5 +137,6 @@ which thefuck &>/dev/null && eval $(thefuck --alias)
 [ -f "$HOME/src/emsdk/emsdk_env.sh" ] &&
   source "$HOME/src/emsdk/emsdk_env.sh" >/dev/null
 
-# Default host for psql bin
+# Default config for postgres
 export PGHOST=localhost
+export PGUSER=postgres
