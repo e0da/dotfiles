@@ -74,9 +74,6 @@
 	smudge = git media smudge %f
 	required = true
 
-[hub]
-	protocol = https
-
 ; Automatically added by something? Probably the post-install script for git
 ; from Homebrew. Large file storage settings. Aliases? I don't even know.
 ; https://git-lfs.github.com/
