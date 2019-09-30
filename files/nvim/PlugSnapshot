@@ -27,7 +27,7 @@ silent! let g:plugs['vim-rails'].commit = 'a6dcabf'
 silent! let g:plugs['vim-ruby'].commit = '1c70532'
 silent! let g:plugs['vim-snippets'].commit = 'db67e54'
 silent! let g:plugs['vim-styled-jsx'].commit = '4e39ae7'
-silent! let g:plugs['vim-test'].commit = 'aa75ecf'
+silent! let g:plugs['vim-test'].commit = '17450c2'
 silent! let g:plugs['zoomwintab.vim'].commit = '5bbbd1f'
 
 PlugUpdate!
