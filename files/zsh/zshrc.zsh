@@ -4,6 +4,7 @@ sources=( autojump
           dotenv
           functions
           environment
+          path
           prompts
           aliases
           windows

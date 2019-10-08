@@ -73,7 +73,7 @@ bindkey ';5D' backward-word
 #
 export EDITOR=nvim
 export GIT_EDITOR=nvim
-export PATH=$HOME/go/bin:./node_modules/.bin:$HOME/bin:$HOME/.local/bin:$HOME/.local/opt/bin:/snap/bin:/usr/local/sbin:/usr/local/bin:$PATH
+
 use_coreutils_on_mac
 
 # automatically configure make -j option to -j{number of CPUs +1}
@@ -121,9 +121,6 @@ export HOMEBREW_INSTALL_BADGE="💩"
 
 # Make stupid Mac garbage do colors
 export CLICOLORS=1
-
-# Add Postgres bins to PATH
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.5/bin
 
 # TrackR
 export devdb="trackr_web_development"
