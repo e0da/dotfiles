@@ -5,9 +5,9 @@
 
 trap 'kill 0' INT TERM KILL
 
-success="$DING_SOUND_DIR/smw_coin.wav"
-failure="$DING_SOUND_DIR/smw_pipe.wav"
-player=$( (which afplay >/dev/null 2>&1 && echo afplay) || echo aplay )
+success="$DING_SOUND_DIR/smw_coin.mp3"
+failure="$DING_SOUND_DIR/smw_pipe.mp3"
+player=$( (which afplay >/dev/null 2>&1 && echo afplay) || echo mpg123 )
 
 eval "$*"
 
@@ -22,6 +22,6 @@ case $exit_code in
     ;;
 esac
 
-$player "$sound" &
+$player "$sound" >/dev/null 2>&1 &
 
 exit $exit_code
