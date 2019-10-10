@@ -1,3 +1,4 @@
+alias cfg="git --git-dir=$HOME/Dropbox/git/cfg-$HOST.git --work-tree=$HOME"
 alias dcom='docker-compose'
 alias g='git'
 alias grep='grep --color=auto'
