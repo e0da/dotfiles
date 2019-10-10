@@ -1,5 +1,4 @@
-cfg_repo="$HOME/Dropbox/git/cfg-$HOST"
-cfg_git="$cfg_repo/.git"
+cfg_repo="$HOME/Dropbox/git/cfg-$HOST.git"
 cfg_gitignore="$HOME/.gitignore"
 
 function cfg-cd() {
@@ -9,13 +8,12 @@ function cfg-cd() {
 function cfg-init() {
   (
     set -ex
-    mkdir -p "$cfg_repo"
-    test -d "$cfg_git" || git init "$cfg_repo"
+    test -d "$cfg_repo" || git init --bare "$cfg_repo"
     test -f "$cfg_gitignore" || echo '*' | tee "$cfg_gitignore"
   )
 }
 
-alias cfg="git --git-dir=$cfg_repo/.git --work-tree=$HOME"
+alias cfg="git --git-dir=$cfg_repo --work-tree=$HOME"
 alias dcom='docker-compose'
 alias g='git'
 alias grep='grep --color=auto'
