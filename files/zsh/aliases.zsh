@@ -1,11 +1,11 @@
 cfg_repo="$HOME/Dropbox/git/cfg-$HOST.git"
-cfg_gitignore="$HOME/.gitignore"
 
 function cfg-cd() {
   cd "$cfg_repo"
 }
 
 function cfg-init() {
+  local cfg_gitignore="$HOME/.gitignore"
   (
     set -ex
     test -d "$cfg_repo" || git init --bare "$cfg_repo"
