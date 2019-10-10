@@ -1,11 +1,27 @@
-alias cfg="git --git-dir=$HOME/Dropbox/git/cfg-$HOST.git --work-tree=$HOME"
+cfg_repo="$HOME/Dropbox/git/cfg-$HOST"
+cfg_git="$cfg_repo/.git"
+cfg_gitignore="$cfg_repo/.gitignore"
+
+function cfg-cd() {
+  cd "$cfg_repo"
+}
+
+function cfg-init() {
+  (
+    set -ex
+    mkdir -p "$cfg_repo"
+    test -d "$cfg_git" || git init "$cfg_repo"
+    test -f "$cfg_gitignore" || echo '*' | tee "$cfg_gitignore"
+  )
+}
+
+alias cfg="git --git-dir=$cfg_repo/.git --work-tree=$HOME"
 alias dcom='docker-compose'
 alias g='git'
 alias grep='grep --color=auto'
 alias here='xdg-open . 2>/dev/null'
 alias ls='ls --color=auto'
 alias rmt='find . -type d -empty -exec rmdir "{}" \;'
-alias secrets="git --git-dir=$HOME/.secrets --work-tree=$HOME"
 alias winning='source ~/.zsh/winning.zsh'
 
 for bin in pry rails rake spring rspec zat sidekiq; do
