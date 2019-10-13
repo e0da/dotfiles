@@ -1,4 +1,5 @@
 cfg_repo="$HOME/Dropbox/git/cfg-$HOST.git"
+scfg_repo="$HOME/Dropbox/git/scfg-$HOST.git"
 
 function cfg-cd() {
   cd "$cfg_repo"
@@ -13,7 +14,17 @@ function cfg-init() {
   )
 }
 
+function scfg-init() {
+  local scfg_gitignore="/.gitignore"
+  (
+    set -ex
+    test -d "$scfg_repo" || git init --bare "$scfg_repo"
+    test -f "$scfg_gitignore" || echo '*' | sudo tee "$scfg_gitignore"
+  )
+}
+
 alias cfg="git --git-dir=$cfg_repo --work-tree=$HOME"
+alias scfg="git --git-dir=$cfg_repo --work-tree=/"
 alias dcom='docker-compose'
 alias g='git'
 alias grep='grep --color=auto'
