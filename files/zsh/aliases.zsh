@@ -24,7 +24,7 @@ function scfg-init() {
 }
 
 alias cfg="git --git-dir=$cfg_repo --work-tree=$HOME"
-alias scfg="git --git-dir=$cfg_repo --work-tree=/"
+alias scfg="git --git-dir=$scfg_repo --work-tree=/"
 alias dcom='docker-compose'
 alias g='git'
 alias grep='grep --color=auto'
