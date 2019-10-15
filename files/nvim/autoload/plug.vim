@@ -353,14 +353,16 @@ if s:is_win
 
   " Copied from fzf
   function! s:wrap_cmds(cmds)
+    let use_chcp = executable('sed')
     return map([
       \ '@echo off',
-      \ 'setlocal enabledelayedexpansion',
-      \ 'for /f "tokens=*" %%a in (''chcp'') do for %%b in (%%a) do set origchcp=%%b',
-      \ 'chcp 65001 > nul'
-    \ ]
+      \ 'setlocal enabledelayedexpansion']
+    \ + (use_chcp ? [
+      \ 'for /f "usebackq" %%a in (`chcp ^| sed "s/[^0-9]//gp"`) do set origchcp=%%a',
+      \ 'chcp 65001 > nul'] : [])
     \ + (type(a:cmds) == type([]) ? a:cmds : [a:cmds])
-    \ + ['chcp !origchcp! > nul', 'endlocal'],
+    \ + (use_chcp ? ['chcp !origchcp! > nul'] : [])
+    \ + ['endlocal'],
     \ 'v:val."\r"')
   endfunction
 
@@ -1034,7 +1036,7 @@ function! s:update_impl(pull, force, args) abort
   let s:clone_opt = get(g:, 'plug_shallow', 1) ?
         \ '--depth 1' . (s:git_version_requirement(1, 7, 10) ? ' --no-single-branch' : '') : ''
 
-  if has('win32unix')
+  if has('win32unix') || has('wsl')
     let s:clone_opt .= ' -c core.eol=lf -c core.autocrlf=input'
   endif
 
