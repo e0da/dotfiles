@@ -42,6 +42,10 @@
 	last                 = log -p -n1
 	lol                  = log --graph --decorate --pretty=oneline --abbrev-commit
 	lola                 = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	ls-ignored					 = ls-files . --exclude-standard --others
+	ls-untracked         = ls-files . --ignored --exclude-standard --others
+	lsi									 = ls-ignored
+	lsu                  = ls-untracked
 	pl                   = pull --rebase
 	ps                   = push
 	s                    = status --short
