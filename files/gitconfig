@@ -50,8 +50,8 @@
 	ps                   = push
 	s                    = status --short
 	sha                  = rev-parse --short HEAD
-	shal                 = rev-parse HEAD
 	shacp                = !git shal | pbcopy
+	shal                 = rev-parse HEAD
 
 [rerere]
 	enabled = true
