@@ -2,10 +2,6 @@ cfg_repo="$HOME/Dropbox/git/cfg-$HOST.git"
 gcfg_repo="$HOME/Dropbox/git/gcfg.git"
 scfg_repo="$HOME/Dropbox/git/scfg-$HOST.git"
 
-function cfg-cd() {
-  cd "$cfg_repo"
-}
-
 function cfg-init() {
   local cfg_gitignore="$HOME/.gitignore"
   (
