@@ -1,5 +1,0 @@
-#!/bin/bash
-
-spring stop
-PROD_DB=y rails $*
-spring stop
