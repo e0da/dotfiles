@@ -12,7 +12,7 @@ RECENT_UBUNTU   = UBUNTU && `lsb_release -rs`.chomp.to_i >= 18
 CODING_FONT     = RECENT_UBUNTU ? 'fonts-firacode' : ''
 PACKAGES        = %W[
   #{CODING_FONT} #{PREFERRED_SHELL} autojump build-essential exuberant-ctags
-  silversearcher-ag tmux
+  libpython-dev libpython2-dev libpython3-dev silversearcher-ag tmux
 ].join(' ')
 
 ##
