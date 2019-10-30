@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -ex
 
 # Why make this a shell script instead of an alias? Because it's hard to call as
 # an alias, e.g. `watch rbps`

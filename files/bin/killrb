@@ -1,0 +1,3 @@
+#!/bin/bash -ex
+
+psrb | awk '{print $1}' | tr '\n' ' ' | xargs kill
