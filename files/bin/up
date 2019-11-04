@@ -22,10 +22,19 @@ update-dotfiles() {
   fi
 }
 
+update-vim-plugins-v3() {
+  if command -v nvim; then
+    # shellcheck disable=2016
+    nvim +'PlugUpgrade' \
+        +'source $MYVIMRC' \
+        +'PlugClean!' \
+        +'PlugUpdate' \
+        +'qa'
+  fi
+}
+
 update-vim-plugins-v2() {
   if command -v nvim; then
-    # shellcheck disable=2012
-
     # XXX [vim-polyglot 1/2] breaks PlugUpdate, so we'll manage its clean up and
     # installation here instead of with vim-plug's { 'do': './build' }
     (
@@ -52,8 +61,6 @@ update-vim-plugins-v2() {
 # Delete this if unneeded
 update-vim-plugins-v1() {
   if command -v nvim; then
-    # shellcheck disable=2012
-
     # XXX [vim-polyglot 1/2] breaks PlugUpdate, so we'll manage its clean up and
     # installation here instead of with vim-plug's { 'do': './build' }
     (
@@ -88,8 +95,11 @@ update-vim-plugins() {
     1)
       update-vim-plugins-v1
       ;;
-    2|*)
+    2)
       update-vim-plugins-v2
+      ;;
+    3|*)
+      update-vim-plugins-v3
       ;;
   esac
 }
