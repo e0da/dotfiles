@@ -20,7 +20,6 @@ PACKAGES        = %W[
 # destination of the symlink.
 #
 MAPPINGS = {
-  'agignore'         => '~/.agignore',
   'compton.conf'     => '~/.config/compton.conf',
   'dircolors'        => '~/.dircolors',
   'gitconfig'        => '~/.gitconfig',
