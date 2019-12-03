@@ -22,7 +22,6 @@ PACKAGES        = %W[
 MAPPINGS = {
   'nvim'             => %w[~/.config/nvim ~/.vim],
   'nvim/init.vim'    => '~/.vimrc',
-  'tmux.conf'        => '~/.tmux.conf',
   'zim/style.conf'   => '~/.config/zim/style.conf',
   'zsh'              => '~/.zsh',
   'zsh/zshrc.zsh'    => '~/.zshrc'
