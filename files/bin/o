@@ -1,9 +1,0 @@
-#!/bin/bash
-
-_path=$1
-
-if [ -z "$_path" ]; then
-  _path='.'
-fi
-
-xdg-open "$_path"
