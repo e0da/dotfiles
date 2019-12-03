@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
-require 'tmpdir'
-
 ################################################################################
-# Constants and helpers
+# Constants
 ################################################################################
 
 PREFERRED_SHELL = 'zsh'
-INSTALL_TASKS   = %w[packages links shell].freeze
+INSTALL_TASKS   = %w[packages shell].freeze
 UBUNTU          = `which lsb_release` && $CHILD_STATUS.to_i.zero?
 RECENT_UBUNTU   = UBUNTU && `lsb_release -rs`.chomp.to_i >= 18
 CODING_FONT     = RECENT_UBUNTU ? 'fonts-firacode' : ''
@@ -17,26 +15,6 @@ PACKAGES        = %W[
   ssh tmux
 ].join(' ')
 
-##
-# Each key corresponds to a file in the +files+ directory, and each value is the
-# destination of the symlink.
-#
-MAPPINGS = {
-  'zsh' => '~/.zsh',
-  'zsh/zshrc.zsh' => '~/.zshrc'
-}.freeze
-
-##
-# Symlinks +src+ file or directory to +target+
-#
-def link_file(source, target)
-  source = "#{pwd}/files/#{source}"
-  target = File.expand_path target
-  rm_rf target
-  FileUtils.mkdir_p File.dirname(target)
-  ln_s source, target
-end
-
 ################################################################################
 # Tasks
 ################################################################################
@@ -45,19 +23,6 @@ task default: :update_and_install
 
 desc "Run these tasks in order: #{INSTALL_TASKS.join(' ')}"
 task install: INSTALL_TASKS
-
-desc 'Symlink config files to appropriate locations'
-task :links do
-  MAPPINGS.each do |source, target|
-    if target.is_a? Array
-      target.each do |targetlet|
-        link_file source, targetlet
-      end
-    else
-      link_file source, target
-    end
-  end
-end
 
 desc 'Install packages'
 task :packages do
