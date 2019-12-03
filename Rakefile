@@ -20,7 +20,6 @@ PACKAGES        = %W[
 # destination of the symlink.
 #
 MAPPINGS = {
-  'gitconfig'        => '~/.gitconfig',
   'gitignore_global' => '~/.gitignore_global',
   'nvim'             => %w[~/.config/nvim ~/.vim],
   'nvim/init.vim'    => '~/.vimrc',
