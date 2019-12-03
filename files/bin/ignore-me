@@ -1,7 +1,0 @@
-#!/bin/bash
-
-test -f ./.gitignore && echo ".gitignore exists!" && exit 1
-
-echo '!.gitignore
-*' > ./.gitignore
-

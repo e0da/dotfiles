@@ -23,6 +23,7 @@
 	a                    = add
 	aa                   = add --all
 	af                   = a -f
+	alias                = aliases
 	b                    = branch
 	branches-with-commit = branch --all --contains
 	branches-with-file   = "!f() { git commits-with-file $1 | awk '{print $1}' | xargs -n1 git branches-with-commit | sort | uniq; }; f"
@@ -35,9 +36,12 @@
 	cwf                  = !git commits-with-file
 	d                    = diff
 	dc                   = diff --cached
+	dmb									 = delete-merged-branches
 	f                    = fetch origin --prune
 	ff                   = merge origin/master master --ff-only
 	fuckit               = !git reset --hard HEAD && git clean -df
+	gcr                  = gc-recursive
+	im                   = ignore-me
 	l                    = log --stat
 	last                 = log -p -n1
 	lol                  = log --graph --decorate --pretty=oneline --abbrev-commit
