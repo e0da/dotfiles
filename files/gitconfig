@@ -23,7 +23,6 @@
 	a                    = add
 	aa                   = add --all
 	af                   = a -f
-	alias                = !~/bin/git-aliases
 	b                    = branch
 	branches-with-commit = branch --all --contains
 	branches-with-file   = "!f() { git commits-with-file $1 | awk '{print $1}' | xargs -n1 git branches-with-commit | sort | uniq; }; f"

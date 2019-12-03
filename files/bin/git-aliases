@@ -1,8 +1,0 @@
-#!/bin/sh
-
-# Use π because I'm not positive that any ASCII character won't be invoked in an
-# alias.
-git config --get-regexp alias |
-  sed 's/alias.//' |
-  sed 's/ /π/' |
-  column -t -s 'π'
