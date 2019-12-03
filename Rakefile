@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'tmpdir'
 
 ################################################################################
 # Constants and helpers
 ################################################################################
 
-PREFERRED_SHELL = 'zsh'.freeze
+PREFERRED_SHELL = 'zsh'
 INSTALL_TASKS   = %w[packages links shell].freeze
 UBUNTU          = `which lsb_release` && $CHILD_STATUS.to_i.zero?
 RECENT_UBUNTU   = UBUNTU && `lsb_release -rs`.chomp.to_i >= 18
@@ -20,10 +22,8 @@ PACKAGES        = %W[
 # destination of the symlink.
 #
 MAPPINGS = {
-  'nvim'             => %w[~/.config/nvim ~/.vim],
-  'nvim/init.vim'    => '~/.vimrc',
-  'zsh'              => '~/.zsh',
-  'zsh/zshrc.zsh'    => '~/.zshrc'
+  'zsh' => '~/.zsh',
+  'zsh/zshrc.zsh' => '~/.zshrc'
 }.freeze
 
 ##
