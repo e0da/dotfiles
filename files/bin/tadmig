@@ -1,3 +1,0 @@
-#!/bin/bash
-
-tad best-ruby-bin rake db:migrate
