@@ -1,8 +1,0 @@
-#!/bin/bash
-
-FILES=($*)
-
-for file in ${FILES[*]}; do
-  name="${file%.json}"
-  python -m json.tool $file > $name.pp.json
-done
