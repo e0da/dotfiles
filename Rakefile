@@ -4,7 +4,6 @@ require 'tmpdir'
 # Constants and helpers
 ################################################################################
 
-LOCAL_BIN_PATH  = "#{ENV['HOME']}/.local/bin".freeze
 PREFERRED_SHELL = 'zsh'.freeze
 INSTALL_TASKS   = %w[packages links shell].freeze
 UBUNTU          = `which lsb_release` && $CHILD_STATUS.to_i.zero?
@@ -22,7 +21,6 @@ PACKAGES        = %W[
 #
 MAPPINGS = {
   'agignore'         => '~/.agignore',
-  'bin'              => '~/bin',
   'compton.conf'     => '~/.config/compton.conf',
   'dircolors'        => '~/.dircolors',
   'gitconfig'        => '~/.gitconfig',
@@ -52,11 +50,6 @@ end
 ################################################################################
 
 task default: :update_and_install
-
-desc "Create local bin directory at #{LOCAL_BIN_PATH}"
-task :local_bin do
-  mkdir_p LOCAL_BIN_PATH
-end
 
 desc "Run these tasks in order: #{INSTALL_TASKS.join(' ')}"
 task install: INSTALL_TASKS
